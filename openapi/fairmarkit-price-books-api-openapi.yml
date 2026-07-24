@@ -1,0 +1,1477 @@
+openapi: 3.1.1
+info:
+  title: BUYER PUBLIC Business Units Price Books API
+  version: '3'
+  description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
+  termsOfService: https://www.fairmarkit.com/terms-of-service
+  contact:
+    name: Fairmarkit Support
+    url: https://fmkt.zendesk.com/hc/en-us
+    email: support@fairmarkit.com
+servers:
+- url: https://staging.fairmarkit.com/
+tags:
+- name: Price Books
+paths:
+  /services/self-service/api/v4/price-books/:
+    get:
+      tags:
+      - Price Books
+      summary: List Price Books
+      description: Returns a list of price books.
+      operationId: get_price_books_list_services_self_service_api_v4_price_books__get
+      parameters:
+      - description: Filter by IDs.
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Id
+          description: Filter by IDs.
+        name: id
+        in: query
+      - description: Zero-based offset of the first record to return. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+      - description: Maximum number of records to return. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          maximum: 101
+          minimum: 0
+          title: Limit
+          default: 10
+          description: Maximum number of records to return. Defaults to 10.
+        name: limit
+        in: query
+      - description: Filter price books by title.
+        required: false
+        schema:
+          type: string
+          title: Title
+        name: title
+        in: query
+      - description: Filter by active status.
+        required: false
+        schema:
+          type: boolean
+          title: Active
+          description: Filter by active status.
+        name: active
+        in: query
+      - description: Ordering field. Prefix with '-' for descending order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - created_at
+          - -created_at
+          - title
+          - -title
+          - active
+          - -active
+          title: Ordering
+          description: Ordering field. Prefix with '-' for descending order.
+        name: ordering
+        in: query
+      - description: Filter items by tags.
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Tag
+          description: Filter items by tags.
+        name: tag
+        in: query
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PriceBookResponseV4'
+                type: array
+                title: Price Books List Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - Price Books
+      summary: Create Price Book
+      description: Creates a new price book.
+      operationId: create_price_book_services_self_service_api_v4_price_books__post
+      parameters:
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PriceBookV4'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/CreatePriceBookResponseV4'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v4/price-books/{price_book_id}/items:
+    get:
+      tags:
+      - Price Books
+      summary: List Price Book Items
+      description: Returns a list of price book items.
+      operationId: get_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_get
+      parameters:
+      - description: The UUID or External ID of the price book to retrieve items from.
+        required: true
+        schema:
+          type: string
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - description: Filter items by specific IDs.
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Id
+        name: id
+        in: query
+      - description: Zero-based offset of the first record to return. Defaults to 0.
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+      - description: Maximum number of records to return. Defaults to 10.
+        required: false
+        schema:
+          type: integer
+          maximum: 101
+          minimum: 0
+          title: Limit
+          default: 10
+          description: Maximum number of records to return. Defaults to 10.
+        name: limit
+        in: query
+      - description: Filter items by title.
+        required: false
+        schema:
+          type: string
+          maxLength: 255
+          minLength: 1
+          title: Title
+        name: title
+        in: query
+      - description: Filter items by price book tags.
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Price Book Tag
+          description: Filter items by price book tags.
+        name: pb_tag
+        in: query
+      - description: Currency code used for price conversion.
+        required: false
+        schema:
+          type: string
+          title: Currency
+          description: Currency code used for price conversion.
+        name: currency
+        in: query
+      - description: Search term used to filter results.
+        required: false
+        schema:
+          type: string
+          title: Search
+          description: Search term used to filter results.
+        name: search
+        in: query
+      - description: Filter items by tags.
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Tag
+          description: Filter items by tags.
+        name: tag
+        in: query
+      - description: Ordering field. Prefix with '-' for descending order.
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Ordering
+          description: Ordering field. Prefix with '-' for descending order.
+        name: ordering
+        in: query
+      - description: Enable semantic search for filtering.
+        required: false
+        schema:
+          type: boolean
+          title: Is Semantic
+          default: true
+        name: is_semantic
+        in: query
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PriceBookItemResponseV4'
+                type: array
+                title: Price Book Items List Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - Price Books
+      summary: Create Price Book Items
+      description: Creates price book items.
+      operationId: create_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_post
+      parameters:
+      - description: The UUID or External ID of the price book to create items in.
+        required: true
+        schema:
+          type: string
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/PriceBookItemV4'
+              type: array
+              title: Items Data
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CreatePriceBookItemResponseV4'
+                type: array
+                title: Created Items Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Price Books
+      summary: Delete Price Book Items
+      description: Delete multiple price book items by their UUIDs or External IDs.
+      operationId: delete_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_delete
+      parameters:
+      - description: The UUID or External ID of the price book to delete items from.
+        required: true
+        schema:
+          type: string
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - description: List of price book item UUIDs or External IDs to delete.
+        required: true
+        schema:
+          items:
+            type: string
+          type: array
+          title: Id
+        name: id
+        in: query
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v3/price-books/{price_book_id}:
+    delete:
+      tags:
+      - Price Books
+      summary: ⚠ Delete Price Book
+      description: ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [DELETE Price Book v4](/reference/delete_price_book_services_self_service_api_v4_price_books__price_book_id__delete/). Please connect with your customer success contact for any questions.
+      operationId: PriceBookApi_delete_price_book_services_self_service_api_v3_price_books__price_book_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+                title: Response Pricebookapi Delete Price Book Services Self Service Api V3 Price Books  Price Book Id  Delete
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      deprecated: true
+    get:
+      tags:
+      - Price Books
+      summary: ⚠ Get Price Book Details
+      description: ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Retrieve Price Book v4](/reference/get_price_book_services_self_service_api_v4_price_books__price_book_id__get/). Please connect with your customer success contact for any questions.
+      operationId: PriceBookApi_get_price_book_by_id_services_self_service_api_v3_price_books__price_book_id__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/PriceBookResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      deprecated: true
+  /services/self-service/api/v4/price-books/{price_book_id}:
+    patch:
+      tags:
+      - Price Books
+      summary: Update Price Book
+      description: Updates a price book.
+      operationId: update_price_book_services_self_service_api_v4_price_books__price_book_id__patch
+      parameters:
+      - description: The UUID or External ID of the price book to update.
+        required: true
+        schema:
+          type: string
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatedPriceBookV4'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/CreatePriceBookResponseV4'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Price Books
+      summary: Delete Price Book
+      description: Deletes a price book.
+      operationId: delete_price_book_services_self_service_api_v4_price_books__price_book_id__delete
+      parameters:
+      - description: The UUID or External ID of the price book to delete.
+        required: true
+        schema:
+          type: string
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - Price Books
+      summary: Get Price Book Details
+      description: Returns details for a price book.
+      operationId: get_price_book_services_self_service_api_v4_price_books__price_book_id__get
+      parameters:
+      - description: The UUID or External ID of the price book to retrieve.
+        required: true
+        schema:
+          type: string
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/PriceBookResponseV4'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v4/price-books/{price_book_id}/items/{item_id}:
+    delete:
+      tags:
+      - Price Books
+      summary: Delete Price Book Item
+      description: Deletes a price book item.
+      operationId: delete_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__delete
+      parameters:
+      - description: The UUID or External ID of the price book to delete the item from.
+        required: true
+        schema:
+          type: string
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - description: The UUID or External ID of the price book item to delete.
+        required: true
+        schema:
+          type: string
+          title: Item Id
+        name: item_id
+        in: path
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      tags:
+      - Price Books
+      summary: Update Price Book Item
+      description: Updates a price book item.
+      operationId: update_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__patch
+      parameters:
+      - description: The UUID or External ID of the price book to update the item in.
+        required: true
+        schema:
+          type: string
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - description: The UUID or External ID of the price book item to update.
+        required: true
+        schema:
+          type: string
+          title: Item Id
+        name: item_id
+        in: path
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatedPriceBookItemV4'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/CreatePriceBookItemResponseV4'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - Price Books
+      summary: Get Price Book Item Details
+      description: Returns details for a price book item.
+      operationId: get_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__get
+      parameters:
+      - description: The UUID or External ID of the price book to retrieve the item from.
+        required: true
+        schema:
+          type: string
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - description: The UUID or External ID of the price book item to retrieve.
+        required: true
+        schema:
+          type: string
+          title: Item Id
+        name: item_id
+        in: path
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/PriceBookItemResponseV4'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v3/price-books/{price_book_id}/items:
+    get:
+      tags:
+      - Price Books
+      summary: ⚠ List Price Book Items
+      description: ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Price Book Items v4](/reference/get_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_get/). Please connect with your customer success contact for any questions.
+      operationId: PriceBookApi_get_price_book_items_services_self_service_api_v3_price_books__price_book_id__items_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return. Defaults to 0.
+      - required: false
+        schema:
+          type: integer
+          maximum: 101
+          minimum: 0
+          title: Limit
+          default: 10
+          description: Maximum number of records to return. Defaults to 10.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 10.
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PriceBookItemResponse'
+                type: array
+                title: Response Pricebookapi Get Price Book Items Services Self Service Api V3 Price Books  Price Book Id  Items Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      deprecated: true
+    post:
+      tags:
+      - Price Books
+      summary: ⚠ Create Price Book Item
+      description: ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [POST Create Price Book Items v4](/reference/create_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_post/). Please connect with your customer success contact for any questions.
+      operationId: PriceBookApi_create_price_book_item_services_self_service_api_v3_price_books__price_book_id__items_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Price Book Id
+        name: price_book_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/PriceBookItem'
+              type: array
+              title: Request
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CreatePriceBookItemResponse'
+                type: array
+                title: Response Pricebookapi Create Price Book Item Services Self Service Api V3 Price Books  Price Book Id  Items Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      deprecated: true
+  /services/self-service/api/v3/price-books/:
+    post:
+      tags:
+      - Price Books
+      summary: ⚠ Create Price Book
+      description: ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Retrieve Price Book v4](/reference/get_price_book_services_self_service_api_v4_price_books__price_book_id__get/). Please connect with your customer success contact for any questions.
+      operationId: PriceBookApi_create_price_book_services_self_service_api_v3_price_books__post
+      parameters:
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PriceBook'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/CreatePriceBookResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      deprecated: true
+    get:
+      tags:
+      - Price Books
+      summary: ⚠ List Price Books
+      description: ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Price Books List v4](/reference/get_price_books_list_services_self_service_api_v4_price_books__get/). Please connect with your customer success contact for any questions.
+      operationId: PriceBookApi_get_price_books_services_self_service_api_v3_price_books__get
+      parameters:
+      - required: false
+        schema:
+          type: string
+          title: Search
+          description: Search term used to filter results.
+        name: search
+        in: query
+        description: Search term used to filter results.
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return. Defaults to 0.
+      - required: false
+        schema:
+          type: integer
+          maximum: 101
+          minimum: 0
+          title: Limit
+          default: 10
+          description: Maximum number of records to return. Defaults to 10.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 10.
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PriceBookResponse'
+                type: array
+                title: Response Pricebookapi Get Price Books Services Self Service Api V3 Price Books  Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      deprecated: true
+  /services/self-service/api/v3/price-books/price-book-items/{item_id}:
+    get:
+      tags:
+      - Price Books
+      summary: ⚠ Get Price Book Item Details
+      description: ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API [GET Price Book Item v4](/reference/get_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__get/). Please connect with your customer success contact for any questions.
+      operationId: PriceBookApi_get_price_book_item_services_self_service_api_v3_price_books_price_book_items__item_id__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Item Id
+        name: item_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/PriceBookItemResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      deprecated: true
+components:
+  schemas:
+    CreatePriceBookItemResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: CreatePriceBookItemResponse
+    PriceBookV4:
+      properties:
+        supplier_id:
+          type: string
+          format: uuid
+          title: Supplier Id
+          description: The unique identifier of the supplier.
+        title:
+          type: string
+          title: Title
+          description: The title of the price book.
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+          description: The unique identifier of the schema.
+        effective_date_from:
+          type: string
+          format: date-time
+          title: Effective Date From
+          description: The start date when the price book becomes effective.
+        effective_date_to:
+          type: string
+          format: date-time
+          title: Effective Date To
+          description: The end date when the price book expires.
+        active:
+          type: boolean
+          title: Active
+          default: true
+          description: Whether the price book is active.
+        custom_tags:
+          additionalProperties:
+            type: array
+            items: {}
+          type: object
+          title: Custom Tags
+          description: Custom tags associated with the price book.
+        external_id:
+          type: string
+          title: External Id
+      type: object
+      required:
+      - supplier_id
+      - title
+      - schema_id
+      - effective_date_from
+      - effective_date_to
+      title: PriceBook
+    PriceBookItem:
+      properties:
+        manufacturer:
+          type: string
+          title: Manufacturer
+        manufacturer_pn:
+          type: string
+          title: Manufacturer Pn
+        supplier_pn:
+          type: string
+          title: Supplier Pn
+        description:
+          type: string
+          title: Description
+        country_of_origin:
+          type: string
+          title: Country Of Origin
+        hts_code:
+          type: string
+          title: Hts Code
+        category:
+          type: string
+          title: Category
+        sub_category:
+          type: string
+          title: Sub Category
+        internal_pn:
+          type: string
+          title: Internal Pn
+        vendor_sku:
+          type: string
+          title: Vendor Sku
+        vendor_item_description:
+          type: string
+          title: Vendor Item Description
+        image_url:
+          type: string
+          title: Image Url
+        min_order_quantity:
+          type: number
+          title: Min Order Quantity
+        delivery_days:
+          type: integer
+          title: Delivery Days
+        uom:
+          type: string
+          title: Uom
+        currency:
+          type: string
+          title: Currency
+        unit_price:
+          type: number
+          exclusiveMinimum: 0
+          title: Unit Price
+        vendor_agent:
+          type: string
+          title: Vendor Agent
+      type: object
+      required:
+      - manufacturer
+      - manufacturer_pn
+      - supplier_pn
+      - description
+      - country_of_origin
+      - hts_code
+      - category
+      - sub_category
+      - internal_pn
+      - vendor_sku
+      - vendor_item_description
+      - uom
+      - currency
+      - unit_price
+      - vendor_agent
+      title: PriceBookItem
+    UpdatedPriceBookV4:
+      properties:
+        title:
+          type: string
+          title: Title
+          description: The title of the price book.
+        effective_date_from:
+          type: string
+          format: date-time
+          title: Effective Date From
+          description: The start date when the price book becomes effective.
+        effective_date_to:
+          type: string
+          format: date-time
+          title: Effective Date To
+          description: The end date when the price book expires.
+        supplier_id:
+          type: string
+          format: uuid
+          title: Supplier Id
+          description: The unique identifier of the supplier.
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+          description: The unique identifier of the schema.
+        active:
+          type: boolean
+          title: Active
+          description: Whether the price book is active.
+        custom_tags:
+          additionalProperties:
+            type: array
+            items: {}
+          type: object
+          title: Custom Tags
+          description: Custom tags associated with the price book.
+        external_id:
+          type: string
+          title: External Id
+      type: object
+      title: UpdatedPriceBook
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    PriceBookItemResponseV4:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: The unique identifier of the price book item.
+        price_book_id:
+          type: string
+          format: uuid
+          title: Price Book Id
+          description: The unique identifier of the price book.
+        value:
+          type: object
+          title: Value
+          description: The value data of the price book item.
+        custom_tags:
+          additionalProperties:
+            type: array
+            items: {}
+          type: object
+          title: Custom Tags
+          description: Custom tags associated with the price book item.
+        external_id:
+          type: string
+          title: External Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: The date and time when the item was created.
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+          description: The date and time when the item was last updated.
+      type: object
+      required:
+      - id
+      - price_book_id
+      - value
+      - created_at
+      title: PriceBookItemResponse
+    PriceBookResponseV4:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: The unique identifier of the price book.
+        supplier_id:
+          type: string
+          format: uuid
+          title: Supplier Id
+          description: The unique identifier of the supplier.
+        title:
+          type: string
+          title: Title
+          description: The title of the price book.
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+          description: The unique identifier of the schema.
+        effective_date_from:
+          type: string
+          format: date-time
+          title: Effective Date From
+          description: The start date when the price book becomes effective.
+        effective_date_to:
+          type: string
+          format: date-time
+          title: Effective Date To
+          description: The end date when the price book expires.
+        active:
+          type: boolean
+          title: Active
+          description: Whether the price book is active.
+        custom_tags:
+          additionalProperties:
+            type: array
+            items: {}
+          type: object
+          title: Custom Tags
+          description: Custom tags associated with the price book.
+        external_id:
+          type: string
+          title: External Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: The date and time when the price book was created.
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+          description: The date and time when the price book was last updated.
+      type: object
+      required:
+      - id
+      - supplier_id
+      - title
+      - schema_id
+      - effective_date_from
+      - effective_date_to
+      - active
+      - created_at
+      title: PriceBookResponse
+    PriceBookItemResponse:
+      properties:
+        manufacturer:
+          type: string
+          title: Manufacturer
+        manufacturer_pn:
+          type: string
+          title: Manufacturer Pn
+        supplier_pn:
+          type: string
+          title: Supplier Pn
+        description:
+          type: string
+          title: Description
+        country_of_origin:
+          type: string
+          title: Country Of Origin
+        hts_code:
+          type: string
+          title: Hts Code
+        category:
+          type: string
+          title: Category
+        sub_category:
+          type: string
+          title: Sub Category
+        internal_pn:
+          type: string
+          title: Internal Pn
+        vendor_sku:
+          type: string
+          title: Vendor Sku
+        vendor_item_description:
+          type: string
+          title: Vendor Item Description
+        image_url:
+          type: string
+          title: Image Url
+        min_order_quantity:
+          type: number
+          title: Min Order Quantity
+        delivery_days:
+          type: integer
+          title: Delivery Days
+        uom:
+          type: string
+          title: Uom
+        currency:
+          type: string
+          title: Currency
+        unit_price:
+          type: number
+          exclusiveMinimum: 0
+          title: Unit Price
+        vendor_agent:
+          type: string
+          title: Vendor Agent
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - manufacturer
+      - manufacturer_pn
+      - supplier_pn
+      - description
+      - country_of_origin
+      - hts_code
+      - category
+      - sub_category
+      - internal_pn
+      - vendor_sku
+      - vendor_item_description
+      - uom
+      - currency
+      - unit_price
+      - vendor_agent
+      - id
+      title: PriceBookItemResponse
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    PriceBook:
+      properties:
+        title:
+          type: string
+          maxLength: 255
+          title: Title
+        effective_date_from:
+          type: string
+          format: date-time
+          title: Effective Date From
+        effective_date_to:
+          type: string
+          format: date-time
+          title: Effective Date To
+        supplier_id:
+          type: string
+          format: uuid
+          title: Supplier Id
+        supplier_tenant_id:
+          type: string
+          format: uuid
+          title: Supplier Tenant Id
+        business_unit_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Business Unit Ids
+        items:
+          items:
+            $ref: '#/components/schemas/PriceBookItem'
+          type: array
+          maxItems: 5000
+          title: Items
+          default: []
+      type: object
+      required:
+      - title
+      - effective_date_from
+      - effective_date_to
+      title: PriceBook
+    PriceBookResponse:
+      properties:
+        title:
+          type: string
+          maxLength: 255
+          title: Title
+        effective_date_from:
+          type: string
+          format: date-time
+          title: Effective Date From
+        effective_date_to:
+          type: string
+          format: date-time
+          title: Effective Date To
+        supplier_id:
+          type: string
+          format: uuid
+          title: Supplier Id
+        supplier_tenant_id:
+          type: string
+          format: uuid
+          title: Supplier Tenant Id
+        business_unit_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Business Unit Ids
+        items:
+          items:
+            $ref: '#/components/schemas/PriceBookItemResponse'
+          type: array
+          maxItems: 5000
+          title: Items
+        id:
+          type: string
+          format: uuid
+          title: Id
+        tenant_id:
+          type: string
+          format: uuid
+          title: Tenant Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - title
+      - effective_date_from
+      - effective_date_to
+      - id
+      - tenant_id
+      - created_at
+      title: PriceBookResponse
+    CreatePriceBookResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: CreatePriceBookResponse
+    UpdatedPriceBookItemV4:
+      properties:
+        value:
+          type: object
+          title: Value
+          description: The value data of the price book item.
+        custom_tags:
+          additionalProperties:
+            type: array
+            items: {}
+          type: object
+          title: Custom Tags
+          description: Custom tags associated with the price book item.
+        external_id:
+          type: string
+          title: External Id
+      type: object
+      required:
+      - value
+      title: UpdatedPriceBookItem
+    CreatePriceBookItemResponseV4:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: The unique identifier of the created price book item.
+      type: object
+      required:
+      - id
+      title: CreatePriceBookItemResponse
+    PriceBookItemV4:
+      properties:
+        value:
+          type: object
+          title: Value
+          description: The value data of the price book item.
+        custom_tags:
+          additionalProperties:
+            type: array
+            items: {}
+          type: object
+          title: Custom Tags
+          description: Custom tags associated with the price book item.
+        external_id:
+          type: string
+          title: External Id
+      type: object
+      required:
+      - value
+      title: PriceBookItem
+    CreatePriceBookResponseV4:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: The unique identifier of the created price book.
+      type: object
+      required:
+      - id
+      title: CreatePriceBookResponse

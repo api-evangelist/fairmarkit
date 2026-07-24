@@ -1,0 +1,173 @@
+openapi: 3.1.1
+info:
+  title: BUYER PUBLIC Business Units Schema API
+  version: '3'
+  description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
+  termsOfService: https://www.fairmarkit.com/terms-of-service
+  contact:
+    name: Fairmarkit Support
+    url: https://fmkt.zendesk.com/hc/en-us
+    email: support@fairmarkit.com
+servers:
+- url: https://staging.fairmarkit.com/
+tags:
+- name: Schema
+paths:
+  /services/self-service/api/v3/schemas/current:
+    get:
+      tags:
+      - Schema
+      summary: Get Current Schema
+      operationId: SchemaApi_get_current_schema_services_self_service_api_v3_schemas_current_get
+      parameters:
+      - required: true
+        schema:
+          $ref: '#/components/schemas/SchemaType'
+          description: Schema type to retrieve.
+        name: type
+        in: query
+        description: Schema type to retrieve.
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/SchemaRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns the current schema for the requested type.
+  /services/self-service/api/v3/schemas/{schema_id}/:
+    get:
+      tags:
+      - Schema
+      summary: Get Schema Details
+      operationId: SchemaApi_get_schema_services_self_service_api_v3_schemas__schema_id___get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Schema Id
+        name: schema_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/SchemaRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns details for a specific schema.
+components:
+  schemas:
+    SchemaType:
+      type: string
+      enum:
+      - data_field_dataset
+      - direct_negotiation_details
+      - direct_negotiation_item
+      - event_details
+      - event_item
+      - price_book
+      - purchase_requisition
+      - request
+      - request_award_export
+      - request_export
+      - request_integration
+      - request_item
+      - request_item_integration
+      - request_item_manual
+      - request_manual
+      - response
+      - response_item
+      - sow
+      - worksheet
+      title: SchemaType
+      description: Supported schema types.
+    SchemaRetrieve:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: Schema Id.
+        content:
+          type: object
+          title: Content
+          description: JSON schema definition. Specifies the structure, types, and validation rules for the data that will be validated against the schema.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Date and time when the Schema was created.
+        type:
+          $ref: '#/components/schemas/SchemaType'
+          title: Type
+          description: Schema type.
+      type: object
+      required:
+      - id
+      - content
+      - created_at
+      - type
+      title: SchemaRetrieve
+      description: Schema definition returned by the API.
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.

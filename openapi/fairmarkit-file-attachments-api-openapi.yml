@@ -1,0 +1,489 @@
+openapi: 3.1.1
+info:
+  title: BUYER PUBLIC Business Units File attachments API
+  version: '3'
+  description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
+  termsOfService: https://www.fairmarkit.com/terms-of-service
+  contact:
+    name: Fairmarkit Support
+    url: https://fmkt.zendesk.com/hc/en-us
+    email: support@fairmarkit.com
+servers:
+- url: https://staging.fairmarkit.com/
+tags:
+- name: File attachments
+paths:
+  /services/self-service/api/v3/attachments/rfq/{rfq_uuid}/:
+    post:
+      tags:
+      - File attachments
+      summary: Create RFQ Attachment
+      operationId: create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post
+      parameters:
+      - required: true
+        schema:
+          title: Rfq Uuid
+          type: string
+          format: uuid
+        name: rfq_uuid
+        in: path
+      - required: false
+        schema:
+          title: Is Internal
+          type: boolean
+          default: false
+        name: is_internal
+        in: query
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RfqAttachmentRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Creates a new attachment on an RFQ event.
+    get:
+      tags:
+      - File attachments
+      summary: List RFQ Attachments
+      operationId: get_rfq_attachments_services_self_service_api_v3_attachments_rfq__rfq_uuid___get
+      parameters:
+      - required: true
+        schema:
+          title: Rfq Uuid
+          type: string
+          format: uuid
+        name: rfq_uuid
+        in: path
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RfqAttachmentsDownloadInfo'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns a list of attachments for an RFQ event.
+  /services/self-service/api/v3/attachments/requests/{request_uuid}/:
+    post:
+      tags:
+      - File attachments
+      summary: Create Request Attachment
+      operationId: create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post
+      parameters:
+      - required: true
+        schema:
+          title: Request UUID
+          type: string
+          format: uuid
+        name: request_uuid
+        in: path
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RequestAttachmentRetrieve'
+        '400':
+          description: Bad Request - Schema validation failed when attachment_field_name is provided
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    description: Error message describing the schema validation failure
+        '401':
+          description: Unauthorized - Invalid or missing API key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    description: Authentication error message
+        '404':
+          description: Not Found - Request with the specified UUID does not exist
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    description: Error message indicating the request was not found
+        '422':
+          description: Validation Error - Invalid request parameters or file format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Creates a new attachment on a request.
+  /services/self-service/api/v3/attachments/rfq/{rfq_uuid}/items/{item_uuid}/:
+    post:
+      tags:
+      - File attachments
+      summary: Create RFQ Item Attachment
+      operationId: create_rfq_item_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid__items__item_uuid___post
+      parameters:
+      - required: true
+        schema:
+          title: Rfq Uuid
+          type: string
+          format: uuid
+        name: rfq_uuid
+        in: path
+      - required: true
+        schema:
+          title: Item Uuid
+          type: string
+          format: uuid
+        name: item_uuid
+        in: path
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_rfq_item_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid__items__item_uuid___post'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RfqItemAttachmentRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Creates a new attachment on an RFQ line item.
+  /services/self-service/api/v3/attachments/requests/{request_uuid}/items/{request_item_uuid}:
+    post:
+      tags:
+      - File attachments
+      summary: Create Request Item Attachment
+      operationId: create_request_item_attachment_services_self_service_api_v3_attachments_requests__request_uuid__items__request_item_uuid___post
+      parameters:
+      - required: true
+        schema:
+          title: Request UUID
+          type: string
+          format: uuid
+        name: request_uuid
+        in: path
+      - required: true
+        schema:
+          title: Request Item UUID
+          type: string
+          format: uuid
+        name: request_item_uuid
+        in: path
+      - required: true
+        schema:
+          type: string
+          title: Attachment Field Name
+        name: attachment_field_name
+        in: query
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Body_create_request_item_attachment_services_self_service_api_v3_attachments_requests__request_uuid__items__request_item_uuid___post'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RequestItemFileRetrieve'
+        '400':
+          description: Bad Request - Schema validation failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    description: Error message describing the schema validation failure
+        '401':
+          description: Unauthorized - Invalid or missing API key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    description: Authentication error message
+        '404':
+          description: Not Found - Request item with the specified UUID does not exist
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    description: Error message indicating the request item was not found
+        '422':
+          description: Validation Error - Invalid request parameters or file format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Creates a new attachment on a request item.
+components:
+  schemas:
+    RfqAttachmentRetrieve:
+      title: RfqAttachmentRetrieve
+      required:
+      - file
+      - orig_file_name
+      type: object
+      description: Data to retrieve for an RFQ attachment.
+      properties:
+        file:
+          title: File
+          type: string
+          description: Stored file name. If two files with the same name are added, a unique hash is added to the file. The file name when uploaded is available in orig_file_name.
+        orig_file_name:
+          title: Orig File Name
+          type: string
+          description: File name when uploaded.
+    Body_create_rfq_item_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid__items__item_uuid___post:
+      title: Body_create_rfq_item_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid__items__item_uuid___post
+      required:
+      - attachment
+      type: object
+      properties:
+        attachment:
+          title: Attachment
+          maxItems: 1
+          minItems: 1
+          type: array
+          items:
+            type: string
+            format: binary
+          description: Attachment name.
+      description: Data to retrieve about a specific line item level attachment.
+    RfqItemAttachmentRetrieve:
+      title: RfqItemAttachmentRetrieve
+      required:
+      - file
+      - orig_file_name
+      type: object
+      description: Data to retrieve for an RFQ line item attachment.
+      properties:
+        file:
+          title: File
+          type: string
+          description: Stored file name. If two files with the same name are added, a unique hash is added to the file. The file name when uploaded is available in orig_file_name.
+        orig_file_name:
+          title: Orig File Name
+          type: string
+          description: File name when uploaded.
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    ? Body_create_request_item_attachment_services_self_service_api_v3_attachments_requests__request_uuid__items__request_item_uuid___post
+    : title: Body_create_request_item_attachment_services_self_service_api_v3_attachments_requests__request_uuid__items__request_item_uuid___post
+      required:
+      - attachment
+      type: object
+      properties:
+        attachment:
+          title: Attachment
+          maxItems: 1
+          minItems: 1
+          type: array
+          items:
+            type: string
+            format: binary
+          description: File attachment to upload. Only one file is allowed per request.
+        attachment_field_name:
+          title: Attachment Field Name
+          type: string
+          description: Field name in the request item schema where the attachment should be stored.
+      description: Data to retrieve about a specific request item attachment.
+    RequestAttachmentRetrieve:
+      title: RequestAttachmentRetrieve
+      required:
+      - file
+      - orig_file_name
+      type: object
+      description: Attachment details for a Request attachment.
+      properties:
+        file:
+          title: File
+          type: string
+          description: Stored file name. If two files with the same name are added, a unique hash is added to the file. The file name when uploaded is available in orig_file_name.
+        orig_file_name:
+          title: Orig File Name
+          type: string
+          description: File name when uploaded.
+    Body_create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post:
+      title: Body_create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post
+      required:
+      - attachment
+      type: object
+      properties:
+        attachment:
+          title: Attachment
+          maxItems: 1
+          minItems: 1
+          type: array
+          items:
+            type: string
+            format: binary
+          description: Attachment name.
+      description: Data to retrieve about a specific event level attachment.
+    RfqAttachmentsDownloadInfo:
+      title: RfqAttachmentsDownloadInfo
+      required:
+      - status
+      type: object
+      description: Information when downloading an RFQ attachment.
+      properties:
+        status:
+          title: Status
+          type: string
+          description: Status.
+        archive:
+          title: Archive
+          type: string
+          description: Archive.
+    RequestItemFileRetrieve:
+      title: RequestItemFileRetrieve
+      required:
+      - file
+      - orig_file_name
+      type: object
+      description: Attachment details for a Request item attachment.
+      properties:
+        file:
+          title: File
+          type: string
+          description: Download URL for the uploaded file.
+        orig_file_name:
+          title: Orig File Name
+          type: string
+          description: Original file name when uploaded.
+    Body_create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post:
+      title: Body_create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post
+      required:
+      - attachment
+      type: object
+      properties:
+        attachment:
+          title: Attachment
+          maxItems: 1
+          minItems: 1
+          type: array
+          items:
+            type: string
+            format: binary
+          description: File attachment to upload. Only one file is allowed per request.
+        attachment_field_name:
+          title: Attachment Field Name
+          type: string
+          description: Optional field name in the request schema where the attachment should be stored. If provided, the attachment will be stored in the schema data field instead of as a general file attachment.
+      description: Data to retrieve about a specific attachment.

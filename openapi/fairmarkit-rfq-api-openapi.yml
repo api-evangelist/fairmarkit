@@ -1,0 +1,3381 @@
+openapi: 3.1.1
+info:
+  title: BUYER PUBLIC Business Units RFQ API
+  version: '3'
+  description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
+  termsOfService: https://www.fairmarkit.com/terms-of-service
+  contact:
+    name: Fairmarkit Support
+    url: https://fmkt.zendesk.com/hc/en-us
+    email: support@fairmarkit.com
+servers:
+- url: https://staging.fairmarkit.com/
+tags:
+- name: RFQ
+paths:
+  /services/self-service/api/v3/rfq/{uuid}/internal-notes/:
+    post:
+      tags:
+      - RFQ
+      summary: Add Internal Note
+      operationId: add_internal_note_services_self_service_api_v3_rfq__uuid__internal_notes__post
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+        description: RFQ ID (Fairmarkit).
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RFQInternalNote'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/InternalNote'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Creates a new internal note for an RFQ event.
+    get:
+      tags:
+      - RFQ
+      summary: List Internal Notes
+      operationId: get_internal_notes_services_self_service_api_v3_rfq__uuid__internal_notes__get
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+        description: RFQ ID (Fairmarkit).
+      - required: false
+        schema:
+          title: Limit
+          maximum: 100
+          minimum: 1
+          type: integer
+          default: 20
+          description: Maximum number of records to return. Defaults to 20.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 20.
+      - required: false
+        schema:
+          title: Offset
+          minimum: 0
+          type: integer
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return. Defaults to 0.
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ListRetrieve_InternalNote_'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns a list of internal notes for an RFQ event.
+  /services/self-service/api/v3/rfq/{uuid}/:
+    delete:
+      tags:
+      - RFQ
+      summary: Delete RFQ Event
+      operationId: soft_delete_services_self_service_api_v3_rfq__uuid___delete
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Deletes an existing RFQ event.
+    put:
+      tags:
+      - RFQ
+      summary: Update RFQ Event
+      operationId: update_services_self_service_api_v3_rfq__uuid___put
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RFQUpdate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RFQRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Updates an existing RFQ event.
+    get:
+      tags:
+      - RFQ
+      summary: Get RFQ Event Details
+      operationId: retrieve_services_self_service_api_v3_rfq__uuid___get
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RFQRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns details for an RFQ event.
+  /services/self-service/api/v3/rfq/:
+    get:
+      tags:
+      - RFQ
+      summary: List RFQ Events
+      operationId: get_rfq_list_services_self_service_api_v3_rfq__get
+      parameters:
+      - description: Start of the created-at time range. Use ISO 8601 format.
+        required: false
+        schema:
+          type: string
+          format: date-time
+          title: Updated At Min
+          description: Start of the created-at time range. Use ISO 8601 format.
+        name: created_at_min
+        in: query
+      - description: End of the created-at time range. Use ISO 8601 format.
+        required: false
+        schema:
+          type: string
+          format: date-time
+          title: Updated At Max
+          description: End of the created-at time range. Use ISO 8601 format.
+        name: created_at_max
+        in: query
+      - description: Start of the updated-at time range. Use ISO 8601 format.
+        required: false
+        schema:
+          type: string
+          format: date-time
+          title: Updated At Min
+          description: Start of the updated-at time range. Use ISO 8601 format.
+        name: updated_at_min
+        in: query
+      - description: End of the updated-at time range. Use ISO 8601 format.
+        required: false
+        schema:
+          type: string
+          format: date-time
+          title: Updated At Max
+          description: End of the updated-at time range. Use ISO 8601 format.
+        name: updated_at_max
+        in: query
+      - description: Maximum number of records to return. Defaults to 20.
+        required: false
+        schema:
+          title: Limit
+          maximum: 100
+          minimum: 1
+          type: integer
+          default: 20
+          description: Maximum number of records to return. Defaults to 20.
+        name: limit
+        in: query
+      - description: Zero-based offset of the first record to return. Defaults to 0.
+        required: false
+        schema:
+          title: Offset
+          minimum: 0
+          type: integer
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+      - required: false
+        schema:
+          $ref: '#/components/schemas/CoreRFQStatus'
+          description: Filter by status.
+        name: status
+        in: query
+        description: Filter by status.
+      - required: false
+        schema:
+          title: External Id
+          type: string
+        name: external_id
+        in: query
+        description: Filter RFQ records by external RFQ ID.
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ListRetrieve_RFQListDetail_'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns a list of RFQ events.
+    post:
+      tags:
+      - RFQ
+      summary: Create RFQ Event
+      operationId: create_services_self_service_api_v3_rfq__post
+      parameters:
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RFQ'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RFQRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Creates a new RFQ event.
+  /services/self-service/api/v3/rfq/{uuid}/cancel:
+    post:
+      tags:
+      - RFQ
+      summary: Cancel RFQ Event
+      operationId: cancel_services_self_service_api_v3_rfq__uuid__cancel_post
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RFQCancelRequest'
+        required: true
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Cancels an existing RFQ event.
+  /services/self-service/api/v3/rfq/{uuid}/award:
+    post:
+      tags:
+      - RFQ
+      summary: Award RFQ
+      operationId: award_rfq_services_self_service_api_v3_rfq__uuid__award_post
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+        description: RFQ ID (Fairmarkit).
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: API key for authentication.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RFQAwardRequestData'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RfqIDResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Awards an RFQ by selecting quotation items and optionally providing a purchase order number.
+  /services/self-service/api/v3/rfq/{uuid}/quotations/:
+    get:
+      tags:
+      - RFQ
+      summary: List Quotations
+      operationId: get_quotations_list_services_self_service_api_v3_rfq__uuid__quotations__get
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+      - required: false
+        schema:
+          title: Limit
+          maximum: 100
+          minimum: 1
+          type: integer
+          default: 20
+          description: Maximum number of records to return. Defaults to 20.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 20.
+      - required: false
+        schema:
+          title: Offset
+          minimum: 0
+          type: integer
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return. Defaults to 0.
+      - description: If true, return only awarded quotations and within them only awarded items/subitems. Filter is applied on the current page only; `count` and pagination links reflect the unfiltered set.
+        required: false
+        schema:
+          title: Is Awarded Only
+          type: boolean
+          description: If true, return only awarded quotations and within them only awarded items/subitems. Filter is applied on the current page only; `count` and pagination links reflect the unfiltered set.
+          default: false
+        name: is_awarded_only
+        in: query
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ListRetrieve_Quotation_'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns a list of quotations for an RFQ event.
+  /services/self-service/api/v3/rfq/{uuid}/archive:
+    post:
+      tags:
+      - RFQ
+      summary: Archive RFQ Event
+      operationId: archive_services_self_service_api_v3_rfq__uuid__archive_post
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RFQArchiveRequest'
+        required: true
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Archives an existing RFQ event.
+  /services/self-service/api/v3/rfq/{uuid}/approvals:
+    get:
+      tags:
+      - RFQ
+      summary: List RFQ Approvals
+      operationId: get_rfq_approvals_services_self_service_api_v3_rfq__uuid__approvals_get
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+        description: RFQ ID (Fairmarkit).
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                title: Response Get Rfq Approvals
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApprovalDetail'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns approval data for an RFQ event.
+  /services/self-service/api/v3/rfq/{uuid}/approvals/{approval_id}/reject-step:
+    post:
+      tags:
+      - RFQ
+      summary: Reject RFQ Step
+      operationId: reject_rfq_step_services_self_service_api_v3_rfq__uuid__approvals__approval_id__reject_step_post
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+        description: RFQ ID (Fairmarkit).
+      - required: true
+        schema:
+          title: Approval Id
+          format: uuid
+          type: string
+        name: approval_id
+        in: path
+        description: Approval ID.
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApprovalStepRejectRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ApprovalIdResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Rejects a step in the RFQ approval workflow.
+  /services/self-service/api/v3/rfq/{uuid}/approvals/{approval_id}/approve-step:
+    post:
+      tags:
+      - RFQ
+      summary: Approve RFQ Step
+      operationId: approve_rfq_step_services_self_service_api_v3_rfq__uuid__approvals__approval_id__approve_step_post
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+        description: RFQ ID (Fairmarkit).
+      - required: true
+        schema:
+          title: Approval Id
+          type: string
+          format: uuid
+        name: approval_id
+        in: path
+        description: Approval ID.
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApprovalStepRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ApprovalIdResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Approves a step in the RFQ approval workflow.
+  /services/self-service/api/v3/rfq/{uuid}/purchase-order/:
+    description: Updates purchase order information for an existing RFQ. The RFQ must be awarded before this endpoint can update it.
+    put:
+      tags:
+      - RFQ
+      summary: Update Purchase Order
+      operationId: update_purchase_order_services_self_service_api_v3_rfq__uuid__purchase_order__put
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RFQPurchaseOrder'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RFQRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Updates purchase order information for an existing RFQ.
+components:
+  schemas:
+    RFQ:
+      title: RFQ
+      required:
+      - title
+      - closes_at
+      - buyer
+      - items
+      type: object
+      description: Data for an RFQ. An RFQ (request for quote) is a buyer's request to one or more suppliers to provide a quoted price for a specified list of items or services.
+      properties:
+        title:
+          title: Title
+          type: string
+          description: A brief, descriptive title for the request.
+        closes_at:
+          title: Closes At
+          type: string
+          format: date-time
+          description: Date and time when the RFQ is scheduled to close. String must be formatted using ISO 8601 format. Enter time in 30-minute intervals.
+        external_id:
+          title: External Id
+          type: string
+          description: External RFQ reference ID. It can be used to track RFQs across systems.
+        urgency:
+          allOf:
+          - $ref: '#/components/schemas/RFQUrgency'
+          default: normal
+          description: Urgency of the request. Available options include Normal, Rush, or Emergency.
+        payment_process:
+          allOf:
+          - $ref: '#/components/schemas/RFQPaymentProcess'
+          default: po
+          description: How the buyer will pay for goods and services. Available options include `po`, `invoice_only`, or `credit_card`.
+        currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+          default: USD
+          description: Three-character alphabetic code that represents a currency. Fairmarkit uses the ISO 4217 international standard.
+        is_marketplace:
+          title: Is Marketplace
+          type: boolean
+          default: false
+          description: Is the RFQ shared to the Fairmarkit marketplace?
+        notes:
+          title: Notes
+          type: string
+          description: Notes to suppliers. Up to 4,000 characters can be entered.
+        address1:
+          title: Address1
+          type: string
+          description: Address line 1.
+        address2:
+          title: Address2
+          type: string
+          description: Address line 2.
+        city:
+          title: City
+          type: string
+          description: Address city.
+        state:
+          title: State
+          type: string
+          description: Address state.
+        zip:
+          title: Zip
+          type: string
+          description: Address zip code.
+        shipping_type:
+          title: Shipping Type
+          anyOf:
+          - $ref: '#/components/schemas/RFQShippingType'
+          - $ref: '#/components/schemas/EmptyString'
+          description: Preferred shipping method. Available options include *Courier*, *Critical*, *Freight*, *Ground*, *Ground w/ Freight Pricing*, *Next Day*, *Next Day - AM*, *Ocean Freight*, *Priority Mail*, *Priority Mail Express*, *Same Day*, *Saturday*, *Three Day*, *Two Day*, and *Two Day - Am*. See [Shipping type and Carrier](https://docs.staging.fairmarkit.com/content/glossaries/shippingtype-carrier.htm) for more information.
+        carrier:
+          title: Carrier
+          anyOf:
+          - $ref: '#/components/schemas/RFQCarrier'
+          - $ref: '#/components/schemas/EmptyString'
+          description: Preferred shipping carrier. Available options depend on on the selected Shipping Type. See [Shipping type and Carrier](https://docs.staging.fairmarkit.com/content/glossaries/shippingtype-carrier.htm) for more information.
+        country:
+          title: Country
+          anyOf:
+          - $ref: '#/components/schemas/Country'
+          - $ref: '#/components/schemas/EmptyString'
+        preferred_delivery_date:
+          title: Preferred Delivery Date
+          type: string
+          format: date-time
+          description: Preferred Delivery Date.
+        categories:
+          title: Categories
+          maxItems: 50
+          uniqueItems: true
+          type: array
+          description: Categories.
+          items:
+            type: string
+            format: uuid
+        external_data:
+          title: External Data
+          type: object
+          description: Additional, open field to store internal information about the RFQ event.
+        meta_tags:
+          title: Meta Tags
+          description: Meta tags to store additional information. Send a list of meta tags, and they will be processed. To remove all meta tags, send an empty list.
+          type: array
+          items:
+            $ref: '#/components/schemas/api__v3__models__meta_tag__MetaTagRetrieve'
+        business_unit:
+          title: Business Unit
+          type: string
+          format: uuid
+          description: Business unit UUID (Fairmarkit).
+        erp_system_uuid:
+          title: Erp System Uuid
+          type: string
+          format: uuid
+          description: ERP system UUID (Fairmarkit).
+        requester_title:
+          title: Requester Title
+          type: string
+          description: Requester Title.
+        buyer:
+          title: Buyer
+          type: string
+          description: Fairmarkit buyer's email address.
+        items:
+          title: Items
+          type: array
+          description: A list of requested items and services.
+          items:
+            $ref: '#/components/schemas/RFQItem'
+        archiving_reason:
+          type: string
+          title: Archiving Reason
+          default: ''
+        archiving_note:
+          type: string
+          title: Archiving Note
+          default: ''
+        cancellation_reason:
+          type: string
+          title: Cancellation Reason
+          default: ''
+    NoBidKind:
+      title: NoBidKind
+      enum:
+      - out_of_stock
+      - items_not_carried
+      - other
+      - more_information_needed_to_quote
+      - price_not_competitive
+      - ship_address_outside_our_coverage_area
+      type: string
+      description: Reason categories a supplier can select when declining to bid on an RFQ.
+    RFQPurchaseOrder:
+      title: RFQPurchaseOrder
+      required:
+      - po_number
+      type: object
+      properties:
+        po_number:
+          title: Po Number
+          type: string
+          description: Purchase order number.
+      description: Data for associating a purchase order with an RFQ. The RFQ must be awarded to update.
+    RFQArchivingReason:
+      title: RFQArchivingReason
+      enum:
+      - required_rush_order
+      - created_event_version
+      - created_new_round
+      - incorrectly_sent
+      - archived_through_bundling
+      - extension_of_existing_po
+      - sourced_outside_of_fairmarkit
+      - duplicate_request
+      - sourced_from_original_manufacturer_or_managed_spend
+      - managed_spend
+      - after_the_fact_po
+      - emergency_event
+      - preferred_supplier
+      - other
+      - withdrawn
+      - ''
+      description: RFQ archiving reason values.
+    ServiceUOM:
+      title: ServiceUOM
+      enum:
+      - each
+      - fte
+      - yes_no
+      - hour
+      - day
+      - analysis
+      - multiple_choice
+      - audit
+      - campaign
+      - contract
+      - event
+      - integration
+      - production
+      - program
+      - project
+      - site
+      - sme
+      - training
+      - webinar
+      - year
+      - quarter
+      - month
+      - week
+      - minute
+      - second
+      - date
+      - date_range
+      - text
+      - attachment
+      - percent
+      - no_response
+      - number
+      - compliance
+      - lump sum
+      - set
+      - metric ton
+      - words
+      - asin
+      - segments
+      - annotations_lines
+      - labels
+      - videos
+      - pages
+      - per_thousand_words
+      - meter_minute
+      - pikofarad
+      - acre
+      - ton_cubic_meter
+      - enzyme_units
+      - gigajoule
+      - canister
+      - crate
+      - activity_unit
+      - mile
+      - cubic_millimeter
+      - milliwatt
+      - megawatt_hour
+      - points
+      - group_proportion
+      - microsiemens_per_cm
+      description: Supported units of measurement for services.
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    RFQAwardRequestData:
+      title: RFQAwardRequestData
+      required:
+      - awarded_quotation_items
+      type: object
+      properties:
+        awarded_quotation_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AwardedQuotationItem'
+          title: Awarded Quotation Items
+        po_number:
+          type: string
+          title: Po Number
+    Approver:
+      title: Approver
+      required:
+      - id
+      - email
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unique identifier for the approver.
+        email:
+          title: Email
+          type: string
+          description: Email address of the approver.
+      description: Information about an approver.
+    BusinessUnitBuyerCompany:
+      title: BusinessUnitBuyerCompany
+      description: Defines the buyer company for a business unit.
+      required:
+      - id
+      - uuid
+      - title
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          description: Company ID.
+        uuid:
+          title: Uuid
+          type: string
+          description: Company UUID.
+        title:
+          title: Title
+          type: string
+          description: Company name.
+    RFQUrgency:
+      title: RFQUrgency
+      enum:
+      - normal
+      - rush
+      - emergency
+      type: string
+      description: RFQ urgency values.
+    ApprovalStep:
+      title: ApprovalStep
+      required:
+      - id
+      - approver
+      - status
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unique identifier for the approval step.
+        approver:
+          title: Approver
+          allOf:
+          - $ref: '#/components/schemas/Approver'
+          description: Information about the person responsible for this step.
+        status:
+          title: Status
+          type: string
+          description: Current status of the approval step.
+        response:
+          title: Response
+          allOf:
+          - $ref: '#/components/schemas/ApprovalStepResponse'
+          description: Response data if the step has been acted upon.
+        reassigned_at:
+          title: Reassigned At
+          type: string
+          format: date-time
+          description: Timestamp when the step was reassigned.
+      description: Data for an individual approval step.
+    ListRetrieve_InternalNote_:
+      title: ListRetrieve[InternalNote]
+      required:
+      - count
+      - results
+      type: object
+      properties:
+        count:
+          title: Count
+          type: integer
+          description: A count of the number of records in the full results set.
+        next:
+          title: Next
+          type: string
+          description: A URL to fetch the next page of results, if more results exist in the set.
+        previous:
+          title: Previous
+          type: string
+          description: A URL to fetch the previous page of results, if previous results exist in the set.
+        results:
+          title: Results
+          type: array
+          description: A list representing one page of the result set.
+          items:
+            $ref: '#/components/schemas/InternalNote'
+      description: Paginated list response for internal notes.
+    RFQItem:
+      title: RFQItem
+      required:
+      - title
+      type: object
+      description: Data for a specific line item added to an request for quote.
+      properties:
+        title:
+          title: Title
+          type: string
+          description: A brief, descriptive title for the item.
+        uom:
+          title: Uom
+          anyOf:
+          - $ref: '#/components/schemas/ItemUOM'
+          - $ref: '#/components/schemas/ServiceUOM'
+          default: each
+          description: Unit of measurement for items. See Fairmarkit documentation for supported UOM values.
+        benchmark_price:
+          title: Benchmark Price
+          type: number
+          description: Benchmark price for the item.
+        quantity:
+          title: Quantity
+          type: number
+          description: Quantity of the item in the selected UOM.
+        manufacturer:
+          title: Manufacturer
+          type: string
+          description: Manufacturer of the item.
+        manufacturer_pn:
+          title: Manufacturer Pn
+          type: string
+          description: Manufacturer part number of the item.
+        external_data:
+          title: External Data
+          type: object
+          description: Additional, open field to store internal information about the RFQ event.
+        meta_tags:
+          title: Meta Tags
+          description: Meta tags to store additional information. Send a list of meta tags, and they will be processed. To remove all meta tags, send an empty list.
+          type: array
+          items:
+            $ref: '#/components/schemas/api__v3__models__meta_tag__MetaTagRetrieve'
+        benchmark_external_supplier_id:
+          title: Benchmark External Supplier Id
+          type: string
+          description: External Benchmark Supplier reference ID.
+        benchmark_supplier:
+          title: Benchmark Supplier
+          type: string
+          description: External Benchmark Supplier information.
+        category:
+          type: string
+          title: Category
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/Kind'
+          default: item
+          description: Type of the RFQ item. Fairmarkit supports "items" and "services" types.
+        items:
+          title: Items
+          type: array
+          description: A list of requested goods and services (subitems to the item).
+          items:
+            $ref: '#/components/schemas/RFQSubitem'
+        unspsc:
+          title: Unspsc
+          type: string
+          description: Standard UNSPSC code for the item.
+        comments:
+          title: Comments
+          type: string
+          description: Comments about the item.
+        unspsc_manual:
+          title: Unspsc Manual
+          type: string
+          description: Manually entered UNSPSC code for the item.
+        internal_part_number:
+          title: Internal Part Number
+          type: string
+          description: 'Internal part number. This field is available only for items with kind item. NOTE: this feature should be enabled in company config. Please reach the Fairmarkit team, to enable it.'
+        supplier_pn:
+          type: string
+          title: Supplier Pn
+          default: ''
+    ApprovalIdResponse:
+      title: ApprovalIdResponse
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unique identifier of the approval.
+      description: Response containing the approval ID.
+    ApprovalStepResponse:
+      title: ApprovalStepResponse
+      type: object
+      properties:
+        note:
+          title: Note
+          type: string
+          description: Optional note for the approval step response.
+        reacted_at:
+          title: Reacted At
+          type: string
+          format: date-time
+          description: Timestamp when the step was responded to.
+      description: Response data for an approval step.
+    Quotation:
+      title: Quotation
+      type: object
+      required:
+      - uuid
+      - status
+      - supplier_id
+      - amount_shipping
+      - amount_tax
+      - amount_total
+      - awarded_total
+      - kind
+      - notes
+      - currency
+      - created_at
+      - updated_at
+      - supplier_quote_reference
+      - items
+      - is_offline_bid
+      - is_outlier
+      description: Data to retrieve for a specific quote on an RFQ.
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          description: Quotation ID (Fairmarkit).
+        status:
+          title: Status
+          type: string
+          description: Status of the quote.
+        supplier_id:
+          title: Supplier Id
+          type: string
+          description: Supplier ID.
+        supplier_external_id:
+          title: Supplier External ID
+          type: string
+          description: Supplier External ID.
+        amount_shipping:
+          title: Amount Shipping
+          type: number
+          description: Shipping amount.
+        amount_tax:
+          title: Amount Tax
+          type: number
+          description: Tax amount.
+        amount_total:
+          title: Amount Total
+          type: number
+          description: Total amount.
+        awarded_total:
+          title: Awarded Total
+          type: number
+          description: Total amount awarded.
+        valid_for:
+          title: Valid For
+          type: integer
+          description: Number of days the quote is valid.
+        kind:
+          title: Kind
+          type: string
+          description: RFQ item type. Fairmarkit supports *item* and *service* types.
+        notes:
+          title: Notes
+          type: string
+          description: Notes about the quote.
+        currency:
+          $ref: '#/components/schemas/Currency'
+        created_at:
+          title: Created At
+          type: string
+          format: date-time
+          description: Date and time when the quote was created. String must be formatted using ISO 8601 format.
+        updated_at:
+          title: Updated At
+          type: string
+          format: date-time
+          description: Date and time when the quote was last updated. String must be formatted using ISO 8601 format.
+        supplier_quote_reference:
+          title: Supplier Quote Reference
+          type: string
+          description: Supplier quote reference number.
+        is_offline_bid:
+          title: Is Offline Bid
+          type: boolean
+          description: Was the quote made offline?
+        amount_items:
+          title: Amount Items
+          type: number
+          description: Total cost of all items.
+        sent_at:
+          title: Sent At
+          type: string
+          format: date-time
+          description: Date and time when the RFQ was sent. String must be formatted using ISO 8601 format.
+        opened_at:
+          title: Opened At
+          type: string
+          format: date-time
+          description: Date and time when the supplier opened the RFQ. String must be formatted using ISO 8601 format.
+        submitted_at:
+          title: Submitted At
+          type: string
+          format: date-time
+          description: Date and time when the quote was submitted to the buyer. String must be formatted using ISO 8601 format.
+        awarded_at:
+          title: Awarded At
+          type: string
+          format: date-time
+          description: Date and time when the quote was awarded by the buyer. String must be formatted using ISO 8601 format.
+        awarded_supplier_meta_tag:
+          title: Awarded Supplier Meta Tag
+          type: object
+          additionalProperties:
+            type: string
+          description: Awarded Supplier Meta Tag.
+        awarding_total_rfx:
+          title: Awarding Total RFX
+          type: number
+          description: Total RFX amount for awarding.
+        meta_tags:
+          title: Meta Tags
+          type: array
+          items:
+            $ref: '#/components/schemas/api__v3__models__meta_tag__MetaTagRetrieve'
+          default: []
+          description: Meta tags to store additional information.
+        items:
+          title: Items
+          type: array
+          description: A list of requested items and services.
+          items:
+            $ref: '#/components/schemas/QuotationItem'
+        attachments:
+          title: Attachments
+          type: array
+          description: Attachments added to the supplier response.
+          items:
+            $ref: '#/components/schemas/AttachmentRetrieve'
+        supplier:
+          $ref: '#/components/schemas/NestedQuotationSupplier'
+        no_bid_kind:
+          allOf:
+          - $ref: '#/components/schemas/NoBidKind'
+          description: Reason for why the supplier declines to bid.
+        no_bid_reason:
+          title: No Bid Reason
+          type: string
+          description: Free-text explanation provided when the supplier declines to bid.
+        is_outlier:
+          type: boolean
+          title: Is Outlier
+    Country:
+      title: Country
+      enum:
+      - AF
+      - AX
+      - AL
+      - DZ
+      - AS
+      - AD
+      - AO
+      - AI
+      - AQ
+      - AG
+      - AR
+      - AM
+      - AW
+      - AU
+      - AT
+      - AZ
+      - BH
+      - BS
+      - BD
+      - BB
+      - BY
+      - BE
+      - BZ
+      - BJ
+      - BM
+      - BT
+      - BO
+      - BQ
+      - BA
+      - BW
+      - BV
+      - BR
+      - IO
+      - BN
+      - BG
+      - BF
+      - BI
+      - KH
+      - CM
+      - CA
+      - CV
+      - KY
+      - CF
+      - TD
+      - CL
+      - CN
+      - CX
+      - CC
+      - CO
+      - KM
+      - CG
+      - CD
+      - CK
+      - CR
+      - CI
+      - HR
+      - CU
+      - CW
+      - CY
+      - CZ
+      - DK
+      - DJ
+      - DM
+      - DO
+      - EC
+      - EG
+      - SV
+      - GQ
+      - ER
+      - EE
+      - ET
+      - FK
+      - FO
+      - FJ
+      - FI
+      - FR
+      - GF
+      - PF
+      - TF
+      - GA
+      - GM
+      - GE
+      - DE
+      - GH
+      - GI
+      - GR
+      - GL
+      - GD
+      - GP
+      - GU
+      - GT
+      - GG
+      - GN
+      - GW
+      - GY
+      - HT
+      - HM
+      - VA
+      - HN
+      - HK
+      - HU
+      - IS
+      - IN
+      - ID
+      - IR
+      - IQ
+      - IE
+      - IM
+      - IL
+      - IT
+      - JM
+      - JP
+      - JE
+      - JO
+      - KZ
+      - KE
+      - KI
+      - KP
+      - KR
+      - KW
+      - KG
+      - LA
+      - LV
+      - LB
+      - LS
+      - LR
+      - LY
+      - LI
+      - LT
+      - LU
+      - MO
+      - MK
+      - MG
+      - MW
+      - MY
+      - MV
+      - ML
+      - MT
+      - MH
+      - MQ
+      - MR
+      - MU
+      - YT
+      - MX
+      - FM
+      - MD
+      - MC
+      - MN
+      - ME
+      - MS
+      - MA
+      - MZ
+      - MM
+      - NA
+      - NR
+      - NP
+      - NL
+      - NC
+      - NZ
+      - NI
+      - NE
+      - NG
+      - NU
+      - NF
+      - MP
+      - 'NO'
+      - OM
+      - PK
+      - PW
+      - PS
+      - PA
+      - PG
+      - PY
+      - PE
+      - PH
+      - PN
+      - PL
+      - PT
+      - PR
+      - QA
+      - RE
+      - RO
+      - RU
+      - RW
+      - BL
+      - SH
+      - KN
+      - LC
+      - MF
+      - PM
+      - VC
+      - WS
+      - SM
+      - ST
+      - SA
+      - SN
+      - RS
+      - SC
+      - SL
+      - SG
+      - SX
+      - SK
+      - SI
+      - SB
+      - SO
+      - ZA
+      - GS
+      - SS
+      - ES
+      - LK
+      - SD
+      - SR
+      - SJ
+      - SZ
+      - SE
+      - CH
+      - SY
+      - TW
+      - TJ
+      - TZ
+      - TH
+      - TL
+      - TG
+      - TK
+      - TO
+      - TT
+      - TN
+      - TR
+      - TM
+      - TC
+      - TV
+      - UG
+      - UA
+      - AE
+      - GB
+      - US
+      - UM
+      - UY
+      - UZ
+      - VU
+      - VE
+      - VN
+      - VG
+      - VI
+      - WF
+      - EH
+      - YE
+      - ZM
+      - ZW
+      type: string
+      description: Supported country codes.
+    ApprovalStepRejectRequest:
+      title: ApprovalStepRejectRequest
+      required:
+      - note
+      - approver_email
+      type: object
+      properties:
+        note:
+          title: Note
+          type: string
+          description: Required note explaining the rejection.
+        approver_email:
+          title: Approver email
+          type: string
+      description: Request data for rejecting an approval step.
+    EmptyString:
+      title: EmptyString
+      enum:
+      - ''
+      type: string
+      description: Marker used to represent an empty string.
+    Kind:
+      title: Kind
+      enum:
+      - item
+      - service
+      description: RFQ item type. Supports item and service.
+    NestedQuotationSupplierErpSystem:
+      properties:
+        external_supplier_id:
+          type: string
+          title: External Supplier Id
+        erp_system_uuid:
+          type: string
+          format: uuid
+          title: Erp System Uuid
+      type: object
+      title: NestedQuotationSupplierErpSystem
+    ApprovalDetail:
+      title: ApprovalDetail
+      required:
+      - id
+      - status
+      - target
+      - target_id
+      - stages
+      - created_at
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          description: Unique identifier for the approval.
+        status:
+          title: Status
+          type: string
+          description: Current status of the approval.
+        target:
+          title: Target
+          type: string
+          description: Target type for the approval (e.g., 'rfq').
+        target_id:
+          title: Target Id
+          type: string
+          description: Unique identifier of the target object.
+        stages:
+          title: Stages
+          type: array
+          items:
+            $ref: '#/components/schemas/ApprovalStage'
+          description: List of approval stages.
+        created_at:
+          title: Created At
+          type: string
+          format: date-time
+          description: Timestamp when the approval was created.
+        updated_at:
+          title: Updated At
+          type: string
+          format: date-time
+          description: Timestamp when the approval was last updated.
+      description: Data for an RFQ approval workflow.
+    AwardedQuotationItem:
+      title: AwardedQuotationItem
+      required:
+      - quotation_item_uuid
+      - awarded_quantity
+      type: object
+      properties:
+        quotation_item_uuid:
+          type: string
+          format: uuid
+          title: Quotation Item Uuid
+        awarded_quantity:
+          type: string
+          title: Awarded Quantity
+          description: Awarded quantity as a decimal string
+        subitems:
+          type: array
+          items:
+            $ref: '#/components/schemas/AwardedQuotationSubItem'
+          title: Subitems
+          description: List of sub-items, each represented as an AwardedQuotationSubItem object
+    NestedQuotationItem:
+      title: NestedQuotationItem
+      required:
+      - uuid
+      - title
+      - kind
+      - is_cancelled
+      - is_awarded
+      - manufacturer
+      - manufacturer_pn
+      - is_awarding
+      type: object
+      description: Data for a specific line item added to a quote.
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          description: Quotation Item ID (Fairmarkit).
+        title:
+          title: Title
+          type: string
+          description: A brief, descriptive title for the request.
+        kind:
+          title: Kind
+          type: string
+          description: RFQ item type. Fairmarkit supports *item* and *service* types.
+        is_cancelled:
+          title: Is Cancelled
+          type: boolean
+          description: Is the request for quote canceled?
+        is_awarded:
+          title: Is Awarded
+          type: boolean
+          description: Is the request for quote awarded?
+        manufacturer:
+          title: Manufacturer
+          type: string
+          description: Manufacturer of the item
+        manufacturer_pn:
+          title: Manufacturer Pn
+          type: string
+          description: Manufacturer part number of the item.
+        supplier_pn:
+          title: Supplier Pn
+          type: string
+          description: Supplier part number of the item.
+        attachments:
+          title: Attachments
+          type: array
+          description: Attachments added to the item.
+          items:
+            $ref: '#/components/schemas/AttachmentRetrieve'
+        rfq_item_uuid:
+          title: Rfq Item Uuid
+          type: string
+          description: RFQ item ID (Fairmarkit).
+        delivery_days:
+          title: Delivery Days
+          type: integer
+          description: The number of days it will take to deliver the item.
+        quantity:
+          title: Quantity
+          type: number
+          description: Quantity of the item in the selected UOM.
+        minimum_order_quantity:
+          title: Minimum Order Quantity
+          type: number
+          description: The minimum number of a item that is needed.
+        unit_price:
+          title: Unit Price
+          type: number
+          description: The USD price per unit (based on UOM).
+        unit_price_rfx:
+          title: Unit Price RFX
+          type: number
+          description: The price per unit (based on UOM and original RFX currency).
+        uom_percent:
+          title: Uom Percent
+          type: number
+          description: If the selected UOM is a percent value, the quantity of the item in percent.
+        uom_number_value:
+          title: Uom Number Value
+          type: number
+          description: If the selected UOM is a number value, the quantity of the item in a number value.
+        uom_text_value:
+          title: Uom Text Value
+          type: string
+          description: If the selected UOM is a text value, the amount of the item in a text value.
+        uom_yesno_value:
+          title: Uom Yesno Value
+          type: string
+          description: If the selected UOM is a yes/no value, the value for the item.
+        uom_date_value:
+          title: Uom Date Value
+          type: string
+          format: date
+          description: If the selected UOM is a date value, the date value for the item.
+        uom_date_range_start_value:
+          title: Uom Date Range Start Value
+          type: string
+          format: date
+          description: The start date in a date range.
+        uom_date_range_end_value:
+          title: Uom Date Range End Value
+          type: string
+          format: date
+          description: The end date in a date range.
+        uom_compliance_value:
+          title: Uom Compliance Value
+          anyOf:
+          - $ref: '#/components/schemas/CompliantUOM'
+          - $ref: '#/components/schemas/EmptyString'
+          description: Enter if the UOM is compliant. Available selections are *fully_compliant*, *partially_compliant*, or *non-compliant*.
+        uom_conversion_rate:
+          title: Uom Conversion Rate
+          type: string
+          description: UOM conversion rate.
+        uom_attachment:
+          title: Uom Attachment
+          type: string
+          description: UOM attachment.
+        uom:
+          title: Uom
+          anyOf:
+          - $ref: '#/components/schemas/ItemUOM'
+          - $ref: '#/components/schemas/ServiceUOM'
+          description: Unit of measurement for the item/quantity.
+        sku:
+          title: Sku
+          type: string
+          description: Item SKU.
+        comments:
+          title: Comments
+          type: string
+          description: Comments about the item.
+        country_of_origin:
+          title: Country Of Origin
+          anyOf:
+          - $ref: '#/components/schemas/Country'
+          - $ref: '#/components/schemas/EmptyString'
+          description: Two-character alphabetic code that represents a country name. Fairmarkit uses the Alpha-2 country codes defined in the ISO 3166 international standard.
+        awarded_quantity:
+          title: Awarded Quantity
+          type: number
+          description: Awarded quantity of the item in the selected UOM.
+        quantity_change_reason_note:
+          title: Quantity Change Reason Note
+          type: string
+        meta_tags:
+          title: Meta Tags
+          type: array
+          items:
+            $ref: '#/components/schemas/api__v3__models__meta_tag__MetaTagRetrieve'
+          default: []
+          description: Meta tags to store additional information.
+        is_awarding:
+          title: Is Awarding
+          type: boolean
+          description: Whether the item is currently being awarded.
+        awarding_quantity:
+          title: Awarding Quantity
+          type: number
+          description: Quantity being awarded for the item.
+    AuctionKind:
+      title: AuctionKind
+      enum:
+      - english
+      - dutch
+      - japanese
+      type: string
+      description: Auction language values.
+    ApprovalStage:
+      title: ApprovalStage
+      required:
+      - id
+      - status
+      - sequence
+      - steps
+      - min_approved_steps_count
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unique identifier for the approval stage.
+        status:
+          title: Status
+          type: string
+          description: Current status of the approval stage.
+        sequence:
+          title: Sequence
+          type: string
+          description: Sequential order of this stage in the approval workflow.
+        steps:
+          title: Steps
+          type: array
+          items:
+            $ref: '#/components/schemas/ApprovalStep'
+          description: List of approval steps within this stage.
+        min_approved_steps_count:
+          title: Min Approved Steps Count
+          type: integer
+          description: Minimum number of steps that need to be approved for this stage to complete.
+        due_date:
+          title: Due Date
+          type: string
+          format: date-time
+          description: Due date for this approval stage.
+      description: Data for an approval stage containing multiple steps.
+    AttachmentRetrieve:
+      title: AttachmentRetrieve
+      required:
+      - file
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          description: Stored file name. If two files with the same name are added, a unique hash is added to the file. The file name when uploaded is available in orig_file_name.
+        orig_file_name:
+          title: Orig File Name
+          type: string
+          description: File name when uploaded.
+      description: Attachment details returned by the API.
+    CompliantUOM:
+      title: CompliantUOM
+      enum:
+      - fully_compliant
+      - partially_compliant
+      - non_compliant
+      description: UOM compliance values.
+    api__v3__models__meta_tag__MetaTagRetrieve:
+      properties:
+        key:
+          type: string
+          title: Key
+        value:
+          items:
+            type: string
+          type: array
+          title: Value
+      type: object
+      required:
+      - key
+      - value
+      title: MetaTagRetrieve
+    CoreRFQStatus:
+      title: CoreRFQStatus
+      enum:
+      - draft
+      - pending
+      - opened
+      - closed
+      - awarded
+      - canceled
+      - archived
+      - scheduled
+      description: Request for quote (RFQ) event status values.
+    RFQInternalNote:
+      title: RFQInternalNote
+      type: object
+      description: Data from an internal note on a request for quote (RFQ) event.
+      properties:
+        body:
+          title: Body
+          type: string
+          description: Text for the internal note.
+      required:
+      - body
+    RFQCancelRequest:
+      title: RFQCancelRequest
+      required:
+      - cancellation_note
+      type: object
+      properties:
+        cancellation_note:
+          title: Cancellation Note
+          maxLength: 1000
+          minLength: 1
+          type: string
+    ApprovalStepRequest:
+      title: ApprovalStepRequest
+      required:
+      - note
+      - approver_email
+      type: object
+      properties:
+        note:
+          title: Note
+          type: string
+          description: Optional note for the approval step.
+        approver_email:
+          title: Approver email
+          type: string
+      description: Request data for approving an approval step.
+    ItemUOM:
+      title: ItemUOM
+      enum:
+      - each
+      - acre
+      - activity_unit
+      - assembly
+      - bag
+      - bale
+      - bar
+      - barrel
+      - block
+      - board foot
+      - bottle
+      - box
+      - bucket
+      - bulk
+      - bundle
+      - cake
+      - can
+      - canister
+      - card
+      - carton
+      - cartridge
+      - case
+      - centimeter
+      - coil
+      - container
+      - crate
+      - cube
+      - cubic foot
+      - cubic meter
+      - cubic_millimeter
+      - cubic yard
+      - cup
+      - cylinder
+      - dozen
+      - drum
+      - enzyme_units
+      - foot
+      - gallon
+      - gigajoule
+      - gram
+      - gross
+      - group_proportion
+      - 1/2 cubic yard
+      - hank
+      - hectare
+      - hour
+      - hundred
+      - imperial gallon
+      - inch
+      - jar
+      - keg
+      - kilogram
+      - kiloliter
+      - kilometer
+      - kilowatt
+      - kit
+      - length
+      - light
+      - liter
+      - lot
+      - lug
+      - lump sum
+      - megawatt_hour
+      - meter
+      - meter_minute
+      - metric ton
+      - microsiemens_per_cm
+      - mile
+      - milliliter
+      - millimeter
+      - milliwatt
+      - multiple_choice
+      - net ton
+      - night
+      - ounce
+      - pack
+      - package
+      - packet
+      - pad
+      - pail
+      - pair
+      - pallet
+      - pancake
+      - part
+      - pg
+      - piece
+      - pikofarad
+      - pint
+      - points
+      - pot
+      - pound
+      - punnet
+      - quart
+      - rack
+      - ream
+      - reel
+      - roll
+      - sachet
+      - set
+      - sheet
+      - spool
+      - square foot
+      - square inch
+      - square meter
+      - square yard
+      - suit
+      - tank
+      - thousand
+      - tin
+      - ton
+      - tonne
+      - ton_cubic_meter
+      - tray
+      - tub
+      - tube
+      - unit
+      - unit_f
+      - volt-amper
+      - yard
+      - year
+      description: Supported units of measurement for items.
+    Currency:
+      title: Currency
+      enum:
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BRL
+      - BSD
+      - BTC
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHF
+      - CLF
+      - CLP
+      - CNH
+      - CNY
+      - COP
+      - CRC
+      - CUC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - EUR
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GGP
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HRK
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - IMP
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JEP
+      - JMD
+      - JOD
+      - JPY
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KRW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLL
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - USD
+      - UYU
+      - UZS
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XAG
+      - XAU
+      - XCD
+      - XDR
+      - XOF
+      - XPD
+      - XPF
+      - XPT
+      - YER
+      - ZAR
+      - ZMW
+      type: string
+      description: Supported currency codes.
+    RFQSubitem:
+      title: RFQSubitem
+      required:
+      - title
+      type: object
+      description: Data for a specific subitem added to an RFQ line item.
+      properties:
+        title:
+          title: Title
+          type: string
+          description: A brief, descriptive title for the item.
+        uom:
+          title: Uom
+          anyOf:
+          - $ref: '#/components/schemas/ItemUOM'
+          - $ref: '#/components/schemas/ServiceUOM'
+          default: each
+          description: Unit of measurement for the item/quantity.
+        benchmark_price:
+          title: Benchmark Price
+          type: number
+          description: Benchmark price.
+        quantity:
+          title: Quantity
+          type: number
+          description: Quantity of the item in the selected UOM.
+        manufacturer:
+          title: Manufacturer
+          type: string
+          default: ''
+          description: Manufacturer of the item.
+        manufacturer_pn:
+          title: Manufacturer Pn
+          type: string
+          default: ''
+          description: Manufacturer part number of the item.
+        external_data:
+          title: External Data
+          type: object
+          description: Additional, open field to store internal information about the RFQ event.
+        meta_tags:
+          title: Meta Tags
+          description: Meta tags to store additional information. Send a list of meta tags, and they will be processed. To remove all meta tags, send an empty list.
+          type: array
+          items:
+            $ref: '#/components/schemas/api__v3__models__meta_tag__MetaTagRetrieve'
+          default: []
+        benchmark_external_supplier_id:
+          title: Benchmark External Supplier Id
+          type: string
+          description: External Benchmark Supplier reference ID.
+        benchmark_supplier:
+          title: Benchmark Supplier
+          type: string
+          description: External Benchmark Supplier information.
+        category:
+          type: string
+          format: uuid
+          title: Category
+    RFQPaymentProcess:
+      title: RFQPaymentProcess
+      enum:
+      - po
+      - invoice_only
+      - credit_card
+      type: string
+      description: Payment process values for RFQs.
+    ListRetrieve_RFQListDetail_:
+      title: ListRetrieve[RFQListDetail]
+      required:
+      - count
+      - results
+      type: object
+      properties:
+        count:
+          title: Count
+          type: integer
+          description: A count of the number of records in the full results set.
+        next:
+          title: Next
+          type: string
+          description: A URL to fetch the next page of results, if more results exist in the set.
+        previous:
+          title: Previous
+          type: string
+          description: A URL to fetch the previous page of results, if previous results exist in the set.
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/RFQListDetail'
+    RfqIDResponse:
+      title: RfqIDResponse
+      required:
+      - rfq_uuid
+      type: object
+      properties:
+        rfq_uuid:
+          type: string
+          title: Rfq Uuid
+    BusinessUnitRetrieve:
+      title: BusinessUnitRetrieve
+      description: Paginated list response for business units.
+      required:
+      - id
+      - uuid
+      - title
+      - buyer_company
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          description: Business unit ID.
+        uuid:
+          title: Uuid
+          type: string
+          description: Business unit UUID.
+        title:
+          title: Title
+          type: string
+          description: Business unit name.
+        is_internal_part_number_required:
+          title: Is Internal Part Number Required
+          type: boolean
+          default: false
+          description: Select if an internal part number is required.
+        buyer_company:
+          $ref: '#/components/schemas/BusinessUnitBuyerCompany'
+    NestedQuotationSupplier:
+      title: NestedQuotationSupplier
+      required:
+      - uuid
+      - email
+      - title
+      type: object
+      description: Data about a specific supplier for quotation.
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          description: Supplier ID (Fairmarkit)
+        erp_systems:
+          title: Erp Systems
+          description: Store supplier integration information.
+          type: array
+          items:
+            $ref: '#/components/schemas/NestedQuotationSupplierErpSystem'
+        email:
+          title: Email
+          type: string
+          description: Supplier contact's email address.
+        title:
+          title: Title
+          type: string
+          description: Supplier Title
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    InternalNote:
+      title: InternalNote
+      type: object
+      description: Internal notes capture event details for internal use only.
+      properties:
+        attachments:
+          items:
+            $ref: '#/components/schemas/AttachmentRetrieve'
+          type: array
+        body:
+          title: Body
+          type: string
+          description: Text for the internal note.
+        created_at:
+          title: Created At
+          type: string
+          format: date-time
+          description: Date and time when the internal note was created. String must be formatted using ISO 8601 format.
+        user:
+          title: User
+          type: string
+          description: Email of the user that created the internal note.
+      required:
+      - attachments
+      - body
+      - created_at
+      - user
+    AwardedQuotationSubItem:
+      title: AwardedQuotationSubItem
+      required:
+      - quotation_subitem_uuid
+      - awarded_quantity
+      type: object
+      properties:
+        quotation_subitem_uuid:
+          type: string
+          format: uuid
+          title: Quotation SubItem Uuid
+        awarded_quantity:
+          type: string
+          title: Awarded Quantity
+          description: Awarded quantity as a decimal string
+    RFQItemRetrieve:
+      title: RFQItemRetrieve
+      required:
+      - uuid
+      - title
+      - kind
+      - attachments
+      - is_awarded_to_benchmark
+      type: object
+      description: Data for a specific line item added to an RFQ.
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          description: RFQ item ID (Fairmarkit).
+        title:
+          title: Title
+          type: string
+          description: A brief, descriptive title for the item.
+        kind:
+          $ref: '#/components/schemas/Kind'
+        attachments:
+          title: Attachments
+          type: array
+          description: Line item attachments.
+          items:
+            $ref: '#/components/schemas/AttachmentRetrieve'
+        quantity:
+          title: Quantity
+          type: number
+          description: Quantity of the item in the selected UOM.
+        items:
+          title: Items
+          type: array
+          description: A list of requested goods and services (subitems to the item).
+          items:
+            $ref: '#/components/schemas/RFQSubitemRetrieve'
+        uom:
+          title: Uom
+          anyOf:
+          - $ref: '#/components/schemas/ItemUOM'
+          - $ref: '#/components/schemas/ServiceUOM'
+          description: Unit of measurement for items. See Fairmarkit documentation for supported UOM values.
+        manufacturer:
+          title: Manufacturer
+          type: string
+          description: Manufacturer of the item.
+        manufacturer_pn:
+          title: Manufacturer Pn
+          type: string
+          description: Manufacturer part number of the item.
+        unspsc:
+          title: Unspsc
+          type: string
+          description: Standard UNSPSC code for the item.
+        comments:
+          title: Comments
+          type: string
+          description: Comments about the item.
+        unspsc_manual:
+          title: Unspsc Manual
+          type: string
+          description: Manually entered UNSPSC code for the item.
+        internal_part_number:
+          title: Internal Part Number
+          type: string
+          description: 'Internal part number. This field is available only for items with kind item. NOTE: this feature should be enabled in company config. Please reach the Fairmarkit team, to enable it.'
+        benchmark_price:
+          title: Benchmark Price
+          type: number
+          description: Benchmark price for the item.
+        external_data:
+          title: External Data
+          type: object
+          description: Additional, open field to store internal information about the RFQ event.
+        meta_tags:
+          title: Meta Tags
+          description: Meta tags to store additional information. Send a list of meta tags, and they will be processed. To remove all meta tags, send an empty list.
+          type: array
+          items:
+            $ref: '#/components/schemas/api__v3__models__meta_tag__MetaTagRetrieve'
+        benchmark_external_supplier_id:
+          title: Benchmark External Supplier Id
+          type: string
+          description: External Benchmark Supplier reference ID.
+        benchmark_supplier:
+          title: Benchmark Supplier
+          type: string
+          description: External Benchmark Supplier information.
+        is_awarded_to_benchmark:
+          title: Is Awarded To Benchmark
+          type: boolean
+          description: Is the RFQ Item awarded to the benchmark supplier
+        category:
+          title: Category
+          description: Category information.
+          allOf:
+          - $ref: '#/components/schemas/CategoryRetrieve'
+          nullable: true
+        supplier_pn:
+          type: string
+          title: Price Book Supplier Pn
+          default: ''
+    ListRetrieve_Quotation_:
+      title: ListRetrieve[Quotation]
+      required:
+      - count
+      - results
+      type: object
+      description: Paginated list response for quotations.
+      properties:
+        count:
+          title: Count
+          type: integer
+          description: A count of the number of records in the full results set.
+        next:
+          title: Next
+          type: string
+          description: A URL to fetch the next page of results, if more results exist in the set.
+        previous:
+          title: Previous
+          type: string
+          description: A URL to fetch the previous page of results, if previous results exist in the set.
+        results:
+          title: Results
+          type: array
+          description: A list representing one page of the result set.
+          items:
+            $ref: '#/components/schemas/Quotation'
+    RFQRetrieve:
+      title: RFQRetrieve
+      required:
+      - uuid
+      - title
+      - status
+      - buyer
+      - closes_at
+      - external_id
+      - items
+      - urgency
+      - payment_process
+      - is_marketplace
+      - notes
+      - non_lowest_bid_awarding_reason
+      - offline_bid_awarding_reason
+      - offline_bid_awarding_note
+      - awarding_note
+      - attachments
+      - address1
+      - address2
+      - city
+      - state
+      - zip
+      - po_number
+      - requester_title
+      - archiving_reason
+      - archiving_note
+      - cancellation_reason
+      - shipping_type
+      - carrier
+      - country
+      - categories
+      - fm_app_rfq_url
+      - pdf_report_url
+      - is_test
+      - is_outlier
+      - auction_kind
+      type: object
+      description: Data to retrieve for an RFQ. An RFQ (request for quotation) is a buyer's request to one or more suppliers to provide a quoted price for a specified list of goods or services.
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          description: RFQ ID (Fairmarkit).
+        title:
+          title: Title
+          type: string
+          description: A brief, descriptive title for the request.
+        status:
+          title: Status
+          type: string
+          description: RFQ Status.
+        buyer:
+          title: Buyer
+          type: string
+          description: Fairmarkit buyer's email address.
+        closes_at:
+          title: Closes At
+          type: string
+          format: date-time
+          description: Date and time when the RFQ is scheduled to close. String must be formatted using ISO 8601 format. Enter time in 30-minute intervals.
+        external_id:
+          title: External Id
+          type: string
+          description: External RFQ reference ID. It can be used to track RFQs across systems.
+        items:
+          title: Items
+          type: array
+          description: A list of requested items and services
+          items:
+            $ref: '#/components/schemas/RFQItemRetrieve'
+        urgency:
+          $ref: '#/components/schemas/RFQUrgency'
+        payment_process:
+          $ref: '#/components/schemas/RFQPaymentProcess'
+        currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+          default: USD
+          description: Three-character alphabetic code that represents a currency. Fairmarkit uses the ISO 4217 international standard.
+        is_marketplace:
+          title: Is Marketplace
+          type: boolean
+          description: Is the RFQ shared to the Fairmarkit marketplace?
+        notes:
+          title: Notes
+          type: string
+          description: Notes to suppliers. Up to 4,000 characters can be entered.
+        non_lowest_bid_awarding_reason:
+          title: Non Lowest Bid Awarding Reason
+          type: string
+          description: Reason the event was not awarded to the lowest response.
+        offline_bid_awarding_reason:
+          title: Non Lowest Bid Awarding Reason
+          type: string
+          description: Reason the event was not awarded to the lowest response.
+        offline_bid_awarding_note:
+          type: string
+          title: Offline Bid Awarding Note
+        awarding_note:
+          title: Awarding Note
+          type: string
+          description: Notes added when awarding the event.
+        attachments:
+          title: Attachments
+          type: array
+          description: Attachments added to the event.
+          items:
+            $ref: '#/components/schemas/AttachmentRetrieve'
+        address1:
+          title: Address1
+          type: string
+          description: Address line 1.
+        address2:
+          title: Address2
+          type: string
+          description: Address line 2.
+        city:
+          title: City
+          type: string
+          description: Address City.
+        state:
+          title: State
+          type: string
+          description: Address State.
+        zip:
+          title: Zip
+          type: string
+          description: Address Zip Code.
+        po_number:
+          title: PO Number
+          type: string
+          description: Number of the Purchase order for this RFQ.
+        shipping_type:
+          title: Shipping Type
+          anyOf:
+          - $ref: '#/components/schemas/RFQShippingType'
+          - $ref: '#/components/schemas/EmptyString'
+          description: Preferred shipping method. Available options include *Courier*, *Critical*, *Freight*, *Ground*, *Ground w/ Freight Pricing*, *Next Day*, *Next Day - AM*, *Ocean Freight*, *Priority Mail*, *Priority Mail Express*, *Same Day*, *Saturday*, *Three Day*, *Two Day*, and *Two Day - Am*. See [Shipping type and Carrier](https://docs.staging.fairmarkit.com/content/glossaries/shippingtype-carrier.htm) for more information.
+        carrier:
+          title: Carrier
+          anyOf:
+          - $ref: '#/components/schemas/RFQCarrier'
+          - $ref: '#/components/schemas/EmptyString'
+          description: Preferred shipping carrier. Available options depend on on the selected Shipping Type. See [Shipping type and Carrier](https://docs.staging.fairmarkit.com/content/glossaries/shippingtype-carrier.htm) for more information.
+        preferred_delivery_date:
+          title: Preferred Delivery Date
+          type: string
+          format: date-time
+          description: Preferred delivery date.
+        country:
+          title: Country
+          anyOf:
+          - $ref: '#/components/schemas/Country'
+          - $ref: '#/components/schemas/EmptyString'
+        categories:
+          title: Categories
+          type: array
+          description: Categories.
+          items:
+            $ref: '#/components/schemas/CategoryRetrieve'
+        meta_tags:
+          title: Meta Tags
+          description: Meta tags to store additional information. Send a list of meta tags, and they will be processed. To remove all meta tags, send an empty list.
+          type: array
+          items:
+            $ref: '#/components/schemas/api__v3__models__meta_tag__MetaTagRetrieve'
+        external_data:
+          title: External Data
+          type: object
+          description: Additional, open field to store internal information about the RFQ event.
+        business_unit:
+          $ref: '#/components/schemas/BusinessUnitRetrieve'
+        erp_system_uuid:
+          title: Erp System Uuid
+          type: string
+          format: uuid
+          description: ERP system UUID (Fairmarkit).
+        requester_title:
+          title: Requester Title
+          type: string
+          description: Requester Title.
+        archiving_reason:
+          $ref: '#/components/schemas/RFQArchivingReason'
+        archiving_note:
+          title: Archiving Note
+          type: string
+          description: Notes added when archiving the event.
+        cancellation_reason:
+          $ref: '#/components/schemas/RFQCancellationReason'
+        fm_app_rfq_url:
+          title: FM App Rfq Url
+          maxLength: 65536
+          minLength: 1
+          type: string
+          format: uri
+          description: A direct link to the RFQ in Fairmarkit.
+        pdf_report_url:
+          title: Pdf Report Url
+          anyOf:
+          - maxLength: 65536
+            minLength: 1
+            type: string
+            format: uri
+            description: A link to download PDF Report for Request.
+          - $ref: '#/components/schemas/EmptyString'
+        is_test:
+          title: Is Test
+          type: boolean
+          description: Whether or not the Request is test
+        is_outlier:
+          title: Is Outlier
+          type: boolean
+          description: Whether or not the Request is outlier
+        auction_kind:
+          title: Auction Kind
+          anyOf:
+          - $ref: '#/components/schemas/AuctionKind'
+          - $ref: '#/components/schemas/EmptyString'
+        request_id:
+          type: string
+          title: Request Id
+    RFQCancellationReason:
+      title: RFQCancellationReason
+      enum:
+      - line_details_incorrect
+      - no_longer_needed
+      - rush_order
+      - rfq_opened_in_error
+      - no_bids_received
+      - higher_prices_received
+      - sourced_elsewhere
+      - duplicate_or_cloned_rfq
+      - discontinued_or_obsolete_item
+      - alternative_offered_not_acceptable
+      - other
+      - ''
+      description: RFQ cancellation reason values.
+    RFQCarrier:
+      title: RFQCarrier
+      enum:
+      - ups
+      - fedex
+      - dhl
+      - usps
+      type: string
+      description: Supported carrier values.
+    RFQShippingType:
+      title: RFQShippingType
+      enum:
+      - ocean_freight
+      - freight
+      - same_day
+      - next_day
+      - next_day_am
+      - two_day
+      - two_day_am
+      - three_day
+      - saturday
+      - courier
+      - ground
+      - priority_mail_express
+      - priority_mail
+      - ground_with_freight_pricing
+      - critical
+      type: string
+      description: Supported shipping type values.
+    RFQSubitemRetrieve:
+      title: RFQSubitemRetrieve
+      required:
+      - uuid
+      - title
+      - attachments
+      - is_awarded_to_benchmark
+      type: object
+      description: Data to retrieve for an RFQ subitem.
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          description: RFQ subitem ID (Fairmarkit).
+        title:
+          title: Title
+          type: string
+          description: A brief, descriptive title for the item.
+        quantity:
+          title: Quantity
+          type: number
+          description: Quantity of the item in the selected UOM.
+        uom:
+          title: Uom
+          anyOf:
+          - $ref: '#/components/schemas/ItemUOM'
+          - $ref: '#/components/schemas/ServiceUOM'
+          description: Unit of measurement for the item/quantity.
+        manufacturer:
+          title: Manufacturer
+          type: string
+          description: Manufacturer of the item.
+        manufacturer_pn:
+          title: Manufacturer Pn
+          type: string
+          description: Manufacturer part number of the item.
+        benchmark_price:
+          title: Benchmark Price
+          type: number
+          description: Benchmark price.
+        external_data:
+          title: External Data
+          type: object
+          description: Additional, open field to store internal information about the RFQ event.
+        attachments:
+          title: Attachments
+          type: array
+          description: Attachments
+          items:
+            $ref: '#/components/schemas/AttachmentRetrieve'
+        benchmark_external_supplier_id:
+          title: Benchmark External Supplier Id
+          type: string
+          description: External Benchmark Supplier reference ID.
+        benchmark_supplier:
+          title: Benchmark Supplier
+          type: string
+          description: External Benchmark Supplier information.
+        category:
+          title: Category
+          description: Category information.
+          allOf:
+          - $ref: '#/components/schemas/CategoryRetrieve'
+          nullable: true
+        is_awarded_to_benchmark:
+          type: boolean
+          title: Is Awarded To Benchmark
+    RFQArchiveRequest:
+      title: RFQArchiveRequest
+      required:
+      - archiving_note
+      type: object
+      properties:
+        archiving_note:
+          title: Archiving Note
+          maxLength: 1000
+          minLength: 1
+          type: string
+    RFQListDetail:
+      title: RFQListDetail
+      required:
+      - id
+      - uuid
+      - title
+      - status
+      - created_at
+      type: object
+      properties:
+        id:
+          type: string
+          title: Id
+        uuid:
+          title: Uuid
+          type: string
+          description: RFQ ID (Fairmarkit).
+        title:
+          title: Title
+          type: string
+          description: A brief, descriptive title for the request.
+        status:
+          $ref: '#/components/schemas/CoreRFQStatus'
+        external_id:
+          title: External Id
+          type: string
+          default: ''
+          description: External RFQ reference ID. It can be used to track RFQs across systems.
+        created_at:
+          title: Created At
+          type: string
+          format: date-time
+          description: Date and time when the RFQ was created. String must be formatted using ISO 8601 format.
+        updated_at:
+          title: Updated At
+          type: string
+          format: date-time
+          description: Date and time when the RFQ was last updated. String must be formatted using ISO 8601 format.
+        request_id:
+          type: string
+          title: Request Id
+      description: Data returned for a list of request for quote (RFQ) events.
+    QuotationItem:
+      title: QuotationItem
+      required:
+      - uuid
+      - title
+      - kind
+      - is_cancelled
+      - is_awarded
+      - manufacturer
+      - manufacturer_pn
+      - is_awarding
+      - items
+      type: object
+      description: Data for a specific line item added to a quote.
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          description: Quotation Item ID
+        title:
+          title: Title
+          type: string
+          description: A brief, descriptive title for the request.
+        kind:
+          title: Kind
+          type: string
+          description: RFQ item type. Fairmarkit supports *item* and *service* types.
+        is_cancelled:
+          title: Is Cancelled
+          type: boolean
+          description: Is the request for quote canceled?
+        is_awarded:
+          title: Is Awarded
+          type: boolean
+          description: Is the request for quote awarded?
+        manufacturer:
+          title: Manufacturer
+          type: string
+          description: Manufacturer of the item.
+        manufacturer_pn:
+          title: Manufacturer Pn
+          type: string
+          description: Manufacturer part number of the item.
+        attachments:
+          title: Attachments
+          type: array
+          description: Attachments added to the line item on the supplier's response.
+          items:
+            $ref: '#/components/schemas/AttachmentRetrieve'
+        rfq_item_uuid:
+          title: Rfq Item Uuid
+          type: string
+          description: RFQ item ID (Fairmarkit).
+        delivery_days:
+          title: Delivery Days
+          type: integer
+          description: The number of days it will take to deliver the item.
+        quantity:
+          title: Quantity
+          type: number
+          description: Quantity of the item in the selected UOM.
+        minimum_order_quantity:
+          title: Minimum Order Quantity
+          type: integer
+          description: The minimum number of a item that is needed.
+        unit_price:
+          title: Unit Price
+          type: number
+          description: The USD price per unit (based on UOM).
+        unit_price_rfx:
+          title: Unit Price RFX
+          type: number
+          description: The price per unit (based on UOM and original RFX currency).
+        uom_percent:
+          title: Uom Percent
+          type: number
+          description: If the selected UOM is a percent value, the quantity of the item in percent.
+        uom_number_value:
+          title: Uom Number Value
+          type: number
+          description: If the selected UOM is a number value, the quantity of the item in a number value.
+        uom_text_value:
+          title: Uom Text Value
+          type: string
+          description: If the selected UOM is a text value, the amount of the item in a text value.
+        uom_yesno_value:
+          title: Uom Yesno Value
+          type: string
+          description: If the selected UOM is a yes/no value, the value for the item.
+        uom_date_value:
+          title: Uom Date Value
+          type: string
+          format: date
+          description: If the selected UOM is a date value, the date value for the item.
+        uom_date_range_start_value:
+          title: Uom Date Range Start Value
+          type: string
+          format: date
+          description: The start date in a date range.
+        uom_date_range_end_value:
+          title: Uom Date Range End Value
+          type: string
+          format: date
+          description: The end date in a date range.
+        uom_compliance_value:
+          title: Uom Compliance Value
+          anyOf:
+          - $ref: '#/components/schemas/CompliantUOM'
+          - $ref: '#/components/schemas/EmptyString'
+          description: Enter if the UOM is compliant. Available selections are *fully_compliant*, *partially_compliant*, or *non-compliant*.
+        uom_conversion_rate:
+          title: Uom Conversion Rate
+          type: string
+          description: UOM conversion rate.
+        uom_attachment:
+          title: Uom Attachment
+          type: string
+          description: UOM attachment.
+        uom:
+          title: Uom
+          anyOf:
+          - $ref: '#/components/schemas/ItemUOM'
+          - $ref: '#/components/schemas/ServiceUOM'
+          description: Unit of measurement for the item/quantity.
+        sku:
+          title: Sku
+          type: string
+          description: Item SKU.
+        comments:
+          title: Comments
+          type: string
+          description: Comments about the item.
+        country_of_origin:
+          title: Country Of Origin
+          anyOf:
+          - $ref: '#/components/schemas/Country'
+          - $ref: '#/components/schemas/EmptyString'
+          description: Two-character alphabetic code that represents a country name. Fairmarkit uses the Alpha-2 country codes defined in the ISO 3166 international standard.
+        awarded_at:
+          title: Awarded At
+          type: string
+          format: date-time
+          description: Date and time when the quote item was awarded by the buyer. String must be formatted using ISO 8601 format.
+        awarded_quantity:
+          title: Awarded Quantity
+          type: number
+          description: Awarded quantity of the item in the selected UOM.
+        quantity_change_reason_note:
+          title: Quantity Change Reason Note
+          type: string
+        external_supplier_item_id:
+          title: External Supplier Item ID
+          type: string
+          description: 'External Supplier Item ID. '
+        meta_tags:
+          title: Meta Tags
+          type: array
+          items:
+            $ref: '#/components/schemas/api__v3__models__meta_tag__MetaTagRetrieve'
+          default: []
+          description: Meta tags to store additional information.
+        supplier_pn:
+          type: string
+          title: Supplier Pn
+        is_awarding:
+          title: Is Awarding
+          type: boolean
+          description: Whether the item is currently being awarded.
+        awarding_quantity:
+          title: Awarding Quantity
+          type: number
+          description: Quantity being awarded for the item.
+        items:
+          title: Items
+          type: array
+          description: A list of requested items and services.
+          items:
+            $ref: '#/components/schemas/NestedQuotationItem'
+    RFQUpdate:
+      title: RFQUpdate
+      required:
+      - title
+      - closes_at
+      - categories
+      type: object
+      description: Data for an RFQ update.
+      properties:
+        title:
+          title: Title
+          type: string
+          description: A brief, descriptive title for the request
+        closes_at:
+          title: Closes At
+          type: string
+          format: date-time
+          description: Date and time when the RFQ is scheduled to close. String must be formatted using ISO 8601 format. Enter time in 30-minute intervals.
+        external_id:
+          title: External Id
+          type: string
+          description: External RFQ reference ID. It can be used to track RFQs across systems.
+        urgency:
+          allOf:
+          - $ref: '#/components/schemas/RFQUrgency'
+          default: normal
+          description: Urgency of an RFQ request. Available options include *normal*, *rush*, or *emergency*.
+        payment_process:
+          allOf:
+          - $ref: '#/components/schemas/RFQPaymentProcess'
+          default: po
+          description: How the buyer will pay for goods and services. Available options include *po*, *invoice_only*, or *credit_card*.
+        currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+          default: USD
+          description: Three-character alphabetic code that represents a currency. Fairmarkit uses the ISO 4217 international standard.
+        is_marketplace:
+          title: Is Marketplace
+          type: boolean
+          default: false
+          description: Is the RFQ shared to the Fairmarkit marketplace?
+        notes:
+          title: Notes
+          type: string
+          description: Notes to suppliers. Up to 4,000 characters can be entered.
+        address1:
+          title: Address1
+          type: string
+          description: Address line 1.
+        address2:
+          title: Address2
+          type: string
+          description: Address line 2.
+        city:
+          title: City
+          type: string
+          description: Address City.
+        state:
+          title: State
+          type: string
+          description: Address State.
+        zip:
+          title: Zip
+          type: string
+          description: Address Zip Code.
+        shipping_type:
+          title: Shipping Type
+          anyOf:
+          - $ref: '#/components/schemas/RFQShippingType'
+          - $ref: '#/components/schemas/EmptyString'
+          description: Preferred shipping method. Available options include *Courier*, *Critical*, *Freight*, *Ground*, *Ground w/ Freight Pricing*, *Next Day*, *Next Day - AM*, *Ocean Freight*, *Priority Mail*, *Priority Mail Express*, *Same Day*, *Saturday*, *Three Day*, *Two Day*, and *Two Day - Am*. See [Shipping type and Carrier](https://docs.staging.fairmarkit.com/content/glossaries/shippingtype-carrier.htm) for more information.
+        carrier:
+          title: Carrier
+          anyOf:
+          - $ref: '#/components/schemas/RFQCarrier'
+          - $ref: '#/components/schemas/EmptyString'
+          description: Preferred shipping carrier. Available options depend on on the selected Shipping Type. See [Shipping type and Carrier](https://docs.staging.fairmarkit.com/content/glossaries/shippingtype-carrier.htm) for more information.
+        country:
+          title: Country
+          anyOf:
+          - $ref: '#/components/schemas/Country'
+          - $ref: '#/components/schemas/EmptyString'
+        preferred_delivery_date:
+          title: Preferred Delivery Date
+          type: string
+          format: date-time
+          description: Preferred delivery date.
+        categories:
+          title: Categories
+          maxItems: 50
+          uniqueItems: true
+          type: array
+          description: Categories.
+          items:
+            type: string
+            format: uuid
+        external_data:
+          title: External Data
+          type: object
+          description: Additional, open field to store internal information about the RFQ event.
+        meta_tags:
+          title: Meta Tags
+          description: Meta tags to store additional information. Send a list of meta tags, and they will be processed. To remove all meta tags, send an empty list.
+          type: array
+          items:
+            $ref: '#/components/schemas/api__v3__models__meta_tag__MetaTagRetrieve'
+        business_unit:
+          title: Business Unit
+          type: string
+          format: uuid
+          description: Business unit UUID (Fairmarkit).
+        erp_system_uuid:
+          title: Erp System Uuid
+          type: string
+          format: uuid
+          description: ERP system UUID (Fairmarkit).
+        requester_title:
+          title: Requester Title
+          type: string
+          description: Requester Title.
+        archiving_reason:
+          type: string
+          title: Archiving Reason
+          default: ''
+        archiving_note:
+          type: string
+          title: Archiving Note
+          default: ''
+        cancellation_reason:
+          type: string
+          title: Cancellation Reason
+          default: ''
+    CategoryRetrieve:
+      title: CategoryRetrieve
+      description: Data to retrieve about a specific category.
+      required:
+      - uuid
+      - title
+      - visual_title
+      - external_id
+      type: object
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          description: Category UUID.
+        title:
+          title: Title
+          type: string
+          description: Category name.
+        visual_title:
+          title: Visual Title
+          type: string
+          description: Category display name.
+        external_id:
+          title: External Id
+          type: string
+          description: Category external ID.

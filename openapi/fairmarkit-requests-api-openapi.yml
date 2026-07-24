@@ -1,0 +1,3298 @@
+openapi: 3.1.1
+info:
+  title: BUYER PUBLIC Business Units Requests API
+  version: '3'
+  description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
+  termsOfService: https://www.fairmarkit.com/terms-of-service
+  contact:
+    name: Fairmarkit Support
+    url: https://fmkt.zendesk.com/hc/en-us
+    email: support@fairmarkit.com
+servers:
+- url: https://staging.fairmarkit.com/
+tags:
+- name: Requests
+paths:
+  /services/self-service/api/v4/requests/{request_id}/items/:
+    post:
+      tags:
+      - Requests
+      summary: "\uD83E\uDDEA Create Request Item"
+      operationId: RequestApi_create_item_services_self_service_api_v4_requests__request_id__items__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestItemV4Create'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RequestItemV4Retrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Creates a new Request Item based on the selected schema. The Request must exist first. This endpoint is in **BETA** and may change without notice.
+    get:
+      tags:
+      - Requests
+      summary: "\uD83E\uDDEA List Request Items"
+      operationId: RequestApi_get_request_items_list_services_self_service_api_v4_requests__request_id__items__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          title: Limit
+          default: 20
+          description: Maximum number of records to return. Defaults to 20.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 20.
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return. Defaults to 0.
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RequestItemV4ListRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns a paginated list of Request items. This endpoint is in **BETA** and may change without notice.
+  /services/self-service/api/v4/requests/:
+    post:
+      tags:
+      - Requests
+      summary: "\uD83E\uDDEA Create Request"
+      operationId: RequestApi_create_request_services_self_service_api_v4_requests__post
+      parameters:
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestV4Create'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RequestV4Retrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Creates a new Request based on the selected schema. To create Request Items, use the Request Item v4 endpoint. This endpoint is in **BETA** and may change without notice.
+    get:
+      tags:
+      - Requests
+      summary: List Requests
+      operationId: RequestApi_list_requests_services_self_service_api_v4_requests__get
+      parameters:
+      - required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          title: Limit
+          default: 20
+          description: Maximum number of records to return. Defaults to 20.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 20.
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return. Defaults to 0.
+      - description: Start of the created-at time range. Use ISO 8601 format.
+        required: false
+        schema:
+          type: string
+          format: date-time
+          title: Created At Min
+          description: Start of the created-at time range. Use ISO 8601 format.
+        name: created_at_min
+        in: query
+      - description: End of the created-at time range. Use ISO 8601 format.
+        required: false
+        schema:
+          type: string
+          format: date-time
+          title: Created At Max
+          description: End of the created-at time range. Use ISO 8601 format.
+        name: created_at_max
+        in: query
+      - required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/GetListV5OrderingType0Item'
+          type: array
+          description: Ordering field. Prefix with '-' for descending order.
+        name: ordering
+        in: query
+        description: Ordering field. Prefix with '-' for descending order.
+      - required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/RequestStatus'
+          type: array
+          description: Filter by status.
+        name: status
+        in: query
+        description: Filter by status.
+      - required: false
+        schema:
+          type: string
+          title: External Id
+        name: external_id
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RequestV4ListRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns a paginated list of Requests.
+  /services/self-service/api/v3/requests/{request_id}/pr/link/:
+    post:
+      tags:
+      - Requests
+      summary: "\uD83E\uDDEA Link External PR to Request"
+      description: Marks external PR creation as successful and returns the external PR details. This endpoint is in **BETA** and may change without notice.
+      operationId: RequestApi_link_pr_services_self_service_api_v3_requests__request_id__pr_link__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        description: Fairmarkit API Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LinkPRRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RequestRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v4/requests/{request_id}/items/batch:
+    post:
+      tags:
+      - Requests
+      summary: Create Request Item Batch
+      operationId: RequestApi_create_request_item_batch_services_self_service_api_v4_requests__request_id__items_batch_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/RequestItemV4Create'
+              type: array
+              title: Request
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RequestItemV4Retrieve'
+                type: array
+                title: Response Requestapi Create Request Item Batch Services Self Service Api V4 Requests  Request Id  Items Batch Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Creates Request Items in batch.
+  /services/self-service/api/v4/requests/{request_id}/cancel:
+    post:
+      tags:
+      - Requests
+      summary: Cancel Request
+      operationId: RequestApi_cancel_request_services_self_service_api_v4_requests__request_id__cancel_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/CancelRequest'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Cancels an existing Request.
+  /services/self-service/api/v3/requests/:
+    post:
+      tags:
+      - Requests
+      summary: ⚠ Create Request
+      operationId: RequestApi_create_request_services_self_service_api_v3_requests__post
+      parameters:
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Request'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RequestCreate'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      deprecated: true
+      description: Creates a new Request. This endpoint is **DEPRECATED**. Use the v4 Requests API and Request Item endpoints instead.
+  /services/self-service/api/v3/requests/{request_id}/:
+    get:
+      tags:
+      - Requests
+      summary: ⚠ Get Request Details
+      operationId: RequestApi_get_request_services_self_service_api_v3_requests__request_id___get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RequestRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      deprecated: true
+      description: Returns details for a specific Request. This endpoint is **DEPRECATED**. Use the v4 Requests API and Request Item endpoints instead.
+  /services/self-service/api/v3/requests/{request_id}/pr/mark-as-failed/:
+    post:
+      tags:
+      - Requests
+      summary: "\uD83E\uDDEA Mark External PR Creation Failed"
+      description: Marks external PR creation as failed. This endpoint is in **BETA** and may change without notice.
+      operationId: RequestApi_mark_pr_as_failed_services_self_service_api_v3_requests__request_id__pr_mark_as_failed__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        description: Fairmarkit API Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RejectPRRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RequestRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v4/requests/{request_id}/items/{request_item_id}:
+    put:
+      tags:
+      - Requests
+      summary: "\uD83E\uDDEA Update Request Item"
+      description: Updates a Request Item while preserving attachment field values and ignoring new values. This endpoint is in **BETA** and may change without notice.
+      operationId: RequestApi_update_request_item_services_self_service_api_v4_requests__request_id__items__request_item_id__put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Item Id
+        name: request_item_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestItemV4Update'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/UpdateRequestItem'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v4/requests/{request_id}/:
+    get:
+      tags:
+      - Requests
+      summary: "\uD83E\uDDEA Get Request Details"
+      operationId: RequestApi_get_request_services_self_service_api_v4_requests__request_id___get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RequestV4Retrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns a Request without its items. This endpoint is in **BETA** and may change without notice.
+    put:
+      tags:
+      - Requests
+      summary: "\uD83E\uDDEA Update Request"
+      description: Updates a Request while preserving attachment field values and ignoring new values. This endpoint is in **BETA** and may change without notice.
+      operationId: RequestApi_update_request_services_self_service_api_v4_requests__request_id___put
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestV4Update'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/UpdateRequest'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v3/requests/{request_id}/pr/status/:
+    post:
+      tags:
+      - Requests
+      summary: "\uD83E\uDDEA Update External PR Status"
+      description: Updates the status of an external PR linked to a Request. This endpoint is in **BETA** and may change without notice.
+      operationId: RequestApi_update_pr_status_services_self_service_api_v3_requests__request_id__pr_status__post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        description: Fairmarkit API Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePRStatusRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/RequestRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v4/requests/{request_id}/event-approvals/{approval_id}/approve-step:
+    post:
+      tags:
+      - Requests
+      summary: Approve Request Event Step
+      description: Approves a Request event approval step.
+      operationId: RequestApi_approve_request_event_step_services_self_service_api_v4_requests__request_id__event_approvals__approval_id__approve_step_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Approval Id
+        name: approval_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApprovalStepRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ApprovalIdResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v4/requests/{request_id}/event-approvals/{approval_id}/reject-step:
+    post:
+      tags:
+      - Requests
+      summary: Reject Request Event Step
+      description: Rejects a Request event approval step.
+      operationId: RequestApi_reject_request_event_step_services_self_service_api_v4_requests__request_id__event_approvals__approval_id__reject_step_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Approval Id
+        name: approval_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApprovalStepRejectRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ApprovalIdResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v4/requests/{request_id}/submit:
+    post:
+      tags:
+      - Requests
+      summary: Submit Request
+      operationId: RequestApi_submit_request_services_self_service_api_v4_requests__request_id__submit_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/SubmitRequest'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Submits a Request.
+  /services/self-service/api/v4/requests/{request_id}/approvals/{approval_id}/reject-step:
+    post:
+      tags:
+      - Requests
+      summary: "\uD83E\uDDEA Reject Request Step"
+      description: Rejects a Request approval step. This endpoint is in **BETA** and may change without notice.
+      operationId: RequestApi_reject_request_step_services_self_service_api_v3_requests__request_id__approvals__approval_id__reject_step_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Approval Id
+        name: approval_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApprovalStepRejectRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ApprovalIdResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v4/requests/{request_id}/approvals/{approval_id}/approve-step:
+    post:
+      tags:
+      - Requests
+      summary: "\uD83E\uDDEA Approve Request Step"
+      description: Approves a Request approval step. This endpoint is in **BETA** and may change without notice.
+      operationId: RequestApi_approve_request_step_services_self_service_api_v3_requests__request_id__approvals__approval_id__approve_step_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Approval Id
+        name: approval_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApprovalStepRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ApprovalIdResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v4/requests/{request_id}/event-approvals:
+    get:
+      tags:
+      - Requests
+      summary: List Request Event Approvals
+      operationId: RequestApi_get_request_event_approvals_services_self_service_api_v4_requests__request_id__event_approvals_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ApprovalDetail'
+                type: array
+                title: Response Requestapi Get Request Event Approvals Services Self Service Api V4 Requests  Request Id  Event Approvals Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns approval data for a Request event.
+  /services/self-service/api/v4/requests/{request_id}/approvals:
+    get:
+      tags:
+      - Requests
+      description: Returns approval data for a Request. This endpoint is in **BETA** and may change without notice.
+      summary: "\uD83E\uDDEA List Request Approvals"
+      operationId: RequestApi_get_request_approvals_services_self_service_api_v3_requests__request_id__approvals_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ApprovalDetail'
+                type: array
+                title: Response Requestapi Get Request Approvals Services Self Service Api V3 Requests  Request Id  Approvals Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/supplier-public-api/api/v1/requests/{request_id}/reject/:
+    post:
+      tags:
+      - Requests
+      summary: Reject Request
+      description: Creates a Response with rejection information for the Request with provided request_id
+      operationId: reject_request-Requests_Requests_Requests
+      security:
+      - SupplierPublicAPIHeader: []
+      parameters:
+      - name: request_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          description: Unique request ID.
+          examples:
+          - b61da388-b09b-4334-ae8c-d7d89722a6d8
+          title: Request Id
+        description: Unique request ID.
+      - name: x-fm-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings
+          title: X-Fm-Api-Key
+        description: Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestRejectRequest'
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError_2'
+  /services/supplier-public-api/api/v1/requests/{request_id}/response/:
+    get:
+      tags:
+      - Requests
+      summary: Get Request Response
+      description: Returns information about Response that you submit for Request by provided request id.
+      operationId: get_request_response-Requests_Requests_Requests
+      security:
+      - SupplierPublicAPIHeader: []
+      parameters:
+      - name: request_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          description: Unique request ID.
+          examples:
+          - b61da388-b09b-4334-ae8c-d7d89722a6d8
+          title: Request Id
+        description: Unique request ID.
+      - name: x-fm-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings
+          title: X-Fm-Api-Key
+        description: Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError_2'
+  /services/supplier-public-api/api/v1/requests/{request_id}/:
+    get:
+      tags:
+      - Requests
+      summary: Get Request
+      description: Returns full information about the Request by provided id
+      operationId: get_request-Requests_Requests_Requests
+      security:
+      - SupplierPublicAPIHeader: []
+      parameters:
+      - name: request_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          description: Unique request ID.
+          examples:
+          - b61da388-b09b-4334-ae8c-d7d89722a6d8
+          title: Request Id
+        description: Unique request ID.
+      - name: x-fm-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings
+          title: X-Fm-Api-Key
+        description: Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailRequestResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError_2'
+  /services/supplier-public-api/api/v1/requests/{request_id}/submit/:
+    post:
+      tags:
+      - Requests
+      summary: Submit Response
+      description: Creates a Response for the Request with provided request_id
+      operationId: submit_response-Requests_Requests_Requests
+      security:
+      - SupplierPublicAPIHeader: []
+      parameters:
+      - name: request_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          description: Unique request ID.
+          examples:
+          - b61da388-b09b-4334-ae8c-d7d89722a6d8
+          title: Request Id
+        description: Unique request ID.
+      - name: x-fm-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings
+          title: X-Fm-Api-Key
+        description: Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResponseSubmitRequest'
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError_2'
+  /services/supplier-public-api/api/v1/requests/:
+    get:
+      tags:
+      - Requests
+      summary: Get Requests
+      description: Returns a list of Requests that Buyer creates for your company
+      operationId: get_requests-Requests_Requests_Requests
+      security:
+      - SupplierPublicAPIHeader: []
+      parameters:
+      - name: ordering
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestOrdering'
+          description: 'Field name and direction in which result will be ordered. F.e.: "-created_at" means that result will be ordered by created_at DESC'
+          examples:
+          - created_at
+          - -created_at
+          - updated_at
+          - -updated_at
+          - closes_at
+          - -closes_at
+          enum:
+          - created_at
+          - -created_at
+          - updated_at
+          - -updated_at
+          - closes_at
+          - -closes_at
+          default:
+          - -created_at
+          title: Ordering
+        description: 'Field name and direction in which result will be ordered. F.e.: "-created_at" means that result will be ordered by created_at DESC'
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestStatus_2'
+          description: Filter records by status value.
+          examples:
+          - new
+          - missed
+          - canceled
+          - viewed
+          - ignored
+          - submitted
+          - waiting_for_award
+          - lost
+          - won
+          - declined
+          enum:
+          - new
+          - missed
+          - canceled
+          - viewed
+          - ignored
+          - submitted
+          - waiting_for_award
+          - lost
+          - won
+          - declined
+          default:
+          - new
+          title: Status
+        description: Filter records by status value.
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          description: Use to specify the maximum number of records to return. By default, 20 records are returned.
+          default: 20
+          title: Limit
+        description: Use to specify the maximum number of records to return. By default, 20 records are returned.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          description: Use to retrieve a specific batch of records. By default, this is set to 0.
+          default: 0
+          title: Offset
+        description: Use to retrieve a specific batch of records. By default, this is set to 0.
+      - name: x-fm-api-key
+        in: header
+        required: true
+        schema:
+          type: string
+          description: Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings
+          title: X-Fm-Api-Key
+        description: Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ListRequestResponse'
+                title: Response Get Requests-Requests Requests Requests
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError_2'
+components:
+  schemas:
+    RejectionKind:
+      type: string
+      enum:
+      - out_of_stock
+      - items_not_carried
+      - more_information_needed_to_quote
+      - price_not_competitive
+      - ship_address_outside_our_coverage_area
+      - other
+      title: RejectionKind
+    ShippingType:
+      type: string
+      enum:
+      - ocean_freight
+      - freight
+      - same_day
+      - next_day
+      - next_day_am
+      - two_day
+      - two_day_am
+      - three_day
+      - saturday
+      - courier
+      - ground
+      - priority_mail_express
+      - priority_mail
+      - ground_with_freight_pricing
+      - critical
+      - ''
+      title: ShippingType
+    RequestItemUOM:
+      enum:
+      - each
+      - acre
+      - activity_unit
+      - assembly
+      - bag
+      - bale
+      - bar
+      - barrel
+      - block
+      - board foot
+      - bottle
+      - box
+      - bucket
+      - bulk
+      - bundle
+      - cake
+      - can
+      - canister
+      - card
+      - carton
+      - cartridge
+      - case
+      - centimeter
+      - coil
+      - container
+      - crate
+      - cube
+      - cubic foot
+      - cubic meter
+      - cubic_millimeter
+      - cubic yard
+      - cup
+      - cylinder
+      - dozen
+      - drum
+      - enzyme_units
+      - foot
+      - gallon
+      - gigajoule
+      - gram
+      - gross
+      - group_proportion
+      - 1/2 cubic yard
+      - hank
+      - hectare
+      - hour
+      - hundred
+      - imperial gallon
+      - inch
+      - jar
+      - keg
+      - kilogram
+      - kiloliter
+      - kilometer
+      - kilowatt
+      - kit
+      - length
+      - light
+      - liter
+      - lot
+      - lug
+      - lump sum
+      - megawatt_hour
+      - meter
+      - meter_minute
+      - metric ton
+      - microsiemens_per_cm
+      - mile
+      - milliliter
+      - millimeter
+      - milliwatt
+      - multiple_choice
+      - net ton
+      - night
+      - ounce
+      - pack
+      - package
+      - packet
+      - pad
+      - pail
+      - pair
+      - pallet
+      - pancake
+      - part
+      - pg
+      - piece
+      - pikofarad
+      - pint
+      - points
+      - pot
+      - pound
+      - punnet
+      - quart
+      - rack
+      - ream
+      - reel
+      - roll
+      - sachet
+      - set
+      - sheet
+      - spool
+      - square foot
+      - square inch
+      - square meter
+      - square yard
+      - suit
+      - tank
+      - thousand
+      - tin
+      - ton
+      - tonne
+      - ton_cubic_meter
+      - tray
+      - tub
+      - tube
+      - unit
+      - unit_f
+      - volt-amper
+      - yard
+      - year
+      title: RequestItemUOM
+      description: Supported units of measurement for request items.
+    ResponseValidFor:
+      type: integer
+      enum:
+      - 1
+      - 5
+      - 7
+      - 10
+      - 15
+      - 30
+      - 45
+      - 60
+      - 90
+      - 180
+      - 365
+      title: ResponseValidFor
+    RequestItem:
+      properties:
+        title:
+          type: string
+          title: Title
+          description: A brief, descriptive title for the item.
+        kind:
+          $ref: '#/components/schemas/RequestItemKind'
+        uom:
+          $ref: '#/components/schemas/RequestItemUOM'
+        quantity:
+          type: number
+          title: Quantity
+          description: Quantity of the item in the selected UOM.
+        unit_price:
+          type: number
+          title: Unit Price
+          description: Unit price of the item in the selected UOM.
+        manufacturer_part_number:
+          type: string
+          title: Manufacturer Part Number
+          description: Manufacturer part number of the item.
+        price_book_item_id:
+          type: string
+          title: Price Book Item Id
+          description: Price book item ID.
+        start_date:
+          type: string
+          format: date
+          title: Start Date
+          description: Start date for item with kind Service.
+        end_date:
+          type: string
+          format: date
+          title: End Date
+          description: End date for item with kind Service.
+      type: object
+      required:
+      - title
+      - kind
+      - uom
+      - quantity
+      title: RequestItem
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    RequestItemV4ListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/RequestItemV4Retrieve'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: RequestItemV4ListRetrieve
+    GetListV5OrderingType0Item:
+      type: string
+      enum:
+      - created_at
+      - short_id
+      - status
+      - title
+      - -created_at
+      - -title
+      - -status
+      - -short_id
+      title: GetListV5OrderingType0Item
+      description: Allowed ordering values for list endpoints.
+    SupplierErpSystemInfo:
+      properties:
+        external_supplier_id:
+          type: string
+          title: External Supplier Id
+        erp_system_uuid:
+          type: string
+          format: uuid
+          title: Erp System Uuid
+        is_active:
+          type: boolean
+          title: Is Active
+          default: true
+      type: object
+      required:
+      - external_supplier_id
+      - erp_system_uuid
+      title: SupplierErpSystemInfo
+    Request:
+      properties:
+        title:
+          type: string
+          title: Title
+          description: A brief, descriptive title for the Request.
+        requester:
+          type: string
+          format: email
+          title: Requester
+          description: Fairmarkit buyer's email address.
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+          description: Id for the JSON schema.
+        schema_data:
+          type: object
+          title: Schema Data
+          description: Custom data according to the provided or current JSON Schema.
+        items:
+          items:
+            $ref: '#/components/schemas/RequestItem'
+          type: array
+          title: Items
+          description: A list of items.
+      type: object
+      required:
+      - title
+      - requester
+      - schema_data
+      - items
+      title: Request
+    RequestItemKind:
+      type: string
+      enum:
+      - goods
+      - service
+      title: RequestItemKind
+      description: Request item type values.
+    Approver:
+      title: Approver
+      required:
+      - id
+      - email
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unique identifier for the approver.
+        email:
+          title: Email
+          type: string
+          description: Email address of the approver.
+      description: Information about an approver.
+    DetailResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+          description: Actual Response status.
+          examples:
+          - sent
+          - opened
+          - submitted
+          - awarded
+          - no_bid
+        vendor_quote:
+          type: string
+          title: Vendor Quote
+          description: Vendor quote number.
+          examples:
+          - DFR440-DB
+        valid_for:
+          anyOf:
+          - $ref: '#/components/schemas/ResponseValidFor'
+          - type: 'null'
+          description: The number of days during which the offer will be valid.
+          examples:
+          - 1
+          - 5
+          - 7
+          - 10
+          - 15
+          - 30
+          - 45
+          - 60
+          - 90
+          - 180
+          - 365
+        is_shipping_included:
+          type: boolean
+          title: Is Shipping Included
+          description: Is shipping included in the total price?
+          examples:
+          - true
+          - false
+        shipping:
+          type: string
+          title: Shipping
+          description: Cost of shipping in case it not included in the total price
+          examples:
+          - '49.99'
+          - '0'
+        is_partially_awarded:
+          type: boolean
+          title: Is Partially Awarded
+          description: Means that minimum one of the proposed item by supplier was awarded
+          examples:
+          - true
+          - false
+        notes:
+          type: string
+          title: Notes
+          description: Additional notes from Supplier for Buyer related to the response, if exists.
+          examples:
+          - Please contact us asap.
+        currency:
+          type: string
+          title: Currency
+          description: Currency of response.
+          examples:
+          - USD
+          - CAD
+          - EUR
+          - AUD
+        awarded_total:
+          type: string
+          title: Awarded Total
+          description: Total awarded price by Buyer.
+          examples:
+          - '100'
+          - '4.99'
+          - '0'
+        sent_at:
+          type: string
+          title: Sent At
+          description: Date and time when request was sent to Supplier.
+          examples:
+          - '2025-09-01 08:39:24.205913+00:00'
+        opened_at:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Opened At
+          description: Date and time when request was viewed by Supplier first time.
+          examples:
+          - '2025-09-01 08:39:24.205945+00:00'
+        submitted_at:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Submitted At
+          description: Date and time when response was submitted by Supplier last time.
+          examples:
+          - '2025-09-01 08:39:24.205968+00:00'
+        rejection_at:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Rejection At
+          description: Date and time when response was rejected by Supplier last time.
+          examples:
+          - '2025-09-01 08:39:24.205987+00:00'
+        rejection_kind:
+          $ref: '#/components/schemas/RejectionKindWithEmpty'
+          description: Rejection kind that was set by Supplier during rejection. Will be empty in case request wasn't rejected.
+          examples:
+          - out_of_stock
+          - items_not_carried
+          - more_information_needed_to_quote
+          - price_not_competitive
+          - ship_address_outside_our_coverage_area
+          - other
+          - ''
+        rejection_reason:
+          type: string
+          title: Rejection Reason
+          description: Reason of rejection in case was chosen rejection kind "other". Could be empty in other cases.
+          examples:
+          - We are on the vacation.
+          - ''
+        awarded_at:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Awarded At
+          description: Date and time when response was awarded by Buyer.
+          examples:
+          - '2025-09-01 08:39:24.206048+00:00'
+        items:
+          items:
+            $ref: '#/components/schemas/DetailResponseItem'
+          type: array
+          title: Items
+      type: object
+      required:
+      - status
+      - vendor_quote
+      - valid_for
+      - is_shipping_included
+      - shipping
+      - is_partially_awarded
+      - notes
+      - currency
+      - awarded_total
+      - sent_at
+      - opened_at
+      - submitted_at
+      - rejection_at
+      - rejection_kind
+      - rejection_reason
+      - awarded_at
+      - items
+      title: DetailResponse
+    ListRequestResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique request ID.
+          examples:
+          - e3f18428-6e27-4b34-855f-e635a8c56b8b
+        ref_id:
+          type: integer
+          title: Ref Id
+          description: Reference ID from platform.
+          examples:
+          - 1
+          - 100500
+        title:
+          type: string
+          title: Title
+          description: Request title.
+          examples:
+          - Apple Iphone 16 PRO MAX 1TB
+        customer_title:
+          type: string
+          title: Customer Title
+          description: Customer title.
+          examples:
+          - Apple Inc.
+        closes_at:
+          type: string
+          title: Closes At
+          description: Date and time of when request was planed to close.
+          examples:
+          - '2025-09-05 08:39:24.199757+00:00'
+        preferred_delivery_date:
+          type: string
+          title: Preferred Delivery Date
+          description: Preferred delivery date and time expected by buyer. Will be empty string if wasn't provided.
+          examples:
+          - '2025-09-01 08:39:24.199791+00:00'
+          - ''
+        urgency:
+          $ref: '#/components/schemas/RequestUrgency'
+          description: Request urgency.
+          examples:
+          - normal
+          - rush
+          - emergency
+        status:
+          $ref: '#/components/schemas/RequestStatus_2'
+          description: Actual Request status.
+          examples:
+          - new
+          - missed
+          - canceled
+          - viewed
+          - ignored
+          - submitted
+          - waiting_for_award
+          - lost
+          - won
+          - declined
+        payment_process:
+          $ref: '#/components/schemas/PaymentProcess'
+          description: Payment process expected by buyer.
+          default: po
+          examples:
+          - po
+          - invoice_only
+          - credit_card
+        shipping_address:
+          $ref: '#/components/schemas/ShippingAddress'
+        shipping_type:
+          $ref: '#/components/schemas/ShippingType'
+          description: Shipping type expected by buyer.
+          default: ''
+          examples:
+          - ocean_freight
+          - freight
+          - same_day
+          - next_day
+          - next_day_am
+          - two_day
+          - two_day_am
+          - three_day
+          - saturday
+          - courier
+          - ground
+          - priority_mail_express
+          - priority_mail
+          - ground_with_freight_pricing
+          - critical
+          - ''
+        carrier:
+          $ref: '#/components/schemas/CarrierKind'
+          description: Carrier type expected by buyer.
+          default: ''
+          examples:
+          - ups
+          - fedex
+          - dhl
+          - usps
+          - ''
+        currency:
+          type: string
+          title: Currency
+          description: Currency of request.
+          examples:
+          - USD
+          - CAD
+          - EUR
+          - AUD
+        notes:
+          type: string
+          title: Notes
+          description: Additional notes from Buyer for suppliers related to the request, if exists.
+          examples:
+          - We are working only on Mon and Tue.
+      type: object
+      required:
+      - id
+      - ref_id
+      - title
+      - customer_title
+      - closes_at
+      - preferred_delivery_date
+      - urgency
+      - status
+      - shipping_address
+      - currency
+      - notes
+      title: ListRequestResponse
+    ShippingAddress:
+      properties:
+        country:
+          type: string
+          title: Country
+          description: 2-symbols request's delivery address country ISO 3166-1 alpha-2 code. Will be empty string if not provided.
+          examples:
+          - US
+          - CA
+          - GB
+          - AU
+          - NZ
+          - ''
+        state:
+          type: string
+          title: State
+          description: Request's delivery address state name. Will be empty string if not provided.
+          examples:
+          - Texas
+          - Illinois
+          - Massachusetts
+          - ''
+        city:
+          type: string
+          title: City
+          description: Request's delivery address city name. Will be empty string if not provided.
+          examples:
+          - Boston
+          - Newton
+          - New Bedford
+          - ''
+        zip:
+          type: string
+          title: Zip
+          description: Request's delivery address zip code. Will be empty string if not provided.
+          examples:
+          - 90210-0001
+          - '90210'
+          - ''
+        address1:
+          type: string
+          title: Address1
+          description: Request's delivery first address. Will be empty string if not provided.
+          examples:
+          - 123 Main Street, Apt 4B
+          - ''
+        address2:
+          type: string
+          title: Address2
+          description: Request's delivery second address. Will be empty string if not provided.
+      type: object
+      required:
+      - country
+      - state
+      - city
+      - zip
+      - address1
+      - address2
+      title: ShippingAddress
+    RequestOrdering:
+      type: string
+      enum:
+      - created_at
+      - -created_at
+      - updated_at
+      - -updated_at
+      - closes_at
+      - -closes_at
+      title: RequestOrdering
+    ApprovalStep:
+      title: ApprovalStep
+      required:
+      - id
+      - approver
+      - status
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unique identifier for the approval step.
+        approver:
+          title: Approver
+          allOf:
+          - $ref: '#/components/schemas/Approver'
+          description: Information about the person responsible for this step.
+        status:
+          title: Status
+          type: string
+          description: Current status of the approval step.
+        response:
+          title: Response
+          allOf:
+          - $ref: '#/components/schemas/ApprovalStepResponse'
+          description: Response data if the step has been acted upon.
+        reassigned_at:
+          title: Reassigned At
+          type: string
+          format: date-time
+          description: Timestamp when the step was reassigned.
+      description: Data for an individual approval step.
+    ApprovalIdResponse:
+      title: ApprovalIdResponse
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unique identifier of the approval.
+      description: Response containing the approval ID.
+    RequestStatus_2:
+      type: string
+      enum:
+      - new
+      - missed
+      - canceled
+      - viewed
+      - ignored
+      - submitted
+      - waiting_for_award
+      - lost
+      - won
+      - declined
+      title: RequestStatus
+    RequestV4Update:
+      properties:
+        schema_data:
+          type: object
+          title: Schema Data
+      type: object
+      required:
+      - schema_data
+      title: RequestV4Update
+    ValidationError_2:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    CarrierKind:
+      type: string
+      enum:
+      - ups
+      - fedex
+      - dhl
+      - usps
+      - ''
+      title: CarrierKind
+    ApprovalStepResponse:
+      title: ApprovalStepResponse
+      type: object
+      properties:
+        note:
+          title: Note
+          type: string
+          description: Optional note for the approval step response.
+        reacted_at:
+          title: Reacted At
+          type: string
+          format: date-time
+          description: Timestamp when the step was responded to.
+      description: Response data for an approval step.
+    DetailRequestItemResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique request item ID.
+          examples:
+          - ba309b6f-6161-4ca2-a43d-724dacc21e0c
+        kind:
+          type: string
+          title: Kind
+          description: Request item kind.
+          examples:
+          - item
+          - service
+        title:
+          type: string
+          title: Title
+          description: Request item title.
+          examples:
+          - Apple Iphone 16 PRO MAX 1TB
+        manufacturer:
+          type: string
+          title: Manufacturer
+          description: Request item manufacturer.
+          examples:
+          - Amazing Dreams Inc.
+        manufacturer_pn:
+          type: string
+          title: Manufacturer Pn
+          description: Request item manufacturer part number.
+          examples:
+          - YFD220125-i
+          - 70-107
+        comments:
+          type: string
+          title: Comments
+          description: Buyer's comments for the request item
+          examples:
+          - 'color: red'
+        uom:
+          type: string
+          title: Uom
+          description: Unit of measurement.
+          examples:
+          - each
+          - bar
+          - kilogram
+        is_awarded:
+          type: boolean
+          title: Is Awarded
+          description: Has request item already awarded
+          examples:
+          - true
+          - false
+        awarded_at:
+          type: string
+          title: Awarded At
+          description: Date and time of when request item was awarded. Will be None in case if request item still not awarded.
+          examples:
+          - '2025-09-01 08:39:24.201724+00:00'
+          - ''
+        quantity:
+          type: string
+          title: Quantity
+          description: Requested quantity of request item. Could be empty in case request item in uncountable.
+          examples:
+          - '10'
+          - '1.5'
+          - ''
+      type: object
+      required:
+      - id
+      - kind
+      - title
+      - manufacturer
+      - manufacturer_pn
+      - comments
+      - uom
+      - is_awarded
+      - awarded_at
+      - quantity
+      title: DetailRequestItemResponse
+    RFxEvent:
+      properties:
+        short_id:
+          type: integer
+          title: Short Id
+        id:
+          type: string
+          format: uuid
+          title: Id
+        type:
+          type: string
+          title: Type
+      type: object
+      title: RFxEvent
+    SubmitRequest:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: SubmitRequest
+    RequestItemV4Update:
+      properties:
+        schema_data:
+          type: object
+          title: Schema Data
+      type: object
+      required:
+      - schema_data
+      title: RequestItemV4Update
+    RejectPRRequest:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/PRError'
+          type: array
+          title: Errors
+          description: List of errors that happened during the external PR Creation Process.
+      type: object
+      required:
+      - errors
+      title: RejectPRRequest
+    RequestItemResponse:
+      properties:
+        title:
+          type: string
+          title: Title
+          description: A brief, descriptive title for the item.
+        kind:
+          $ref: '#/components/schemas/RequestItemKind'
+        uom:
+          $ref: '#/components/schemas/RequestItemUOM'
+        quantity:
+          type: number
+          title: Quantity
+          description: Quantity of the item in the selected UOM.
+        unit_price:
+          type: number
+          title: Unit Price
+          description: Unit price of the item in the selected UOM.
+        manufacturer_part_number:
+          type: string
+          title: Manufacturer Part Number
+          description: Manufacturer part number of the item.
+        supplier:
+          type: object
+          title: External Supplier Info
+          description: External supplier information.
+          $ref: '#/components/schemas/SupplierInfo'
+        price_book_item_id:
+          type: string
+          title: Price Book Item Id
+          description: Price book item ID.
+        start_date:
+          type: string
+          format: date
+          title: Start Date
+          description: Start date for item with kind Service.
+        end_date:
+          type: string
+          format: date
+          title: End Date
+          description: End date for item with kind Service.
+      type: object
+      required:
+      - title
+      - kind
+      - uom
+      - quantity
+      title: RequestItem
+    UpdatePRStatusRequest:
+      properties:
+        status:
+          type: string
+          title: Status
+          description: Text status field.
+      type: object
+      required:
+      - status
+      title: UpdatePRStatusRequest
+    ApprovalStepRejectRequest:
+      title: ApprovalStepRejectRequest
+      required:
+      - note
+      - approver_email
+      type: object
+      properties:
+        note:
+          title: Note
+          type: string
+          description: Required note explaining the rejection.
+        approver_email:
+          title: Approver email
+          type: string
+      description: Request data for rejecting an approval step.
+    DetailResponseItem:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Response item unique ID.
+          examples:
+          - 3e31ad9c-a78a-4925-8266-665aef520719
+        title:
+          type: string
+          title: Title
+          description: Request item title.
+          examples:
+          - Apple Iphone 16 PRO MAX 1TB
+        quantity:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Quantity
+          description: Amount of items that was proposed by supplier.
+          examples:
+          - '10'
+          - '1.5'
+          - null
+        awarded_quantity:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Awarded Quantity
+          description: Amount of items that Buyer was awarded.
+          examples:
+          - '10'
+          - '1.5'
+          - null
+        uom:
+          type: string
+          title: Uom
+          description: Unit of measurement.
+          examples:
+          - each
+          - bar
+          - kilogram
+          - ''
+        unit_price:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Unit Price
+          description: Item's unit price
+          examples:
+          - '10'
+          - '1.5'
+          - '0'
+          - null
+        delivery_days:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Delivery Days
+          description: The number of days during which current item was planned to be delivered.
+          examples:
+          - 1
+          - 5
+          - null
+        is_awarded:
+          type: boolean
+          title: Is Awarded
+          description: Will be True in case item was awarded by buyer.
+          examples:
+          - true
+          - false
+        is_rejected:
+          type: boolean
+          title: Is Rejected
+          description: Will be True in case item was rejected by supplier.
+          examples:
+          - true
+          - false
+        supplier_pn:
+          type: string
+          title: Supplier Pn
+          description: Supplier part number
+          examples:
+          - HDY66-X2
+        sku:
+          type: string
+          title: Sku
+          description: Stock Keeping Unit.
+          examples:
+          - ZG011AQA
+        quantity_change_reason_note:
+          type: string
+          title: Quantity Change Reason Note
+          description: Note for buyer why will be bid not different quantity.
+          examples:
+          - There are 12 bottles in the box.
+        minimum_order_quantity:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Minimum Order Quantity
+          description: Information for minimum order quantity
+          examples:
+          - '10'
+          - '1.5'
+          - null
+        country_of_origin:
+          type: string
+          title: Country Of Origin
+          description: Country of origin
+          examples:
+          - US
+          - Canada
+          - ''
+        comments:
+          type: string
+          title: Comments
+          description: Comment for buyer related bid item.
+          examples:
+          - Hot offer until the end of the week
+          - ''
+      type: object
+      required:
+      - id
+      - title
+      - quantity
+      - awarded_quantity
+      - uom
+      - unit_price
+      - delivery_days
+      - is_awarded
+      - is_rejected
+      - supplier_pn
+      - sku
+      - quantity_change_reason_note
+      - minimum_order_quantity
+      - country_of_origin
+      - comments
+      title: DetailResponseItem
+    ResponseSubmitRequest:
+      properties:
+        vendor_quote_number:
+          type: string
+          title: Vendor Quote Number
+          description: Vendor quote number.
+          examples:
+          - DFR440-DB
+        valid_for:
+          $ref: '#/components/schemas/ResponseValidFor'
+          description: The number of days during which the offer will be valid.
+          examples:
+          - 1
+          - 5
+          - 7
+          - 10
+          - 15
+          - 30
+          - 45
+          - 60
+          - 90
+          - 180
+          - 365
+        is_shipping_included:
+          type: boolean
+          title: Is Shipping Included
+          description: Is shipping included in the total price?
+          examples:
+          - true
+          - false
+        shipping:
+          anyOf:
+          - type: number
+          - type: string
+          title: Shipping
+          description: Cost of shipping in case it not included in the total price
+          default: '0'
+          examples:
+          - '49.99'
+          - '0'
+        notes:
+          type: string
+          title: Notes
+          description: Additional notes from Supplier for Buyer related to the response, if needed.
+          default: ''
+          examples:
+          - Please contact us ASAP.
+          - ''
+        currency:
+          type: string
+          title: Currency
+          description: Currency code of response in ISO 4217 format
+          examples:
+          - USD
+          - CAD
+          - EUR
+        items:
+          items:
+            $ref: '#/components/schemas/ResponseItemSubmitRequest'
+          type: array
+          title: Items
+      type: object
+      required:
+      - vendor_quote_number
+      - valid_for
+      - is_shipping_included
+      - currency
+      - items
+      title: ResponseSubmitRequest
+    ApprovalDetail:
+      title: ApprovalDetail
+      required:
+      - id
+      - status
+      - target
+      - target_id
+      - stages
+      - created_at
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          description: Unique identifier for the approval.
+        status:
+          title: Status
+          type: string
+          description: Current status of the approval.
+        target:
+          title: Target
+          type: string
+          description: Target type for the approval (e.g., 'rfq').
+        target_id:
+          title: Target Id
+          type: string
+          description: Unique identifier of the target object.
+        stages:
+          title: Stages
+          type: array
+          items:
+            $ref: '#/components/schemas/ApprovalStage'
+          description: List of approval stages.
+        created_at:
+          title: Created At
+          type: string
+          format: date-time
+          description: Timestamp when the approval was created.
+        updated_at:
+          title: Updated At
+          type: string
+          format: date-time
+          description: Timestamp when the approval was last updated.
+      description: Data for an RFQ approval workflow.
+    PriceBookItemRetrieve:
+      properties:
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+        schema_data:
+          type: object
+          title: Schema Data
+      type: object
+      required:
+      - schema_id
+      - schema_data
+      title: PriceBookItemRetrieve
+    RequestItemV4Retrieve:
+      properties:
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+        schema_data:
+          type: object
+          title: Schema Data
+        id:
+          type: string
+          format: uuid
+          title: Id
+        price_book_item:
+          $ref: '#/components/schemas/PriceBookItemRetrieve'
+      type: object
+      required:
+      - schema_id
+      - schema_data
+      - id
+      title: RequestItemV4Retrieve
+    RequestUrgency:
+      type: string
+      enum:
+      - normal
+      - rush
+      - emergency
+      title: RequestUrgency
+    LinkPRRequest:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: External PR reference ID.
+        url:
+          type: string
+          format: uri
+          title: Url
+          description: Full URL link to the external PR.
+      type: object
+      title: LinkPRRequest
+    CancelRequest:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: CancelRequest
+    ApprovalStage:
+      title: ApprovalStage
+      required:
+      - id
+      - status
+      - sequence
+      - steps
+      - min_approved_steps_count
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unique identifier for the approval stage.
+        status:
+          title: Status
+          type: string
+          description: Current status of the approval stage.
+        sequence:
+          title: Sequence
+          type: string
+          description: Sequential order of this stage in the approval workflow.
+        steps:
+          title: Steps
+          type: array
+          items:
+            $ref: '#/components/schemas/ApprovalStep'
+          description: List of approval steps within this stage.
+        min_approved_steps_count:
+          title: Min Approved Steps Count
+          type: integer
+          description: Minimum number of steps that need to be approved for this stage to complete.
+        due_date:
+          title: Due Date
+          type: string
+          format: date-time
+          description: Due date for this approval stage.
+      description: Data for an approval stage containing multiple steps.
+    RejectionKindWithEmpty:
+      type: string
+      enum:
+      - out_of_stock
+      - items_not_carried
+      - more_information_needed_to_quote
+      - price_not_competitive
+      - ship_address_outside_our_coverage_area
+      - other
+      - ''
+      title: RejectionKindWithEmpty
+    RequestRetrieve:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: Request Id.
+        title:
+          type: string
+          title: Title
+          description: A brief, descriptive title for the Request.
+        status:
+          type: string
+          title: Status
+          description: Request status.
+        requester:
+          type: string
+          title: Requester
+          description: Fairmarkit buyer's email address.
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+          description: Id for the JSON schema.
+        schema_data:
+          type: object
+          title: Schema Data
+          description: Custom data according to the provided or current JSON Schema.
+        items:
+          items:
+            $ref: '#/components/schemas/RequestItemResponse'
+          type: array
+          title: Items
+          description: A list of items.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Date and time when the Request was created.
+        file_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: File Ids
+      type: object
+      required:
+      - id
+      - title
+      - status
+      - requester
+      - schema_id
+      - schema_data
+      - items
+      - created_at
+      title: RequestRetrieve
+    PR:
+      properties:
+        id:
+          type: string
+          title: Id
+        url:
+          type: string
+          title: Url
+        status:
+          type: string
+          title: Status
+        errors:
+          items:
+            $ref: '#/components/schemas/PRError'
+          type: array
+          title: Errors
+      type: object
+      required:
+      - errors
+      title: PR
+    DetailRequestResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique request ID.
+          examples:
+          - e3f18428-6e27-4b34-855f-e635a8c56b8b
+        ref_id:
+          type: integer
+          title: Ref Id
+          description: Reference ID from platform.
+          examples:
+          - 1
+          - 100500
+        title:
+          type: string
+          title: Title
+          description: Request title.
+          examples:
+          - Apple Iphone 16 PRO MAX 1TB
+        customer_title:
+          type: string
+          title: Customer Title
+          description: Customer title.
+          examples:
+          - Apple Inc.
+        closes_at:
+          type: string
+          title: Closes At
+          description: Date and time of when request was planed to close.
+          examples:
+          - '2025-09-05 08:39:24.199757+00:00'
+        preferred_delivery_date:
+          type: string
+          title: Preferred Delivery Date
+          description: Preferred delivery date and time expected by buyer. Will be empty string if wasn't provided.
+          examples:
+          - '2025-09-01 08:39:24.199791+00:00'
+          - ''
+        urgency:
+          $ref: '#/components/schemas/RequestUrgency'
+          description: Request urgency.
+          examples:
+          - normal
+          - rush
+          - emergency
+        status:
+          $ref: '#/components/schemas/RequestStatus_2'
+          description: Actual Request status.
+          examples:
+          - new
+          - missed
+          - canceled
+          - viewed
+          - ignored
+          - submitted
+          - waiting_for_award
+          - lost
+          - won
+          - declined
+        payment_process:
+          $ref: '#/components/schemas/PaymentProcess'
+          description: Payment process expected by buyer.
+          default: po
+          examples:
+          - po
+          - invoice_only
+          - credit_card
+        shipping_address:
+          $ref: '#/components/schemas/ShippingAddress'
+        shipping_type:
+          $ref: '#/components/schemas/ShippingType'
+          description: Shipping type expected by buyer.
+          default: ''
+          examples:
+          - ocean_freight
+          - freight
+          - same_day
+          - next_day
+          - next_day_am
+          - two_day
+          - two_day_am
+          - three_day
+          - saturday
+          - courier
+          - ground
+          - priority_mail_express
+          - priority_mail
+          - ground_with_freight_pricing
+          - critical
+          - ''
+        carrier:
+          $ref: '#/components/schemas/CarrierKind'
+          description: Carrier type expected by buyer.
+          default: ''
+          examples:
+          - ups
+          - fedex
+          - dhl
+          - usps
+          - ''
+        currency:
+          type: string
+          title: Currency
+          description: Currency of request.
+          examples:
+          - USD
+          - CAD
+          - EUR
+          - AUD
+        notes:
+          type: string
+          title: Notes
+          description: Additional notes from Buyer for suppliers related to the request, if exists.
+          examples:
+          - We are working only on Mon and Tue.
+        items:
+          items:
+            $ref: '#/components/schemas/DetailRequestItemResponse'
+          type: array
+          title: Items
+      type: object
+      required:
+      - id
+      - ref_id
+      - title
+      - customer_title
+      - closes_at
+      - preferred_delivery_date
+      - urgency
+      - status
+      - shipping_address
+      - currency
+      - notes
+      - items
+      title: DetailRequestResponse
+    SupplierInfo:
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          title: Uuid
+        title:
+          type: string
+          title: Title
+        email:
+          type: string
+          title: Email
+        erp_systems:
+          items:
+            $ref: '#/components/schemas/SupplierErpSystemInfo'
+          type: array
+          title: Erp Systems
+      type: object
+      required:
+      - uuid
+      - title
+      - email
+      title: SupplierInfo
+    BaseFileRetrieve:
+      title: BaseFileRetrieve
+      required:
+      - file
+      - orig_file_name
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          format: uri
+        orig_file_name:
+          title: Orig File Name
+          type: string
+    RequestV4Retrieve:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        short_id:
+          type: integer
+          title: Short Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+        status:
+          type: string
+          title: Status
+        title:
+          type: string
+          maxLength: 250
+          title: Title
+        rfx_event:
+          $ref: '#/components/schemas/RFxEvent'
+        pr:
+          $ref: '#/components/schemas/PR'
+        created_by_id:
+          type: string
+          format: uuid
+          title: Created By Id
+        requester_id:
+          type: string
+          format: uuid
+          title: Requester Id
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+        schema_data:
+          type: object
+          title: Schema Data
+        attachments:
+          items:
+            $ref: '#/components/schemas/BaseFileRetrieve'
+          type: array
+          title: Attachments
+          default: []
+        requester_email:
+          type: string
+          title: Requester Email
+        cancellation_reason:
+          type: string
+          title: Cancellation Reason
+      type: object
+      required:
+      - id
+      - created_at
+      - status
+      - title
+      - pr
+      - created_by_id
+      - schema_id
+      - schema_data
+      title: RequestV4Retrieve
+    RequestV4ListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/RequestV4ListRetrieveItem'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: RequestV4ListRetrieve
+    RequestStatus:
+      type: string
+      enum:
+      - canceled
+      - completed
+      - draft
+      - in_progress
+      - in_review
+      title: RequestStatus
+      description: Request status values.
+    PRError:
+      properties:
+        text:
+          type: string
+          title: Text
+          description: Error Short Summary.
+        detail:
+          type: string
+          title: Detail
+          description: Error Details.
+      type: object
+      required:
+      - text
+      - detail
+      title: PRError
+    ApprovalStepRequest:
+      title: ApprovalStepRequest
+      required:
+      - note
+      - approver_email
+      type: object
+      properties:
+        note:
+          title: Note
+          type: string
+          description: Optional note for the approval step.
+        approver_email:
+          title: Approver email
+          type: string
+      description: Request data for approving an approval step.
+    RequestItemV4Create:
+      properties:
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+        schema_data:
+          type: object
+          title: Schema Data
+      type: object
+      required:
+      - schema_id
+      - schema_data
+      title: RequestItemV4Create
+    RequestCreate:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: Request Id.
+        title:
+          type: string
+          title: Title
+          description: A brief, descriptive title for the Request.
+        status:
+          type: string
+          title: Status
+          description: Request status.
+        requester:
+          type: string
+          title: Requester
+          description: Fairmarkit buyer's email address.
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+          description: Id for the JSON schema.
+        schema_data:
+          type: object
+          title: Schema Data
+          description: Custom data according to the provided or current JSON Schema.
+        items:
+          items:
+            $ref: '#/components/schemas/RequestItemResponse'
+          type: array
+          title: Items
+          description: A list of items.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Date and time when the Request was created.
+        file_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: File Ids
+      type: object
+      required:
+      - id
+      - title
+      - status
+      - requester
+      - schema_id
+      - schema_data
+      - items
+      - created_at
+      title: RequestCreate
+    HTTPValidationError_2:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError_2'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    PaymentProcess:
+      type: string
+      enum:
+      - po
+      - invoice_only
+      - credit_card
+      title: PaymentProcess
+    RequestV4ListRetrieveItem:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        short_id:
+          type: integer
+          title: Short Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+        status:
+          type: string
+          title: Status
+        title:
+          type: string
+          maxLength: 250
+          title: Title
+        rfx_event:
+          $ref: '#/components/schemas/RFxEvent'
+        pr:
+          $ref: '#/components/schemas/PR'
+      type: object
+      required:
+      - id
+      - created_at
+      - status
+      - title
+      - pr
+      title: RequestV4ListRetrieveItem
+    UpdateRequest:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        schema_data:
+          type: object
+          title: Schema Data
+      type: object
+      required:
+      - id
+      - schema_data
+      title: UpdateRequest
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    UpdateRequestItem:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        schema_data:
+          type: object
+          title: Schema Data
+      type: object
+      required:
+      - id
+      - schema_data
+      title: UpdateRequestItem
+    RequestRejectRequest:
+      properties:
+        reject_kind:
+          $ref: '#/components/schemas/RejectionKind'
+          description: Available kinds of rejection. In case chosen "other", please should describe the reason.
+          examples:
+          - out_of_stock
+          - items_not_carried
+          - more_information_needed_to_quote
+          - price_not_competitive
+          - ship_address_outside_our_coverage_area
+          - other
+        reject_reason:
+          type: string
+          title: Reject Reason
+          description: Reason of rejection. Should be described in case rejection kind "other"
+          default: ''
+          examples:
+          - We are not working at next week
+          - ''
+      type: object
+      required:
+      - reject_kind
+      title: RequestRejectRequest
+    ResponseStatus:
+      type: string
+      enum:
+      - sent
+      - opened
+      - submitted
+      - awarded
+      - no_bid
+      title: ResponseStatus
+    ResponseItemSubmitRequest:
+      properties:
+        event_item:
+          type: string
+          format: uuid
+          title: Event Item
+          description: UUID of the request item for which you provide response data.
+          examples:
+          - 984c43cb-9195-4d37-bcf8-6e92c8eb1f5f
+        is_rejected:
+          type: boolean
+          title: Is Rejected
+          description: Flag should be set to True in case supplier want reject this item.
+          default: false
+          examples:
+          - true
+          - false
+        quantity:
+          anyOf:
+          - type: number
+          - type: string
+          - type: 'null'
+          title: Quantity
+          description: Item quantity. Could be null in case uncountable item.
+          examples:
+          - '10'
+          - '1.5'
+          - '0'
+          - null
+        uom:
+          type: string
+          title: Uom
+          description: Unit of measurement.
+          default: ''
+          examples:
+          - each
+          - bar
+          - kilogram
+          - ''
+        unit_price:
+          anyOf:
+          - type: number
+          - type: string
+          - type: 'null'
+          title: Unit Price
+          description: Item's unit price. Could be null in case unit price is not needed.
+          examples:
+          - '10'
+          - '1.5'
+          - '0'
+          - null
+        delivery_days:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Delivery Days
+          description: The number of days during which the parcel is planned to be delivered. Could be null.
+          examples:
+          - 1
+          - 5
+          - null
+        supplier_pn:
+          type: string
+          title: Supplier Pn
+          description: Supplier part number. Could be empty id not exists.
+          default: ''
+          examples:
+          - HDY66-X2
+        sku:
+          type: string
+          title: Sku
+          description: Stock Keeping Unit. Could be empty id not exists.
+          default: ''
+          examples:
+          - ZG011AQA
+        quantity_change_reason_note:
+          type: string
+          title: Quantity Change Reason Note
+          description: Note for buyer why will be bid not different quantity. Could be empty if not exists.
+          default: ''
+          examples:
+          - There are 12 bottles in the box.
+        minimum_order_quantity:
+          anyOf:
+          - type: number
+          - type: string
+          - type: 'null'
+          title: Minimum Order Quantity
+          description: Information for minimum order quantity. Could be null in case not required.
+          examples:
+          - '10'
+          - '1.5'
+          - null
+        country_of_origin:
+          type: string
+          title: Country Of Origin
+          description: Country of origin. Could be empty.
+          default: ''
+          examples:
+          - US
+          - Canada
+          - ''
+        comments:
+          type: string
+          title: Comments
+          description: Comment for buyer related bid item. Could be empty.
+          default: ''
+          examples:
+          - Hot offer until the end of the week
+          - ''
+      type: object
+      required:
+      - event_item
+      title: ResponseItemSubmitRequest
+    RequestV4Create:
+      properties:
+        title:
+          type: string
+          maxLength: 250
+          title: Title
+        requester:
+          type: string
+          format: email
+          title: Requester
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+        schema_data:
+          type: object
+          title: Schema Data
+        assignee:
+          type: string
+          format: email
+          title: Assignee
+      type: object
+      required:
+      - title
+      - schema_data
+      anyOf:
+      - required:
+        - requester
+      - required:
+        - assignee
+      title: RequestV4Create

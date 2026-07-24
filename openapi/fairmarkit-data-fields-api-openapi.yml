@@ -1,0 +1,844 @@
+openapi: 3.1.1
+info:
+  title: BUYER PUBLIC Business Units Data Fields API
+  version: '3'
+  description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
+  termsOfService: https://www.fairmarkit.com/terms-of-service
+  contact:
+    name: Fairmarkit Support
+    url: https://fmkt.zendesk.com/hc/en-us
+    email: support@fairmarkit.com
+servers:
+- url: https://staging.fairmarkit.com/
+tags:
+- name: Data Fields
+paths:
+  /services/self-service/api/v3/data-fields/dataset/{slug}/items:
+    post:
+      tags:
+      - Data Fields
+      summary: Create Dataset Items
+      description: Creates dataset items.
+      operationId: DataFieldApi_create_dataset_items_services_self_service_api_v3_data_fields_dataset__slug__items_post
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Slug
+        name: slug
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/CreateDatasetItemRequest'
+              type: array
+              title: Items
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DataFieldDatasetItemIDResponse'
+                type: array
+                title: Response Datafieldapi Create Dataset Items Services Self Service Api V3 Data Fields Dataset  Slug  Items Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - Data Fields
+      summary: List Dataset Items
+      description: Returns a list of dataset items.
+      operationId: DataFieldApi_get_dataset_items_services_self_service_api_v3_data_fields_dataset__slug__items_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Slug
+        name: slug
+        in: path
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          description: Zero-based offset of the first record to return.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return.
+      - required: false
+        schema:
+          type: integer
+          maximum: 101
+          minimum: 0
+          title: Limit
+          default: 10
+          description: Maximum number of records to return. Defaults to 10.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 10.
+      - required: false
+        schema:
+          type: string
+          title: Search
+          description: Search term used to filter results.
+        name: search
+        in: query
+        description: Search term used to filter results.
+      - description: Filter items by tags.
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Tag
+          description: Filter items by tags.
+        name: tag
+        in: query
+      - description: Ordering field. Prefix with '-' for descending order.
+        required: false
+        schema:
+          type: string
+          title: Ordering
+          description: Ordering field. Prefix with '-' for descending order.
+        name: ordering
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DataFieldDatasetItemResponse'
+                type: array
+                title: Response Datafieldapi Get Dataset Items Services Self Service Api V3 Data Fields Dataset  Slug  Items Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v3/data-fields/dataset:
+    get:
+      tags:
+      - Data Fields
+      summary: List Datasets
+      description: Returns a list of datasets.
+      operationId: DataFieldApi_get_datasets_services_self_service_api_v3_data_fields_dataset_get
+      parameters:
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          description: Zero-based offset of the first record to return.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return.
+      - required: false
+        schema:
+          type: integer
+          maximum: 101
+          minimum: 0
+          title: Limit
+          default: 10
+          description: Maximum number of records to return. Defaults to 10.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 10.
+      - description: Filter by active status.
+        required: false
+        schema:
+          type: boolean
+          title: Active
+          description: Filter by active status.
+        name: active
+        in: query
+      - description: Filter datasets by slug
+        required: false
+        schema:
+          type: string
+          title: Slug
+          description: Filter datasets by slug
+        name: slug
+        in: query
+      - description: Filter datasets by title
+        required: false
+        schema:
+          type: string
+          title: Title
+          description: Filter datasets by title
+        name: title
+        in: query
+      - description: Ordering field. Prefix with '-' for descending order.
+        required: false
+        schema:
+          type: string
+          enum:
+          - created_at
+          - -created_at
+          - title
+          - -title
+          - slug
+          - -slug
+          - active
+          - -active
+          title: Ordering
+          description: Ordering field. Prefix with '-' for descending order.
+        name: ordering
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DataFieldDatasetResponse'
+                type: array
+                title: Response Datafieldapi Get Datasets Services Self Service Api V3 Data Fields Dataset Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - Data Fields
+      summary: Create Dataset
+      description: Creates a new dataset.
+      operationId: DataFieldApi_create_dataset_services_self_service_api_v3_data_fields_dataset_post
+      parameters:
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDatasetRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/DataFieldDatasetSlugResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v3/data-fields/dataset-items/upload:
+    post:
+      tags:
+      - Data Fields
+      summary: Upload Dataset Items
+      description: Uploads dataset items from a file.
+      operationId: DataFieldApi_upload_dataset_items_services_self_service_api_v3_data_fields_dataset_items_upload_post
+      parameters:
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadDatasetItemsRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DataFieldDatasetItemIDResponse'
+                type: array
+                title: Response Datafieldapi Upload Dataset Items Services Self Service Api V3 Data Fields Dataset Items Upload Post
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v3/data-fields/dataset/{slug}/items/{item_id}:
+    get:
+      tags:
+      - Data Fields
+      summary: Get Dataset Item Details
+      description: Returns details for a dataset item.
+      operationId: DataFieldApi_get_dataset_item_by_id_services_self_service_api_v3_data_fields_dataset__slug__items__item_id__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Slug
+        name: slug
+        in: path
+      - description: The UUID or External ID of the dataset item to retrieve.
+        required: true
+        schema:
+          type: string
+          title: Item Id
+        name: item_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/DataFieldDatasetItemResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Data Fields
+      summary: Delete Dataset Item
+      description: Deletes a dataset item.
+      operationId: DataFieldApi_delete_dataset_item_services_self_service_api_v3_data_fields_dataset__slug__items__item_id__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Slug
+        name: slug
+        in: path
+      - description: The UUID or External ID of the dataset item to delete.
+        required: true
+        schema:
+          type: string
+          title: Item Id
+        name: item_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    patch:
+      tags:
+      - Data Fields
+      summary: Update Dataset Item
+      description: Updates a dataset item.
+      operationId: DataFieldApi_update_dataset_item_services_self_service_api_v3_data_fields_dataset__slug__items__item_id__patch
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Slug
+        name: slug
+        in: path
+      - description: The UUID or External ID of the dataset item to update.
+        required: true
+        schema:
+          type: string
+          title: Item Id
+        name: item_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDatasetItemRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/DataFieldDatasetItemIDResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v3/data-fields/dataset/{slug}:
+    patch:
+      tags:
+      - Data Fields
+      summary: Update Dataset
+      description: Updates a dataset.
+      operationId: DataFieldApi_update_dataset_services_self_service_api_v3_data_fields_dataset__slug__patch
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Slug
+        name: slug
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateDatasetRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/DataFieldDatasetSlugResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    get:
+      tags:
+      - Data Fields
+      summary: Get Dataset Details
+      description: Returns details for a dataset.
+      operationId: DataFieldApi_get_dataset_by_slug_services_self_service_api_v3_data_fields_dataset__slug__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Slug
+        name: slug
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/DataFieldDatasetResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - Data Fields
+      summary: Delete Dataset
+      description: Deletes a dataset.
+      operationId: DataFieldApi_delete_dataset_services_self_service_api_v3_data_fields_dataset__slug__delete
+      parameters:
+      - required: true
+        schema:
+          type: string
+          title: Slug
+        name: slug
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v3/data-fields/dataset-items:
+    get:
+      tags:
+      - Data Fields
+      summary: List Dataset Items By Filters
+      description: Returns dataset items matching the supplied filters.
+      operationId: DataFieldApi_get_dataset_items_by_ids_services_self_service_api_v3_data_fields_dataset_items_get
+      parameters:
+      - description: Filter by dataset item IDs.
+        required: true
+        schema:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Item Id
+          description: Filter by dataset item IDs.
+        name: item_id
+        in: query
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          description: Zero-based offset of the first record to return.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return.
+      - required: false
+        schema:
+          type: integer
+          maximum: 101
+          minimum: 0
+          title: Limit
+          default: 10
+          description: Maximum number of records to return. Defaults to 10.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 10.
+      - required: false
+        schema:
+          type: string
+          title: Search
+          description: Search term used to filter results.
+        name: search
+        in: query
+        description: Search term used to filter results.
+      - description: Filter items by tags.
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+          title: Tag
+          description: Filter items by tags.
+        name: tag
+        in: query
+      - description: Ordering field. Prefix with '-' for descending order.
+        required: false
+        schema:
+          type: string
+          title: Ordering
+          description: Ordering field. Prefix with '-' for descending order.
+        name: ordering
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DataFieldDatasetItemResponse'
+                type: array
+                title: Response Datafieldapi Get Dataset Items By Ids Services Self Service Api V3 Data Fields Dataset Items Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    UpdateDatasetItemRequest:
+      properties:
+        value:
+          type: object
+          title: Value
+          default: {}
+        dataset_id:
+          type: string
+          format: uuid
+          title: Dataset Id
+        custom_tags:
+          type: object
+          title: Custom Tags
+          default: {}
+        external_id:
+          type: string
+          title: External Id
+      type: object
+      title: UpdateDatasetItemRequest
+    CreateDatasetRequest:
+      properties:
+        slug:
+          type: string
+          title: Slug
+        title:
+          type: string
+          title: Title
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+      type: object
+      required:
+      - slug
+      - title
+      - schema_id
+      title: CreateDatasetRequest
+    CreateDatasetItemRequest:
+      properties:
+        value:
+          type: object
+          title: Value
+        custom_tags:
+          type: object
+          title: Custom Tags
+          default: {}
+        external_id:
+          type: string
+          title: External Id
+      type: object
+      required:
+      - value
+      title: CreateDatasetItemRequest
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    DataFieldDatasetSlugResponse:
+      properties:
+        slug:
+          type: string
+          title: Slug
+      type: object
+      required:
+      - slug
+      title: DataFieldDatasetSlugResponse
+    DataFieldDatasetItemIDResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: DataFieldDatasetItemIDResponse
+    DataFieldDatasetItemResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        created_by:
+          type: string
+          format: uuid
+          title: Created By
+        dataset_id:
+          type: string
+          format: uuid
+          title: Dataset Id
+        value:
+          type: object
+          title: Value
+        custom_tags:
+          type: object
+          title: Custom Tags
+        external_id:
+          type: string
+          title: External Id
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+        updated_by:
+          type: string
+          format: uuid
+          title: Updated By
+      type: object
+      required:
+      - id
+      - created_at
+      - created_by
+      - dataset_id
+      - value
+      title: DataFieldDatasetItemResponse
+    DataFieldDatasetResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        created_by:
+          type: string
+          format: uuid
+          title: Created By
+        tenant_id:
+          type: string
+          format: uuid
+          title: Tenant Id
+        slug:
+          type: string
+          title: Slug
+        title:
+          type: string
+          title: Title
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+        active:
+          type: boolean
+          title: Active
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+        updated_by:
+          type: string
+          format: uuid
+          title: Updated By
+      type: object
+      required:
+      - id
+      - created_at
+      - created_by
+      - tenant_id
+      - slug
+      - title
+      - schema_id
+      - active
+      title: DataFieldDatasetResponse
+    UploadDatasetItemsRequest:
+      properties:
+        dataset_slug:
+          type: string
+          title: Dataset Slug
+        file_id:
+          type: string
+          format: uuid
+          title: File Id
+      type: object
+      required:
+      - dataset_slug
+      - file_id
+      title: UploadDatasetItemsRequest
+    UpdateDatasetRequest:
+      properties:
+        title:
+          type: string
+          maxLength: 255
+          title: Title
+        active:
+          type: boolean
+          title: Active
+        slug:
+          type: string
+          maxLength: 50
+          title: Slug
+      type: object
+      title: UpdateDatasetRequest

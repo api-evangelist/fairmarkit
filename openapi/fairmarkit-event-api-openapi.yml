@@ -1,0 +1,462 @@
+openapi: 3.1.1
+info:
+  title: BUYER PUBLIC Business Units Event API
+  version: '3'
+  description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
+  termsOfService: https://www.fairmarkit.com/terms-of-service
+  contact:
+    name: Fairmarkit Support
+    url: https://fmkt.zendesk.com/hc/en-us
+    email: support@fairmarkit.com
+servers:
+- url: https://staging.fairmarkit.com/
+tags:
+- name: Event
+paths:
+  /services/self-service/api/v4/event/{event_id}:
+    get:
+      tags:
+      - Event
+      summary: Get Event Details
+      operationId: EventApi_get_event_details_services_self_service_api_v4_event__event_id__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Event Id
+        name: event_id
+        in: path
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/EventRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns details for an event.
+  /services/self-service/api/v4/event/{request_id}/events:
+    get:
+      tags:
+      - Event
+      summary: List Events By Request
+      operationId: EventApi_get_events_list_by_request_id_services_self_service_api_v4_event__request_id__events_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          title: Limit
+          default: 20
+          description: Maximum number of records to return. Defaults to 20.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 20.
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return. Defaults to 0.
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/EventsV4ListRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns events for a Request.
+  /services/self-service/api/v4/event/{event_id}/pricing/items:
+    get:
+      tags:
+      - Event
+      summary: Get Event Pricing Items
+      operationId: EventApi_get_event_pricing_items_services_self_service_api_v4_event__event_id__pricing_items_get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Event Id
+        name: event_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          title: Limit
+          default: 20
+          description: Maximum number of records to return. Defaults to 20.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 20.
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return. Defaults to 0.
+      - required: false
+        schema:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Id
+          description: Filter by item IDs.
+        name: id
+        in: query
+        description: Filter by item IDs.
+      - required: false
+        schema:
+          type: boolean
+          title: Is Deleted
+          default: false
+          description: Filter by deleted status.
+        name: is_deleted
+        in: query
+        description: Filter by deleted status.
+      - required: false
+        schema:
+          type: string
+          title: Search
+          description: Search term used to filter results.
+        name: search
+        in: query
+        description: Search term used to filter results.
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/EventPricingItemListRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns pricing items for an event.
+components:
+  schemas:
+    ItemStatus:
+      type: string
+      enum:
+      - AWARDED
+      - CANCELED
+      - DRAFT
+      - SOURCING
+      title: ItemStatus
+      description: Item status values.
+    Assignee:
+      properties:
+        id:
+          type: string
+          title: Id
+        email:
+          type: string
+          title: Email
+      type: object
+      required:
+      - id
+      title: Assignee
+    EventStatus:
+      type: string
+      enum:
+      - CANCELED
+      - CLOSED
+      - COMPLETED
+      - DRAFT
+      - OPENED
+      title: EventStatus
+      description: Event status values.
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    EventType:
+      type: string
+      enum:
+      - DIRECT_NEGOTIATION
+      - SOURCING
+      title: EventType
+      description: Event type values.
+    EventRetrieve:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        title:
+          type: string
+          title: Title
+        tenant_id:
+          type: string
+          format: uuid
+          title: Tenant Id
+        status:
+          $ref: '#/components/schemas/EventStatus'
+        state_name:
+          $ref: '#/components/schemas/EventStateName'
+        event_type:
+          $ref: '#/components/schemas/EventType'
+        request_id:
+          type: string
+          format: uuid
+          title: Request Id
+        assignee_id:
+          type: string
+          format: uuid
+          title: Assignee Id
+        assignee:
+          allOf:
+          - $ref: '#/components/schemas/Assignee'
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+        opened_at:
+          type: string
+          format: date-time
+          title: Opened At
+        canceled_at:
+          type: string
+          format: date-time
+          title: Canceled At
+        closed_at:
+          type: string
+          format: date-time
+          title: Closed At
+        completed_at:
+          type: string
+          format: date-time
+          title: Completed At
+        scheduled_opens_at:
+          type: string
+          format: date-time
+          title: Scheduled Opens At
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+        schema_data:
+          type: object
+          title: Schema Data
+        currency:
+          type: string
+          title: Currency
+        urgency:
+          $ref: '#/components/schemas/Urgency'
+        cancellation_reason:
+          type: string
+          title: Cancellation Reason
+      type: object
+      required:
+      - id
+      - title
+      - tenant_id
+      - status
+      - state_name
+      - event_type
+      - request_id
+      - created_at
+      - schema_data
+      - urgency
+      title: EventRetrieve
+    EventStateName:
+      type: string
+      enum:
+      - AWAITING_APPROVAL
+      - AWAITING_AWARD_APPROVAL
+      - CANCELED
+      - CLOSED
+      - COMPLETED
+      - DRAFT
+      - OPENED
+      title: EventStateName
+      description: Event state values.
+    EventPricingItemRetrieve:
+      properties:
+        item_id:
+          type: string
+          format: uuid
+          title: Item Id
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+        schema_data:
+          type: object
+          title: Schema Data
+        status:
+          $ref: '#/components/schemas/ItemStatus'
+        request_item_id:
+          type: string
+          format: uuid
+          title: Request Item Id
+        is_moved_from_previous_round:
+          type: boolean
+          title: Is Moved From Previous Round
+      type: object
+      required:
+      - item_id
+      - schema_id
+      - schema_data
+      - status
+      - is_moved_from_previous_round
+      title: EventPricingItemRetrieve
+    EventV4Retrieve:
+      properties:
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        id:
+          type: string
+          format: uuid
+          title: Id
+        short_id:
+          type: integer
+          title: Short Id
+        status:
+          $ref: '#/components/schemas/EventStatus'
+        title:
+          type: string
+          title: Title
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - title
+      - status
+      - created_at
+      title: EventV4Retrieve
+    Urgency:
+      type: string
+      enum:
+      - NORMAL
+      - URGENT
+      title: Urgency
+      description: Urgency values.
+    EventsV4ListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/EventV4Retrieve'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: EventsV4ListRetrieve
+    EventPricingItemListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/EventPricingItemRetrieve'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: EventPricingItemListRetrieve

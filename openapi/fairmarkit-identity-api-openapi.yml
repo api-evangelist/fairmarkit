@@ -1,0 +1,257 @@
+openapi: 3.1.1
+info:
+  title: BUYER PUBLIC Business Units Identity API
+  version: '3'
+  description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
+  termsOfService: https://www.fairmarkit.com/terms-of-service
+  contact:
+    name: Fairmarkit Support
+    url: https://fmkt.zendesk.com/hc/en-us
+    email: support@fairmarkit.com
+servers:
+- url: https://staging.fairmarkit.com/
+tags:
+- name: Identity
+paths:
+  /services/self-service/api/v4/identity/identities:
+    post:
+      tags:
+      - Identity
+      summary: Create Identity
+      operationId: IdentityApi_create_identity_services_self_service_api_v4_identity_identities_post
+      parameters:
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityCreateRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/IdentityCreateResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Creates an identity.
+  /services/self-service/api/v4/identity/permission-sets:
+    get:
+      tags:
+      - Identity
+      summary: List Permission Sets
+      operationId: RequestApi_get_available_permission_set_list_services_self_service_api_v4_identity_permission_sets_get
+      parameters:
+      - required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          title: Limit
+          default: 20
+          description: Maximum number of records to return. Defaults to 20.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 20.
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return. Defaults to 0.
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/PermissionSetListRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns a list of permission sets.
+components:
+  schemas:
+    LanguageCode:
+      type: string
+      enum:
+      - ar-tn
+      - bg
+      - de
+      - en
+      - en-gb
+      - es
+      - es-us
+      - et
+      - fi-fi
+      - fr
+      - hi
+      - hu
+      - id-id
+      - it
+      - ja-jp
+      - nl
+      - pl
+      - pt-br
+      - ru
+      - sv-se
+      - th
+      - tr
+      - uk-ua
+      - zh-hans
+      - zh-tw
+      - ko-kr
+      title: LanguageCode
+      description: Supported language codes.
+    PermissionSetListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/PermissionSetRetrieve'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: PermissionSetListRetrieve
+      description: Paginated list response for permission sets.
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    IdentityCreateRequest:
+      properties:
+        email:
+          type: string
+          format: email
+          title: Email
+        permission_set_id:
+          type: string
+          format: uuid
+          title: Permission Set Id
+        first_name:
+          type: string
+          title: First Name
+        last_name:
+          type: string
+          title: Last Name
+        language:
+          allOf:
+          - $ref: '#/components/schemas/LanguageCode'
+          default: en
+        timezone:
+          type: string
+          title: Timezone
+          default: UTC
+      type: object
+      required:
+      - email
+      - permission_set_id
+      - first_name
+      - last_name
+      title: IdentityCreateRequest
+    PermissionSetRetrieve:
+      properties:
+        title:
+          type: string
+          title: Title
+        permissions:
+          items:
+            type: string
+          type: array
+          title: Permissions
+        id:
+          type: string
+          format: uuid
+          title: Id
+        tenant_id:
+          type: string
+          format: uuid
+          title: Tenant Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - title
+      - permissions
+      - id
+      - created_at
+      title: PermissionSetRetrieve
+    IdentityCreateResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: IdentityCreateResponse

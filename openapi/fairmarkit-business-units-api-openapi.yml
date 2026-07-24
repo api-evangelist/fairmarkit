@@ -1,0 +1,363 @@
+openapi: 3.1.1
+info:
+  title: BUYER PUBLIC Business Units API
+  version: '3'
+  description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
+  termsOfService: https://www.fairmarkit.com/terms-of-service
+  contact:
+    name: Fairmarkit Support
+    url: https://fmkt.zendesk.com/hc/en-us
+    email: support@fairmarkit.com
+servers:
+- url: https://staging.fairmarkit.com/
+tags:
+- name: Business Units
+paths:
+  /services/self-service/api/v3/business-units/{uuid}/:
+    put:
+      tags:
+      - Business Units
+      summary: Update Business Unit
+      operationId: update_services_self_service_api_v3_business_units__uuid___put
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessUnit'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/BusinessUnitCreate'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Updates an existing business unit.
+    delete:
+      tags:
+      - Business Units
+      summary: Delete Business Unit
+      operationId: delete_services_self_service_api_v3_business_units__uuid___delete
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      responses:
+        '204':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Deletes an existing business unit.
+    get:
+      tags:
+      - Business Units
+      summary: Get Business Unit Details
+      operationId: retrieve_services_self_service_api_v3_business_units__uuid___get
+      parameters:
+      - required: true
+        schema:
+          title: Uuid
+          type: string
+          format: uuid
+        name: uuid
+        in: path
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/BusinessUnitRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns details for a business unit.
+  /services/self-service/api/v3/business-units/:
+    post:
+      tags:
+      - Business Units
+      summary: Create Business Unit
+      operationId: create_services_self_service_api_v3_business_units__post
+      parameters:
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BusinessUnit'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/BusinessUnitCreate'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Creates a new business unit.
+    get:
+      tags:
+      - Business Units
+      summary: List Business Units
+      operationId: list_services_self_service_api_v3_business_units__get
+      parameters:
+      - required: false
+        schema:
+          title: Limit
+          maximum: 100
+          minimum: 1
+          type: integer
+          default: 20
+          description: Maximum number of records to return. Defaults to 20.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 20.
+      - required: false
+        schema:
+          title: Offset
+          minimum: 0
+          type: integer
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return. Defaults to 0.
+      - required: false
+        schema:
+          title: X-Fm-Api-Key
+          type: string
+        name: X-FM-API-KEY
+        in: header
+        description: Fairmarkit API Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ListRetrieve_BusinessUnitRetrieve_'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      description: Returns a list of business units.
+components:
+  schemas:
+    BusinessUnitRetrieve:
+      title: BusinessUnitRetrieve
+      description: Paginated list response for business units.
+      required:
+      - id
+      - uuid
+      - title
+      - buyer_company
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          description: Business unit ID.
+        uuid:
+          title: Uuid
+          type: string
+          description: Business unit UUID.
+        title:
+          title: Title
+          type: string
+          description: Business unit name.
+        is_internal_part_number_required:
+          title: Is Internal Part Number Required
+          type: boolean
+          default: false
+          description: Select if an internal part number is required.
+        buyer_company:
+          $ref: '#/components/schemas/BusinessUnitBuyerCompany'
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    BusinessUnitCreate:
+      title: BusinessUnitCreate
+      description: Business unit data returned after create and update operations.
+      required:
+      - id
+      - uuid
+      - title
+      - buyer_company
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          description: Business unit ID.
+        uuid:
+          title: Uuid
+          type: string
+          description: Business unit UUID.
+        title:
+          title: Title
+          type: string
+          description: Business unit name.
+        is_internal_part_number_required:
+          title: Is Internal Part Number Required
+          type: boolean
+          default: false
+          description: Select if an internal part number is required.
+        buyer_company:
+          title: Buyer Company
+          type: integer
+          description: Buyer company.
+    BusinessUnit:
+      title: BusinessUnit
+      description: Business unit data.
+      required:
+      - title
+      type: object
+      properties:
+        title:
+          title: Title
+          type: string
+          description: Business unit title.
+        is_internal_part_number_required:
+          title: Is Internal Part Number Required
+          type: boolean
+          default: false
+          description: Select if an internal part number is required.
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    BusinessUnitBuyerCompany:
+      title: BusinessUnitBuyerCompany
+      description: Defines the buyer company for a business unit.
+      required:
+      - id
+      - uuid
+      - title
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          description: Company ID.
+        uuid:
+          title: Uuid
+          type: string
+          description: Company UUID.
+        title:
+          title: Title
+          type: string
+          description: Company name.
+    ListRetrieve_BusinessUnitRetrieve_:
+      title: ListRetrieve[BusinessUnitRetrieve]
+      description: Paginated list response for business units.
+      required:
+      - count
+      - results
+      type: object
+      properties:
+        count:
+          title: Count
+          type: integer
+          description: A count of the number of records in the full results set.
+        next:
+          title: Next
+          type: string
+          description: A URL to fetch the next page of results, if more results exist in the set.
+        previous:
+          title: Previous
+          type: string
+          description: A URL to fetch the previous page of results, if previous results exist in the set.
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessUnitRetrieve'
+          description: A list representing one page of the result set.

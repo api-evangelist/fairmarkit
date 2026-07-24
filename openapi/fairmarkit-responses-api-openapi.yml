@@ -1,0 +1,772 @@
+openapi: 3.1.1
+info:
+  title: BUYER PUBLIC Business Units Responses API
+  version: '3'
+  description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
+  termsOfService: https://www.fairmarkit.com/terms-of-service
+  contact:
+    name: Fairmarkit Support
+    url: https://fmkt.zendesk.com/hc/en-us
+    email: support@fairmarkit.com
+servers:
+- url: https://staging.fairmarkit.com/
+tags:
+- name: Responses
+paths:
+  /services/self-service/api/v4/responses/request/{request_id}/awarded-items/:
+    get:
+      tags:
+      - Responses
+      summary: List Awarded Response Items By Request
+      operationId: ResponseApi_get_response_items_by_request_search_as_buyer_services_self_service_api_v4_responses_request__request_id___get
+      description: Returns awarded response items for a Request.
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          title: Limit
+          default: 20
+          description: Maximum number of records to return. Defaults to 20.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 20.
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          default: 0
+          description: Zero-based offset of the first record to return. Defaults to 0.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return. Defaults to 0.
+      - required: false
+        schema:
+          $ref: '#/components/schemas/AwardSelectionStatus'
+        name: status
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ResponseMultiRoundItemsListRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v3/responses/request/{request_id}/response-items/:
+    get:
+      tags:
+      - Responses
+      summary: "\uD83E\uDDEA List Response Items By Request"
+      description: Returns a list of response items for a Request. This endpoint is in **BETA** and may change without notice.
+      operationId: ResponseApi_get_response_items_by_request_services_self_service_api_v3_responses_request__request_id__response_items__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          description: Zero-based offset of the first record to return.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return.
+      - required: false
+        schema:
+          type: integer
+          maximum: 101
+          minimum: 0
+          title: Limit
+          default: 10
+          description: Maximum number of records to return. Defaults to 10.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 10.
+      - description: Filter by response IDs.
+        required: false
+        schema:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Response Id
+          description: Filter by response IDs.
+        name: response_id
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ResponseItemListRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v3/responses/request/{request_id}/awarded-items/:
+    get:
+      tags:
+      - Responses
+      summary: "\uD83E\uDDEA List Awarded Response Items By Request"
+      description: Returns a list of awarded response items for a Request. This endpoint is in **BETA** and may change without notice.
+      operationId: ResponseApi_get_awarded_response_items_by_request_services_self_service_api_v3_responses_request__request_id__awarded_items__get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          description: Zero-based offset of the first record to return.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return.
+      - required: false
+        schema:
+          type: integer
+          maximum: 101
+          minimum: 0
+          title: Limit
+          default: 10
+          description: Maximum number of records to return. Defaults to 10.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 10.
+      - description: Filter by response IDs.
+        required: false
+        schema:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Response Id
+          description: Filter by response IDs.
+        name: response_id
+        in: query
+      - description: Filter awarded items by status. When omitted or empty, returns AWARDED and SELECTED items.
+        required: false
+        schema:
+          $ref: '#/components/schemas/AwardedItemQueryStatus'
+        name: status
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/AwardedItemListRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /services/self-service/api/v3/responses/request/{request_id}/:
+    get:
+      tags:
+      - Responses
+      description: Returns a list of responses for a Request. This endpoint is in **BETA** and may change without notice.
+      summary: "\uD83E\uDDEA List Responses By Request"
+      operationId: ResponseApi_get_responses_by_request_services_self_service_api_v3_responses_request__request_id___get
+      parameters:
+      - required: true
+        schema:
+          type: string
+          format: uuid
+          title: Request Id
+        name: request_id
+        in: path
+      - required: false
+        schema:
+          type: integer
+          minimum: 0
+          title: Offset
+          description: Zero-based offset of the first record to return.
+        name: offset
+        in: query
+        description: Zero-based offset of the first record to return.
+      - required: false
+        schema:
+          type: integer
+          maximum: 101
+          minimum: 0
+          title: Limit
+          default: 10
+          description: Maximum number of records to return. Defaults to 10.
+        name: limit
+        in: query
+        description: Maximum number of records to return. Defaults to 10.
+      - description: Filter by status.
+        required: false
+        schema:
+          items:
+            $ref: '#/components/schemas/ResponseStatus'
+          type: array
+          description: Filter by status.
+        name: status
+        in: query
+      - description: Filter responses by offline bid
+        required: false
+        schema:
+          type: boolean
+          title: Is Offline Bid
+          description: Filter responses by offline bid
+        name: is_offline_bid
+        in: query
+      - required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/ResponseListRetrieve'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    ResponseListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ResponseByRequest'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: ResponseListRetrieve
+    AwardedItemListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/AwardedItemResponse'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: AwardedItemListRetrieve
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    AwardSelectionStatus:
+      type: string
+      enum:
+      - AWARDED
+      - SELECTED
+      title: AwardSelectionStatus
+      description: Award selection status values.
+    ReasonInfo:
+      properties:
+        reason:
+          type: string
+          title: Reason
+        custom_reason:
+          type: string
+          title: Custom Reason
+      type: object
+      required:
+      - reason
+      title: ReasonInfo
+    SupplierErpSystemInfo:
+      properties:
+        external_supplier_id:
+          type: string
+          title: External Supplier Id
+        erp_system_uuid:
+          type: string
+          format: uuid
+          title: Erp System Uuid
+        is_active:
+          type: boolean
+          title: Is Active
+          default: true
+      type: object
+      required:
+      - external_supplier_id
+      - erp_system_uuid
+      title: SupplierErpSystemInfo
+    SupplierInfo:
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          title: Uuid
+        title:
+          type: string
+          title: Title
+        email:
+          type: string
+          title: Email
+        erp_systems:
+          items:
+            $ref: '#/components/schemas/SupplierErpSystemInfo'
+          type: array
+          title: Erp Systems
+      type: object
+      required:
+      - uuid
+      - title
+      - email
+      title: SupplierInfo
+    ResponseItemResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        response_id:
+          type: string
+          format: uuid
+          title: Response Id
+        request_item_id:
+          type: string
+          format: uuid
+          title: Request Item Id
+        schema_data:
+          type: object
+          title: Schema Data
+        is_no_bid:
+          type: boolean
+          title: Is No Bid
+        requested_quantity:
+          type: number
+          title: Requested Quantity
+        unit_price_usd:
+          type: string
+          title: Unit Price Usd
+        unit_price:
+          type: string
+          title: Unit Price
+        original_currency:
+          type: string
+          title: Original Currency
+        original_unit_price:
+          type: string
+          title: Original Unit Price
+        total_price_usd:
+          type: string
+          title: Total Price Usd
+        uom_conversion_rate:
+          type: string
+          title: Uom Conversion Rate
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - response_id
+      - request_item_id
+      - schema_data
+      - is_no_bid
+      - requested_quantity
+      - created_at
+      title: ResponseItemResponse
+    ResponseByRequest:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        representation_status:
+          type: string
+          title: Representation Status
+        request_id:
+          type: string
+          format: uuid
+          title: Request Id
+        supplier:
+          $ref: '#/components/schemas/SupplierInfo'
+        submitted_at:
+          type: string
+          format: date-time
+          title: Submitted At
+        declined_at:
+          type: string
+          format: date-time
+          title: Declined At
+        selected_at:
+          type: string
+          format: date-time
+          title: Selected At
+        lost_at:
+          type: string
+          format: date-time
+          title: Lost At
+        opened_at:
+          type: string
+          format: date-time
+          title: Opened At
+        is_offline_bid:
+          type: boolean
+          title: Is Offline Bid
+        is_no_bid:
+          type: boolean
+          title: Is No Bid
+        valid_for:
+          type: string
+          title: Valid For
+        currency:
+          type: string
+          title: Currency
+        total_price:
+          type: number
+          title: Total Price
+        expires_at:
+          type: string
+          format: date-time
+          title: Expires At
+        decline_reason:
+          type: string
+          title: Decline Reason
+        custom_decline_reason:
+          type: string
+          title: Custom Decline Reason
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+        attachments:
+          items:
+            additionalProperties:
+              type: string
+            type: object
+          type: array
+          title: Attachments
+      type: object
+      required:
+      - id
+      - status
+      - representation_status
+      - request_id
+      - supplier
+      - is_offline_bid
+      - is_no_bid
+      - created_at
+      title: ResponseByRequest
+    ResponseMultiRoundItemsListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ResponseMultiroundItemResponse'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: ResponseMultiRoundItemsListRetrieve
+      description: Paginated list response for awarded response items.
+    AwardedItemResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        response_id:
+          type: string
+          format: uuid
+          title: Response Id
+        request_item_id:
+          type: string
+          format: uuid
+          title: Request Item Id
+        response_item_schema_data:
+          type: object
+          title: Response Item Schema Data
+        status:
+          $ref: '#/components/schemas/AwardedItemStatus'
+        quantity:
+          type: number
+          title: Quantity
+        is_no_bid:
+          type: boolean
+          title: Is No Bid
+        requested_quantity:
+          type: number
+          title: Requested Quantity
+        unit_price_usd:
+          type: string
+          title: Unit Price Usd
+        total_price_usd:
+          type: string
+          title: Total Price Usd
+        uom_conversion_rate:
+          type: string
+          title: Uom Conversion Rate
+        award_reason:
+          type: string
+          title: Award Reason
+        custom_award_reason:
+          type: string
+          title: Custom Award Reason
+        representation_status:
+          type: string
+          title: Representation Status
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - response_id
+      - request_item_id
+      - response_item_schema_data
+      - status
+      - quantity
+      - is_no_bid
+      - requested_quantity
+      - representation_status
+      - created_at
+      title: AwardedItemResponse
+    AwardedItemQueryStatus:
+      type: string
+      enum:
+      - AWARDED
+      - SELECTED
+      title: AwardedItemQueryStatus
+      description: An enumeration.
+    ResponseStatus:
+      type: string
+      enum:
+      - CREATED
+      - DRAFT
+      - SUBMITTED
+      - DECLINED
+      - SELECTED
+      - LOST
+      title: ResponseStatus
+      description: Response status values.
+    ResponseMultiroundItemResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        event_item_id:
+          type: string
+          format: uuid
+          title: Event Item Id
+        request_item_id:
+          type: string
+          format: uuid
+          title: Request Item Id
+        schema_data:
+          type: object
+          title: Schema Data
+        is_no_bid:
+          type: boolean
+          title: Is No Bid
+        status:
+          $ref: '#/components/schemas/AwardSelectionStatus'
+        reason_info:
+          $ref: '#/components/schemas/ReasonInfo'
+        is_alternative:
+          type: boolean
+          title: Is Alternative
+        requested_quantity:
+          type: number
+          title: Requested Quantity
+        delivery_days:
+          type: integer
+          title: Delivery Days
+        is_partial_bid:
+          type: boolean
+          title: Is Partial Bid
+        is_increased_quantity:
+          type: boolean
+          title: Is Increased Quantity
+        unit_price:
+          type: string
+          title: Unit Price
+        total_price:
+          type: string
+          title: Total Price
+        currency:
+          type: string
+          title: Currency
+        original_unit_price:
+          type: string
+          title: Original Unit Price
+        original_total_price:
+          type: string
+          title: Original Total Price
+        original_currency:
+          type: string
+          title: Original Currency
+        uom_conversion_rate:
+          type: string
+          title: Uom Conversion Rate
+        response_id:
+          type: string
+          format: uuid
+          title: Response Id
+        event_id:
+          type: string
+          format: uuid
+          title: Event Id
+      type: object
+      required:
+      - id
+      - event_item_id
+      - request_item_id
+      - schema_data
+      - is_no_bid
+      - status
+      - is_alternative
+      - requested_quantity
+      - is_partial_bid
+      - is_increased_quantity
+      - response_id
+      - event_id
+      title: ResponseMultiroundItemResponse
+    AwardedItemStatus:
+      type: string
+      enum:
+      - SELECTED
+      - AWARDED
+      - CANCELED
+      title: AwardedItemStatus
+      description: Awarded item status values.
+    ResponseItemListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ResponseItemResponse'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: ResponseItemListRetrieve

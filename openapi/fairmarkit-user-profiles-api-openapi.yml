@@ -1,0 +1,185 @@
+openapi: 3.1.1
+info:
+  title: BUYER PUBLIC Business Units User Profiles API
+  version: '3'
+  description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
+  termsOfService: https://www.fairmarkit.com/terms-of-service
+  contact:
+    name: Fairmarkit Support
+    url: https://fmkt.zendesk.com/hc/en-us
+    email: support@fairmarkit.com
+servers:
+- url: https://staging.fairmarkit.com/
+tags:
+- name: User Profiles
+paths:
+  /services/self-service/api/v3/user-profiles/{identity_id}:
+    get:
+      tags:
+      - User Profiles
+      summary: Get User Profile
+      description: Retrieve a user profile by identity ID.
+      operationId: get_user_profile_services_self_service_api_v3_user_profiles__identity_id__get
+      parameters:
+      - description: The unique identifier of the user identity.
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Identity Id
+        name: identity_id
+        in: path
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/UserProfileResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - User Profiles
+      summary: Update User Profile
+      description: Update a user profile by identity ID.
+      operationId: update_user_profile_services_self_service_api_v3_user_profiles__identity_id__put
+      parameters:
+      - description: The unique identifier of the user identity.
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Identity Id
+        name: identity_id
+        in: path
+      - description: Fairmarkit API Key
+        required: false
+        schema:
+          type: string
+          title: X-Fm-Api-Key
+        name: X-FM-API-KEY
+        in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfile'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+                format: uuid
+                title: Identity Id
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  detail:
+                    type: string
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    UserProfileResponse:
+      title: UserProfileResponse
+      type: object
+      description: User profile response data.
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          description: The unique identifier of the user profile.
+        identity_id:
+          type: string
+          format: uuid
+          title: Identity Id
+          description: The unique identifier of the user identity.
+        custom_attributes:
+          title: Custom Attributes
+          type: object
+          description: Custom attributes associated with the user profile.
+          additionalProperties: true
+      required:
+      - identity_id
+      - custom_attributes
+    UserProfile:
+      title: UserProfile
+      type: object
+      description: User profile data with custom attributes.
+      properties:
+        custom_attributes:
+          title: Custom Attributes
+          type: object
+          description: Custom attributes associated with the user profile.
+          additionalProperties: true
+      required:
+      - custom_attributes
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
