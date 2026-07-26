@@ -1,0 +1,364 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/*.json
+server:
+  name: fairmarkit
+  transport: http
+note: Candidate tools derived one-per-operation from the Fairmarkit OpenAPI. No official hosted MCP server
+  found as of the generated date.
+tools:
+- name: RequestApi_create_item_services_self_service_api_v4_requests
+  description: 🧪 Create Request Item
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_create_item_services_self_service_api_v4_requests__request_id__items__post
+- name: RequestApi_get_request_items_list_services_self_service_api_
+  description: 🧪 List Request Items
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_get_request_items_list_services_self_service_api_v4_requests__request_id__items__get
+- name: list_services_self_service_api_v3_categories__get
+  description: List Categories
+  source_operation: openapi/fairmarkit-buyer-openapi.json#list_services_self_service_api_v3_categories__get
+- name: get_rfp_list_services_self_service_api_v3_rfp__get
+  description: List RFPs
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_rfp_list_services_self_service_api_v3_rfp__get
+- name: get_price_books_list_services_self_service_api_v4_price_book
+  description: List Price Books
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_price_books_list_services_self_service_api_v4_price_books__get
+- name: create_price_book_services_self_service_api_v4_price_books__
+  description: Create Price Book
+  source_operation: openapi/fairmarkit-buyer-openapi.json#create_price_book_services_self_service_api_v4_price_books__post
+- name: add_internal_note_services_self_service_api_v3_rfq__uuid__in
+  description: Add Internal Note
+  source_operation: openapi/fairmarkit-buyer-openapi.json#add_internal_note_services_self_service_api_v3_rfq__uuid__internal_notes__post
+- name: get_internal_notes_services_self_service_api_v3_rfq__uuid__i
+  description: List Internal Notes
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_internal_notes_services_self_service_api_v3_rfq__uuid__internal_notes__get
+- name: EventApi_get_event_details_services_self_service_api_v4_even
+  description: Get Event Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#EventApi_get_event_details_services_self_service_api_v4_event__event_id__get
+- name: soft_delete_services_self_service_api_v3_rfq__uuid___delete
+  description: Delete RFQ Event
+  source_operation: openapi/fairmarkit-buyer-openapi.json#soft_delete_services_self_service_api_v3_rfq__uuid___delete
+- name: update_services_self_service_api_v3_rfq__uuid___put
+  description: Update RFQ Event
+  source_operation: openapi/fairmarkit-buyer-openapi.json#update_services_self_service_api_v3_rfq__uuid___put
+- name: retrieve_services_self_service_api_v3_rfq__uuid___get
+  description: Get RFQ Event Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#retrieve_services_self_service_api_v3_rfq__uuid___get
+- name: soft_delete_services_self_service_api_v3_supplier__uuid___de
+  description: Delete Supplier
+  source_operation: openapi/fairmarkit-buyer-openapi.json#soft_delete_services_self_service_api_v3_supplier__uuid___delete
+- name: update_services_self_service_api_v3_supplier__uuid___put
+  description: Update Supplier
+  source_operation: openapi/fairmarkit-buyer-openapi.json#update_services_self_service_api_v3_supplier__uuid___put
+- name: retrieve_services_self_service_api_v3_supplier__uuid___get
+  description: Get Supplier Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#retrieve_services_self_service_api_v3_supplier__uuid___get
+- name: create_rfq_attachment_services_self_service_api_v3_attachmen
+  description: Create RFQ Attachment
+  source_operation: openapi/fairmarkit-buyer-openapi.json#create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post
+- name: get_rfq_attachments_services_self_service_api_v3_attachments
+  description: List RFQ Attachments
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_rfq_attachments_services_self_service_api_v3_attachments_rfq__rfq_uuid___get
+- name: DataFieldApi_create_dataset_items_services_self_service_api_
+  description: Create Dataset Items
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataFieldApi_create_dataset_items_services_self_service_api_v3_data_fields_dataset__slug__items_post
+- name: DataFieldApi_get_dataset_items_services_self_service_api_v3_
+  description: List Dataset Items
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataFieldApi_get_dataset_items_services_self_service_api_v3_data_fields_dataset__slug__items_get
+- name: RequestApi_create_request_services_self_service_api_v4_reque
+  description: 🧪 Create Request
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_create_request_services_self_service_api_v4_requests__post
+- name: RequestApi_list_requests_services_self_service_api_v4_reques
+  description: List Requests
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_list_requests_services_self_service_api_v4_requests__get
+- name: update_services_self_service_api_v3_business_units__uuid___p
+  description: Update Business Unit
+  source_operation: openapi/fairmarkit-buyer-openapi.json#update_services_self_service_api_v3_business_units__uuid___put
+- name: delete_services_self_service_api_v3_business_units__uuid___d
+  description: Delete Business Unit
+  source_operation: openapi/fairmarkit-buyer-openapi.json#delete_services_self_service_api_v3_business_units__uuid___delete
+- name: retrieve_services_self_service_api_v3_business_units__uuid__
+  description: Get Business Unit Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#retrieve_services_self_service_api_v3_business_units__uuid___get
+- name: get_rfq_list_services_self_service_api_v3_rfq__get
+  description: List RFQ Events
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_rfq_list_services_self_service_api_v3_rfq__get
+- name: create_services_self_service_api_v3_rfq__post
+  description: Create RFQ Event
+  source_operation: openapi/fairmarkit-buyer-openapi.json#create_services_self_service_api_v3_rfq__post
+- name: cancel_services_self_service_api_v3_rfq__uuid__cancel_post
+  description: Cancel RFQ Event
+  source_operation: openapi/fairmarkit-buyer-openapi.json#cancel_services_self_service_api_v3_rfq__uuid__cancel_post
+- name: DataFieldApi_get_datasets_services_self_service_api_v3_data_
+  description: List Datasets
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataFieldApi_get_datasets_services_self_service_api_v3_data_fields_dataset_get
+- name: DataFieldApi_create_dataset_services_self_service_api_v3_dat
+  description: Create Dataset
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataFieldApi_create_dataset_services_self_service_api_v3_data_fields_dataset_post
+- name: RequestApi_link_pr_services_self_service_api_v3_requests__re
+  description: 🧪 Link External PR to Request
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_link_pr_services_self_service_api_v3_requests__request_id__pr_link__post
+- name: get_price_book_items_services_self_service_api_v4_price_book
+  description: List Price Book Items
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_get
+- name: create_price_book_items_services_self_service_api_v4_price_b
+  description: Create Price Book Items
+  source_operation: openapi/fairmarkit-buyer-openapi.json#create_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_post
+- name: delete_price_book_items_services_self_service_api_v4_price_b
+  description: Delete Price Book Items
+  source_operation: openapi/fairmarkit-buyer-openapi.json#delete_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_delete
+- name: create_services_self_service_api_v3_business_units__post
+  description: Create Business Unit
+  source_operation: openapi/fairmarkit-buyer-openapi.json#create_services_self_service_api_v3_business_units__post
+- name: list_services_self_service_api_v3_business_units__get
+  description: List Business Units
+  source_operation: openapi/fairmarkit-buyer-openapi.json#list_services_self_service_api_v3_business_units__get
+- name: create_request_attachment_services_self_service_api_v3_attac
+  description: Create Request Attachment
+  source_operation: openapi/fairmarkit-buyer-openapi.json#create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post
+- name: DataExportApi_list_available_data_exports_services_self_serv
+  description: List Available Data Exports
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataExportApi_list_available_data_exports_services_self_service_api_v4_data_exports_available_get
+- name: get_user_profile_services_self_service_api_v3_user_profiles_
+  description: Get User Profile
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_user_profile_services_self_service_api_v3_user_profiles__identity_id__get
+- name: update_user_profile_services_self_service_api_v3_user_profil
+  description: Update User Profile
+  source_operation: openapi/fairmarkit-buyer-openapi.json#update_user_profile_services_self_service_api_v3_user_profiles__identity_id__put
+- name: RequestApi_create_request_item_batch_services_self_service_a
+  description: Create Request Item Batch
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_create_request_item_batch_services_self_service_api_v4_requests__request_id__items_batch_post
+- name: PriceBookApi_delete_price_book_services_self_service_api_v3_
+  description: ⚠ Delete Price Book
+  source_operation: openapi/fairmarkit-buyer-openapi.json#PriceBookApi_delete_price_book_services_self_service_api_v3_price_books__price_book_id__delete
+- name: PriceBookApi_get_price_book_by_id_services_self_service_api_
+  description: ⚠ Get Price Book Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#PriceBookApi_get_price_book_by_id_services_self_service_api_v3_price_books__price_book_id__get
+- name: create_rfp_from_template_services_self_service_api_v3_templa
+  description: Create RFP From Template
+  source_operation: openapi/fairmarkit-buyer-openapi.json#create_rfp_from_template_services_self_service_api_v3_templates_rfp__template_uuid__create_rfp_post
+- name: PurchaseOrderAPI_get_upload_status_services_self_service_api
+  description: Get Upload Status for Purchase Orders
+  source_operation: openapi/fairmarkit-buyer-openapi.json#PurchaseOrderAPI_get_upload_status_services_self_service_api_v4_purchase_orders_upload__upload_id__status__get
+- name: RequestApi_cancel_request_services_self_service_api_v4_reque
+  description: Cancel Request
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_cancel_request_services_self_service_api_v4_requests__request_id__cancel_post
+- name: RequestApi_create_request_services_self_service_api_v3_reque
+  description: ⚠ Create Request
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_create_request_services_self_service_api_v3_requests__post
+- name: update_price_book_services_self_service_api_v4_price_books__
+  description: Update Price Book
+  source_operation: openapi/fairmarkit-buyer-openapi.json#update_price_book_services_self_service_api_v4_price_books__price_book_id__patch
+- name: delete_price_book_services_self_service_api_v4_price_books__
+  description: Delete Price Book
+  source_operation: openapi/fairmarkit-buyer-openapi.json#delete_price_book_services_self_service_api_v4_price_books__price_book_id__delete
+- name: get_price_book_services_self_service_api_v4_price_books__pri
+  description: Get Price Book Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_price_book_services_self_service_api_v4_price_books__price_book_id__get
+- name: RequestApi_get_request_services_self_service_api_v3_requests
+  description: ⚠ Get Request Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_get_request_services_self_service_api_v3_requests__request_id___get
+- name: RequestApi_mark_pr_as_failed_services_self_service_api_v3_re
+  description: 🧪 Mark External PR Creation Failed
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_mark_pr_as_failed_services_self_service_api_v3_requests__request_id__pr_mark_as_failed__post
+- name: RequestApi_update_request_item_services_self_service_api_v4_
+  description: 🧪 Update Request Item
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_update_request_item_services_self_service_api_v4_requests__request_id__items__request_item_id__put
+- name: DataFieldApi_upload_dataset_items_services_self_service_api_
+  description: Upload Dataset Items
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataFieldApi_upload_dataset_items_services_self_service_api_v3_data_fields_dataset_items_upload_post
+- name: DataFieldApi_get_dataset_item_by_id_services_self_service_ap
+  description: Get Dataset Item Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataFieldApi_get_dataset_item_by_id_services_self_service_api_v3_data_fields_dataset__slug__items__item_id__get
+- name: DataFieldApi_delete_dataset_item_services_self_service_api_v
+  description: Delete Dataset Item
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataFieldApi_delete_dataset_item_services_self_service_api_v3_data_fields_dataset__slug__items__item_id__delete
+- name: DataFieldApi_update_dataset_item_services_self_service_api_v
+  description: Update Dataset Item
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataFieldApi_update_dataset_item_services_self_service_api_v3_data_fields_dataset__slug__items__item_id__patch
+- name: delete_price_book_item_services_self_service_api_v4_price_bo
+  description: Delete Price Book Item
+  source_operation: openapi/fairmarkit-buyer-openapi.json#delete_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__delete
+- name: update_price_book_item_services_self_service_api_v4_price_bo
+  description: Update Price Book Item
+  source_operation: openapi/fairmarkit-buyer-openapi.json#update_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__patch
+- name: get_price_book_item_services_self_service_api_v4_price_books
+  description: Get Price Book Item Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__get
+- name: award_rfq_services_self_service_api_v3_rfq__uuid__award_post
+  description: Award RFQ
+  source_operation: openapi/fairmarkit-buyer-openapi.json#award_rfq_services_self_service_api_v3_rfq__uuid__award_post
+- name: SupplierApi_de_activate_services_self_service_api_v3_supplie
+  description: Deactivate Supplier
+  source_operation: openapi/fairmarkit-buyer-openapi.json#SupplierApi_de_activate_services_self_service_api_v3_supplier__uuid__deactivate__post
+- name: create_services_self_service_api_v3_purchase_orders__post
+  description: Create Purchase Order
+  source_operation: openapi/fairmarkit-buyer-openapi.json#create_services_self_service_api_v3_purchase_orders__post
+- name: list_services_self_service_api_v3_purchase_orders__get
+  description: List Purchase Orders
+  source_operation: openapi/fairmarkit-buyer-openapi.json#list_services_self_service_api_v3_purchase_orders__get
+- name: SchemaApi_get_current_schema_services_self_service_api_v3_sc
+  description: Get Current Schema
+  source_operation: openapi/fairmarkit-buyer-openapi.json#SchemaApi_get_current_schema_services_self_service_api_v3_schemas_current_get
+- name: RequestApi_get_request_services_self_service_api_v4_requests
+  description: 🧪 Get Request Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_get_request_services_self_service_api_v4_requests__request_id___get
+- name: RequestApi_update_request_services_self_service_api_v4_reque
+  description: 🧪 Update Request
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_update_request_services_self_service_api_v4_requests__request_id___put
+- name: list_services_self_service_api_v3_supplier__get
+  description: List Suppliers
+  source_operation: openapi/fairmarkit-buyer-openapi.json#list_services_self_service_api_v3_supplier__get
+- name: create_services_self_service_api_v3_supplier__post
+  description: Create Supplier
+  source_operation: openapi/fairmarkit-buyer-openapi.json#create_services_self_service_api_v3_supplier__post
+- name: DataFieldApi_update_dataset_services_self_service_api_v3_dat
+  description: Update Dataset
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataFieldApi_update_dataset_services_self_service_api_v3_data_fields_dataset__slug__patch
+- name: DataFieldApi_get_dataset_by_slug_services_self_service_api_v
+  description: Get Dataset Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataFieldApi_get_dataset_by_slug_services_self_service_api_v3_data_fields_dataset__slug__get
+- name: DataFieldApi_delete_dataset_services_self_service_api_v3_dat
+  description: Delete Dataset
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataFieldApi_delete_dataset_services_self_service_api_v3_data_fields_dataset__slug__delete
+- name: PurchaseOrderAPI_upload_services_self_service_api_v4_purchas
+  description: Upload Purchase Orders
+  source_operation: openapi/fairmarkit-buyer-openapi.json#PurchaseOrderAPI_upload_services_self_service_api_v4_purchase_orders_upload__post
+- name: get_quotations_list_services_self_service_api_v3_rfq__uuid__
+  description: List Quotations
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_quotations_list_services_self_service_api_v3_rfq__uuid__quotations__get
+- name: PriceBookApi_get_price_book_items_services_self_service_api_
+  description: ⚠ List Price Book Items
+  source_operation: openapi/fairmarkit-buyer-openapi.json#PriceBookApi_get_price_book_items_services_self_service_api_v3_price_books__price_book_id__items_get
+- name: PriceBookApi_create_price_book_item_services_self_service_ap
+  description: ⚠ Create Price Book Item
+  source_operation: openapi/fairmarkit-buyer-openapi.json#PriceBookApi_create_price_book_item_services_self_service_api_v3_price_books__price_book_id__items_post
+- name: PriceBookApi_create_price_book_services_self_service_api_v3_
+  description: ⚠ Create Price Book
+  source_operation: openapi/fairmarkit-buyer-openapi.json#PriceBookApi_create_price_book_services_self_service_api_v3_price_books__post
+- name: PriceBookApi_get_price_books_services_self_service_api_v3_pr
+  description: ⚠ List Price Books
+  source_operation: openapi/fairmarkit-buyer-openapi.json#PriceBookApi_get_price_books_services_self_service_api_v3_price_books__get
+- name: archive_services_self_service_api_v3_rfq__uuid__archive_post
+  description: Archive RFQ Event
+  source_operation: openapi/fairmarkit-buyer-openapi.json#archive_services_self_service_api_v3_rfq__uuid__archive_post
+- name: ResponseApi_get_response_items_by_request_search_as_buyer_se
+  description: List Awarded Response Items By Request
+  source_operation: openapi/fairmarkit-buyer-openapi.json#ResponseApi_get_response_items_by_request_search_as_buyer_services_self_service_api_v4_responses_request__request_id___get
+- name: get_rfq_approvals_services_self_service_api_v3_rfq__uuid__ap
+  description: List RFQ Approvals
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_rfq_approvals_services_self_service_api_v3_rfq__uuid__approvals_get
+- name: update_services_self_service_api_v3_supplier__uuid__business
+  description: Update Business Classifications
+  source_operation: openapi/fairmarkit-buyer-openapi.json#update_services_self_service_api_v3_supplier__uuid__business_classifications__post
+- name: RequestApi_update_pr_status_services_self_service_api_v3_req
+  description: 🧪 Update External PR Status
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_update_pr_status_services_self_service_api_v3_requests__request_id__pr_status__post
+- name: RequestApi_approve_request_event_step_services_self_service_
+  description: Approve Request Event Step
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_approve_request_event_step_services_self_service_api_v4_requests__request_id__event_approvals__approval_id__approve_step_post
+- name: reject_rfq_step_services_self_service_api_v3_rfq__uuid__appr
+  description: Reject RFQ Step
+  source_operation: openapi/fairmarkit-buyer-openapi.json#reject_rfq_step_services_self_service_api_v3_rfq__uuid__approvals__approval_id__reject_step_post
+- name: ResponseApi_get_response_items_by_request_services_self_serv
+  description: 🧪 List Response Items By Request
+  source_operation: openapi/fairmarkit-buyer-openapi.json#ResponseApi_get_response_items_by_request_services_self_service_api_v3_responses_request__request_id__response_items__get
+- name: DataExportApi_get_data_export_services_self_service_api_v4_d
+  description: Get Data Export
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataExportApi_get_data_export_services_self_service_api_v4_data_exports__job_id__get
+- name: UomApi_get_available_permission_set_list_services_self_servi
+  description: List UOMs
+  source_operation: openapi/fairmarkit-buyer-openapi.json#UomApi_get_available_permission_set_list_services_self_service_api_v4_uom_uoms_get
+- name: RequestApi_reject_request_event_step_services_self_service_a
+  description: Reject Request Event Step
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_reject_request_event_step_services_self_service_api_v4_requests__request_id__event_approvals__approval_id__reject_step_post
+- name: approve_rfq_step_services_self_service_api_v3_rfq__uuid__app
+  description: Approve RFQ Step
+  source_operation: openapi/fairmarkit-buyer-openapi.json#approve_rfq_step_services_self_service_api_v3_rfq__uuid__approvals__approval_id__approve_step_post
+- name: ResponseApi_get_awarded_response_items_by_request_services_s
+  description: 🧪 List Awarded Response Items By Request
+  source_operation: openapi/fairmarkit-buyer-openapi.json#ResponseApi_get_awarded_response_items_by_request_services_self_service_api_v3_responses_request__request_id__awarded_items__get
+- name: create_rfq_item_attachment_services_self_service_api_v3_atta
+  description: Create RFQ Item Attachment
+  source_operation: openapi/fairmarkit-buyer-openapi.json#create_rfq_item_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid__items__item_uuid___post
+- name: IdentityApi_create_identity_services_self_service_api_v4_ide
+  description: Create Identity
+  source_operation: openapi/fairmarkit-buyer-openapi.json#IdentityApi_create_identity_services_self_service_api_v4_identity_identities_post
+- name: get_proposals_list_services_self_service_api_v3_rfp__uuid__p
+  description: Get Proposals List
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_proposals_list_services_self_service_api_v3_rfp__uuid__proposals__get
+- name: DataFieldApi_get_dataset_items_by_ids_services_self_service_
+  description: List Dataset Items By Filters
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataFieldApi_get_dataset_items_by_ids_services_self_service_api_v3_data_fields_dataset_items_get
+- name: RequestApi_submit_request_services_self_service_api_v4_reque
+  description: Submit Request
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_submit_request_services_self_service_api_v4_requests__request_id__submit_post
+- name: PriceBookApi_get_price_book_item_services_self_service_api_v
+  description: ⚠ Get Price Book Item Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#PriceBookApi_get_price_book_item_services_self_service_api_v3_price_books_price_book_items__item_id__get
+- name: SupplierApi_re_activate_services_self_service_api_v3_supplie
+  description: Activate Supplier
+  source_operation: openapi/fairmarkit-buyer-openapi.json#SupplierApi_re_activate_services_self_service_api_v3_supplier__uuid__activate__post
+- name: EventApi_get_events_list_by_request_id_services_self_service
+  description: List Events By Request
+  source_operation: openapi/fairmarkit-buyer-openapi.json#EventApi_get_events_list_by_request_id_services_self_service_api_v4_event__request_id__events_get
+- name: DataExportApi_create_data_export_services_self_service_api_v
+  description: Create Data Export
+  source_operation: openapi/fairmarkit-buyer-openapi.json#DataExportApi_create_data_export_services_self_service_api_v4_data_exports__post
+- name: bulk_create_services_self_service_api_v3_supplier_bulk_creat
+  description: Bulk Create Suppliers
+  source_operation: openapi/fairmarkit-buyer-openapi.json#bulk_create_services_self_service_api_v3_supplier_bulk_create__post
+- name: RequestApi_reject_request_step_services_self_service_api_v3_
+  description: 🧪 Reject Request Step
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_reject_request_step_services_self_service_api_v3_requests__request_id__approvals__approval_id__reject_step_post
+- name: EventApi_get_event_pricing_items_services_self_service_api_v
+  description: Get Event Pricing Items
+  source_operation: openapi/fairmarkit-buyer-openapi.json#EventApi_get_event_pricing_items_services_self_service_api_v4_event__event_id__pricing_items_get
+- name: update_purchase_order_services_self_service_api_v3_rfq__uuid
+  description: Update Purchase Order
+  source_operation: openapi/fairmarkit-buyer-openapi.json#update_purchase_order_services_self_service_api_v3_rfq__uuid__purchase_order__put
+- name: ResponseApi_get_responses_by_request_services_self_service_a
+  description: 🧪 List Responses By Request
+  source_operation: openapi/fairmarkit-buyer-openapi.json#ResponseApi_get_responses_by_request_services_self_service_api_v3_responses_request__request_id___get
+- name: SchemaApi_get_schema_services_self_service_api_v3_schemas__s
+  description: Get Schema Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#SchemaApi_get_schema_services_self_service_api_v3_schemas__schema_id___get
+- name: retrieve_services_self_service_api_v3_rfp__uuid___get
+  description: Get RFP Details
+  source_operation: openapi/fairmarkit-buyer-openapi.json#retrieve_services_self_service_api_v3_rfp__uuid___get
+- name: RequestApi_approve_request_step_services_self_service_api_v3
+  description: 🧪 Approve Request Step
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_approve_request_step_services_self_service_api_v3_requests__request_id__approvals__approval_id__approve_step_post
+- name: get_rfp_templates_services_self_service_api_v3_templates_rfp
+  description: List RFP Templates
+  source_operation: openapi/fairmarkit-buyer-openapi.json#get_rfp_templates_services_self_service_api_v3_templates_rfp__get
+- name: list_services_self_service_api_v3_erp_systems__get
+  description: List ERP Systems
+  source_operation: openapi/fairmarkit-buyer-openapi.json#list_services_self_service_api_v3_erp_systems__get
+- name: RequestApi_get_available_permission_set_list_services_self_s
+  description: List Permission Sets
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_get_available_permission_set_list_services_self_service_api_v4_identity_permission_sets_get
+- name: create_request_item_attachment_services_self_service_api_v3_
+  description: Create Request Item Attachment
+  source_operation: openapi/fairmarkit-buyer-openapi.json#create_request_item_attachment_services_self_service_api_v3_attachments_requests__request_uuid__items__request_item_uuid___post
+- name: RequestApi_get_request_event_approvals_services_self_service
+  description: List Request Event Approvals
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_get_request_event_approvals_services_self_service_api_v4_requests__request_id__event_approvals_get
+- name: RequestApi_get_request_approvals_services_self_service_api_v
+  description: 🧪 List Request Approvals
+  source_operation: openapi/fairmarkit-buyer-openapi.json#RequestApi_get_request_approvals_services_self_service_api_v3_requests__request_id__approvals_get
+- name: reject_request-Requests_Requests_Requests
+  description: Reject Request
+  source_operation: openapi/fairmarkit-supplier-openapi.json#reject_request-Requests_Requests_Requests
+- name: get_request_response-Requests_Requests_Requests
+  description: Get Request Response
+  source_operation: openapi/fairmarkit-supplier-openapi.json#get_request_response-Requests_Requests_Requests
+- name: get_request-Requests_Requests_Requests
+  description: Get Request
+  source_operation: openapi/fairmarkit-supplier-openapi.json#get_request-Requests_Requests_Requests
+- name: submit_response-Requests_Requests_Requests
+  description: Submit Response
+  source_operation: openapi/fairmarkit-supplier-openapi.json#submit_response-Requests_Requests_Requests
+- name: get_requests-Requests_Requests_Requests
+  description: Get Requests
+  source_operation: openapi/fairmarkit-supplier-openapi.json#get_requests-Requests_Requests_Requests

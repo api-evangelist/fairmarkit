@@ -1,0 +1,1844 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Supplier Public Api",
+    "version": "1.20250902.1-release"
+  },
+  "servers": [
+    {
+      "url": "https://uat.fairmarkit.com",
+      "description": "UAT"
+    }
+  ],
+  "paths": {
+    "/services/supplier-public-api/api/v1/requests/{request_id}/reject/": {
+      "post": {
+        "tags": [
+          "Requests",
+          "Requests",
+          "Requests"
+        ],
+        "summary": "Reject Request",
+        "description": "Creates a Response with rejection information for the Request with provided request_id",
+        "operationId": "reject_request-Requests_Requests_Requests",
+        "security": [
+          {
+            "SupplierPublicAPIHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Unique request ID.",
+              "examples": [
+                "b61da388-b09b-4334-ae8c-d7d89722a6d8"
+              ],
+              "title": "Request Id"
+            },
+            "description": "Unique request ID."
+          },
+          {
+            "name": "x-fm-api-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings",
+              "title": "X-Fm-Api-Key"
+            },
+            "description": "Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestRejectRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services/supplier-public-api/api/v1/requests/{request_id}/response/": {
+      "get": {
+        "tags": [
+          "Requests",
+          "Requests",
+          "Requests"
+        ],
+        "summary": "Get Request Response",
+        "description": "Returns information about Response that you submit for Request by provided request id.",
+        "operationId": "get_request_response-Requests_Requests_Requests",
+        "security": [
+          {
+            "SupplierPublicAPIHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Unique request ID.",
+              "examples": [
+                "b61da388-b09b-4334-ae8c-d7d89722a6d8"
+              ],
+              "title": "Request Id"
+            },
+            "description": "Unique request ID."
+          },
+          {
+            "name": "x-fm-api-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings",
+              "title": "X-Fm-Api-Key"
+            },
+            "description": "Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services/supplier-public-api/api/v1/requests/{request_id}/": {
+      "get": {
+        "tags": [
+          "Requests",
+          "Requests",
+          "Requests"
+        ],
+        "summary": "Get Request",
+        "description": "Returns full information about the Request by provided id",
+        "operationId": "get_request-Requests_Requests_Requests",
+        "security": [
+          {
+            "SupplierPublicAPIHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Unique request ID.",
+              "examples": [
+                "b61da388-b09b-4334-ae8c-d7d89722a6d8"
+              ],
+              "title": "Request Id"
+            },
+            "description": "Unique request ID."
+          },
+          {
+            "name": "x-fm-api-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings",
+              "title": "X-Fm-Api-Key"
+            },
+            "description": "Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailRequestResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services/supplier-public-api/api/v1/requests/{request_id}/submit/": {
+      "post": {
+        "tags": [
+          "Requests",
+          "Requests",
+          "Requests"
+        ],
+        "summary": "Submit Response",
+        "description": "Creates a Response for the Request with provided request_id",
+        "operationId": "submit_response-Requests_Requests_Requests",
+        "security": [
+          {
+            "SupplierPublicAPIHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "request_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Unique request ID.",
+              "examples": [
+                "b61da388-b09b-4334-ae8c-d7d89722a6d8"
+              ],
+              "title": "Request Id"
+            },
+            "description": "Unique request ID."
+          },
+          {
+            "name": "x-fm-api-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings",
+              "title": "X-Fm-Api-Key"
+            },
+            "description": "Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResponseSubmitRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/services/supplier-public-api/api/v1/requests/": {
+      "get": {
+        "tags": [
+          "Requests",
+          "Requests",
+          "Requests"
+        ],
+        "summary": "Get Requests",
+        "description": "Returns a list of Requests that Buyer creates for your company",
+        "operationId": "get_requests-Requests_Requests_Requests",
+        "security": [
+          {
+            "SupplierPublicAPIHeader": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "ordering",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/RequestOrdering"
+              },
+              "description": "Field name and direction in which result will be ordered. F.e.: \"-created_at\" means that result will be ordered by created_at DESC",
+              "examples": [
+                "created_at",
+                "-created_at",
+                "updated_at",
+                "-updated_at",
+                "closes_at",
+                "-closes_at"
+              ],
+              "enum": [
+                "created_at",
+                "-created_at",
+                "updated_at",
+                "-updated_at",
+                "closes_at",
+                "-closes_at"
+              ],
+              "default": [
+                "-created_at"
+              ],
+              "title": "Ordering"
+            },
+            "description": "Field name and direction in which result will be ordered. F.e.: \"-created_at\" means that result will be ordered by created_at DESC"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/RequestStatus"
+              },
+              "description": "Filter records by status value.",
+              "examples": [
+                "new",
+                "missed",
+                "canceled",
+                "viewed",
+                "ignored",
+                "submitted",
+                "waiting_for_award",
+                "lost",
+                "won",
+                "declined"
+              ],
+              "enum": [
+                "new",
+                "missed",
+                "canceled",
+                "viewed",
+                "ignored",
+                "submitted",
+                "waiting_for_award",
+                "lost",
+                "won",
+                "declined"
+              ],
+              "default": [
+                "new"
+              ],
+              "title": "Status"
+            },
+            "description": "Filter records by status value."
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "description": "Use to specify the maximum number of records to return. By default, 20 records are returned.",
+              "default": 20,
+              "title": "Limit"
+            },
+            "description": "Use to specify the maximum number of records to return. By default, 20 records are returned."
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Use to retrieve a specific batch of records. By default, this is set to 0.",
+              "default": 0,
+              "title": "Offset"
+            },
+            "description": "Use to retrieve a specific batch of records. By default, this is set to 0."
+          },
+          {
+            "name": "x-fm-api-key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings",
+              "title": "X-Fm-Api-Key"
+            },
+            "description": "Your unique personal api key generated on https://app.fairmarkit.com/vendor/administration/api-settings"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ListRequestResponse"
+                  },
+                  "title": "Response Get Requests-Requests Requests Requests"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "RejectionKind": {
+        "type": "string",
+        "enum": [
+          "out_of_stock",
+          "items_not_carried",
+          "more_information_needed_to_quote",
+          "price_not_competitive",
+          "ship_address_outside_our_coverage_area",
+          "other"
+        ],
+        "title": "RejectionKind"
+      },
+      "RequestRejectRequest": {
+        "properties": {
+          "reject_kind": {
+            "$ref": "#/components/schemas/RejectionKind",
+            "description": "Available kinds of rejection. In case chosen \"other\", please should describe the reason.",
+            "examples": [
+              "out_of_stock",
+              "items_not_carried",
+              "more_information_needed_to_quote",
+              "price_not_competitive",
+              "ship_address_outside_our_coverage_area",
+              "other"
+            ]
+          },
+          "reject_reason": {
+            "type": "string",
+            "title": "Reject Reason",
+            "description": "Reason of rejection. Should be described in case rejection kind \"other\"",
+            "default": "",
+            "examples": [
+              "We are not working at next week",
+              ""
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "reject_kind"
+        ],
+        "title": "RequestRejectRequest"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "DetailResponse": {
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/ResponseStatus",
+            "description": "Actual Response status.",
+            "examples": [
+              "sent",
+              "opened",
+              "submitted",
+              "awarded",
+              "no_bid"
+            ]
+          },
+          "vendor_quote": {
+            "type": "string",
+            "title": "Vendor Quote",
+            "description": "Vendor quote number.",
+            "examples": [
+              "DFR440-DB"
+            ]
+          },
+          "valid_for": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ResponseValidFor"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "The number of days during which the offer will be valid.",
+            "examples": [
+              1,
+              5,
+              7,
+              10,
+              15,
+              30,
+              45,
+              60,
+              90,
+              180,
+              365
+            ]
+          },
+          "is_shipping_included": {
+            "type": "boolean",
+            "title": "Is Shipping Included",
+            "description": "Is shipping included in the total price?",
+            "examples": [
+              true,
+              false
+            ]
+          },
+          "shipping": {
+            "type": "string",
+            "title": "Shipping",
+            "description": "Cost of shipping in case it not included in the total price",
+            "examples": [
+              "49.99",
+              "0"
+            ]
+          },
+          "is_partially_awarded": {
+            "type": "boolean",
+            "title": "Is Partially Awarded",
+            "description": "Means that minimum one of the proposed item by supplier was awarded",
+            "examples": [
+              true,
+              false
+            ]
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes",
+            "description": "Additional notes from Supplier for Buyer related to the response, if exists.",
+            "examples": [
+              "Please contact us asap."
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency",
+            "description": "Currency of response.",
+            "examples": [
+              "USD",
+              "CAD",
+              "EUR",
+              "AUD"
+            ]
+          },
+          "awarded_total": {
+            "type": "string",
+            "title": "Awarded Total",
+            "description": "Total awarded price by Buyer.",
+            "examples": [
+              "100",
+              "4.99",
+              "0"
+            ]
+          },
+          "sent_at": {
+            "type": "string",
+            "title": "Sent At",
+            "description": "Date and time when request was sent to Supplier.",
+            "examples": [
+              "2025-09-01 08:39:24.205913+00:00"
+            ]
+          },
+          "opened_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Opened At",
+            "description": "Date and time when request was viewed by Supplier first time.",
+            "examples": [
+              "2025-09-01 08:39:24.205945+00:00"
+            ]
+          },
+          "submitted_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Submitted At",
+            "description": "Date and time when response was submitted by Supplier last time.",
+            "examples": [
+              "2025-09-01 08:39:24.205968+00:00"
+            ]
+          },
+          "rejection_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rejection At",
+            "description": "Date and time when response was rejected by Supplier last time.",
+            "examples": [
+              "2025-09-01 08:39:24.205987+00:00"
+            ]
+          },
+          "rejection_kind": {
+            "$ref": "#/components/schemas/RejectionKindWithEmpty",
+            "description": "Rejection kind that was set by Supplier during rejection. Will be empty in case request wasn't rejected.",
+            "examples": [
+              "out_of_stock",
+              "items_not_carried",
+              "more_information_needed_to_quote",
+              "price_not_competitive",
+              "ship_address_outside_our_coverage_area",
+              "other",
+              ""
+            ]
+          },
+          "rejection_reason": {
+            "type": "string",
+            "title": "Rejection Reason",
+            "description": "Reason of rejection in case was chosen rejection kind \"other\". Could be empty in other cases.",
+            "examples": [
+              "We are on the vacation.",
+              ""
+            ]
+          },
+          "awarded_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Awarded At",
+            "description": "Date and time when response was awarded by Buyer.",
+            "examples": [
+              "2025-09-01 08:39:24.206048+00:00"
+            ]
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/DetailResponseItem"
+            },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "vendor_quote",
+          "valid_for",
+          "is_shipping_included",
+          "shipping",
+          "is_partially_awarded",
+          "notes",
+          "currency",
+          "awarded_total",
+          "sent_at",
+          "opened_at",
+          "submitted_at",
+          "rejection_at",
+          "rejection_kind",
+          "rejection_reason",
+          "awarded_at",
+          "items"
+        ],
+        "title": "DetailResponse"
+      },
+      "DetailResponseItem": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "description": "Response item unique ID.",
+            "examples": [
+              "3e31ad9c-a78a-4925-8266-665aef520719"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Request item title.",
+            "examples": [
+              "Apple Iphone 16 PRO MAX 1TB"
+            ]
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quantity",
+            "description": "Amount of items that was proposed by supplier.",
+            "examples": [
+              "10",
+              "1.5",
+              null
+            ]
+          },
+          "awarded_quantity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Awarded Quantity",
+            "description": "Amount of items that Buyer was awarded.",
+            "examples": [
+              "10",
+              "1.5",
+              null
+            ]
+          },
+          "uom": {
+            "type": "string",
+            "title": "Uom",
+            "description": "Unit of measurement.",
+            "examples": [
+              "each",
+              "bar",
+              "kilogram",
+              ""
+            ]
+          },
+          "unit_price": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit Price",
+            "description": "Item's unit price",
+            "examples": [
+              "10",
+              "1.5",
+              "0",
+              null
+            ]
+          },
+          "delivery_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delivery Days",
+            "description": "The number of days during which current item was planned to be delivered.",
+            "examples": [
+              1,
+              5,
+              null
+            ]
+          },
+          "is_awarded": {
+            "type": "boolean",
+            "title": "Is Awarded",
+            "description": "Will be True in case item was awarded by buyer.",
+            "examples": [
+              true,
+              false
+            ]
+          },
+          "is_rejected": {
+            "type": "boolean",
+            "title": "Is Rejected",
+            "description": "Will be True in case item was rejected by supplier.",
+            "examples": [
+              true,
+              false
+            ]
+          },
+          "supplier_pn": {
+            "type": "string",
+            "title": "Supplier Pn",
+            "description": "Supplier part number",
+            "examples": [
+              "HDY66-X2"
+            ]
+          },
+          "sku": {
+            "type": "string",
+            "title": "Sku",
+            "description": "Stock Keeping Unit.",
+            "examples": [
+              "ZG011AQA"
+            ]
+          },
+          "quantity_change_reason_note": {
+            "type": "string",
+            "title": "Quantity Change Reason Note",
+            "description": "Note for buyer why will be bid not different quantity.",
+            "examples": [
+              "There are 12 bottles in the box."
+            ]
+          },
+          "minimum_order_quantity": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Minimum Order Quantity",
+            "description": "Information for minimum order quantity",
+            "examples": [
+              "10",
+              "1.5",
+              null
+            ]
+          },
+          "country_of_origin": {
+            "type": "string",
+            "title": "Country Of Origin",
+            "description": "Country of origin",
+            "examples": [
+              "US",
+              "Canada",
+              ""
+            ]
+          },
+          "comments": {
+            "type": "string",
+            "title": "Comments",
+            "description": "Comment for buyer related bid item.",
+            "examples": [
+              "Hot offer until the end of the week",
+              ""
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "quantity",
+          "awarded_quantity",
+          "uom",
+          "unit_price",
+          "delivery_days",
+          "is_awarded",
+          "is_rejected",
+          "supplier_pn",
+          "sku",
+          "quantity_change_reason_note",
+          "minimum_order_quantity",
+          "country_of_origin",
+          "comments"
+        ],
+        "title": "DetailResponseItem"
+      },
+      "RejectionKindWithEmpty": {
+        "type": "string",
+        "enum": [
+          "out_of_stock",
+          "items_not_carried",
+          "more_information_needed_to_quote",
+          "price_not_competitive",
+          "ship_address_outside_our_coverage_area",
+          "other",
+          ""
+        ],
+        "title": "RejectionKindWithEmpty"
+      },
+      "ResponseStatus": {
+        "type": "string",
+        "enum": [
+          "sent",
+          "opened",
+          "submitted",
+          "awarded",
+          "no_bid"
+        ],
+        "title": "ResponseStatus"
+      },
+      "ResponseValidFor": {
+        "type": "integer",
+        "enum": [
+          1,
+          5,
+          7,
+          10,
+          15,
+          30,
+          45,
+          60,
+          90,
+          180,
+          365
+        ],
+        "title": "ResponseValidFor"
+      },
+      "CarrierKind": {
+        "type": "string",
+        "enum": [
+          "ups",
+          "fedex",
+          "dhl",
+          "usps",
+          ""
+        ],
+        "title": "CarrierKind"
+      },
+      "DetailRequestItemResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "description": "Unique request item ID.",
+            "examples": [
+              "ba309b6f-6161-4ca2-a43d-724dacc21e0c"
+            ]
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind",
+            "description": "Request item kind.",
+            "examples": [
+              "item",
+              "service"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Request item title.",
+            "examples": [
+              "Apple Iphone 16 PRO MAX 1TB"
+            ]
+          },
+          "manufacturer": {
+            "type": "string",
+            "title": "Manufacturer",
+            "description": "Request item manufacturer.",
+            "examples": [
+              "Amazing Dreams Inc."
+            ]
+          },
+          "manufacturer_pn": {
+            "type": "string",
+            "title": "Manufacturer Pn",
+            "description": "Request item manufacturer part number.",
+            "examples": [
+              "YFD220125-i",
+              "70-107"
+            ]
+          },
+          "comments": {
+            "type": "string",
+            "title": "Comments",
+            "description": "Buyer's comments for the request item",
+            "examples": [
+              "color: red"
+            ]
+          },
+          "uom": {
+            "type": "string",
+            "title": "Uom",
+            "description": "Unit of measurement.",
+            "examples": [
+              "each",
+              "bar",
+              "kilogram"
+            ]
+          },
+          "is_awarded": {
+            "type": "boolean",
+            "title": "Is Awarded",
+            "description": "Has request item already awarded",
+            "examples": [
+              true,
+              false
+            ]
+          },
+          "awarded_at": {
+            "type": "string",
+            "title": "Awarded At",
+            "description": "Date and time of when request item was awarded. Will be None in case if request item still not awarded.",
+            "examples": [
+              "2025-09-01 08:39:24.201724+00:00",
+              ""
+            ]
+          },
+          "quantity": {
+            "type": "string",
+            "title": "Quantity",
+            "description": "Requested quantity of request item. Could be empty in case request item in uncountable.",
+            "examples": [
+              "10",
+              "1.5",
+              ""
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "title",
+          "manufacturer",
+          "manufacturer_pn",
+          "comments",
+          "uom",
+          "is_awarded",
+          "awarded_at",
+          "quantity"
+        ],
+        "title": "DetailRequestItemResponse"
+      },
+      "DetailRequestResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "description": "Unique request ID.",
+            "examples": [
+              "e3f18428-6e27-4b34-855f-e635a8c56b8b"
+            ]
+          },
+          "ref_id": {
+            "type": "integer",
+            "title": "Ref Id",
+            "description": "Reference ID from platform.",
+            "examples": [
+              1,
+              100500
+            ]
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Request title.",
+            "examples": [
+              "Apple Iphone 16 PRO MAX 1TB"
+            ]
+          },
+          "customer_title": {
+            "type": "string",
+            "title": "Customer Title",
+            "description": "Customer title.",
+            "examples": [
+              "Apple Inc."
+            ]
+          },
+          "closes_at": {
+            "type": "string",
+            "title": "Closes At",
+            "description": "Date and time of when request was planed to close.",
+            "examples": [
+              "2025-09-05 08:39:24.199757+00:00"
+            ]
+          },
+          "preferred_delivery_date": {
+            "type": "string",
+            "title": "Preferred Delivery Date",
+            "description": "Preferred delivery date and time expected by buyer. Will be empty string if wasn't provided.",
+            "examples": [
+              "2025-09-01 08:39:24.199791+00:00",
+              ""
+            ]
+          },
+          "urgency": {
+            "$ref": "#/components/schemas/RequestUrgency",
+            "description": "Request urgency.",
+            "examples": [
+              "normal",
+              "rush",
+              "emergency"
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/RequestStatus",
+            "description": "Actual Request status.",
+            "examples": [
+              "new",
+              "missed",
+              "canceled",
+              "viewed",
+              "ignored",
+              "submitted",
+              "waiting_for_award",
+              "lost",
+              "won",
+              "declined"
+            ]
+          },
+          "payment_process": {
+            "$ref": "#/components/schemas/PaymentProcess",
+            "description": "Payment process expected by buyer.",
+            "default": "po",
+            "examples": [
+              "po",
+              "invoice_only",
+              "credit_card"
+            ]
+          },
+          "shipping_address": {
+            "$ref": "#/components/schemas/ShippingAddress"
+          },
+          "shipping_type": {
+            "$ref": "#/components/schemas/ShippingType",
+            "description": "Shipping type expected by buyer.",
+            "default": "",
+            "examples": [
+              "ocean_freight",
+              "freight",
+              "same_day",
+              "next_day",
+              "next_day_am",
+              "two_day",
+              "two_day_am",
+              "three_day",
+              "saturday",
+              "courier",
+              "ground",
+              "priority_mail_express",
+              "priority_mail",
+              "ground_with_freight_pricing",
+              "critical",
+              ""
+            ]
+          },
+          "carrier": {
+            "$ref": "#/components/schemas/CarrierKind",
+            "description": "Carrier type expected by buyer.",
+            "default": "",
+            "examples": [
+              "ups",
+              "fedex",
+              "dhl",
+              "usps",
+              ""
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency",
+            "description": "Currency of request.",
+            "examples": [
+              "USD",
+              "CAD",
+              "EUR",
+              "AUD"
+            ]
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes",
+            "description": "Additional notes from Buyer for suppliers related to the request, if exists.",
+            "examples": [
+              "We are working only on Mon and Tue."
+            ]
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/DetailRequestItemResponse"
+            },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "ref_id",
+          "title",
+          "customer_title",
+          "closes_at",
+          "preferred_delivery_date",
+          "urgency",
+          "status",
+          "shipping_address",
+          "currency",
+          "notes",
+          "items"
+        ],
+        "title": "DetailRequestResponse"
+      },
+      "PaymentProcess": {
+        "type": "string",
+        "enum": [
+          "po",
+          "invoice_only",
+          "credit_card"
+        ],
+        "title": "PaymentProcess"
+      },
+      "RequestStatus": {
+        "type": "string",
+        "enum": [
+          "new",
+          "missed",
+          "canceled",
+          "viewed",
+          "ignored",
+          "submitted",
+          "waiting_for_award",
+          "lost",
+          "won",
+          "declined"
+        ],
+        "title": "RequestStatus"
+      },
+      "RequestUrgency": {
+        "type": "string",
+        "enum": [
+          "normal",
+          "rush",
+          "emergency"
+        ],
+        "title": "RequestUrgency"
+      },
+      "ShippingAddress": {
+        "properties": {
+          "country": {
+            "type": "string",
+            "title": "Country",
+            "description": "2-symbols request's delivery address country ISO 3166-1 alpha-2 code. Will be empty string if not provided.",
+            "examples": [
+              "US",
+              "CA",
+              "GB",
+              "AU",
+              "NZ",
+              ""
+            ]
+          },
+          "state": {
+            "type": "string",
+            "title": "State",
+            "description": "Request's delivery address state name. Will be empty string if not provided.",
+            "examples": [
+              "Texas",
+              "Illinois",
+              "Massachusetts",
+              ""
+            ]
+          },
+          "city": {
+            "type": "string",
+            "title": "City",
+            "description": "Request's delivery address city name. Will be empty string if not provided.",
+            "examples": [
+              "Boston",
+              "Newton",
+              "New Bedford",
+              ""
+            ]
+          },
+          "zip": {
+            "type": "string",
+            "title": "Zip",
+            "description": "Request's delivery address zip code. Will be empty string if not provided.",
+            "examples": [
+              "90210-0001",
+              "90210",
+              ""
+            ]
+          },
+          "address1": {
+            "type": "string",
+            "title": "Address1",
+            "description": "Request's delivery first address. Will be empty string if not provided.",
+            "examples": [
+              "123 Main Street, Apt 4B",
+              ""
+            ]
+          },
+          "address2": {
+            "type": "string",
+            "title": "Address2",
+            "description": "Request's delivery second address. Will be empty string if not provided."
+          }
+        },
+        "type": "object",
+        "required": [
+          "country",
+          "state",
+          "city",
+          "zip",
+          "address1",
+          "address2"
+        ],
+        "title": "ShippingAddress"
+      },
+      "ShippingType": {
+        "type": "string",
+        "enum": [
+          "ocean_freight",
+          "freight",
+          "same_day",
+          "next_day",
+          "next_day_am",
+          "two_day",
+          "two_day_am",
+          "three_day",
+          "saturday",
+          "courier",
+          "ground",
+          "priority_mail_express",
+          "priority_mail",
+          "ground_with_freight_pricing",
+          "critical",
+          ""
+        ],
+        "title": "ShippingType"
+      },
+      "ResponseItemSubmitRequest": {
+        "properties": {
+          "event_item": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Event Item",
+            "description": "UUID of the request item for which you provide response data.",
+            "examples": [
+              "984c43cb-9195-4d37-bcf8-6e92c8eb1f5f"
+            ]
+          },
+          "is_rejected": {
+            "type": "boolean",
+            "title": "Is Rejected",
+            "description": "Flag should be set to True in case supplier want reject this item.",
+            "default": false,
+            "examples": [
+              true,
+              false
+            ]
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Quantity",
+            "description": "Item quantity. Could be null in case uncountable item.",
+            "examples": [
+              "10",
+              "1.5",
+              "0",
+              null
+            ]
+          },
+          "uom": {
+            "type": "string",
+            "title": "Uom",
+            "description": "Unit of measurement.",
+            "default": "",
+            "examples": [
+              "each",
+              "bar",
+              "kilogram",
+              ""
+            ]
+          },
+          "unit_price": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit Price",
+            "description": "Item's unit price. Could be null in case unit price is not needed.",
+            "examples": [
+              "10",
+              "1.5",
+              "0",
+              null
+            ]
+          },
+          "delivery_days": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delivery Days",
+            "description": "The number of days during which the parcel is planned to be delivered. Could be null.",
+            "examples": [
+              1,
+              5,
+              null
+            ]
+          },
+          "supplier_pn": {
+            "type": "string",
+            "title": "Supplier Pn",
+            "description": "Supplier part number. Could be empty id not exists.",
+            "default": "",
+            "examples": [
+              "HDY66-X2"
+            ]
+          },
+          "sku": {
+            "type": "string",
+            "title": "Sku",
+            "description": "Stock Keeping Unit. Could be empty id not exists.",
+            "default": "",
+            "examples": [
+              "ZG011AQA"
+            ]
+          },
+          "quantity_change_reason_note": {
+            "type": "string",
+            "title": "Quantity Change Reason Note",
+            "description": "Note for buyer why will be bid not different quantity. Could be empty if not exists.",
+            "default": "",
+            "examples": [
+              "There are 12 bottles in the box."
+            ]
+          },
+          "minimum_order_quantity": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Minimum Order Quantity",
+            "description": "Information for minimum order quantity. Could be null in case not required.",
+            "examples": [
+              "10",
+              "1.5",
+              null
+            ]
+          },
+          "country_of_origin": {
+            "type": "string",
+            "title": "Country Of Origin",
+            "description": "Country of origin. Could be empty.",
+            "default": "",
+            "examples": [
+              "US",
+              "Canada",
+              ""
+            ]
+          },
+          "comments": {
+            "type": "string",
+            "title": "Comments",
+            "description": "Comment for buyer related bid item. Could be empty.",
+            "default": "",
+            "examples": [
+              "Hot offer until the end of the week",
+              ""
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "event_item"
+        ],
+        "title": "ResponseItemSubmitRequest"
+      },
+      "ResponseSubmitRequest": {
+        "properties": {
+          "vendor_quote_number": {
+            "type": "string",
+            "title": "Vendor Quote Number",
+            "description": "Vendor quote number.",
+            "examples": [
+              "DFR440-DB"
+            ]
+          },
+          "valid_for": {
+            "$ref": "#/components/schemas/ResponseValidFor",
+            "description": "The number of days during which the offer will be valid.",
+            "examples": [
+              1,
+              5,
+              7,
+              10,
+              15,
+              30,
+              45,
+              60,
+              90,
+              180,
+              365
+            ]
+          },
+          "is_shipping_included": {
+            "type": "boolean",
+            "title": "Is Shipping Included",
+            "description": "Is shipping included in the total price?",
+            "examples": [
+              true,
+              false
+            ]
+          },
+          "shipping": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Shipping",
+            "description": "Cost of shipping in case it not included in the total price",
+            "default": "0",
+            "examples": [
+              "49.99",
+              "0"
+            ]
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes",
+            "description": "Additional notes from Supplier for Buyer related to the response, if needed.",
+            "default": "",
+            "examples": [
+              "Please contact us ASAP.",
+              ""
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency",
+            "description": "Currency code of response in ISO 4217 format",
+            "examples": [
+              "USD",
+              "CAD",
+              "EUR"
+            ]
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ResponseItemSubmitRequest"
+            },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "type": "object",
+        "required": [
+          "vendor_quote_number",
+          "valid_for",
+          "is_shipping_included",
+          "currency",
+          "items"
+        ],
+        "title": "ResponseSubmitRequest"
+      },
+      "ListRequestResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "description": "Unique request ID.",
+            "examples": [
+              "e3f18428-6e27-4b34-855f-e635a8c56b8b"
+            ]
+          },
+          "ref_id": {
+            "type": "integer",
+            "title": "Ref Id",
+            "description": "Reference ID from platform.",
+            "examples": [
+              1,
+              100500
+            ]
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Request title.",
+            "examples": [
+              "Apple Iphone 16 PRO MAX 1TB"
+            ]
+          },
+          "customer_title": {
+            "type": "string",
+            "title": "Customer Title",
+            "description": "Customer title.",
+            "examples": [
+              "Apple Inc."
+            ]
+          },
+          "closes_at": {
+            "type": "string",
+            "title": "Closes At",
+            "description": "Date and time of when request was planed to close.",
+            "examples": [
+              "2025-09-05 08:39:24.199757+00:00"
+            ]
+          },
+          "preferred_delivery_date": {
+            "type": "string",
+            "title": "Preferred Delivery Date",
+            "description": "Preferred delivery date and time expected by buyer. Will be empty string if wasn't provided.",
+            "examples": [
+              "2025-09-01 08:39:24.199791+00:00",
+              ""
+            ]
+          },
+          "urgency": {
+            "$ref": "#/components/schemas/RequestUrgency",
+            "description": "Request urgency.",
+            "examples": [
+              "normal",
+              "rush",
+              "emergency"
+            ]
+          },
+          "status": {
+            "$ref": "#/components/schemas/RequestStatus",
+            "description": "Actual Request status.",
+            "examples": [
+              "new",
+              "missed",
+              "canceled",
+              "viewed",
+              "ignored",
+              "submitted",
+              "waiting_for_award",
+              "lost",
+              "won",
+              "declined"
+            ]
+          },
+          "payment_process": {
+            "$ref": "#/components/schemas/PaymentProcess",
+            "description": "Payment process expected by buyer.",
+            "default": "po",
+            "examples": [
+              "po",
+              "invoice_only",
+              "credit_card"
+            ]
+          },
+          "shipping_address": {
+            "$ref": "#/components/schemas/ShippingAddress"
+          },
+          "shipping_type": {
+            "$ref": "#/components/schemas/ShippingType",
+            "description": "Shipping type expected by buyer.",
+            "default": "",
+            "examples": [
+              "ocean_freight",
+              "freight",
+              "same_day",
+              "next_day",
+              "next_day_am",
+              "two_day",
+              "two_day_am",
+              "three_day",
+              "saturday",
+              "courier",
+              "ground",
+              "priority_mail_express",
+              "priority_mail",
+              "ground_with_freight_pricing",
+              "critical",
+              ""
+            ]
+          },
+          "carrier": {
+            "$ref": "#/components/schemas/CarrierKind",
+            "description": "Carrier type expected by buyer.",
+            "default": "",
+            "examples": [
+              "ups",
+              "fedex",
+              "dhl",
+              "usps",
+              ""
+            ]
+          },
+          "currency": {
+            "type": "string",
+            "title": "Currency",
+            "description": "Currency of request.",
+            "examples": [
+              "USD",
+              "CAD",
+              "EUR",
+              "AUD"
+            ]
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes",
+            "description": "Additional notes from Buyer for suppliers related to the request, if exists.",
+            "examples": [
+              "We are working only on Mon and Tue."
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "ref_id",
+          "title",
+          "customer_title",
+          "closes_at",
+          "preferred_delivery_date",
+          "urgency",
+          "status",
+          "shipping_address",
+          "currency",
+          "notes"
+        ],
+        "title": "ListRequestResponse"
+      },
+      "RequestOrdering": {
+        "type": "string",
+        "enum": [
+          "created_at",
+          "-created_at",
+          "updated_at",
+          "-updated_at",
+          "closes_at",
+          "-closes_at"
+        ],
+        "title": "RequestOrdering"
+      }
+    }
+  }
+}

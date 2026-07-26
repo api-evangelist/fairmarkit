@@ -1,0 +1,19 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Fairmarkit BUYER PUBLIC API
+  version: 1.0.0
+extends: openapi/fairmarkit-buyer-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enriched: '2026-07-19'
+    x-apievangelist-auth: API key via X-FM-API-KEY header
+    x-apievangelist-source: https://developers.fairmarkit.com/
+- target: $.components
+  update:
+    securitySchemes:
+      ApiKeyAuth:
+        type: apiKey
+        in: header
+        name: X-FM-API-KEY
+        description: Fairmarkit API key generated in Administration / Fairmarkit API settings.

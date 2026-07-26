@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/*.json
+format: http-status-json
+note: Validation errors are HTTP 422 with a JSON body; auth failures 401. Not RFC 9457 application/problem+json.
+envelope:
+  content_type: application/json
+  validation_status: 422
+  auth_status: 401
+problems:
+- status: 400
+  title: Bad Request
+  description: Bad Request - Schema validation failed when attachment_field_name is provided
+  media_types:
+  - application/json
+  source: openapi/fairmarkit-buyer-openapi.json
+- status: 401
+  title: Unauthorized
+  description: Unauthorized - Invalid or missing API key
+  media_types:
+  - application/json
+  source: openapi/fairmarkit-buyer-openapi.json
+- status: 404
+  title: Not Found
+  description: Not Found - Request with the specified UUID does not exist
+  media_types:
+  - application/json
+  source: openapi/fairmarkit-buyer-openapi.json
+- status: 422
+  title: Unprocessable Entity
+  description: Validation Error
+  media_types:
+  - application/json
+  source: openapi/fairmarkit-buyer-openapi.json
+- status: 422
+  title: Unprocessable Entity
+  description: Validation Error
+  media_types:
+  - application/json
+  source: openapi/fairmarkit-supplier-openapi.json

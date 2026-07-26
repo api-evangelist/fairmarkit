@@ -1,0 +1,77 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.fairmarkit.com/docs/webhooks
+spec_type: Webhooks
+delivery:
+  style: push-http
+  direction: outbound
+  optional_auth_token: true
+  configuration: Set a webhook URL (and optional authorization token) under Administration / Fairmarkit
+    API.
+audiences:
+- buyer
+- supplier
+events:
+- name: REQUEST_CREATED
+  docs: https://developers.fairmarkit.com/docs/request_created
+- name: REQUEST_SUBMITTED
+  docs: https://developers.fairmarkit.com/docs/request_submitted
+- name: REQUEST_CANCELED
+  docs: https://developers.fairmarkit.com/docs/request_canceled
+- name: REQUEST_COMPLETED
+  docs: https://developers.fairmarkit.com/docs/request_completed
+- name: REQUEST_IN_PROGRESS
+  docs: https://developers.fairmarkit.com/docs/request_in_progress
+- name: REQUEST_AWAITING_PR_CREATE
+  docs: https://developers.fairmarkit.com/docs/request_awaiting_pr_create
+- name: REQUEST_WITHDRAWN
+  docs: https://developers.fairmarkit.com/docs/request_withdrawn
+- name: SUPPLIER_CREATED
+  docs: https://developers.fairmarkit.com/docs/supplier_created
+- name: RFQ_CREATED
+  docs: https://developers.fairmarkit.com/docs/rfq_created
+- name: RFQ_OPEN
+  docs: https://developers.fairmarkit.com/docs/rfq_open
+- name: RFQ_CLOSED
+  docs: https://developers.fairmarkit.com/docs/rfq_closed
+- name: RFQ_AWARDED
+  docs: https://developers.fairmarkit.com/docs/rfq_awarded
+- name: RFQ_AWARDED_WAITING_FOR_APPROVE
+  docs: https://developers.fairmarkit.com/docs/rfq_awarded_waiting_for_approve
+- name: RFQ_ARCHIVED
+  docs: https://developers.fairmarkit.com/docs/rfq_archived
+- name: RFQ_CANCELED
+  docs: https://developers.fairmarkit.com/docs/rfq_canceled
+- name: BID_SUBMITTED
+  docs: https://developers.fairmarkit.com/docs/bid_submitted
+- name: BID_AWARDED
+  docs: https://developers.fairmarkit.com/docs/bid_awarded
+- name: BID_LOST
+  docs: https://developers.fairmarkit.com/docs/bid_lost
+- name: RFP_CREATED
+  docs: https://developers.fairmarkit.com/docs/rfp_created
+- name: RFP_OPENED
+  docs: https://developers.fairmarkit.com/docs/rfp_opened
+- name: RFP_CLOSED
+  docs: https://developers.fairmarkit.com/docs/rfp_closed
+- name: RFP_CANCELED
+  docs: https://developers.fairmarkit.com/docs/rfp_canceled
+- name: RFP_ARCHIVED
+  docs: https://developers.fairmarkit.com/docs/rfp_archived
+- name: RFP_AWARDED
+  docs: https://developers.fairmarkit.com/docs/rfp_awarded
+- name: RFP_BID_SUBMITTED
+  docs: https://developers.fairmarkit.com/docs/rfp_bid_submitted
+- name: RFP_PDF_REPORT_READY
+  docs: https://developers.fairmarkit.com/docs/rfp_pdf_report_ready
+- name: RFI_REVIEWED
+  docs: https://developers.fairmarkit.com/docs/rfi_reviewed
+- name: RESPONSE_SUBMITTED
+  docs: https://developers.fairmarkit.com/docs/response_submitted
+- name: APPROVAL_AWAITING_EVENT_AWARD
+  docs: https://developers.fairmarkit.com/docs/approval_awaiting_event_award
+- name: APPROVAL_AWAITING_REQUEST_SUBMIT
+  docs: https://developers.fairmarkit.com/docs/approval_awaiting_request_submit
+note: Fairmarkit pushes JSON event notifications to a configured endpoint as procurement events occur
+  (RFQ/RFP/Request/Bid/Approval lifecycle). No AsyncAPI document is published; this is the webhook event
+  catalog.

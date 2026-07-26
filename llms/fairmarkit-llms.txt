@@ -1,0 +1,175 @@
+# developers.fairmarkit.com Documentation
+
+> Documentation for developers.fairmarkit.com
+
+## Guides
+- [Authentication](https://developers.fairmarkit.com/docs/authentication-guide.md): This guide describes how to generate Fairmarkit API keys.
+- [Webhooks](https://developers.fairmarkit.com/docs/webhooks.md): This guide describes how to configure Fairmarkit webhooks.
+- [REQUEST_CREATED](https://developers.fairmarkit.com/docs/request_created.md): The REQUEST_CREATED notification sends to the webhook when a Request for supplier was created by buyer.
+- [REQUEST_SUBMITTED](https://developers.fairmarkit.com/docs/request_submitted.md): The REQUEST_SUBMITTED notification is sent to the webhook when the Buyer submitted the request.
+- [REQUEST_CANCELED](https://developers.fairmarkit.com/docs/request_canceled.md): The REQUEST_CANCELED notification is sent to the webhook when the Buyer canceled the request.
+- [REQUEST_COMPLETED](https://developers.fairmarkit.com/docs/request_completed.md)
+- [REQUEST_IN_PROGRESS](https://developers.fairmarkit.com/docs/request_in_progress.md): Sourcing started
+- [REQUEST_AWAITING_PR_CREATE](https://developers.fairmarkit.com/docs/request_awaiting_pr_create.md)
+- [SUPPLIER_CREATED](https://developers.fairmarkit.com/docs/supplier_created.md)
+- [RFQ_CREATED](https://developers.fairmarkit.com/docs/rfq_created.md): The RFQ_CREATED webhook sends a notification when a request for quote (RFQ) event is awarded.
+- [RFQ_OPEN](https://developers.fairmarkit.com/docs/rfq_open.md)
+- [RFQ_CLOSED](https://developers.fairmarkit.com/docs/rfq_closed.md)
+- [RFQ_AWARDED](https://developers.fairmarkit.com/docs/rfq_awarded.md)
+- [RFQ_AWARDED_WAITING_FOR_APPROVE](https://developers.fairmarkit.com/docs/rfq_awarded_waiting_for_approve.md): Notification is sent to the webhook when an RFQ has been awarded but is still waiting for approval
+- [RFQ_ARCHIVED](https://developers.fairmarkit.com/docs/rfq_archived.md)
+- [BID_SUBMITTED](https://developers.fairmarkit.com/docs/bid_submitted.md)
+- [RFQ_CANCELED](https://developers.fairmarkit.com/docs/rfq_canceled.md)
+- [RFP_CREATED](https://developers.fairmarkit.com/docs/rfp_created-1.md): The RFP_CREATED webhook sends a notification when a request for proposal (RFP) event is created.
+- [RFP_OPENED](https://developers.fairmarkit.com/docs/rfp_created.md)
+- [RFP_CLOSED](https://developers.fairmarkit.com/docs/rfp_closed.md)
+- [RFP_CANCELED](https://developers.fairmarkit.com/docs/rfp_closed-1.md): The RFP_CANCELED webhook sends a notification when a request for proposal (RFP) event is canceled.
+- [RFP_ARCHIVED](https://developers.fairmarkit.com/docs/rfp_archived.md): The RFP_ARCHIVED webhook sends a notification when a request for proposal (RFP) event is archived.
+- [RFP_AWARDED](https://developers.fairmarkit.com/docs/rfp_awarded.md)
+- [RFP_BID_SUBMITTED](https://developers.fairmarkit.com/docs/rfp_bid_submitted.md)
+- [RFP_PDF_REPORT_READY](https://developers.fairmarkit.com/docs/rfp_pdf_report_ready.md)
+- [RFI_REVIEWED](https://developers.fairmarkit.com/docs/rfi_reviewed.md): The RFI_REVIEWED webhook is triggered when a Request For Proposal (RFP) with RFI flow enabled is reviewed by a buyer
+- [RESPONSE_SUBMITTED](https://developers.fairmarkit.com/docs/response_submitted.md)
+- [APPROVAL_AWAITING_EVENT_AWARD](https://developers.fairmarkit.com/docs/approval_awaiting_event_award.md): APPROVAL_AWAITING_EVENT_AWARD
+- [APPROVAL_AWAITING_REQUEST_SUBMIT](https://developers.fairmarkit.com/docs/approval_awaiting_request_submit.md): APPROVAL_AWAITING_REQUEST_SUBMIT
+- [BID_AWARDED](https://developers.fairmarkit.com/docs/vendor_company_bid_awarded.md): The BID_AWARDED notification is sent to the webhook when a Request for Supplier is awarded by the buyer.
+- [REQUEST_WITHDRAWN](https://developers.fairmarkit.com/docs/request_withdrawn-1.md): The REQUEST_WITHDRAWN notification is sent to the webhook when the Buyer withdraws the request.
+- [BID_LOST](https://developers.fairmarkit.com/docs/bid_lost.md): The BID_LOST notification sends to the webhook when the Buyer awarded response, but not yours.
+- [UOMs](https://developers.fairmarkit.com/docs/uoms.md): List of available UOMs for items and services.
+- [Downloading RFQ and Quotation Attachments](https://developers.fairmarkit.com/docs/downloading-rfq-and-quotation-attachments.md)
+- [Sample Integration Flows](https://developers.fairmarkit.com/docs/sample-integration-scenarios.md)
+- [PR Create: Based on Fairmarkit Request](https://developers.fairmarkit.com/docs/external-pr-create-from-fairmarkit-request.md)
+- [PR Intercept: RFQ Creation](https://developers.fairmarkit.com/docs/rfq-create.md)
+- [PR Intercept: RFQ Sourcing Flow](https://developers.fairmarkit.com/docs/pr-intecept-rfq-sourcing-flow.md)
+- [PR Intercept: RFQ Approval Flow](https://developers.fairmarkit.com/docs/pr-intercept-rfq-approval-flow.md)
+- [PR Intercept and PR Create: RFQ Awarding](https://developers.fairmarkit.com/docs/pr-intecept-rfq-award.md)
+- [PR Intercept: Request Creation](https://developers.fairmarkit.com/docs/pr-intercept-request-create.md)
+- [PR Intercept: Request Sourcing Flow](https://developers.fairmarkit.com/docs/pr-intercept-new-request-sourcing.md)
+- [PR Intercept: Request Completed](https://developers.fairmarkit.com/docs/pr-intercept-new-request-complete.md)
+
+## API Reference
+- [Getting Started With Fairmarkit API](https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api.md)
+- [RFQ](https://developers.fairmarkit.com/reference/rfq.md)
+- [List RFQ Events](https://developers.fairmarkit.com/reference/get_rfq_list_services_self_service_api_v3_rfq__get.md): Returns a list of RFQ events.
+- [Create RFQ Event](https://developers.fairmarkit.com/reference/create_services_self_service_api_v3_rfq__post.md): Creates a new RFQ event.
+- [Get RFQ Event Details](https://developers.fairmarkit.com/reference/retrieve_services_self_service_api_v3_rfq__uuid___get.md): Returns details for an RFQ event.
+- [Update RFQ Event](https://developers.fairmarkit.com/reference/update_services_self_service_api_v3_rfq__uuid___put.md): Updates an existing RFQ event.
+- [Delete RFQ Event](https://developers.fairmarkit.com/reference/soft_delete_services_self_service_api_v3_rfq__uuid___delete.md): Deletes an existing RFQ event.
+- [Update Purchase Order](https://developers.fairmarkit.com/reference/update_purchase_order_services_self_service_api_v3_rfq__uuid__purchase_order__put.md): Updates purchase order information for an existing RFQ.
+- [Archive RFQ Event](https://developers.fairmarkit.com/reference/archive_services_self_service_api_v3_rfq__uuid__archive_post.md): Archives an existing RFQ event.
+- [Cancel RFQ Event](https://developers.fairmarkit.com/reference/cancel_services_self_service_api_v3_rfq__uuid__cancel_post.md): Cancels an existing RFQ event.
+- [List Quotations](https://developers.fairmarkit.com/reference/get_quotations_list_services_self_service_api_v3_rfq__uuid__quotations__get.md): Returns a list of quotations for an RFQ event.
+- [List Internal Notes](https://developers.fairmarkit.com/reference/get_internal_notes_services_self_service_api_v3_rfq__uuid__internal_notes__get.md): Returns a list of internal notes for an RFQ event.
+- [Add Internal Note](https://developers.fairmarkit.com/reference/add_internal_note_services_self_service_api_v3_rfq__uuid__internal_notes__post.md): Creates a new internal note for an RFQ event.
+- [List RFQ Approvals](https://developers.fairmarkit.com/reference/get_rfq_approvals_services_self_service_api_v3_rfq__uuid__approvals_get.md): Returns approval data for an RFQ event.
+- [Approve RFQ Step](https://developers.fairmarkit.com/reference/approve_rfq_step_services_self_service_api_v3_rfq__uuid__approvals__approval_id__approve_step_post.md): Approves a step in the RFQ approval workflow.
+- [Reject RFQ Step](https://developers.fairmarkit.com/reference/reject_rfq_step_services_self_service_api_v3_rfq__uuid__approvals__approval_id__reject_step_post.md): Rejects a step in the RFQ approval workflow.
+- [Award RFQ](https://developers.fairmarkit.com/reference/award_rfq_services_self_service_api_v3_rfq__uuid__award_post.md): Awards an RFQ by selecting quotation items and optionally providing a purchase order number.
+- [🧪 Requests (beta)](https://developers.fairmarkit.com/reference/requests.md)
+- [🧪 Create Request](https://developers.fairmarkit.com/reference/requestapi_create_request_services_self_service_api_v4_requests__post.md): Creates a new Request based on the selected schema. To create Request Items, use the Request Item v4 endpoint. This endpoint is in **BETA** and may change without notice.
+- [🧪 Get Request Details](https://developers.fairmarkit.com/reference/requestapi_get_request_services_self_service_api_v4_requests__request_id___get.md): Returns a Request without its items. This endpoint is in **BETA** and may change without notice.
+- [🧪 List Request Items](https://developers.fairmarkit.com/reference/requestapi_get_request_items_list_services_self_service_api_v4_requests__request_id__items__get.md): Returns a paginated list of Request items. This endpoint is in **BETA** and may change without notice.
+- [🧪 Create Request Item](https://developers.fairmarkit.com/reference/requestapi_create_item_services_self_service_api_v4_requests__request_id__items__post.md): Creates a new Request Item based on the selected schema. The Request must exist first. This endpoint is in **BETA** and may change without notice.
+- [⚠ Create Request](https://developers.fairmarkit.com/reference/requestapi_create_request_services_self_service_api_v3_requests__post.md): Creates a new Request. This endpoint is **DEPRECATED**. Use the v4 Requests API and Request Item endpoints instead.
+- [⚠ Get Request Details](https://developers.fairmarkit.com/reference/requestapi_get_request_services_self_service_api_v3_requests__request_id___get.md): Returns details for a specific Request. This endpoint is **DEPRECATED**. Use the v4 Requests API and Request Item endpoints instead.
+- [🧪 Link External PR to Request](https://developers.fairmarkit.com/reference/requestapi_link_pr_services_self_service_api_v3_requests__request_id__pr_link__post.md): Marks external PR creation as successful and returns the external PR details. This endpoint is in **BETA** and may change without notice.
+- [🧪 Mark External PR Creation Failed](https://developers.fairmarkit.com/reference/requestapi_mark_pr_as_failed_services_self_service_api_v3_requests__request_id__pr_mark_as_failed__post.md): Marks external PR creation as failed. This endpoint is in **BETA** and may change without notice.
+- [🧪 Update External PR Status](https://developers.fairmarkit.com/reference/requestapi_update_pr_status_services_self_service_api_v3_requests__request_id__pr_status__post.md): Updates the status of an external PR linked to a Request. This endpoint is in **BETA** and may change without notice.
+- [Cancel Request](https://developers.fairmarkit.com/reference/requestapi_cancel_request_services_self_service_api_v4_requests__request_id__cancel_post.md): Cancels an existing Request.
+- [Submit Request](https://developers.fairmarkit.com/reference/requestapi_submit_request_services_self_service_api_v4_requests__request_id__submit_post.md): Submits a Request.
+- [🧪 Update Request](https://developers.fairmarkit.com/reference/requestapi_update_request_services_self_service_api_v4_requests__request_id___put.md): Updates a Request while preserving attachment field values and ignoring new values. This endpoint is in **BETA** and may change without notice.
+- [🧪 Update Request Item](https://developers.fairmarkit.com/reference/requestapi_update_request_item_services_self_service_api_v4_requests__request_id__items__request_item_id__put.md): Updates a Request Item while preserving attachment field values and ignoring new values. This endpoint is in **BETA** and may change without notice.
+- [Create Request Item Batch](https://developers.fairmarkit.com/reference/requestapi_create_request_item_batch_services_self_service_api_v4_requests__request_id__items_batch_post.md): Creates Request Items in batch.
+- [List Requests](https://developers.fairmarkit.com/reference/requestapi_list_requests_services_self_service_api_v4_requests__get.md): Returns a paginated list of Requests.
+- [List Request Event Approvals](https://developers.fairmarkit.com/reference/requestapi_get_request_event_approvals_services_self_service_api_v4_requests__request_id__event_approvals_get.md): Returns approval data for a Request event.
+- [Approve Request Event Step](https://developers.fairmarkit.com/reference/requestapi_approve_request_event_step_services_self_service_api_v4_requests__request_id__event_approvals__approval_id__approve_step_post.md): Approves a Request event approval step.
+- [Reject Request Event Step](https://developers.fairmarkit.com/reference/requestapi_reject_request_event_step_services_self_service_api_v4_requests__request_id__event_approvals__approval_id__reject_step_post.md): Rejects a Request event approval step.
+- [🧪 List Request Approvals](https://developers.fairmarkit.com/reference/requestapi_get_request_approvals_services_self_service_api_v3_requests__request_id__approvals_get.md): Returns approval data for a Request. This endpoint is in **BETA** and may change without notice.
+- [🧪 Approve Request Step](https://developers.fairmarkit.com/reference/requestapi_approve_request_step_services_self_service_api_v3_requests__request_id__approvals__approval_id__approve_step_post.md): Approves a Request approval step. This endpoint is in **BETA** and may change without notice.
+- [🧪 Reject Request Step](https://developers.fairmarkit.com/reference/requestapi_reject_request_step_services_self_service_api_v3_requests__request_id__approvals__approval_id__reject_step_post.md): Rejects a Request approval step. This endpoint is in **BETA** and may change without notice.
+- [Supplier](https://developers.fairmarkit.com/reference/supplier.md)
+- [Deactivate Supplier](https://developers.fairmarkit.com/reference/supplierapi_de_activate_services_self_service_api_v3_supplier__uuid__deactivate__post.md): Deactivates an existing supplier.
+- [Activate Supplier](https://developers.fairmarkit.com/reference/supplierapi_re_activate_services_self_service_api_v3_supplier__uuid__activate__post.md): Activates an existing supplier.
+- [List Suppliers](https://developers.fairmarkit.com/reference/list_services_self_service_api_v3_supplier__get.md): Returns a list of suppliers.
+- [Create Supplier](https://developers.fairmarkit.com/reference/create_services_self_service_api_v3_supplier__post.md): Creates a new supplier.
+- [Bulk Create Suppliers](https://developers.fairmarkit.com/reference/bulk_create_services_self_service_api_v3_supplier_bulk_create__post.md): Bulk creates new suppliers.
+- [Get Supplier Details](https://developers.fairmarkit.com/reference/retrieve_services_self_service_api_v3_supplier__uuid___get.md): Returns details for a specific supplier.
+- [Update Supplier](https://developers.fairmarkit.com/reference/update_services_self_service_api_v3_supplier__uuid___put.md): Updates an existing supplier.
+- [Delete Supplier](https://developers.fairmarkit.com/reference/soft_delete_services_self_service_api_v3_supplier__uuid___delete.md): Deletes an existing supplier.
+- [Update Business Classifications](https://developers.fairmarkit.com/reference/update_services_self_service_api_v3_supplier__uuid__business_classifications__post.md): Updates business classifications for a supplier.
+- [Purchase Orders](https://developers.fairmarkit.com/reference/purchase-orders.md)
+- [List Purchase Orders](https://developers.fairmarkit.com/reference/list_services_self_service_api_v3_purchase_orders__get.md): Returns a list of purchase orders.
+- [Create Purchase Order](https://developers.fairmarkit.com/reference/create_services_self_service_api_v3_purchase_orders__post.md): Creates a new purchase order.
+- [Upload Purchase Orders](https://developers.fairmarkit.com/reference/purchaseorderapi_upload_services_self_service_api_v4_purchase_orders_upload__post.md)
+- [Get Upload Status for Purchase Orders](https://developers.fairmarkit.com/reference/purchaseorderapi_get_upload_status_services_self_service_api_v4_purchase_orders_upload__upload_id__status__get.md)
+- [Create Request Attachment](https://developers.fairmarkit.com/reference/create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post.md): Creates a new attachment on a request.
+- [Create Request Item Attachment](https://developers.fairmarkit.com/reference/create_request_item_attachment_services_self_service_api_v3_attachments_requests__request_uuid__items__request_item_uuid___post.md): Creates a new attachment on a request item.
+- [List RFQ Attachments](https://developers.fairmarkit.com/reference/get_rfq_attachments_services_self_service_api_v3_attachments_rfq__rfq_uuid___get.md): Returns a list of attachments for an RFQ event.
+- [Create RFQ Attachment](https://developers.fairmarkit.com/reference/create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post.md): Creates a new attachment on an RFQ event.
+- [Create RFQ Item Attachment](https://developers.fairmarkit.com/reference/create_rfq_item_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid__items__item_uuid___post.md): Creates a new attachment on an RFQ line item.
+- [List Categories](https://developers.fairmarkit.com/reference/list_services_self_service_api_v3_categories__get.md): Returns a list of categories.
+- [List Business Units](https://developers.fairmarkit.com/reference/list_services_self_service_api_v3_business_units__get.md): Returns a list of business units.
+- [Create Business Unit](https://developers.fairmarkit.com/reference/create_services_self_service_api_v3_business_units__post.md): Creates a new business unit.
+- [Get Business Unit Details](https://developers.fairmarkit.com/reference/retrieve_services_self_service_api_v3_business_units__uuid___get.md): Returns details for a business unit.
+- [Update Business Unit](https://developers.fairmarkit.com/reference/update_services_self_service_api_v3_business_units__uuid___put.md): Updates an existing business unit.
+- [Delete Business Unit](https://developers.fairmarkit.com/reference/delete_services_self_service_api_v3_business_units__uuid___delete.md): Deletes an existing business unit.
+- [Get Proposals List](https://developers.fairmarkit.com/reference/get_proposals_list_services_self_service_api_v3_rfp__uuid__proposals__get.md): Returns data about a specific proposal (response) on a request for proposals (RFP) event.
+- [List RFPs](https://developers.fairmarkit.com/reference/get_rfp_list_services_self_service_api_v3_rfp__get.md): Returns a list of RFP events.
+- [Get RFP Details](https://developers.fairmarkit.com/reference/retrieve_services_self_service_api_v3_rfp__uuid___get.md): Returns details for an RFP event.
+- [Create RFP From Template](https://developers.fairmarkit.com/reference/create_rfp_from_template_services_self_service_api_v3_templates_rfp__template_uuid__create_rfp_post.md): Creates a new request for proposal (RFP) event from a RFP template.
+- [List RFP Templates](https://developers.fairmarkit.com/reference/get_rfp_templates_services_self_service_api_v3_templates_rfp__get.md): Returns a list of all created RFP Templates.
+- [List ERP Systems](https://developers.fairmarkit.com/reference/list_services_self_service_api_v3_erp_systems__get.md): Returns a list of ERP systems.
+- [Get Current Schema](https://developers.fairmarkit.com/reference/schemaapi_get_current_schema_services_self_service_api_v3_schemas_current_get.md): Returns the current schema for the requested type.
+- [Get Schema Details](https://developers.fairmarkit.com/reference/schemaapi_get_schema_services_self_service_api_v3_schemas__schema_id___get.md): Returns details for a specific schema.
+- [🧪 Responses (beta)](https://developers.fairmarkit.com/reference/responses.md)
+- [🧪 List Responses By Request](https://developers.fairmarkit.com/reference/responseapi_get_responses_by_request_services_self_service_api_v3_responses_request__request_id___get.md): Returns a list of responses for a Request. This endpoint is in **BETA** and may change without notice.
+- [🧪 List Response Items By Request](https://developers.fairmarkit.com/reference/responseapi_get_response_items_by_request_services_self_service_api_v3_responses_request__request_id__response_items__get.md): Returns a list of response items for a Request. This endpoint is in **BETA** and may change without notice.
+- [🧪 List Awarded Response Items By Request](https://developers.fairmarkit.com/reference/responseapi_get_awarded_response_items_by_request_services_self_service_api_v3_responses_request__request_id__awarded_items__get.md): Returns a list of awarded response items for a Request. This endpoint is in **BETA** and may change without notice.
+- [List Awarded Response Items By Request](https://developers.fairmarkit.com/reference/responseapi_get_response_items_by_request_search_as_buyer_services_self_service_api_v4_responses_request__request_id___get.md): Returns awarded response items for a Request.
+- [🧪 Price Books (beta)](https://developers.fairmarkit.com/reference/price-books.md)
+- [⚠ List Price Books](https://developers.fairmarkit.com/reference/pricebookapi_get_price_books_services_self_service_api_v3_price_books__get.md): ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Price Books List v4](/reference/get_price_books_list_services_self_service_api_v4_price_books__get/). Please connect with your customer success contact for any questions.
+- [⚠ Create Price Book](https://developers.fairmarkit.com/reference/pricebookapi_create_price_book_services_self_service_api_v3_price_books__post.md): ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Retrieve Price Book v4](/reference/get_price_book_services_self_service_api_v4_price_books__price_book_id__get/). Please connect with your customer success contact for any questions.
+- [⚠ Get Price Book Details](https://developers.fairmarkit.com/reference/pricebookapi_get_price_book_by_id_services_self_service_api_v3_price_books__price_book_id__get.md): ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Retrieve Price Book v4](/reference/get_price_book_services_self_service_api_v4_price_books__price_book_id__get/). Please connect with your customer success contact for any questions.
+- [⚠ Delete Price Book](https://developers.fairmarkit.com/reference/pricebookapi_delete_price_book_services_self_service_api_v3_price_books__price_book_id__delete.md): ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [DELETE Price Book v4](/reference/delete_price_book_services_self_service_api_v4_price_books__price_book_id__delete/). Please connect with your customer success contact for any questions.
+- [⚠ List Price Book Items](https://developers.fairmarkit.com/reference/pricebookapi_get_price_book_items_services_self_service_api_v3_price_books__price_book_id__items_get.md): ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Price Book Items v4](/reference/get_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_get/). Please connect with your customer success contact for any questions.
+- [⚠ Create Price Book Item](https://developers.fairmarkit.com/reference/pricebookapi_create_price_book_item_services_self_service_api_v3_price_books__price_book_id__items_post.md): ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [POST Create Price Book Items v4](/reference/create_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_post/). Please connect with your customer success contact for any questions.
+- [⚠ Get Price Book Item Details](https://developers.fairmarkit.com/reference/pricebookapi_get_price_book_item_services_self_service_api_v3_price_books_price_book_items__item_id__get.md): ⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API [GET Price Book Item v4](/reference/get_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__get/). Please connect with your customer success contact for any questions.
+- [List Price Books](https://developers.fairmarkit.com/reference/get_price_books_list_services_self_service_api_v4_price_books__get.md): Returns a list of price books.
+- [Create Price Book](https://developers.fairmarkit.com/reference/create_price_book_services_self_service_api_v4_price_books__post.md): Creates a new price book.
+- [Get Price Book Details](https://developers.fairmarkit.com/reference/get_price_book_services_self_service_api_v4_price_books__price_book_id__get.md): Returns details for a price book.
+- [Update Price Book](https://developers.fairmarkit.com/reference/update_price_book_services_self_service_api_v4_price_books__price_book_id__patch.md): Updates a price book.
+- [Delete Price Book](https://developers.fairmarkit.com/reference/delete_price_book_services_self_service_api_v4_price_books__price_book_id__delete.md): Deletes a price book.
+- [List Price Book Items](https://developers.fairmarkit.com/reference/get_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_get.md): Returns a list of price book items.
+- [Create Price Book Items](https://developers.fairmarkit.com/reference/create_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_post.md): Creates price book items.
+- [Delete Price Book Items](https://developers.fairmarkit.com/reference/delete_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_delete.md): Delete multiple price book items by their UUIDs or External IDs.
+- [Get Price Book Item Details](https://developers.fairmarkit.com/reference/get_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__get.md): Returns details for a price book item.
+- [Update Price Book Item](https://developers.fairmarkit.com/reference/update_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__patch.md): Updates a price book item.
+- [Delete Price Book Item](https://developers.fairmarkit.com/reference/delete_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__delete.md): Deletes a price book item.
+- [List Datasets](https://developers.fairmarkit.com/reference/datafieldapi_get_datasets_services_self_service_api_v3_data_fields_dataset_get.md): Returns a list of datasets.
+- [Create Dataset](https://developers.fairmarkit.com/reference/datafieldapi_create_dataset_services_self_service_api_v3_data_fields_dataset_post.md): Creates a new dataset.
+- [Get Dataset Details](https://developers.fairmarkit.com/reference/datafieldapi_get_dataset_by_slug_services_self_service_api_v3_data_fields_dataset__slug__get.md): Returns details for a dataset.
+- [Delete Dataset](https://developers.fairmarkit.com/reference/datafieldapi_delete_dataset_services_self_service_api_v3_data_fields_dataset__slug__delete.md): Deletes a dataset.
+- [Update Dataset](https://developers.fairmarkit.com/reference/datafieldapi_update_dataset_services_self_service_api_v3_data_fields_dataset__slug__patch.md): Updates a dataset.
+- [List Dataset Items](https://developers.fairmarkit.com/reference/datafieldapi_get_dataset_items_services_self_service_api_v3_data_fields_dataset__slug__items_get.md): Returns a list of dataset items.
+- [Create Dataset Items](https://developers.fairmarkit.com/reference/datafieldapi_create_dataset_items_services_self_service_api_v3_data_fields_dataset__slug__items_post.md): Creates dataset items.
+- [Get Dataset Item Details](https://developers.fairmarkit.com/reference/datafieldapi_get_dataset_item_by_id_services_self_service_api_v3_data_fields_dataset__slug__items__item_id__get.md): Returns details for a dataset item.
+- [Delete Dataset Item](https://developers.fairmarkit.com/reference/datafieldapi_delete_dataset_item_services_self_service_api_v3_data_fields_dataset__slug__items__item_id__delete.md): Deletes a dataset item.
+- [Update Dataset Item](https://developers.fairmarkit.com/reference/datafieldapi_update_dataset_item_services_self_service_api_v3_data_fields_dataset__slug__items__item_id__patch.md): Updates a dataset item.
+- [List Dataset Items By Filters](https://developers.fairmarkit.com/reference/datafieldapi_get_dataset_items_by_ids_services_self_service_api_v3_data_fields_dataset_items_get.md): Returns dataset items matching the supplied filters.
+- [Upload Dataset Items](https://developers.fairmarkit.com/reference/datafieldapi_upload_dataset_items_services_self_service_api_v3_data_fields_dataset_items_upload_post.md): Uploads dataset items from a file.
+- [Get User Profile](https://developers.fairmarkit.com/reference/get_user_profile_services_self_service_api_v3_user_profiles__identity_id__get.md): Retrieve a user profile by identity ID.
+- [Update User Profile](https://developers.fairmarkit.com/reference/update_user_profile_services_self_service_api_v3_user_profiles__identity_id__put.md): Update a user profile by identity ID.
+- [Get Event Details](https://developers.fairmarkit.com/reference/eventapi_get_event_details_services_self_service_api_v4_event__event_id__get.md): Returns details for an event.
+- [Get Event Pricing Items](https://developers.fairmarkit.com/reference/eventapi_get_event_pricing_items_services_self_service_api_v4_event__event_id__pricing_items_get.md): Returns pricing items for an event.
+- [List Events By Request](https://developers.fairmarkit.com/reference/eventapi_get_events_list_by_request_id_services_self_service_api_v4_event__request_id__events_get.md): Returns events for a Request.
+- [Create Identity](https://developers.fairmarkit.com/reference/identityapi_create_identity_services_self_service_api_v4_identity_identities_post.md): Creates an identity.
+- [List Permission Sets](https://developers.fairmarkit.com/reference/requestapi_get_available_permission_set_list_services_self_service_api_v4_identity_permission_sets_get.md): Returns a list of permission sets.
+- [List UOMs](https://developers.fairmarkit.com/reference/uomapi_get_available_permission_set_list_services_self_service_api_v4_uom_uoms_get.md): Returns a list of UOMs.
+- [Create Data Export](https://developers.fairmarkit.com/reference/dataexportapi_create_data_export_services_self_service_api_v4_data_exports__post.md)
+- [List Available Data Exports](https://developers.fairmarkit.com/reference/dataexportapi_list_available_data_exports_services_self_service_api_v4_data_exports_available_get.md)
+- [Get Data Export](https://developers.fairmarkit.com/reference/dataexportapi_get_data_export_services_self_service_api_v4_data_exports__job_id__get.md)
+- [Get Requests](https://developers.fairmarkit.com/reference/get_requests-requests_requests_requests.md): Returns a list of Requests that Buyer creates for your company
+- [Get Request](https://developers.fairmarkit.com/reference/get_request-requests_requests_requests.md): Returns full information about the Request by provided id
+- [Get Request Response](https://developers.fairmarkit.com/reference/get_request_response-requests_requests_requests.md): Returns information about Response that you submit for Request by provided request id.
+- [Submit Response](https://developers.fairmarkit.com/reference/submit_response-requests_requests_requests.md): Creates a Response for the Request with provided request_id
+- [Reject Request](https://developers.fairmarkit.com/reference/reject_request-requests_requests_requests.md): Creates a Response with rejection information for the Request with provided request_id

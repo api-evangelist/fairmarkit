@@ -1,8 +1,15 @@
 aid: fairmarkit
 name: Fairmarkit
-description: 'Fairmarkit is a company surfaced as a portfolio company of ggv-capital, insight-partners
-  and added to the API Evangelist network as a stub for enrichment. Sector: procurement. This profile
-  is a lead awaiting the enrichment pipeline.'
+description: >-
+  Fairmarkit is an autonomous sourcing and strategic procurement platform that uses AI
+  agents to automate the full sourcing lifecycle — from intake and request creation
+  through RFQ/RFP/RFI events, supplier bidding, award, and purchase-order handoff to ERP
+  and P2P systems. Fairmarkit publishes a public, OpenAPI 3.1-described Buyer Self-Service
+  REST API (v3 and v4) and a Supplier Public API, secured with an X-FM-API-KEY header,
+  covering RFQ/RFP events, requests and request items, suppliers, purchase orders,
+  price books, datasets/data fields, business units, categories, identities, permission
+  sets, data exports, and file attachments, plus a rich webhook notification catalog for
+  procurement events. The company is backed by GGV Capital and Insight Partners.
 url: https://raw.githubusercontent.com/api-evangelist/fairmarkit/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,18 +18,314 @@ x-backed-by:
 - insight-partners
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://cdn.prod.website-files.com/6974c3dfc9de89aed672a42c/69df9b1468ca1d50addc7ada_aac4c2022c593d27762cac87054f89ec_Opengraph_Homepage.png
 tags:
 - Company
 - Procurement
-apis: []
+- Sourcing
+- Supply Chain
+- Purchasing
+- Suppliers
+- RFQ
+- RFP
+- Spend Management
+- Webhooks
+apis:
+- aid: fairmarkit:fairmarkit-business-units-api
+  name: Fairmarkit Business Units API
+  description: The Business Units API from Fairmarkit — 2 operation(s) for business units.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - Business Units
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-business-units-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-categories-api
+  name: Fairmarkit Categories API
+  description: The Categories API from Fairmarkit — 1 operation(s) for categories.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-categories-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-data-exports-api
+  name: Fairmarkit Data Exports API
+  description: The Data Exports API from Fairmarkit — 3 operation(s) for data exports.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - Data Exports
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-data-exports-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-data-fields-api
+  name: Fairmarkit Data Fields API
+  description: The Data Fields API from Fairmarkit — 6 operation(s) for data fields.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - Data Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-data-fields-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-erp-systems-api
+  name: Fairmarkit ERP Systems API
+  description: The ERP Systems API from Fairmarkit — 1 operation(s) for erp systems.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - ERP Systems
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-erp-systems-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-event-api
+  name: Fairmarkit Event API
+  description: The Event API from Fairmarkit — 3 operation(s) for event.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - Event
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-event-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-file-attachments-api
+  name: Fairmarkit File attachments API
+  description: The File attachments API from Fairmarkit — 4 operation(s) for file attachments.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - File attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-file-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-identity-api
+  name: Fairmarkit Identity API
+  description: The Identity API from Fairmarkit — 2 operation(s) for identity.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - Identity
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-identity-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-price-books-api
+  name: Fairmarkit Price Books API
+  description: The Price Books API from Fairmarkit — 8 operation(s) for price books.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - Price Books
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-price-books-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-purchase-orders-api
+  name: Fairmarkit Purchase Orders API
+  description: The Purchase Orders API from Fairmarkit — 3 operation(s) for purchase orders.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - Purchase Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-purchase-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-requests-api
+  name: Fairmarkit Requests API
+  description: The Requests API from Fairmarkit — 23 operation(s) for requests.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-requests-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-responses-api
+  name: Fairmarkit Responses API
+  description: The Responses API from Fairmarkit — 4 operation(s) for responses.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - Responses
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-responses-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-rfp-api
+  name: Fairmarkit RFP API
+  description: The RFP API from Fairmarkit — 5 operation(s) for rfp.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - RFP
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-rfp-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-rfq-api
+  name: Fairmarkit RFQ API
+  description: The RFQ API from Fairmarkit — 11 operation(s) for rfq.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - RFQ
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-rfq-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-schema-api
+  name: Fairmarkit Schema API
+  description: The Schema API from Fairmarkit — 2 operation(s) for schema.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - Schema
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-schema-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-supplier-api
+  name: Fairmarkit Supplier API
+  description: The Supplier API from Fairmarkit — 6 operation(s) for supplier.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - Supplier
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-supplier-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-uom-api
+  name: Fairmarkit UOM API
+  description: The UOM API from Fairmarkit — 1 operation(s) for uom.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - UOM
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-uom-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- aid: fairmarkit:fairmarkit-user-profiles-api
+  name: Fairmarkit User Profiles API
+  description: The User Profiles API from Fairmarkit — 1 operation(s) for user profiles.
+  humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+  baseURL: https://staging.fairmarkit.com
+  tags:
+  - User Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/fairmarkit-user-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/fairmarkit-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/fairmarkit-agentic-access.yml
 - type: Website
   url: https://www.fairmarkit.com/
+- type: DeveloperPortal
+  url: https://developers.fairmarkit.com/
+- type: Documentation
+  url: https://docs.fairmarkit.com/
+- type: APIReference
+  url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- type: GettingStarted
+  url: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+- type: Authentication
+  url: authentication/fairmarkit-authentication.yml
+- type: Support
+  url: https://fmkt.zendesk.com/hc/en-us
+- type: Blog
+  url: https://www.fairmarkit.com/blog
+- type: GitHubOrganization
+  url: https://github.com/fairmarkit
+- type: TermsOfService
+  url: https://www.fairmarkit.com/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.fairmarkit.com/privacy-policy
+- type: Security
+  url: https://www.fairmarkit.com/security-statement
+- type: Compliance
+  url: https://www.fairmarkit.com/security-compliance
+- type: Integrations
+  url: https://www.fairmarkit.com/integrations
+- type: ChangeLog
+  url: changelog/fairmarkit-changelog.yml
+- type: ReleaseNotes
+  url: https://docs.fairmarkit.com/release-notes
+- type: LLMsTxt
+  url: llms/fairmarkit-llms.txt
+- type: Webhooks
+  url: asyncapi/fairmarkit-webhooks.yml
+- type: Conventions
+  url: conventions/fairmarkit-conventions.yml
+- type: ErrorCatalog
+  url: errors/fairmarkit-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/fairmarkit-lifecycle.yml
+- type: Deprecation
+  url: lifecycle/fairmarkit-lifecycle.yml
+- type: Conformance
+  url: conformance/fairmarkit-conformance.yml
+- type: DataModel
+  url: data-model/fairmarkit-data-model.yml
+- type: MCPServer
+  url: mcp/fairmarkit-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

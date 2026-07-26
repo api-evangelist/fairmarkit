@@ -1,0 +1,78 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/fairmarkit-supplier-openapi.json
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 5
+  by_action_class:
+    acting: 2
+    connected: 3
+  by_consequence:
+    write: 2
+    read: 3
+  human_in_the_loop_required: 0
+operations:
+- path: /services/supplier-public-api/api/v1/requests/{request_id}/reject/
+  method: post
+  operationId: reject_request-Requests_Requests_Requests
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/supplier-public-api/api/v1/requests/{request_id}/response/
+  method: get
+  operationId: get_request_response-Requests_Requests_Requests
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/supplier-public-api/api/v1/requests/{request_id}/
+  method: get
+  operationId: get_request-Requests_Requests_Requests
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/supplier-public-api/api/v1/requests/{request_id}/submit/
+  method: post
+  operationId: submit_response-Requests_Requests_Requests
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/supplier-public-api/api/v1/requests/
+  method: get
+  operationId: get_requests-Requests_Requests_Requests
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

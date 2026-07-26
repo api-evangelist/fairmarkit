@@ -1,0 +1,43 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.fairmarkit.com/release-notes/release-notes/buyers
+scheme: dated
+audience: buyers
+entries:
+- date: '2026-07-09'
+  highlights:
+  - Czech language & localization support
+  - 'KIT: custom fields on price book items (available via public API)'
+  - Single-supplier RFQ warning notification
+- date: '2026-06-25'
+  highlights:
+  - Exports & documents updates
+  - Approvals and automation rules
+  - Analytics, bidding & awarding, auctions, AI negotiations improvements
+- date: '2026-04-30'
+  highlights:
+  - KIT language detection
+  - Auction details export enhancements
+  - Event cancellation & withdrawal reasons
+- date: '2026-03-19'
+  highlights:
+  - New request page experience
+  - Re-assigning users to events
+  - Out-of-office notifications
+  - Required attachments
+- date: '2026-03-05'
+  highlights:
+  - Manual/API RFQ supplier-group trigger
+  - New UOM options
+  - Category column in events list
+  - Price books updates
+- date: '2026-02-05'
+  highlights:
+  - Multiple business units API support
+  - Price book multi-option handling
+  - Shipping country filter
+  - Improved hybrid search in price books
+- date: '2026-01-22'
+  highlights:
+  - New event details in PDF downloads
+  - RFP headers update

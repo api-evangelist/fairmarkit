@@ -1,0 +1,140 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/fairmarkit-buyer-openapi.json
+id_style: uuid
+entities:
+- name: Business Units
+- name: Categories
+- name: Data Exports
+- name: Data Fields
+- name: ERP Systems
+- name: Event
+- name: File attachments
+- name: Identity
+- name: Price Books
+- name: Purchase Orders
+- name: RFP
+- name: RFQ
+- name: Requests
+- name: Responses
+- name: Schema
+- name: Supplier
+- name: UOM
+- name: User Profiles
+relationships:
+- from: AwardedItemResponse
+  to: Response
+  kind: belongs_to
+  via: response_id
+- from: DataFieldDatasetItemResponse
+  to: Dataset
+  kind: belongs_to
+  via: dataset_id
+- from: EventRetrieve
+  to: Request
+  kind: belongs_to
+  via: request_id
+- from: PriceBook
+  to: BusinessUnit
+  kind: has_many
+  via: business_unit_ids
+- from: PriceBook
+  to: Supplier
+  kind: belongs_to
+  via: supplier_id
+- from: PriceBookItemResponseV4
+  to: PriceBook
+  kind: belongs_to
+  via: price_book_id
+- from: PriceBookResponse
+  to: BusinessUnit
+  kind: has_many
+  via: business_unit_ids
+- from: PriceBookResponse
+  to: Supplier
+  kind: belongs_to
+  via: supplier_id
+- from: PriceBookResponseV4
+  to: Supplier
+  kind: belongs_to
+  via: supplier_id
+- from: PriceBookV4
+  to: Supplier
+  kind: belongs_to
+  via: supplier_id
+- from: PurchaseOrder
+  to: Category
+  kind: belongs_to
+  via: category_id
+- from: PurchaseOrder
+  to: Supplier
+  kind: belongs_to
+  via: supplier_id
+- from: PurchaseOrderRetrieve
+  to: Category
+  kind: belongs_to
+  via: category_id
+- from: PurchaseOrderRetrieve
+  to: Supplier
+  kind: belongs_to
+  via: supplier_id
+- from: Quotation
+  to: Supplier
+  kind: belongs_to
+  via: supplier_id
+- from: RFP
+  to: Request
+  kind: belongs_to
+  via: request_id
+- from: RFPCreateFromTemplateRetrieve
+  to: Request
+  kind: belongs_to
+  via: request_id
+- from: RFPListDetail
+  to: Request
+  kind: belongs_to
+  via: request_id
+- from: RFPRetrieve
+  to: Request
+  kind: belongs_to
+  via: request_id
+- from: RFQListDetail
+  to: Request
+  kind: belongs_to
+  via: request_id
+- from: RFQRetrieve
+  to: Request
+  kind: belongs_to
+  via: request_id
+- from: ResponseByRequest
+  to: Request
+  kind: belongs_to
+  via: request_id
+- from: ResponseItemResponse
+  to: Response
+  kind: belongs_to
+  via: response_id
+- from: ResponseMultiroundItemResponse
+  to: Event
+  kind: belongs_to
+  via: event_id
+- from: ResponseMultiroundItemResponse
+  to: Response
+  kind: belongs_to
+  via: response_id
+- from: RfqIDResponse
+  to: RFQ
+  kind: belongs_to
+  via: rfq_uuid
+- from: UpdateDatasetItemRequest
+  to: Dataset
+  kind: belongs_to
+  via: dataset_id
+- from: UpdatedPriceBookV4
+  to: Supplier
+  kind: belongs_to
+  via: supplier_id
+- from: UserProfileResponse
+  to: Identity
+  kind: belongs_to
+  via: identity_id

@@ -1,0 +1,37 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+authentication:
+  style: api-key
+  header: X-FM-API-KEY
+  docs: https://developers.fairmarkit.com/docs/authentication-guide
+  ref: authentication/fairmarkit-authentication.yml
+base_urls:
+  buyer: https://staging.fairmarkit.com
+  supplier: https://uat.fairmarkit.com
+versioning:
+  scheme: uri-path
+  versions:
+  - v3
+  - v4
+  path_prefix: /services/self-service/api/{version}/
+  note: v3 and v4 coexist; several v3 operations are deprecated in favor of v4.
+pagination:
+  style: limit-offset
+  params:
+  - limit
+  - offset
+idempotency:
+  supported: false
+  note: No Idempotency-Key header documented or present in OpenAPI.
+errors:
+  validation_status: 422
+  auth_status: 401
+  content_type: application/json
+  ref: errors/fairmarkit-problem-types.yml
+webhooks:
+  style: push-http
+  optional_auth_token: true
+  ref: asyncapi/fairmarkit-webhooks.yml
+deprecation:
+  ref: lifecycle/fairmarkit-lifecycle.yml

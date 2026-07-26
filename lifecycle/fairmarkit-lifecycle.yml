@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: https://developers.fairmarkit.com/ + https://docs.fairmarkit.com/release-notes
+versioning:
+  scheme: uri-path
+  current: v4
+  also_supported:
+  - v3
+  path_prefix: /services/self-service/api/{version}/
+  docs: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+deprecation:
+  policy: in-band
+  sunset_language: true
+  note: 'Deprecated v3 operations are flagged in the OpenAPI (deprecated: true) and in the reference (⚠
+    End of Life / To Be Sunset markers, e.g. v3 Price Books). Fairmarkit states it works with customers
+    on a migration path before sunset.'
+  reference: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
+release_notes:
+  buyers: https://docs.fairmarkit.com/release-notes/release-notes/buyers
+  suppliers: https://docs.fairmarkit.com/release-notes/release-notes/suppliers
+status_page: null
+sla: null
+deprecated_operations_note: '9 buyer-API operations are marked deprecated: true in openapi/fairmarkit-buyer-openapi.json
+  (v3 Requests + v3 Price Books families).'

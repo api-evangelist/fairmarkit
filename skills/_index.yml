@@ -1,0 +1,34 @@
+generated: '2026-07-19'
+method: generated
+skills:
+- file: fairmarkit-create-and-award-rfq.md
+  name: Create and award a Fairmarkit RFQ
+  api: openapi/fairmarkit-buyer-openapi.json
+  operations:
+  - create_services_self_service_api_v3_rfq__post
+  - get_quotations_list_services_self_service_api_v3_rfq__uuid__quotations__get
+  - award_rfq_services_self_service_api_v3_rfq__uuid__award_post
+  - retrieve_services_self_service_api_v3_rfq__uuid___get
+- file: fairmarkit-manage-suppliers.md
+  name: Manage Fairmarkit suppliers
+  api: openapi/fairmarkit-buyer-openapi.json
+  operations:
+  - create_services_self_service_api_v3_supplier__post
+  - list_services_self_service_api_v3_supplier__get
+  - update_services_self_service_api_v3_supplier__uuid___put
+  - SupplierApi_de_activate_services_self_service_api_v3_supplier__uuid__deactivate__post
+- file: fairmarkit-create-and-submit-request.md
+  name: Create and submit a Fairmarkit request (v4)
+  api: openapi/fairmarkit-buyer-openapi.json
+  operations:
+  - RequestApi_create_request_services_self_service_api_v4_requests__post
+  - RequestApi_create_request_item_batch_services_self_service_api_v4_requests__request_id__items_batch_post
+  - RequestApi_submit_request_services_self_service_api_v4_requests__request_id__submit_post
+- file: fairmarkit-supplier-respond-to-request.md
+  name: Respond to a Fairmarkit buyer request (Supplier API)
+  api: openapi/fairmarkit-supplier-openapi.json
+  operations:
+  - get_requests-Requests_Requests_Requests
+  - get_request-Requests_Requests_Requests
+  - submit_response-Requests_Requests_Requests
+  - reject_request-Requests_Requests_Requests
