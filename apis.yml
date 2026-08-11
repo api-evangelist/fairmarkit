@@ -268,6 +268,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/fairmarkit-buyer-overlay.yaml
 - type: DomainSecurity
   url: security/fairmarkit-domain-security.yml
 - type: AgenticAccess
