@@ -1,0 +1,501 @@
+{
+  "item": [
+    {
+      "id": "fd7dccaa-0ca5-4a91-91ca-7b3ff9783600",
+      "name": "User Profiles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fdd3278d-743a-4040-b62a-1a294518bed9",
+          "name": "Get User Profile",
+          "request": {
+            "name": "Get User Profile",
+            "description": {
+              "content": "Retrieve a user profile by identity ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "user-profiles",
+                ":identity_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "identity_id",
+                  "description": "(Required) The unique identifier of the user identity."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a23e792d-feae-4a34-807e-f8aa5d58be3e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "user-profiles",
+                    ":identity_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "identity_id",
+                      "description": "(Required) The unique identifier of the user identity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"identity_id\": \"92b35dd5-9bf1-477c-8f9b-6779bfec604f\",\n  \"custom_attributes\": {\n    \"key_0\": 1788,\n    \"key_1\": \"string\"\n  },\n  \"id\": \"acc49adc-0d61-bfd4-f2ee-b458ca0bb3e4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07df529d-ed6f-40ca-bde8-288b51b0b559",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "user-profiles",
+                    ":identity_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "identity_id",
+                      "description": "(Required) The unique identifier of the user identity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "74ccf32e-54d0-4115-a0e0-df47917ceab3",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "user-profiles",
+                    ":identity_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "identity_id",
+                      "description": "(Required) The unique identifier of the user identity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6692ed40-7025-445f-bb19-f6d283122823",
+          "name": "Update User Profile",
+          "request": {
+            "name": "Update User Profile",
+            "description": {
+              "content": "Update a user profile by identity ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "user-profiles",
+                ":identity_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "identity_id",
+                  "description": "(Required) The unique identifier of the user identity."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"custom_attributes\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "df9c79ee-32ad-4b8d-a624-11b25c2cd0c1",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "user-profiles",
+                    ":identity_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "identity_id",
+                      "description": "(Required) The unique identifier of the user identity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_attributes\": {\n    \"key_0\": 9831,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "\"85a855cb-1daf-a5b5-5aab-a1de96941117\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6bda3d63-253b-40f4-9c26-f96c3aa9719a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "user-profiles",
+                    ":identity_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "identity_id",
+                      "description": "(Required) The unique identifier of the user identity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_attributes\": {\n    \"key_0\": 9831,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "439a1589-8c1b-44a6-aa28-1b5c88a859f9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "user-profiles",
+                    ":identity_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "identity_id",
+                      "description": "(Required) The unique identifier of the user identity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_attributes\": {\n    \"key_0\": 9831,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://staging.fairmarkit.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d2e87a4b-d416-41da-8ed4-2459de595a07",
+    "name": "BUYER PUBLIC Business Units User Profiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.\n\nContact Support:\n Name: Fairmarkit Support\n Email: support@fairmarkit.com",
+      "type": "text/plain"
+    }
+  }
+}

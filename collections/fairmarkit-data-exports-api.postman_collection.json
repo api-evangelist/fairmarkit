@@ -1,0 +1,490 @@
+{
+  "item": [
+    {
+      "id": "6951fb33-b8bd-421e-87e6-bd760363d3b6",
+      "name": "Data Exports",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7bd7d548-e027-4f5d-8cb6-611efd14e79e",
+          "name": "List Available Data Exports",
+          "request": {
+            "name": "List Available Data Exports",
+            "description": {},
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "data-exports",
+                "available"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24534117-2cfc-4b41-95ec-fabd08559839",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "data-exports",
+                    "available"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"models\": [\n    {\n      \"name\": \"string\",\n      \"fields\": [\n        {\n          \"name\": \"string\",\n          \"label\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"label\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"title\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"fields\": [\n        {\n          \"name\": \"string\",\n          \"label\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"label\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25f02701-cc79-48f2-8fc2-ffea9f147585",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "data-exports",
+                    "available"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f6c9788-5e1e-4cba-9331-82747fcb962e",
+          "name": "Get Data Export",
+          "request": {
+            "name": "Get Data Export",
+            "description": {},
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "data-exports",
+                ":job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "job_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38a2d523-3408-44be-a615-a62acea7aab6",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "data-exports",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": \"7dca5b23-36e8-1e44-86e1-a75afeadfcb3\",\n  \"status\": \"string\",\n  \"selections\": [\n    {\n      \"model\": \"string\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"model\": \"string\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"date_range\": {\n    \"start\": \"1988-10-05\",\n    \"end\": \"1992-01-30\"\n  },\n  \"initiator\": \"string\",\n  \"row_count\": 408,\n  \"result_url\": \"string\",\n  \"error\": \"string\",\n  \"error_code\": \"string\",\n  \"created_at\": \"2007-12-23T14:43:33.444Z\",\n  \"updated_at\": \"1963-12-13T15:47:21.855Z\",\n  \"finished_at\": \"2016-06-24T23:37:41.298Z\",\n  \"expired_at\": \"2013-04-26T08:43:05.441Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "485817b0-ff02-4d73-91cd-d7d08caf2a04",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "data-exports",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84e0d702-590d-4026-bab7-1f1e7c99738d",
+          "name": "Create Data Export",
+          "request": {
+            "name": "Create Data Export",
+            "description": {},
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "data-exports",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"external_reporting_id\": \"<string>\",\n  \"selections\": [\n    {\n      \"model\": \"<string>\",\n      \"fields\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"model\": \"<string>\",\n      \"fields\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"date_range\": {\n    \"start\": \"<date>\",\n    \"end\": \"<date>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "93077690-ad65-41a2-853a-e795054d486d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "data-exports",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"external_reporting_id\": \"<string>\",\n  \"selections\": [\n    {\n      \"model\": \"string\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"model\": \"string\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"date_range\": {\n    \"start\": \"2007-04-16\",\n    \"end\": \"2024-08-30\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": \"4c551055-d8e3-a416-ff8d-ffce91068089\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d3e180c-ba09-4923-bd23-a3d334cdd22f",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "data-exports",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"external_reporting_id\": \"<string>\",\n  \"selections\": [\n    {\n      \"model\": \"string\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"model\": \"string\",\n      \"fields\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"date_range\": {\n    \"start\": \"2007-04-16\",\n    \"end\": \"2024-08-30\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://staging.fairmarkit.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b0e913c1-d8e4-4c6c-ba53-ec173574974d",
+    "name": "BUYER PUBLIC Business Units Data Exports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.\n\nContact Support:\n Name: Fairmarkit Support\n Email: support@fairmarkit.com",
+      "type": "text/plain"
+    }
+  }
+}

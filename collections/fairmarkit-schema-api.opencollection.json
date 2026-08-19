@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units Schema API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Schema",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Current Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/schemas/current",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Schema type to retrieve."
+              }
+            ]
+          },
+          "docs": "Returns the current schema for the requested type."
+        },
+        {
+          "info": {
+            "name": "Get Schema Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/schemas/:schema_id/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "schema_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details for a specific schema."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

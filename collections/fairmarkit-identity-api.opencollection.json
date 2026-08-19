@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units Identity API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Identity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/identity/identities",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an identity."
+        },
+        {
+          "info": {
+            "name": "List Permission Sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/identity/permission-sets",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              }
+            ]
+          },
+          "docs": "Returns a list of permission sets."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

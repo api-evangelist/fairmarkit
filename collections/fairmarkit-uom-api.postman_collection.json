@@ -1,0 +1,229 @@
+{
+  "item": [
+    {
+      "id": "bdc98cb9-74f7-4d42-8106-2e46e5b8d682",
+      "name": "UOM",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a713ef5a-ed27-4a02-81bf-27391a19a290",
+          "name": "List UOMs",
+          "request": {
+            "name": "List UOMs",
+            "description": {
+              "content": "Returns a list of UOMs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "uom",
+                "uoms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of records to return. Defaults to 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Zero-based offset of the first record to return. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<boolean>",
+                  "description": "Filter by active status."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search term used to filter results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e934c2fd-3c5d-4c4c-ad35-342845f6e0e6",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "uom",
+                    "uoms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"3e785479-77ec-bb8b-0961-861f69b3d038\",\n      \"title\": \"string\",\n      \"abbreviation\": \"string\",\n      \"code\": \"string\",\n      \"is_active\": true,\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"f07a5d06-2935-6de9-d9fa-40b38f8fe5fe\",\n      \"title\": \"string\",\n      \"abbreviation\": \"string\",\n      \"code\": \"string\",\n      \"is_active\": false,\n      \"description\": \"string\"\n    }\n  ],\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18a4c01e-d570-4615-93f1-d69b6829a8a5",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "uom",
+                    "uoms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://staging.fairmarkit.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3516672c-4e45-4685-9eb4-35d893dae578",
+    "name": "BUYER PUBLIC Business Units UOM API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.\n\nContact Support:\n Name: Fairmarkit Support\n Email: support@fairmarkit.com",
+      "type": "text/plain"
+    }
+  }
+}

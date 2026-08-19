@@ -1,0 +1,199 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units RFP API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "RFP",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List RFPs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfp/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status."
+              },
+              {
+                "name": "created_at_min",
+                "value": "",
+                "type": "query",
+                "description": "Start of the created-at time range. Use ISO 8601 format."
+              },
+              {
+                "name": "created_at_max",
+                "value": "",
+                "type": "query",
+                "description": "End of the created-at time range. Use ISO 8601 format."
+              },
+              {
+                "name": "updated_at_min",
+                "value": "",
+                "type": "query",
+                "description": "Start of the updated-at time range. Use ISO 8601 format."
+              },
+              {
+                "name": "updated_at_max",
+                "value": "",
+                "type": "query",
+                "description": "End of the updated-at time range. Use ISO 8601 format."
+              }
+            ]
+          },
+          "docs": "Returns a list of RFP events."
+        },
+        {
+          "info": {
+            "name": "Create RFP From Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/templates/rfp/:template_uuid/create-rfp/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "template_uuid",
+                "value": "",
+                "type": "path",
+                "description": "Fairmarkit UUID of the RFP template."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new request for proposal (RFP) event from a RFP template."
+        },
+        {
+          "info": {
+            "name": "Get Proposals List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfp/:uuid/proposals/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              }
+            ]
+          },
+          "docs": "Returns data about a specific proposal (response) on a request for proposals (RFP) event."
+        },
+        {
+          "info": {
+            "name": "Get RFP Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfp/:uuid/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details for an RFP event."
+        },
+        {
+          "info": {
+            "name": "List RFP Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/templates/rfp/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              }
+            ]
+          },
+          "docs": "Returns a list of all created RFP Templates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

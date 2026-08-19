@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units UOM API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "UOM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List UOMs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/uom/uoms",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Filter by active status."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search term used to filter results."
+              }
+            ]
+          },
+          "docs": "Returns a list of UOMs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units User Profiles API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get User Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/user-profiles/:identity_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "identity_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the user identity."
+              }
+            ]
+          },
+          "docs": "Retrieve a user profile by identity ID."
+        },
+        {
+          "info": {
+            "name": "Update User Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/user-profiles/:identity_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "identity_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the user identity."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a user profile by identity ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

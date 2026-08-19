@@ -1,0 +1,615 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units Price Books API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Price Books",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Price Books",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/price-books/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by IDs."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 10."
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query",
+                "description": "Filter price books by title."
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Filter by active status."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Ordering field. Prefix with '-' for descending order."
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter items by tags."
+              }
+            ]
+          },
+          "docs": "Returns a list of price books."
+        },
+        {
+          "info": {
+            "name": "Create Price Book",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/price-books/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new price book."
+        },
+        {
+          "info": {
+            "name": "List Price Book Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/price-books/:price_book_id/items",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the price book to retrieve items from."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Filter items by specific IDs."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 10."
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query",
+                "description": "Filter items by title."
+              },
+              {
+                "name": "pb_tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter items by price book tags."
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Currency code used for price conversion."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search term used to filter results."
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter items by tags."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Ordering field. Prefix with '-' for descending order."
+              },
+              {
+                "name": "is_semantic",
+                "value": "",
+                "type": "query",
+                "description": "Enable semantic search for filtering."
+              }
+            ]
+          },
+          "docs": "Returns a list of price book items."
+        },
+        {
+          "info": {
+            "name": "Create Price Book Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/price-books/:price_book_id/items",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the price book to create items in."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates price book items."
+        },
+        {
+          "info": {
+            "name": "Delete Price Book Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/price-books/:price_book_id/items",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the price book to delete items from."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "List of price book item UUIDs or External IDs to delete."
+              }
+            ]
+          },
+          "docs": "Delete multiple price book items by their UUIDs or External IDs."
+        },
+        {
+          "info": {
+            "name": "⚠ Get Price Book Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/price-books/:price_book_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Retrieve Price Book v4](/reference/get_price_book_services_self_service_api_v4_price_books__price_book_id__get/). Please connect with your customer success contact for any qu"
+        },
+        {
+          "info": {
+            "name": "⚠ Delete Price Book",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/price-books/:price_book_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [DELETE Price Book v4](/reference/delete_price_book_services_self_service_api_v4_price_books__price_book_id__delete/). Please connect with your customer success contact for any qu"
+        },
+        {
+          "info": {
+            "name": "Get Price Book Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/price-books/:price_book_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the price book to retrieve."
+              }
+            ]
+          },
+          "docs": "Returns details for a price book."
+        },
+        {
+          "info": {
+            "name": "Update Price Book",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/price-books/:price_book_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the price book to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a price book."
+        },
+        {
+          "info": {
+            "name": "Delete Price Book",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/price-books/:price_book_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the price book to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a price book."
+        },
+        {
+          "info": {
+            "name": "Get Price Book Item Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/price-books/:price_book_id/items/:item_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the price book to retrieve the item from."
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the price book item to retrieve."
+              }
+            ]
+          },
+          "docs": "Returns details for a price book item."
+        },
+        {
+          "info": {
+            "name": "Update Price Book Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/price-books/:price_book_id/items/:item_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the price book to update the item in."
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the price book item to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a price book item."
+        },
+        {
+          "info": {
+            "name": "Delete Price Book Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/price-books/:price_book_id/items/:item_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the price book to delete the item from."
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the price book item to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a price book item."
+        },
+        {
+          "info": {
+            "name": "⚠ List Price Book Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/price-books/:price_book_id/items",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 10."
+              }
+            ]
+          },
+          "docs": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Price Book Items v4](/reference/get_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_get/). Please connect with your customer success contact f"
+        },
+        {
+          "info": {
+            "name": "⚠ Create Price Book Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/price-books/:price_book_id/items",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "price_book_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [POST Create Price Book Items v4](/reference/create_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_post/). Please connect with your customer succe"
+        },
+        {
+          "info": {
+            "name": "⚠ List Price Books",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/price-books/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search term used to filter results."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 10."
+              }
+            ]
+          },
+          "docs": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Price Books List v4](/reference/get_price_books_list_services_self_service_api_v4_price_books__get/). Please connect with your customer success contact for any questions."
+        },
+        {
+          "info": {
+            "name": "⚠ Create Price Book",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/price-books/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Retrieve Price Book v4](/reference/get_price_book_services_self_service_api_v4_price_books__price_book_id__get/). Please connect with your customer success contact for any qu"
+        },
+        {
+          "info": {
+            "name": "⚠ Get Price Book Item Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/price-books/price-book-items/:item_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API [GET Price Book Item v4](/reference/get_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__get/). Please connect with your customer success con"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

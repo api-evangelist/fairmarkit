@@ -1,0 +1,3548 @@
+{
+  "item": [
+    {
+      "id": "3242c203-9ec0-4df8-8cb8-e0d93f532063",
+      "name": "Price Books",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "40ee95d8-9a88-4eb7-a263-873fe36fbb93",
+          "name": "List Price Books",
+          "request": {
+            "name": "List Price Books",
+            "description": {
+              "content": "Returns a list of price books.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "price-books",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Filter by IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Filter by IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Zero-based offset of the first record to return. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return. Defaults to 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>",
+                  "description": "Filter price books by title."
+                },
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<boolean>",
+                  "description": "Filter by active status."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Ordering field. Prefix with '-' for descending order."
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Filter items by tags."
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Filter items by tags."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e74781c2-1402-4ab3-b4d1-fb3ede94fa04",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"2c1a8412-f3c9-df96-88a7-ce32b60e8cbf\",\n    \"supplier_id\": \"f1acb424-5782-e2ef-e6c4-be0fce057c63\",\n    \"title\": \"string\",\n    \"schema_id\": \"ff4c9555-e8b9-898d-84dd-783455dbe6c1\",\n    \"effective_date_from\": \"1946-09-17T16:07:06.395Z\",\n    \"effective_date_to\": \"1976-08-17T13:18:21.654Z\",\n    \"active\": true,\n    \"created_at\": \"1991-11-23T06:35:18.032Z\",\n    \"custom_tags\": {},\n    \"external_id\": \"string\",\n    \"updated_at\": \"1947-09-19T02:06:29.711Z\"\n  },\n  {\n    \"id\": \"c77d40fa-14c3-c15d-9370-06affc1b9168\",\n    \"supplier_id\": \"5d27927d-f029-d576-a371-6d18d697515e\",\n    \"title\": \"string\",\n    \"schema_id\": \"65238fbd-23f3-acf2-a3d0-a2feac199f88\",\n    \"effective_date_from\": \"2012-08-15T05:58:07.979Z\",\n    \"effective_date_to\": \"1982-03-21T04:23:52.706Z\",\n    \"active\": true,\n    \"created_at\": \"2021-06-07T00:35:10.130Z\",\n    \"custom_tags\": {},\n    \"external_id\": \"string\",\n    \"updated_at\": \"2020-11-23T06:06:59.188Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d256bdc-c817-4a27-85c2-d8a8caf3f0b0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e4ee87f4-3d92-478f-b44e-1806a9f05344",
+          "name": "Create Price Book",
+          "request": {
+            "name": "Create Price Book",
+            "description": {
+              "content": "Creates a new price book.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "price-books",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"supplier_id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"schema_id\": \"<uuid>\",\n  \"effective_date_from\": \"<dateTime>\",\n  \"effective_date_to\": \"<dateTime>\",\n  \"active\": true,\n  \"custom_tags\": {},\n  \"external_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dc709524-b33b-441d-80f4-6beb475b2d2c",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplier_id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"schema_id\": \"<uuid>\",\n  \"effective_date_from\": \"<dateTime>\",\n  \"effective_date_to\": \"<dateTime>\",\n  \"active\": true,\n  \"custom_tags\": {},\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": \"3eca0109-c77f-824c-c381-5d68dc1e6cda\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d537bb1a-9747-4053-8eac-d1bb73a18730",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"supplier_id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"schema_id\": \"<uuid>\",\n  \"effective_date_from\": \"<dateTime>\",\n  \"effective_date_to\": \"<dateTime>\",\n  \"active\": true,\n  \"custom_tags\": {},\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66017e33-6d36-4ec1-8951-dd4f4ad83792",
+          "name": "List Price Book Items",
+          "request": {
+            "name": "List Price Book Items",
+            "description": {
+              "content": "Returns a list of price book items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "price-books",
+                ":price_book_id",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Filter items by specific IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "Filter items by specific IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Zero-based offset of the first record to return. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return. Defaults to 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>",
+                  "description": "Filter items by title."
+                },
+                {
+                  "disabled": false,
+                  "key": "pb_tag",
+                  "value": "<string>",
+                  "description": "Filter items by price book tags."
+                },
+                {
+                  "disabled": false,
+                  "key": "pb_tag",
+                  "value": "<string>",
+                  "description": "Filter items by price book tags."
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Currency code used for price conversion."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search term used to filter results."
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Filter items by tags."
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Filter items by tags."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Ordering field. Prefix with '-' for descending order."
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Ordering field. Prefix with '-' for descending order."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_semantic",
+                  "value": "true",
+                  "description": "Enable semantic search for filtering."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "price_book_id",
+                  "description": "(Required) The UUID or External ID of the price book to retrieve items from."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfd8f247-ec1a-46b6-8de8-d8f11b172965",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pb_tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pb_tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_semantic",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to retrieve items from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"ccdbf27c-f61b-a2d6-f492-ff3854fd2e16\",\n    \"price_book_id\": \"174fbaa1-5a73-0edc-70a1-fb03d7f2bb69\",\n    \"value\": {},\n    \"created_at\": \"1977-05-31T07:30:45.955Z\",\n    \"custom_tags\": {},\n    \"external_id\": \"string\",\n    \"updated_at\": \"1998-01-16T12:03:37.512Z\"\n  },\n  {\n    \"id\": \"cb94a346-f8d6-179f-6ddf-6eecadf50e01\",\n    \"price_book_id\": \"fb7fba86-b051-df31-8ef9-f9595fc9008d\",\n    \"value\": {},\n    \"created_at\": \"1991-03-24T18:09:17.976Z\",\n    \"custom_tags\": {},\n    \"external_id\": \"string\",\n    \"updated_at\": \"2013-06-26T21:19:19.691Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9570b65-9110-4d3b-9065-11e204a859f9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pb_tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pb_tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_semantic",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to retrieve items from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79360c87-ddd8-442a-9e66-f20f944c42a3",
+          "name": "Create Price Book Items",
+          "request": {
+            "name": "Create Price Book Items",
+            "description": {
+              "content": "Creates price book items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "price-books",
+                ":price_book_id",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "price_book_id",
+                  "description": "(Required) The UUID or External ID of the price book to create items in."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"value\": \"<object>\",\n    \"custom_tags\": {},\n    \"external_id\": \"<string>\"\n  },\n  {\n    \"value\": \"<object>\",\n    \"custom_tags\": {},\n    \"external_id\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eb9e162c-3567-4b3c-9012-19cc81745918",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to create items in."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"value\": {},\n    \"custom_tags\": {},\n    \"external_id\": \"string\"\n  },\n  {\n    \"value\": {},\n    \"custom_tags\": {},\n    \"external_id\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"8bf1a548-b285-0ea6-7f9a-a0943a243afe\"\n  },\n  {\n    \"id\": \"e46ea096-66db-ba93-1be8-4cc6ba6d2277\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec10cdcf-2f72-442c-82ff-dcdb5c7ffe15",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to create items in."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"value\": {},\n    \"custom_tags\": {},\n    \"external_id\": \"string\"\n  },\n  {\n    \"value\": {},\n    \"custom_tags\": {},\n    \"external_id\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "663e1cb6-edb5-4def-b132-8bfa964f9f2d",
+          "name": "Delete Price Book Items",
+          "request": {
+            "name": "Delete Price Book Items",
+            "description": {
+              "content": "Delete multiple price book items by their UUIDs or External IDs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "price-books",
+                ":price_book_id",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) List of price book item UUIDs or External IDs to delete."
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) List of price book item UUIDs or External IDs to delete."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "price_book_id",
+                  "description": "(Required) The UUID or External ID of the price book to delete items from."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2651350-ed6a-452b-ad77-76579427e2ca",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to delete items from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "92368d8d-b613-4430-84d0-5cbe4c43a78e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to delete items from."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7d8e168-8e6f-44f0-8b92-b2cbdbd1aff9",
+          "name": "⚠ Delete Price Book",
+          "request": {
+            "name": "⚠ Delete Price Book",
+            "description": {
+              "content": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [DELETE Price Book v4](/reference/delete_price_book_services_self_service_api_v4_price_books__price_book_id__delete/). Please connect with your customer success contact for any questions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "price-books",
+                ":price_book_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "price_book_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae6f762e-0907-4553-9e87-ef769f23ebe8",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    ":price_book_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "price_book_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd85d537-8e31-455f-8802-9618c73f6b67",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    ":price_book_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "price_book_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9775617-2ac9-41ae-9c50-707784755c94",
+          "name": "⚠ Get Price Book Details",
+          "request": {
+            "name": "⚠ Get Price Book Details",
+            "description": {
+              "content": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Retrieve Price Book v4](/reference/get_price_book_services_self_service_api_v4_price_books__price_book_id__get/). Please connect with your customer success contact for any questions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "price-books",
+                ":price_book_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "price_book_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18ab19f7-3fa8-466e-950f-bb9325d10da2",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    ":price_book_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "price_book_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"effective_date_from\": \"1963-12-11T12:08:55.239Z\",\n  \"effective_date_to\": \"1998-04-19T11:11:55.572Z\",\n  \"id\": \"886328e2-6f81-326b-9796-a24d1809544e\",\n  \"tenant_id\": \"5b8acdbd-e739-05bf-33c3-a72c2eecc0a7\",\n  \"created_at\": \"1995-10-22T17:27:25.724Z\",\n  \"supplier_id\": \"12bac1bd-c5c7-48dd-5b70-4636048666cd\",\n  \"supplier_tenant_id\": \"6d8152e0-93d7-15c3-3115-4dc368bb01f0\",\n  \"business_unit_ids\": [\n    \"8078c1d0-8d12-5b01-db6e-3eef03d56add\",\n    \"fd765ccd-492a-ea15-c7e0-47622ee11cd9\"\n  ],\n  \"items\": [\n    {\n      \"manufacturer\": \"string\",\n      \"manufacturer_pn\": \"string\",\n      \"supplier_pn\": \"string\",\n      \"description\": \"string\",\n      \"country_of_origin\": \"string\",\n      \"hts_code\": \"string\",\n      \"category\": \"string\",\n      \"sub_category\": \"string\",\n      \"internal_pn\": \"string\",\n      \"vendor_sku\": \"string\",\n      \"vendor_item_description\": \"string\",\n      \"uom\": \"string\",\n      \"currency\": \"string\",\n      \"unit_price\": 8007.251993284196,\n      \"vendor_agent\": \"string\",\n      \"id\": \"d42f25d2-b096-bd52-0ab5-0e863cdf52f2\",\n      \"image_url\": \"string\",\n      \"min_order_quantity\": 5880.011361646689,\n      \"delivery_days\": 9420\n    },\n    {\n      \"manufacturer\": \"string\",\n      \"manufacturer_pn\": \"string\",\n      \"supplier_pn\": \"string\",\n      \"description\": \"string\",\n      \"country_of_origin\": \"string\",\n      \"hts_code\": \"string\",\n      \"category\": \"string\",\n      \"sub_category\": \"string\",\n      \"internal_pn\": \"string\",\n      \"vendor_sku\": \"string\",\n      \"vendor_item_description\": \"string\",\n      \"uom\": \"string\",\n      \"currency\": \"string\",\n      \"unit_price\": 4178.828755307131,\n      \"vendor_agent\": \"string\",\n      \"id\": \"6a81d9cf-4579-e3e2-4be7-b69de6145733\",\n      \"image_url\": \"string\",\n      \"min_order_quantity\": 3925.6462703153284,\n      \"delivery_days\": 7390\n    }\n  ],\n  \"updated_at\": \"1982-12-28T18:21:10.901Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03704b32-bf74-45b5-bd33-1558c2ad49f0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    ":price_book_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "price_book_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58c8dc69-5a7c-450d-90ab-9b40febb5360",
+          "name": "Update Price Book",
+          "request": {
+            "name": "Update Price Book",
+            "description": {
+              "content": "Updates a price book.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "price-books",
+                ":price_book_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "price_book_id",
+                  "description": "(Required) The UUID or External ID of the price book to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"effective_date_from\": \"<dateTime>\",\n  \"effective_date_to\": \"<dateTime>\",\n  \"supplier_id\": \"<uuid>\",\n  \"schema_id\": \"<uuid>\",\n  \"active\": \"<boolean>\",\n  \"custom_tags\": {},\n  \"external_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b4b0f0c-245d-4fa5-aabc-6f97ac7f23d6",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"effective_date_from\": \"<dateTime>\",\n  \"effective_date_to\": \"<dateTime>\",\n  \"supplier_id\": \"<uuid>\",\n  \"schema_id\": \"<uuid>\",\n  \"active\": \"<boolean>\",\n  \"custom_tags\": {},\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": \"3eca0109-c77f-824c-c381-5d68dc1e6cda\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08d78913-a824-4e0d-a951-bfa7b54a4dd0",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"effective_date_from\": \"<dateTime>\",\n  \"effective_date_to\": \"<dateTime>\",\n  \"supplier_id\": \"<uuid>\",\n  \"schema_id\": \"<uuid>\",\n  \"active\": \"<boolean>\",\n  \"custom_tags\": {},\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b63caa75-d2bf-49ad-a100-15cd9c0fd052",
+          "name": "Delete Price Book",
+          "request": {
+            "name": "Delete Price Book",
+            "description": {
+              "content": "Deletes a price book.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "price-books",
+                ":price_book_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "price_book_id",
+                  "description": "(Required) The UUID or External ID of the price book to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d607678d-fc96-41f9-bb54-b6e7d7a166f8",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "09410f49-3cde-44af-93e7-d09752e9a5cc",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8da47a8-8df4-4b33-97bf-908c27d0eb04",
+          "name": "Get Price Book Details",
+          "request": {
+            "name": "Get Price Book Details",
+            "description": {
+              "content": "Returns details for a price book.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "price-books",
+                ":price_book_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "price_book_id",
+                  "description": "(Required) The UUID or External ID of the price book to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e66c7e5a-8af1-48f0-982d-64c7d1e2ef7c",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": \"6af65042-2e10-3c6e-969f-a85cbf131547\",\n  \"supplier_id\": \"fd023b21-cd42-2d6c-c425-b7c35b7a1bfb\",\n  \"title\": \"string\",\n  \"schema_id\": \"57b69dc3-186d-4539-5fc9-aa0527707bde\",\n  \"effective_date_from\": \"1996-10-13T19:21:31.026Z\",\n  \"effective_date_to\": \"2002-07-26T16:58:56.630Z\",\n  \"active\": false,\n  \"created_at\": \"1991-07-24T11:03:30.796Z\",\n  \"custom_tags\": {},\n  \"external_id\": \"string\",\n  \"updated_at\": \"1953-07-08T23:27:41.585Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4b74f9a-28c7-4eee-92d4-95b173a0632a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83245085-8076-44a4-b804-f54e3a066499",
+          "name": "Delete Price Book Item",
+          "request": {
+            "name": "Delete Price Book Item",
+            "description": {
+              "content": "Deletes a price book item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "price-books",
+                ":price_book_id",
+                "items",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "price_book_id",
+                  "description": "(Required) The UUID or External ID of the price book to delete the item from."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) The UUID or External ID of the price book item to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a23d2185-7767-40c9-9c96-5f99c220f50e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id",
+                    "items",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to delete the item from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) The UUID or External ID of the price book item to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cf64366-35df-4efb-a19d-baeca7932f5e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id",
+                    "items",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to delete the item from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) The UUID or External ID of the price book item to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6477fb8-b2a9-4d4d-a40f-a0677db483ed",
+          "name": "Update Price Book Item",
+          "request": {
+            "name": "Update Price Book Item",
+            "description": {
+              "content": "Updates a price book item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "price-books",
+                ":price_book_id",
+                "items",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "price_book_id",
+                  "description": "(Required) The UUID or External ID of the price book to update the item in."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) The UUID or External ID of the price book item to update."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<object>\",\n  \"custom_tags\": {},\n  \"external_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4a77cc8e-3527-4669-9488-815c6a6d28d5",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id",
+                    "items",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to update the item in."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) The UUID or External ID of the price book item to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<object>\",\n  \"custom_tags\": {},\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": \"10df1374-0bf0-6fd7-ba2c-0b7e3759e444\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce677d85-02eb-4098-baa3-361f36722ecf",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id",
+                    "items",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to update the item in."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) The UUID or External ID of the price book item to update."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<object>\",\n  \"custom_tags\": {},\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3aae6914-6173-4488-a219-ebf3ca1d4d97",
+          "name": "Get Price Book Item Details",
+          "request": {
+            "name": "Get Price Book Item Details",
+            "description": {
+              "content": "Returns details for a price book item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "price-books",
+                ":price_book_id",
+                "items",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "price_book_id",
+                  "description": "(Required) The UUID or External ID of the price book to retrieve the item from."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "item_id",
+                  "description": "(Required) The UUID or External ID of the price book item to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96bf0d76-693d-419a-ac5b-21354d548758",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id",
+                    "items",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to retrieve the item from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) The UUID or External ID of the price book item to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": \"59598c88-a3c7-772a-91e4-96a87f718b68\",\n  \"price_book_id\": \"d55a16de-3f5c-035b-a171-dba9179b5960\",\n  \"value\": {},\n  \"created_at\": \"2017-03-13T16:57:35.591Z\",\n  \"custom_tags\": {},\n  \"external_id\": \"string\",\n  \"updated_at\": \"1963-04-19T17:26:38.757Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0eb672cd-c877-49c2-98fd-70dbd7fcc297",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "price-books",
+                    ":price_book_id",
+                    "items",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "price_book_id",
+                      "description": "(Required) The UUID or External ID of the price book to retrieve the item from."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "item_id",
+                      "description": "(Required) The UUID or External ID of the price book item to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcdf3e9d-fd48-4e1a-bf6e-f220d8611c56",
+          "name": "⚠ List Price Book Items",
+          "request": {
+            "name": "⚠ List Price Book Items",
+            "description": {
+              "content": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Price Book Items v4](/reference/get_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_get/). Please connect with your customer success contact for any questions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "price-books",
+                ":price_book_id",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Zero-based offset of the first record to return. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return. Defaults to 10."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "price_book_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "363be51e-06f5-4a35-bc27-51a7a8fb6025",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    ":price_book_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "price_book_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"manufacturer\": \"string\",\n    \"manufacturer_pn\": \"string\",\n    \"supplier_pn\": \"string\",\n    \"description\": \"string\",\n    \"country_of_origin\": \"string\",\n    \"hts_code\": \"string\",\n    \"category\": \"string\",\n    \"sub_category\": \"string\",\n    \"internal_pn\": \"string\",\n    \"vendor_sku\": \"string\",\n    \"vendor_item_description\": \"string\",\n    \"uom\": \"string\",\n    \"currency\": \"string\",\n    \"unit_price\": 4503.041612361302,\n    \"vendor_agent\": \"string\",\n    \"id\": \"c45d8d7f-0a94-865b-2c1e-70909e2592f4\",\n    \"image_url\": \"string\",\n    \"min_order_quantity\": 2865.682630674589,\n    \"delivery_days\": 607\n  },\n  {\n    \"manufacturer\": \"string\",\n    \"manufacturer_pn\": \"string\",\n    \"supplier_pn\": \"string\",\n    \"description\": \"string\",\n    \"country_of_origin\": \"string\",\n    \"hts_code\": \"string\",\n    \"category\": \"string\",\n    \"sub_category\": \"string\",\n    \"internal_pn\": \"string\",\n    \"vendor_sku\": \"string\",\n    \"vendor_item_description\": \"string\",\n    \"uom\": \"string\",\n    \"currency\": \"string\",\n    \"unit_price\": 6141.763863098037,\n    \"vendor_agent\": \"string\",\n    \"id\": \"3be1c4f1-e4b3-c335-fc45-81567a9075d0\",\n    \"image_url\": \"string\",\n    \"min_order_quantity\": 5240.511525455472,\n    \"delivery_days\": 7279\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6dbbc64f-6a5a-4352-9de7-9d13695a5c30",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    ":price_book_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "price_book_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7c6df88-4941-475a-9098-a9cb07ff67c1",
+          "name": "⚠ Create Price Book Item",
+          "request": {
+            "name": "⚠ Create Price Book Item",
+            "description": {
+              "content": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [POST Create Price Book Items v4](/reference/create_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_post/). Please connect with your customer success contact for any questions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "price-books",
+                ":price_book_id",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "price_book_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"manufacturer\": \"<string>\",\n    \"manufacturer_pn\": \"<string>\",\n    \"supplier_pn\": \"<string>\",\n    \"description\": \"<string>\",\n    \"country_of_origin\": \"<string>\",\n    \"hts_code\": \"<string>\",\n    \"category\": \"<string>\",\n    \"sub_category\": \"<string>\",\n    \"internal_pn\": \"<string>\",\n    \"vendor_sku\": \"<string>\",\n    \"vendor_item_description\": \"<string>\",\n    \"uom\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"unit_price\": \"<number>\",\n    \"vendor_agent\": \"<string>\",\n    \"image_url\": \"<string>\",\n    \"min_order_quantity\": \"<number>\",\n    \"delivery_days\": \"<integer>\"\n  },\n  {\n    \"manufacturer\": \"<string>\",\n    \"manufacturer_pn\": \"<string>\",\n    \"supplier_pn\": \"<string>\",\n    \"description\": \"<string>\",\n    \"country_of_origin\": \"<string>\",\n    \"hts_code\": \"<string>\",\n    \"category\": \"<string>\",\n    \"sub_category\": \"<string>\",\n    \"internal_pn\": \"<string>\",\n    \"vendor_sku\": \"<string>\",\n    \"vendor_item_description\": \"<string>\",\n    \"uom\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"unit_price\": \"<number>\",\n    \"vendor_agent\": \"<string>\",\n    \"image_url\": \"<string>\",\n    \"min_order_quantity\": \"<number>\",\n    \"delivery_days\": \"<integer>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d36e4dc-a387-4dff-abe0-af87e530ab36",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    ":price_book_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "price_book_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"manufacturer\": \"string\",\n    \"manufacturer_pn\": \"string\",\n    \"supplier_pn\": \"string\",\n    \"description\": \"string\",\n    \"country_of_origin\": \"string\",\n    \"hts_code\": \"string\",\n    \"category\": \"string\",\n    \"sub_category\": \"string\",\n    \"internal_pn\": \"string\",\n    \"vendor_sku\": \"string\",\n    \"vendor_item_description\": \"string\",\n    \"uom\": \"string\",\n    \"currency\": \"string\",\n    \"unit_price\": 1721.040508713798,\n    \"vendor_agent\": \"string\",\n    \"image_url\": \"string\",\n    \"min_order_quantity\": 6734.754034767614,\n    \"delivery_days\": 6822\n  },\n  {\n    \"manufacturer\": \"string\",\n    \"manufacturer_pn\": \"string\",\n    \"supplier_pn\": \"string\",\n    \"description\": \"string\",\n    \"country_of_origin\": \"string\",\n    \"hts_code\": \"string\",\n    \"category\": \"string\",\n    \"sub_category\": \"string\",\n    \"internal_pn\": \"string\",\n    \"vendor_sku\": \"string\",\n    \"vendor_item_description\": \"string\",\n    \"uom\": \"string\",\n    \"currency\": \"string\",\n    \"unit_price\": 9524.722551157212,\n    \"vendor_agent\": \"string\",\n    \"image_url\": \"string\",\n    \"min_order_quantity\": 9521.802939753212,\n    \"delivery_days\": 9788\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"64d3b8ec-42fc-03cb-cbfe-5ad49e2c2815\"\n  },\n  {\n    \"id\": \"137b98c0-d139-b66c-cf01-c1eac871381d\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7ed827b-b2f5-41a8-b824-d697d78f5197",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    ":price_book_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "price_book_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"manufacturer\": \"string\",\n    \"manufacturer_pn\": \"string\",\n    \"supplier_pn\": \"string\",\n    \"description\": \"string\",\n    \"country_of_origin\": \"string\",\n    \"hts_code\": \"string\",\n    \"category\": \"string\",\n    \"sub_category\": \"string\",\n    \"internal_pn\": \"string\",\n    \"vendor_sku\": \"string\",\n    \"vendor_item_description\": \"string\",\n    \"uom\": \"string\",\n    \"currency\": \"string\",\n    \"unit_price\": 1721.040508713798,\n    \"vendor_agent\": \"string\",\n    \"image_url\": \"string\",\n    \"min_order_quantity\": 6734.754034767614,\n    \"delivery_days\": 6822\n  },\n  {\n    \"manufacturer\": \"string\",\n    \"manufacturer_pn\": \"string\",\n    \"supplier_pn\": \"string\",\n    \"description\": \"string\",\n    \"country_of_origin\": \"string\",\n    \"hts_code\": \"string\",\n    \"category\": \"string\",\n    \"sub_category\": \"string\",\n    \"internal_pn\": \"string\",\n    \"vendor_sku\": \"string\",\n    \"vendor_item_description\": \"string\",\n    \"uom\": \"string\",\n    \"currency\": \"string\",\n    \"unit_price\": 9524.722551157212,\n    \"vendor_agent\": \"string\",\n    \"image_url\": \"string\",\n    \"min_order_quantity\": 9521.802939753212,\n    \"delivery_days\": 9788\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da2f28da-b1a4-482c-bcec-872162412178",
+          "name": "⚠ Create Price Book",
+          "request": {
+            "name": "⚠ Create Price Book",
+            "description": {
+              "content": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Retrieve Price Book v4](/reference/get_price_book_services_self_service_api_v4_price_books__price_book_id__get/). Please connect with your customer success contact for any questions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "price-books",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"effective_date_from\": \"<dateTime>\",\n  \"effective_date_to\": \"<dateTime>\",\n  \"supplier_id\": \"<uuid>\",\n  \"supplier_tenant_id\": \"<uuid>\",\n  \"business_unit_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0a0afd24-7bb5-4770-8850-576ea0d4b8da",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"effective_date_from\": \"<dateTime>\",\n  \"effective_date_to\": \"<dateTime>\",\n  \"supplier_id\": \"<uuid>\",\n  \"supplier_tenant_id\": \"<uuid>\",\n  \"business_unit_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": \"9241c760-b812-b1fd-ff67-f327c4ef0e78\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1066280-fb77-425d-96d6-82e34155d255",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"effective_date_from\": \"<dateTime>\",\n  \"effective_date_to\": \"<dateTime>\",\n  \"supplier_id\": \"<uuid>\",\n  \"supplier_tenant_id\": \"<uuid>\",\n  \"business_unit_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8ff0a29-752b-4b5e-9bd9-6dfd945a118f",
+          "name": "⚠ List Price Books",
+          "request": {
+            "name": "⚠ List Price Books",
+            "description": {
+              "content": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API - [GET Price Books List v4](/reference/get_price_books_list_services_self_service_api_v4_price_books__get/). Please connect with your customer success contact for any questions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "price-books",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search term used to filter results."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Zero-based offset of the first record to return. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return. Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3dc4703-658b-4f35-a5d5-d96247516b73",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"effective_date_from\": \"1947-05-27T09:38:34.907Z\",\n    \"effective_date_to\": \"1946-11-19T23:25:23.228Z\",\n    \"id\": \"18052316-a684-11a1-b12d-51ebb49d913e\",\n    \"tenant_id\": \"86a3a90b-9665-4fbc-e12a-4dcc8eacfb90\",\n    \"created_at\": \"2007-07-28T06:06:22.746Z\",\n    \"supplier_id\": \"b56a836b-0762-d149-2c50-4a7936468925\",\n    \"supplier_tenant_id\": \"70e1b040-7b16-73c9-6bb9-7e3425d5c48d\",\n    \"business_unit_ids\": [\n      \"364ec908-6e1b-dfeb-564d-3fbb2837a103\",\n      \"c3cb8c89-f017-e32a-a4cb-5412f0a49fe8\"\n    ],\n    \"items\": [\n      {\n        \"manufacturer\": \"string\",\n        \"manufacturer_pn\": \"string\",\n        \"supplier_pn\": \"string\",\n        \"description\": \"string\",\n        \"country_of_origin\": \"string\",\n        \"hts_code\": \"string\",\n        \"category\": \"string\",\n        \"sub_category\": \"string\",\n        \"internal_pn\": \"string\",\n        \"vendor_sku\": \"string\",\n        \"vendor_item_description\": \"string\",\n        \"uom\": \"string\",\n        \"currency\": \"string\",\n        \"unit_price\": 5811.27412513633,\n        \"vendor_agent\": \"string\",\n        \"id\": \"359e051a-ea16-aa54-f70e-e130dfb696bd\",\n        \"image_url\": \"string\",\n        \"min_order_quantity\": 9345.260769905864,\n        \"delivery_days\": 3260\n      },\n      {\n        \"manufacturer\": \"string\",\n        \"manufacturer_pn\": \"string\",\n        \"supplier_pn\": \"string\",\n        \"description\": \"string\",\n        \"country_of_origin\": \"string\",\n        \"hts_code\": \"string\",\n        \"category\": \"string\",\n        \"sub_category\": \"string\",\n        \"internal_pn\": \"string\",\n        \"vendor_sku\": \"string\",\n        \"vendor_item_description\": \"string\",\n        \"uom\": \"string\",\n        \"currency\": \"string\",\n        \"unit_price\": 7533.685150380985,\n        \"vendor_agent\": \"string\",\n        \"id\": \"5ce7b20d-5ecc-9fe6-7fdb-23f1b6e51657\",\n        \"image_url\": \"string\",\n        \"min_order_quantity\": 6800.266741393432,\n        \"delivery_days\": 1487\n      }\n    ],\n    \"updated_at\": \"2021-10-05T08:54:15.619Z\"\n  },\n  {\n    \"title\": \"string\",\n    \"effective_date_from\": \"1990-06-28T18:47:56.801Z\",\n    \"effective_date_to\": \"1957-05-08T00:48:56.399Z\",\n    \"id\": \"3461bea2-0232-25c5-4910-8944e6eda8d0\",\n    \"tenant_id\": \"ab0d8010-9f7f-af97-4c75-a03946c86574\",\n    \"created_at\": \"1990-11-12T04:36:19.818Z\",\n    \"supplier_id\": \"ecc73fe4-be64-2205-e02e-8a551e512474\",\n    \"supplier_tenant_id\": \"c70021c5-2a00-a6bc-afb5-864b18bae414\",\n    \"business_unit_ids\": [\n      \"93d5b05b-469c-39e5-e270-8d0dc4ceb38b\",\n      \"67bbbb28-d09b-c173-647f-9eabf20cecc3\"\n    ],\n    \"items\": [\n      {\n        \"manufacturer\": \"string\",\n        \"manufacturer_pn\": \"string\",\n        \"supplier_pn\": \"string\",\n        \"description\": \"string\",\n        \"country_of_origin\": \"string\",\n        \"hts_code\": \"string\",\n        \"category\": \"string\",\n        \"sub_category\": \"string\",\n        \"internal_pn\": \"string\",\n        \"vendor_sku\": \"string\",\n        \"vendor_item_description\": \"string\",\n        \"uom\": \"string\",\n        \"currency\": \"string\",\n        \"unit_price\": 7931.874656729483,\n        \"vendor_agent\": \"string\",\n        \"id\": \"2c5c5d0d-656c-68f6-1915-ff3dd4d164c5\",\n        \"image_url\": \"string\",\n        \"min_order_quantity\": 9284.493187160975,\n        \"delivery_days\": 1391\n      },\n      {\n        \"manufacturer\": \"string\",\n        \"manufacturer_pn\": \"string\",\n        \"supplier_pn\": \"string\",\n        \"description\": \"string\",\n        \"country_of_origin\": \"string\",\n        \"hts_code\": \"string\",\n        \"category\": \"string\",\n        \"sub_category\": \"string\",\n        \"internal_pn\": \"string\",\n        \"vendor_sku\": \"string\",\n        \"vendor_item_description\": \"string\",\n        \"uom\": \"string\",\n        \"currency\": \"string\",\n        \"unit_price\": 400.99843673182295,\n        \"vendor_agent\": \"string\",\n        \"id\": \"6cbc36cd-72e6-d34a-ffe5-4d9c83c29fc4\",\n        \"image_url\": \"string\",\n        \"min_order_quantity\": 969.6595424884557,\n        \"delivery_days\": 2062\n      }\n    ],\n    \"updated_at\": \"1985-05-11T03:20:33.518Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48e12cd4-69cf-4b51-a1e4-392535108c27",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91478fe0-ab13-429f-93d9-2652bd485467",
+          "name": "⚠ Get Price Book Item Details",
+          "request": {
+            "name": "⚠ Get Price Book Item Details",
+            "description": {
+              "content": "⚠ End of Life Planned or To Be Sunset - This API is in maintenance mode and will be sunset at a future date. For customers using this endpoint Fairmarkit will work with you on a migration path. Until that time, Fairmarkit will continue to support this API as normal. For New integrations, customers should use this API [GET Price Book Item v4](/reference/get_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__get/). Please connect with your customer success contact for any questions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "price-books",
+                "price-book-items",
+                ":item_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "item_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4c2ed41-774d-4716-b6e9-8df05cbf253f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    "price-book-items",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "item_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"manufacturer\": \"string\",\n  \"manufacturer_pn\": \"string\",\n  \"supplier_pn\": \"string\",\n  \"description\": \"string\",\n  \"country_of_origin\": \"string\",\n  \"hts_code\": \"string\",\n  \"category\": \"string\",\n  \"sub_category\": \"string\",\n  \"internal_pn\": \"string\",\n  \"vendor_sku\": \"string\",\n  \"vendor_item_description\": \"string\",\n  \"uom\": \"string\",\n  \"currency\": \"string\",\n  \"unit_price\": 8555.812847419553,\n  \"vendor_agent\": \"string\",\n  \"id\": \"3a17347f-80d7-b012-4a79-1dec9b0d1f36\",\n  \"image_url\": \"string\",\n  \"min_order_quantity\": 6774.473776657619,\n  \"delivery_days\": 6437\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ffef7bc-11a5-4ce0-8cc8-cf8b2e9e30ea",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "price-books",
+                    "price-book-items",
+                    ":item_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "item_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://staging.fairmarkit.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f8302cee-672a-4fa4-bae0-2e5187d5de3d",
+    "name": "BUYER PUBLIC Business Units Price Books API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.\n\nContact Support:\n Name: Fairmarkit Support\n Email: support@fairmarkit.com",
+      "type": "text/plain"
+    }
+  }
+}

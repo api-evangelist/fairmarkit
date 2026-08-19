@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units ERP Systems API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ERP Systems",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List ERP Systems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/erp-systems/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              }
+            ]
+          },
+          "docs": "Returns a list of ERP systems."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

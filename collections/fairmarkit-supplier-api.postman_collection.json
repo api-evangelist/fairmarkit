@@ -1,0 +1,1707 @@
+{
+  "item": [
+    {
+      "id": "2087740f-f1d5-45e5-a288-77f0b8c3fa78",
+      "name": "Supplier",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "642ee0ca-c586-4215-9ed5-7ef4f7afb277",
+          "name": "Delete Supplier",
+          "request": {
+            "name": "Delete Supplier",
+            "description": {
+              "content": "Deletes an existing supplier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "supplier",
+                ":uuid",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8c59673-ce56-4448-abf8-3f0b6c832f05",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ":uuid",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f015063a-746b-44b2-81d4-2adecaa4b6dc",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ":uuid",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d26d99a7-a1dc-40ee-ab95-fd8f09192cb0",
+          "name": "Update Supplier",
+          "request": {
+            "name": "Update Supplier",
+            "description": {
+              "content": "Updates an existing supplier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "supplier",
+                ":uuid",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"country\": \"<string>\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"state\": \"<string>\",\n  \"origin\": \"external\",\n  \"external_data\": \"<object>\",\n  \"meta_tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cd8853c3-8582-4d9f-b2cf-cf293b5d5e8f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ":uuid",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"country\": \"CM\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"state\": \"<string>\",\n  \"origin\": \"external\",\n  \"external_data\": \"<object>\",\n  \"meta_tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"external_id\": \"string\",\n  \"title\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"phone_number\": \"string\",\n  \"address1\": \"string\",\n  \"address2\": \"string\",\n  \"country\": \"CA\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"zip\": \"string\",\n  \"origin\": \"public\",\n  \"erp_systems\": [\n    {\n      \"external_supplier_id\": \"string\",\n      \"erp_system_uuid\": \"d5595133-feec-58dc-9221-e41e8430343a\",\n      \"is_active\": false\n    },\n    {\n      \"external_supplier_id\": \"string\",\n      \"erp_system_uuid\": \"d7b17d6c-102b-c3ed-4279-6c3063b22abb\",\n      \"is_active\": true\n    }\n  ],\n  \"is_active\": true,\n  \"meta_tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"external_data\": {},\n  \"created_at\": \"2005-05-27T19:04:35.569Z\",\n  \"updated_at\": \"1986-04-16T11:56:33.412Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9b062f2-046b-4d02-b574-2c1299d9820a",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ":uuid",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"country\": \"CM\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"state\": \"<string>\",\n  \"origin\": \"external\",\n  \"external_data\": \"<object>\",\n  \"meta_tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42a7a703-fc18-468a-85a9-7cb7f68d86fa",
+          "name": "Get Supplier Details",
+          "request": {
+            "name": "Get Supplier Details",
+            "description": {
+              "content": "Returns details for a specific supplier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "supplier",
+                ":uuid",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f815b71-82e0-4a2a-a3a9-a02e314e79ab",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ":uuid",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"external_id\": \"string\",\n  \"title\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"phone_number\": \"string\",\n  \"address1\": \"string\",\n  \"address2\": \"string\",\n  \"country\": \"CA\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"zip\": \"string\",\n  \"origin\": \"public\",\n  \"erp_systems\": [\n    {\n      \"external_supplier_id\": \"string\",\n      \"erp_system_uuid\": \"d5595133-feec-58dc-9221-e41e8430343a\",\n      \"is_active\": false\n    },\n    {\n      \"external_supplier_id\": \"string\",\n      \"erp_system_uuid\": \"d7b17d6c-102b-c3ed-4279-6c3063b22abb\",\n      \"is_active\": true\n    }\n  ],\n  \"is_active\": true,\n  \"meta_tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"external_data\": {},\n  \"created_at\": \"2005-05-27T19:04:35.569Z\",\n  \"updated_at\": \"1986-04-16T11:56:33.412Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3be3b628-62cb-4156-be42-ce3288cb573e",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ":uuid",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f75410eb-20d4-403e-9271-586e41b2353f",
+          "name": "Deactivate Supplier",
+          "request": {
+            "name": "Deactivate Supplier",
+            "description": {
+              "content": "Deactivates an existing supplier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "supplier",
+                ":uuid",
+                "deactivate",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc58f556-18f4-40e4-8dbd-ad5c0f20eb9d",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ":uuid",
+                    "deactivate",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b48c887-d7ea-422b-84e5-002ebe644dd1",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ":uuid",
+                    "deactivate",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d29fdc1a-5361-4685-8df4-d656d4134f1f",
+          "name": "List Suppliers",
+          "request": {
+            "name": "List Suppliers",
+            "description": {
+              "content": "Returns a list of suppliers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "supplier",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of records to return. Defaults to 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Zero-based offset of the first record to return. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "erp_system_uuid",
+                  "value": "<uuid>",
+                  "description": "Filter suppliers by ERP system UUID."
+                },
+                {
+                  "disabled": false,
+                  "key": "external_supplier_id",
+                  "value": "<string>",
+                  "description": "Filter suppliers by external supplier ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_active",
+                  "value": "<boolean>",
+                  "description": "Filter by active status."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_min",
+                  "value": "<dateTime>",
+                  "description": "Start of the created-at time range. Use ISO 8601 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_max",
+                  "value": "<dateTime>",
+                  "description": "End of the created-at time range. Use ISO 8601 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at_min",
+                  "value": "<dateTime>",
+                  "description": "Start of the updated-at time range. Use ISO 8601 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at_max",
+                  "value": "<dateTime>",
+                  "description": "End of the updated-at time range. Use ISO 8601 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b885f987-ed69-414d-97f5-748995479ccf",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "erp_system_uuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "external_supplier_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "created_at_min",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at_max",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updated_at_min",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updated_at_max",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"count\": 5722,\n  \"results\": [\n    {\n      \"uuid\": \"string\",\n      \"external_id\": \"string\",\n      \"title\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"email\": \"string\",\n      \"phone_number\": \"string\",\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"country\": \"QA\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"zip\": \"string\",\n      \"origin\": \"internal\",\n      \"erp_systems\": [\n        {\n          \"external_supplier_id\": \"string\",\n          \"erp_system_uuid\": \"01699416-3c07-ce0d-57eb-ae4af448d0ab\",\n          \"is_active\": false\n        },\n        {\n          \"external_supplier_id\": \"string\",\n          \"erp_system_uuid\": \"bca967cd-513a-9d34-5501-3f9b1a0d9432\",\n          \"is_active\": true\n        }\n      ],\n      \"is_active\": true,\n      \"meta_tags\": [\n        {\n          \"key\": \"string\",\n          \"value\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"key\": \"string\",\n          \"value\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"external_data\": {},\n      \"created_at\": \"1997-01-06T05:17:58.041Z\",\n      \"updated_at\": \"1989-01-11T09:27:54.365Z\"\n    },\n    {\n      \"uuid\": \"string\",\n      \"external_id\": \"string\",\n      \"title\": \"string\",\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"email\": \"string\",\n      \"phone_number\": \"string\",\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"country\": \"AI\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"zip\": \"string\",\n      \"origin\": \"external\",\n      \"erp_systems\": [\n        {\n          \"external_supplier_id\": \"string\",\n          \"erp_system_uuid\": \"6660daba-9673-ad68-7051-f253f26c9658\",\n          \"is_active\": true\n        },\n        {\n          \"external_supplier_id\": \"string\",\n          \"erp_system_uuid\": \"e68911af-501d-4053-aa6f-2bcf6876db79\",\n          \"is_active\": false\n        }\n      ],\n      \"is_active\": true,\n      \"meta_tags\": [\n        {\n          \"key\": \"string\",\n          \"value\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"key\": \"string\",\n          \"value\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"external_data\": {},\n      \"created_at\": \"2003-03-22T22:26:18.687Z\",\n      \"updated_at\": \"1949-12-07T05:51:39.219Z\"\n    }\n  ],\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2ce17e7-5d7e-44dc-a709-1b1757f5523d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "erp_system_uuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "external_supplier_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "created_at_min",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at_max",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updated_at_min",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updated_at_max",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d05e0a2b-60db-4da4-9ca7-6e58e36f7078",
+          "name": "Create Supplier",
+          "request": {
+            "name": "Create Supplier",
+            "description": {
+              "content": "Creates a new supplier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "supplier",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"country\": \"<string>\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"state\": \"<string>\",\n  \"origin\": \"external\",\n  \"external_data\": \"<object>\",\n  \"meta_tags\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "504087c0-ab25-42a9-b924-8cd2169899bb",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"country\": \"CM\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"state\": \"<string>\",\n  \"origin\": \"external\",\n  \"external_data\": \"<object>\",\n  \"meta_tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"external_id\": \"string\",\n  \"title\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"phone_number\": \"string\",\n  \"address1\": \"string\",\n  \"address2\": \"string\",\n  \"country\": \"CA\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"zip\": \"string\",\n  \"origin\": \"public\",\n  \"erp_systems\": [\n    {\n      \"external_supplier_id\": \"string\",\n      \"erp_system_uuid\": \"d5595133-feec-58dc-9221-e41e8430343a\",\n      \"is_active\": false\n    },\n    {\n      \"external_supplier_id\": \"string\",\n      \"erp_system_uuid\": \"d7b17d6c-102b-c3ed-4279-6c3063b22abb\",\n      \"is_active\": true\n    }\n  ],\n  \"is_active\": true,\n  \"meta_tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"external_data\": {},\n  \"created_at\": \"2005-05-27T19:04:35.569Z\",\n  \"updated_at\": \"1986-04-16T11:56:33.412Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1248914d-c82e-4ae6-9b65-caf62026bcf8",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"email\": \"<string>\",\n  \"external_id\": \"<string>\",\n  \"country\": \"CM\",\n  \"city\": \"<string>\",\n  \"zip\": \"<string>\",\n  \"phone_number\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"state\": \"<string>\",\n  \"origin\": \"external\",\n  \"external_data\": \"<object>\",\n  \"meta_tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2c75c75-6624-4ea7-b0ee-c1fa46348a45",
+          "name": "Update Business Classifications",
+          "request": {
+            "name": "Update Business Classifications",
+            "description": {
+              "content": "Updates business classifications for a supplier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "supplier",
+                ":uuid",
+                "business-classifications",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\",\n  \"<string>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bc50e8d1-ca06-44f1-bf19-241c4e24f985",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ":uuid",
+                    "business-classifications",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"sdvet\",\n  \"hbcu\",\n  \"sdvet\",\n  \"sdvet\",\n  \"edwosb\",\n  \"small_business_enterprise\",\n  \"fsc\",\n  \"msc\",\n  \"cab\",\n  \"sdvet\",\n  \"dbe\",\n  \"wosb\",\n  \"small_business_enterprise\",\n  \"international_soc_automation\",\n  \"minority_business_enterprise\",\n  \"fairtrade\",\n  \"wosb\",\n  \"fsc\",\n  \"8a\",\n  \"msc\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"string\",\n  \"external_id\": \"string\",\n  \"title\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"phone_number\": \"string\",\n  \"address1\": \"string\",\n  \"address2\": \"string\",\n  \"country\": \"CA\",\n  \"city\": \"string\",\n  \"state\": \"string\",\n  \"zip\": \"string\",\n  \"origin\": \"public\",\n  \"erp_systems\": [\n    {\n      \"external_supplier_id\": \"string\",\n      \"erp_system_uuid\": \"d5595133-feec-58dc-9221-e41e8430343a\",\n      \"is_active\": false\n    },\n    {\n      \"external_supplier_id\": \"string\",\n      \"erp_system_uuid\": \"d7b17d6c-102b-c3ed-4279-6c3063b22abb\",\n      \"is_active\": true\n    }\n  ],\n  \"is_active\": true,\n  \"meta_tags\": [\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"key\": \"string\",\n      \"value\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"external_data\": {},\n  \"created_at\": \"2005-05-27T19:04:35.569Z\",\n  \"updated_at\": \"1986-04-16T11:56:33.412Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d9d9e6c-2142-4704-89a2-af38824bf46b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ":uuid",
+                    "business-classifications",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"sdvet\",\n  \"hbcu\",\n  \"sdvet\",\n  \"sdvet\",\n  \"edwosb\",\n  \"small_business_enterprise\",\n  \"fsc\",\n  \"msc\",\n  \"cab\",\n  \"sdvet\",\n  \"dbe\",\n  \"wosb\",\n  \"small_business_enterprise\",\n  \"international_soc_automation\",\n  \"minority_business_enterprise\",\n  \"fairtrade\",\n  \"wosb\",\n  \"fsc\",\n  \"8a\",\n  \"msc\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e6d7dbe-80de-45d1-9d8b-b0ea97414a20",
+          "name": "Activate Supplier",
+          "request": {
+            "name": "Activate Supplier",
+            "description": {
+              "content": "Activates an existing supplier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "supplier",
+                ":uuid",
+                "activate",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d50bac74-8f43-4474-afcc-edd213109f9e",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ":uuid",
+                    "activate",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d2aa455-f2f9-4a1d-a5b8-9097a7923fb9",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    ":uuid",
+                    "activate",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af75842c-268c-4eb0-973b-a5278cb521fd",
+          "name": "Bulk Create Suppliers",
+          "request": {
+            "name": "Bulk Create Suppliers",
+            "description": {
+              "content": "Bulk creates new suppliers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "supplier",
+                "bulk-create",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"title\": \"<string>\",\n    \"email\": \"<string>\",\n    \"external_id\": \"<string>\",\n    \"country\": \"<string>\",\n    \"city\": \"<string>\",\n    \"zip\": \"<string>\",\n    \"phone_number\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"state\": \"<string>\",\n    \"origin\": \"external\",\n    \"external_data\": \"<object>\",\n    \"meta_tags\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f43a8776-1b86-4c66-9140-1bfb1c4cb77b",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    "bulk-create",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"title\": \"string\",\n    \"email\": \"string\",\n    \"external_id\": \"string\",\n    \"country\": \"RO\",\n    \"city\": \"string\",\n    \"zip\": \"string\",\n    \"phone_number\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"state\": \"string\",\n    \"origin\": \"external\",\n    \"external_data\": {},\n    \"meta_tags\": [\n      {\n        \"key\": \"string\",\n        \"value\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"key\": \"string\",\n        \"value\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"created_at\": \"2023-07-30T10:34:18.321Z\",\n    \"updated_at\": \"2018-08-29T06:40:54.105Z\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"external_id\": \"string\",\n    \"title\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"string\",\n    \"phone_number\": \"string\",\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"country\": \"MA\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"origin\": \"internal\",\n    \"erp_systems\": [\n      {\n        \"external_supplier_id\": \"string\",\n        \"erp_system_uuid\": \"e1e8017c-6a2e-824b-6b04-78ad2c47462e\",\n        \"is_active\": true\n      },\n      {\n        \"external_supplier_id\": \"string\",\n        \"erp_system_uuid\": \"f725b163-ae35-32a7-4001-c5371a7d0652\",\n        \"is_active\": true\n      }\n    ],\n    \"is_active\": false,\n    \"meta_tags\": [\n      {\n        \"key\": \"string\",\n        \"value\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"key\": \"string\",\n        \"value\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"external_data\": {},\n    \"created_at\": \"1982-12-19T10:37:07.451Z\",\n    \"updated_at\": \"1981-04-05T13:50:50.824Z\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"external_id\": \"string\",\n    \"title\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"email\": \"string\",\n    \"phone_number\": \"string\",\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"country\": \"IO\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"zip\": \"string\",\n    \"origin\": \"public\",\n    \"erp_systems\": [\n      {\n        \"external_supplier_id\": \"string\",\n        \"erp_system_uuid\": \"ef5ec0f5-1875-f9f5-2d90-8db7c9d2797c\",\n        \"is_active\": true\n      },\n      {\n        \"external_supplier_id\": \"string\",\n        \"erp_system_uuid\": \"b0ffa68f-de1c-37a6-50b8-e3a711dd5968\",\n        \"is_active\": true\n      }\n    ],\n    \"is_active\": false,\n    \"meta_tags\": [\n      {\n        \"key\": \"string\",\n        \"value\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"key\": \"string\",\n        \"value\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"external_data\": {},\n    \"created_at\": \"1955-06-15T01:04:00.784Z\",\n    \"updated_at\": \"1957-10-30T20:01:47.693Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e878c4c2-b295-456e-878d-2ad0f8e9f959",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "supplier",
+                    "bulk-create",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"title\": \"string\",\n    \"email\": \"string\",\n    \"external_id\": \"string\",\n    \"country\": \"RO\",\n    \"city\": \"string\",\n    \"zip\": \"string\",\n    \"phone_number\": \"string\",\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"state\": \"string\",\n    \"origin\": \"external\",\n    \"external_data\": {},\n    \"meta_tags\": [\n      {\n        \"key\": \"string\",\n        \"value\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"key\": \"string\",\n        \"value\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"created_at\": \"2023-07-30T10:34:18.321Z\",\n    \"updated_at\": \"2018-08-29T06:40:54.105Z\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://staging.fairmarkit.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "51a3cdcd-65b4-484a-bd62-955cbdc21554",
+    "name": "BUYER PUBLIC Business Units Supplier API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.\n\nContact Support:\n Name: Fairmarkit Support\n Email: support@fairmarkit.com",
+      "type": "text/plain"
+    }
+  }
+}

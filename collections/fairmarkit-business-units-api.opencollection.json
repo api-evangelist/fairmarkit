@@ -1,0 +1,146 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Business Units",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Business Unit Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/business-units/:uuid/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details for a business unit."
+        },
+        {
+          "info": {
+            "name": "Update Business Unit",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/business-units/:uuid/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing business unit."
+        },
+        {
+          "info": {
+            "name": "Delete Business Unit",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/business-units/:uuid/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an existing business unit."
+        },
+        {
+          "info": {
+            "name": "List Business Units",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/business-units/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              }
+            ]
+          },
+          "docs": "Returns a list of business units."
+        },
+        {
+          "info": {
+            "name": "Create Business Unit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/business-units/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new business unit."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

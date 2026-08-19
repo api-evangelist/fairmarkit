@@ -1,0 +1,498 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units RFQ API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "RFQ",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Internal Notes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/internal-notes/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "RFQ ID (Fairmarkit)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              }
+            ]
+          },
+          "docs": "Returns a list of internal notes for an RFQ event."
+        },
+        {
+          "info": {
+            "name": "Add Internal Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/internal-notes/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "RFQ ID (Fairmarkit)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new internal note for an RFQ event."
+        },
+        {
+          "info": {
+            "name": "Get RFQ Event Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details for an RFQ event."
+        },
+        {
+          "info": {
+            "name": "Update RFQ Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing RFQ event."
+        },
+        {
+          "info": {
+            "name": "Delete RFQ Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an existing RFQ event."
+        },
+        {
+          "info": {
+            "name": "List RFQ Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "created_at_min",
+                "value": "",
+                "type": "query",
+                "description": "Start of the created-at time range. Use ISO 8601 format."
+              },
+              {
+                "name": "created_at_max",
+                "value": "",
+                "type": "query",
+                "description": "End of the created-at time range. Use ISO 8601 format."
+              },
+              {
+                "name": "updated_at_min",
+                "value": "",
+                "type": "query",
+                "description": "Start of the updated-at time range. Use ISO 8601 format."
+              },
+              {
+                "name": "updated_at_max",
+                "value": "",
+                "type": "query",
+                "description": "End of the updated-at time range. Use ISO 8601 format."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status."
+              },
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter RFQ records by external RFQ ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of RFQ events."
+        },
+        {
+          "info": {
+            "name": "Create RFQ Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new RFQ event."
+        },
+        {
+          "info": {
+            "name": "Cancel RFQ Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/cancel",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancels an existing RFQ event."
+        },
+        {
+          "info": {
+            "name": "Award RFQ",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/award",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "RFQ ID (Fairmarkit)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Awards an RFQ by selecting quotation items and optionally providing a purchase order number."
+        },
+        {
+          "info": {
+            "name": "List Quotations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/quotations/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              },
+              {
+                "name": "is_awarded_only",
+                "value": "",
+                "type": "query",
+                "description": "If true, return only awarded quotations and within them only awarded items/subitems. Filter is applied on the current page only; `count` and pagination links reflect the unfiltered set."
+              }
+            ]
+          },
+          "docs": "Returns a list of quotations for an RFQ event."
+        },
+        {
+          "info": {
+            "name": "Archive RFQ Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/archive",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Archives an existing RFQ event."
+        },
+        {
+          "info": {
+            "name": "List RFQ Approvals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/approvals",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "RFQ ID (Fairmarkit)."
+              }
+            ]
+          },
+          "docs": "Returns approval data for an RFQ event."
+        },
+        {
+          "info": {
+            "name": "Reject RFQ Step",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/approvals/:approval_id/reject-step",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "RFQ ID (Fairmarkit)."
+              },
+              {
+                "name": "approval_id",
+                "value": "",
+                "type": "path",
+                "description": "Approval ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rejects a step in the RFQ approval workflow."
+        },
+        {
+          "info": {
+            "name": "Approve RFQ Step",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/approvals/:approval_id/approve-step",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "RFQ ID (Fairmarkit)."
+              },
+              {
+                "name": "approval_id",
+                "value": "",
+                "type": "path",
+                "description": "Approval ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approves a step in the RFQ approval workflow."
+        },
+        {
+          "info": {
+            "name": "Update Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/rfq/:uuid/purchase-order/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates purchase order information for an existing RFQ."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

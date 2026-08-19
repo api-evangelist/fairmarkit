@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units Purchase Orders API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Purchase Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Upload Status for Purchase Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/purchase-orders/upload/:upload_id/status/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "upload_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Upload Status for Purchase Orders"
+        },
+        {
+          "info": {
+            "name": "List Purchase Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/purchase-orders/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              }
+            ]
+          },
+          "docs": "Returns a list of purchase orders."
+        },
+        {
+          "info": {
+            "name": "Create Purchase Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/purchase-orders/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new purchase order."
+        },
+        {
+          "info": {
+            "name": "Upload Purchase Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/purchase-orders/upload/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload Purchase Orders"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

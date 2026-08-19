@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units Data Exports API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Exports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Available Data Exports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/data-exports/available",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "List Available Data Exports"
+        },
+        {
+          "info": {
+            "name": "Get Data Export",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/data-exports/:job_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Data Export"
+        },
+        {
+          "info": {
+            "name": "Create Data Export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/data-exports/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Data Export"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

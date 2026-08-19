@@ -1,0 +1,784 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units Requests API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "🧪 List Request Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/items/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of Request items. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "🧪 Create Request Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/items/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Request Item based on the selected schema. The Request must exist first. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "List Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              },
+              {
+                "name": "created_at_min",
+                "value": "",
+                "type": "query",
+                "description": "Start of the created-at time range. Use ISO 8601 format."
+              },
+              {
+                "name": "created_at_max",
+                "value": "",
+                "type": "query",
+                "description": "End of the created-at time range. Use ISO 8601 format."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Ordering field. Prefix with '-' for descending order."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status."
+              },
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of Requests."
+        },
+        {
+          "info": {
+            "name": "🧪 Create Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Request based on the selected schema. To create Request Items, use the Request Item v4 endpoint. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "🧪 Link External PR to Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/requests/:request_id/pr/link/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Marks external PR creation as successful and returns the external PR details. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "Create Request Item Batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/items/batch",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates Request Items in batch."
+        },
+        {
+          "info": {
+            "name": "Cancel Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/cancel",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancels an existing Request."
+        },
+        {
+          "info": {
+            "name": "⚠ Create Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/requests/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Request. This endpoint is **DEPRECATED**. Use the v4 Requests API and Request Item endpoints instead."
+        },
+        {
+          "info": {
+            "name": "⚠ Get Request Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/requests/:request_id/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details for a specific Request. This endpoint is **DEPRECATED**. Use the v4 Requests API and Request Item endpoints instead."
+        },
+        {
+          "info": {
+            "name": "🧪 Mark External PR Creation Failed",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/requests/:request_id/pr/mark-as-failed/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Marks external PR creation as failed. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "🧪 Update Request Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/items/:request_item_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "request_item_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a Request Item while preserving attachment field values and ignoring new values. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "🧪 Get Request Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a Request without its items. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "🧪 Update Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a Request while preserving attachment field values and ignoring new values. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "🧪 Update External PR Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/requests/:request_id/pr/status/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the status of an external PR linked to a Request. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "Approve Request Event Step",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/event-approvals/:approval_id/approve-step",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "approval_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approves a Request event approval step."
+        },
+        {
+          "info": {
+            "name": "Reject Request Event Step",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/event-approvals/:approval_id/reject-step",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "approval_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rejects a Request event approval step."
+        },
+        {
+          "info": {
+            "name": "Submit Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/submit",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Submits a Request."
+        },
+        {
+          "info": {
+            "name": "🧪 Reject Request Step",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/approvals/:approval_id/reject-step",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "approval_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rejects a Request approval step. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "🧪 Approve Request Step",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/approvals/:approval_id/approve-step",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "approval_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approves a Request approval step. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "List Request Event Approvals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/event-approvals",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns approval data for a Request event."
+        },
+        {
+          "info": {
+            "name": "🧪 List Request Approvals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/requests/:request_id/approvals",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns approval data for a Request. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "Reject Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/supplier-public-api/api/v1/requests/:request_id/reject/",
+            "headers": [
+              {
+                "name": "x-fm-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique request ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a Response with rejection information for the Request with provided request_id"
+        },
+        {
+          "info": {
+            "name": "Get Request Response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/supplier-public-api/api/v1/requests/:request_id/response/",
+            "headers": [
+              {
+                "name": "x-fm-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique request ID."
+              }
+            ]
+          },
+          "docs": "Returns information about Response that you submit for Request by provided request id."
+        },
+        {
+          "info": {
+            "name": "Get Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/supplier-public-api/api/v1/requests/:request_id/",
+            "headers": [
+              {
+                "name": "x-fm-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique request ID."
+              }
+            ]
+          },
+          "docs": "Returns full information about the Request by provided id"
+        },
+        {
+          "info": {
+            "name": "Submit Response",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/supplier-public-api/api/v1/requests/:request_id/submit/",
+            "headers": [
+              {
+                "name": "x-fm-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique request ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a Response for the Request with provided request_id"
+        },
+        {
+          "info": {
+            "name": "Get Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/supplier-public-api/api/v1/requests/",
+            "headers": [
+              {
+                "name": "x-fm-api-key",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Field name and direction in which result will be ordered. F.e.: \"-created_at\" means that result will be ordered by created_at DESC"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter records by status value."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Use to specify the maximum number of records to return. By default, 20 records are returned."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Use to retrieve a specific batch of records. By default, this is set to 0."
+              }
+            ]
+          },
+          "docs": "Returns a list of Requests that Buyer creates for your company"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

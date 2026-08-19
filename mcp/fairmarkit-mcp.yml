@@ -362,3 +362,9 @@ tools:
 - name: get_requests-Requests_Requests_Requests
   description: Get Requests
   source_operation: openapi/fairmarkit-supplier-openapi.json#get_requests-Requests_Requests_Requests
+deployment:
+  mode: none
+  verified: derived
+  tools: 118
+  checked: '2026-08-12'
+  source: catalog MCP census

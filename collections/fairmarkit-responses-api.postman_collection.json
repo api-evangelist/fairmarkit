@@ -1,0 +1,962 @@
+{
+  "item": [
+    {
+      "id": "a0ad0437-ce27-4889-b486-816ed4a2c364",
+      "name": "Responses",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "957cf54b-ef9b-4ead-b53b-b74516295a18",
+          "name": "List Awarded Response Items By Request",
+          "request": {
+            "name": "List Awarded Response Items By Request",
+            "description": {
+              "content": "Returns awarded response items for a Request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v4",
+                "responses",
+                "request",
+                ":request_id",
+                "awarded-items",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of records to return. Defaults to 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Zero-based offset of the first record to return. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee5b6811-fdeb-46f5-9bf5-4493e600d7fc",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "responses",
+                    "request",
+                    ":request_id",
+                    "awarded-items",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "SELECTED"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"c74495bb-ec3c-715b-ac11-3b9c105eabd2\",\n      \"event_item_id\": \"65aafc23-dc76-b86e-0691-d6519f7a08fe\",\n      \"request_item_id\": \"c997c3dc-79c2-4e8c-8e61-3d8f86a0739c\",\n      \"schema_data\": {},\n      \"is_no_bid\": true,\n      \"status\": \"SELECTED\",\n      \"is_alternative\": true,\n      \"requested_quantity\": 7740.541990961961,\n      \"is_partial_bid\": true,\n      \"is_increased_quantity\": true,\n      \"response_id\": \"cffc3bb6-20c7-7584-256e-1f188b4346f9\",\n      \"event_id\": \"5d718a12-6282-38a7-6fa5-1af91242aa59\",\n      \"reason_info\": {\n        \"reason\": \"string\",\n        \"custom_reason\": \"string\"\n      },\n      \"delivery_days\": 3477,\n      \"unit_price\": \"string\",\n      \"total_price\": \"string\",\n      \"currency\": \"string\",\n      \"original_unit_price\": \"string\",\n      \"original_total_price\": \"string\",\n      \"original_currency\": \"string\",\n      \"uom_conversion_rate\": \"string\"\n    },\n    {\n      \"id\": \"3da08966-5f1c-55f1-343f-367129dca03a\",\n      \"event_item_id\": \"7b881a15-9c2d-e3ff-16fd-8e365fec0b83\",\n      \"request_item_id\": \"c37fac54-e91a-0b5c-a8c6-60bea2cf3440\",\n      \"schema_data\": {},\n      \"is_no_bid\": true,\n      \"status\": \"AWARDED\",\n      \"is_alternative\": false,\n      \"requested_quantity\": 1236.7149066374207,\n      \"is_partial_bid\": false,\n      \"is_increased_quantity\": false,\n      \"response_id\": \"87f5e78d-bb4a-6bea-3715-c60861b43bdf\",\n      \"event_id\": \"25f58310-ed8a-54ae-093d-14c9a631b18f\",\n      \"reason_info\": {\n        \"reason\": \"string\",\n        \"custom_reason\": \"string\"\n      },\n      \"delivery_days\": 7474,\n      \"unit_price\": \"string\",\n      \"total_price\": \"string\",\n      \"currency\": \"string\",\n      \"original_unit_price\": \"string\",\n      \"original_total_price\": \"string\",\n      \"original_currency\": \"string\",\n      \"uom_conversion_rate\": \"string\"\n    }\n  ],\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31ba22ca-379c-4ada-9c5d-d4b47730c5d3",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v4",
+                    "responses",
+                    "request",
+                    ":request_id",
+                    "awarded-items",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "SELECTED"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "168910a9-1ba2-4b93-88e1-a5fb8b2e4d36",
+          "name": "🧪 List Response Items By Request",
+          "request": {
+            "name": "🧪 List Response Items By Request",
+            "description": {
+              "content": "Returns a list of response items for a Request. This endpoint is in **BETA** and may change without notice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "responses",
+                "request",
+                ":request_id",
+                "response-items",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Zero-based offset of the first record to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return. Defaults to 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "response_id",
+                  "value": "<uuid>",
+                  "description": "Filter by response IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "response_id",
+                  "value": "<uuid>",
+                  "description": "Filter by response IDs."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e83f4b0a-118c-47e8-b883-276944c16a88",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "responses",
+                    "request",
+                    ":request_id",
+                    "response-items",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "response_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "response_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"ebe57c96-8a48-0857-eea8-c110c7498d27\",\n      \"response_id\": \"4db401d6-2883-b736-2333-96e74f27a23f\",\n      \"request_item_id\": \"066652b0-b365-8664-9186-ec7dcf6e1514\",\n      \"schema_data\": {},\n      \"is_no_bid\": false,\n      \"requested_quantity\": 7906.76703537142,\n      \"created_at\": \"1956-03-25T02:41:02.118Z\",\n      \"unit_price_usd\": \"string\",\n      \"unit_price\": \"string\",\n      \"original_currency\": \"string\",\n      \"original_unit_price\": \"string\",\n      \"total_price_usd\": \"string\",\n      \"uom_conversion_rate\": \"string\",\n      \"updated_at\": \"2010-03-14T13:49:34.973Z\"\n    },\n    {\n      \"id\": \"93366174-2369-880b-555b-a1c776391f9f\",\n      \"response_id\": \"90622ee0-ef6c-bad1-02a5-2d736d7aa7ff\",\n      \"request_item_id\": \"1142593e-50a2-2b13-9ebf-50127cd74428\",\n      \"schema_data\": {},\n      \"is_no_bid\": true,\n      \"requested_quantity\": 1876.236736807322,\n      \"created_at\": \"1970-02-04T03:12:35.460Z\",\n      \"unit_price_usd\": \"string\",\n      \"unit_price\": \"string\",\n      \"original_currency\": \"string\",\n      \"original_unit_price\": \"string\",\n      \"total_price_usd\": \"string\",\n      \"uom_conversion_rate\": \"string\",\n      \"updated_at\": \"1982-01-21T18:59:24.292Z\"\n    }\n  ],\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1fdc6ea7-ba87-44b8-a7ab-99e6d8c8c40d",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "responses",
+                    "request",
+                    ":request_id",
+                    "response-items",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "response_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "response_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "694df4e4-f42b-4a58-83e8-40fe4032d0a5",
+          "name": "🧪 List Awarded Response Items By Request",
+          "request": {
+            "name": "🧪 List Awarded Response Items By Request",
+            "description": {
+              "content": "Returns a list of awarded response items for a Request. This endpoint is in **BETA** and may change without notice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "responses",
+                "request",
+                ":request_id",
+                "awarded-items",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Zero-based offset of the first record to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return. Defaults to 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "response_id",
+                  "value": "<uuid>",
+                  "description": "Filter by response IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "response_id",
+                  "value": "<uuid>",
+                  "description": "Filter by response IDs."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter awarded items by status. When omitted or empty, returns AWARDED and SELECTED items."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b309742-08de-41f7-985c-15a5209660dc",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "responses",
+                    "request",
+                    ":request_id",
+                    "awarded-items",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "response_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "response_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "AWARDED"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"deb2ef44-96df-2043-f325-b894c30ab7d5\",\n      \"response_id\": \"029211d7-3623-54cf-154b-8091bab7077d\",\n      \"request_item_id\": \"8aaa2ae3-4903-6a8f-1b67-a24f619deba6\",\n      \"response_item_schema_data\": {},\n      \"status\": \"AWARDED\",\n      \"quantity\": 814.0207899052588,\n      \"is_no_bid\": false,\n      \"requested_quantity\": 1809.9660061636202,\n      \"representation_status\": \"string\",\n      \"created_at\": \"2024-11-16T16:28:34.324Z\",\n      \"unit_price_usd\": \"string\",\n      \"total_price_usd\": \"string\",\n      \"uom_conversion_rate\": \"string\",\n      \"award_reason\": \"string\",\n      \"custom_award_reason\": \"string\",\n      \"updated_at\": \"1980-12-07T11:19:32.452Z\"\n    },\n    {\n      \"id\": \"c9d0cf70-6fc1-7fe1-ab07-ef60264dc2f8\",\n      \"response_id\": \"0ccd5617-bd49-5a68-79f2-336bf126d519\",\n      \"request_item_id\": \"b99d3af1-6ca8-dc60-c7d9-29a847d138e8\",\n      \"response_item_schema_data\": {},\n      \"status\": \"AWARDED\",\n      \"quantity\": 354.2037551222765,\n      \"is_no_bid\": true,\n      \"requested_quantity\": 3519.3592283572007,\n      \"representation_status\": \"string\",\n      \"created_at\": \"1993-06-13T07:53:02.656Z\",\n      \"unit_price_usd\": \"string\",\n      \"total_price_usd\": \"string\",\n      \"uom_conversion_rate\": \"string\",\n      \"award_reason\": \"string\",\n      \"custom_award_reason\": \"string\",\n      \"updated_at\": \"1949-02-04T17:58:41.623Z\"\n    }\n  ],\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80e22ee9-2019-408d-ac6d-82bc77d97008",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "responses",
+                    "request",
+                    ":request_id",
+                    "awarded-items",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "response_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "response_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "AWARDED"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40d4a84f-96e8-4f09-b0d4-b675079e8e55",
+          "name": "🧪 List Responses By Request",
+          "request": {
+            "name": "🧪 List Responses By Request",
+            "description": {
+              "content": "Returns a list of responses for a Request. This endpoint is in **BETA** and may change without notice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "responses",
+                "request",
+                ":request_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Zero-based offset of the first record to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of records to return. Defaults to 10."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by status."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by status."
+                },
+                {
+                  "disabled": false,
+                  "key": "is_offline_bid",
+                  "value": "<boolean>",
+                  "description": "Filter responses by offline bid"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "request_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45558d02-e264-41cb-bd09-5a3e59cc6857",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "responses",
+                    "request",
+                    ":request_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "status",
+                      "value": "LOST"
+                    },
+                    {
+                      "key": "status",
+                      "value": "DRAFT"
+                    },
+                    {
+                      "key": "is_offline_bid",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"4cdd6698-01b9-2b09-bebe-4c0c56217eee\",\n      \"status\": \"CREATED\",\n      \"representation_status\": \"string\",\n      \"request_id\": \"139252c7-cf1c-df4f-9c67-00ea689af6e4\",\n      \"supplier\": {\n        \"uuid\": \"aff969a6-e52e-6e06-0bfe-dc36c934347d\",\n        \"title\": \"string\",\n        \"email\": \"string\",\n        \"erp_systems\": [\n          {\n            \"external_supplier_id\": \"string\",\n            \"erp_system_uuid\": \"63a2f042-fee3-54e1-8077-f85d9de0cc59\",\n            \"is_active\": true\n          },\n          {\n            \"external_supplier_id\": \"string\",\n            \"erp_system_uuid\": \"bcb71687-f11d-6344-f5c9-d8e31d87331c\",\n            \"is_active\": true\n          }\n        ]\n      },\n      \"is_offline_bid\": true,\n      \"is_no_bid\": false,\n      \"created_at\": \"1950-04-13T15:07:58.421Z\",\n      \"submitted_at\": \"1954-09-06T09:46:19.073Z\",\n      \"declined_at\": \"1948-09-15T22:56:45.873Z\",\n      \"selected_at\": \"1964-06-28T10:17:01.204Z\",\n      \"lost_at\": \"1991-07-13T19:10:54.285Z\",\n      \"opened_at\": \"2004-12-08T12:44:38.784Z\",\n      \"valid_for\": \"string\",\n      \"currency\": \"string\",\n      \"total_price\": 5359.34572367092,\n      \"expires_at\": \"1969-09-06T21:37:48.514Z\",\n      \"decline_reason\": \"string\",\n      \"custom_decline_reason\": \"string\",\n      \"updated_at\": \"2015-04-30T13:08:51.945Z\",\n      \"attachments\": [\n        {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"30d5e2f1-f571-a7cc-d254-ae160eb421d1\",\n      \"status\": \"CREATED\",\n      \"representation_status\": \"string\",\n      \"request_id\": \"48e75642-da6b-3313-ba48-c001d88aaed6\",\n      \"supplier\": {\n        \"uuid\": \"247cebc3-afd4-2b1f-c8c4-4222918e5dc2\",\n        \"title\": \"string\",\n        \"email\": \"string\",\n        \"erp_systems\": [\n          {\n            \"external_supplier_id\": \"string\",\n            \"erp_system_uuid\": \"6010edbc-0a7b-2cc3-d059-6792cc11ac29\",\n            \"is_active\": true\n          },\n          {\n            \"external_supplier_id\": \"string\",\n            \"erp_system_uuid\": \"80c9f846-d485-065f-87bf-796e2272bde9\",\n            \"is_active\": true\n          }\n        ]\n      },\n      \"is_offline_bid\": true,\n      \"is_no_bid\": true,\n      \"created_at\": \"1996-12-17T09:22:24.812Z\",\n      \"submitted_at\": \"2003-08-03T23:52:28.681Z\",\n      \"declined_at\": \"1994-08-22T09:02:31.565Z\",\n      \"selected_at\": \"1981-02-20T09:54:26.512Z\",\n      \"lost_at\": \"1949-12-09T14:56:48.972Z\",\n      \"opened_at\": \"1972-08-08T18:32:41.197Z\",\n      \"valid_for\": \"string\",\n      \"currency\": \"string\",\n      \"total_price\": 3294.250274016741,\n      \"expires_at\": \"1970-05-07T09:24:49.888Z\",\n      \"decline_reason\": \"string\",\n      \"custom_decline_reason\": \"string\",\n      \"updated_at\": \"1961-06-21T12:50:21.264Z\",\n      \"attachments\": [\n        {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd28894b-7e86-4894-8b5d-037f8dd1f5ba",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "responses",
+                    "request",
+                    ":request_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "status",
+                      "value": "LOST"
+                    },
+                    {
+                      "key": "status",
+                      "value": "DRAFT"
+                    },
+                    {
+                      "key": "is_offline_bid",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "request_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://staging.fairmarkit.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fd764527-270d-4633-a601-2f2f0c72566a",
+    "name": "BUYER PUBLIC Business Units Responses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.\n\nContact Support:\n Name: Fairmarkit Support\n Email: support@fairmarkit.com",
+      "type": "text/plain"
+    }
+  }
+}

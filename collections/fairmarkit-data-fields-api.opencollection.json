@@ -1,0 +1,422 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units Data Fields API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Dataset Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/data-fields/dataset/:slug/items",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 10."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search term used to filter results."
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter items by tags."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Ordering field. Prefix with '-' for descending order."
+              }
+            ]
+          },
+          "docs": "Returns a list of dataset items."
+        },
+        {
+          "info": {
+            "name": "Create Dataset Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/data-fields/dataset/:slug/items",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates dataset items."
+        },
+        {
+          "info": {
+            "name": "List Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/data-fields/dataset",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 10."
+              },
+              {
+                "name": "active",
+                "value": "",
+                "type": "query",
+                "description": "Filter by active status."
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "query",
+                "description": "Filter datasets by slug"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query",
+                "description": "Filter datasets by title"
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Ordering field. Prefix with '-' for descending order."
+              }
+            ]
+          },
+          "docs": "Returns a list of datasets."
+        },
+        {
+          "info": {
+            "name": "Create Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/data-fields/dataset",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new dataset."
+        },
+        {
+          "info": {
+            "name": "Upload Dataset Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/data-fields/dataset-items/upload",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Uploads dataset items from a file."
+        },
+        {
+          "info": {
+            "name": "Get Dataset Item Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/data-fields/dataset/:slug/items/:item_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the dataset item to retrieve."
+              }
+            ]
+          },
+          "docs": "Returns details for a dataset item."
+        },
+        {
+          "info": {
+            "name": "Update Dataset Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/data-fields/dataset/:slug/items/:item_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the dataset item to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a dataset item."
+        },
+        {
+          "info": {
+            "name": "Delete Dataset Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/data-fields/dataset/:slug/items/:item_id",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID or External ID of the dataset item to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a dataset item."
+        },
+        {
+          "info": {
+            "name": "Get Dataset Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/data-fields/dataset/:slug",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details for a dataset."
+        },
+        {
+          "info": {
+            "name": "Update Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/data-fields/dataset/:slug",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a dataset."
+        },
+        {
+          "info": {
+            "name": "Delete Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/data-fields/dataset/:slug",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a dataset."
+        },
+        {
+          "info": {
+            "name": "List Dataset Items By Filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/data-fields/dataset-items",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "item_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by dataset item IDs."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 10."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search term used to filter results."
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter items by tags."
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Ordering field. Prefix with '-' for descending order."
+              }
+            ]
+          },
+          "docs": "Returns dataset items matching the supplied filters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

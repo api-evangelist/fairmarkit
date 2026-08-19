@@ -1,0 +1,174 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units File attachments API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "File attachments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List RFQ Attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/attachments/rfq/:rfq_uuid/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "rfq_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a list of attachments for an RFQ event."
+        },
+        {
+          "info": {
+            "name": "Create RFQ Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/attachments/rfq/:rfq_uuid/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "rfq_uuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "is_internal",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Creates a new attachment on an RFQ event."
+        },
+        {
+          "info": {
+            "name": "Create Request Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/attachments/requests/:request_uuid/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Creates a new attachment on a request."
+        },
+        {
+          "info": {
+            "name": "Create RFQ Item Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/attachments/rfq/:rfq_uuid/items/:item_uuid/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "rfq_uuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "item_uuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Creates a new attachment on an RFQ line item."
+        },
+        {
+          "info": {
+            "name": "Create Request Item Attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/attachments/requests/:request_uuid/items/:request_item_uuid",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_uuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "request_item_uuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "attachment_field_name",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Creates a new attachment on a request item."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

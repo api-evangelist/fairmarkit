@@ -1,0 +1,1007 @@
+{
+  "item": [
+    {
+      "id": "7b28a86f-4fd5-47ed-9896-6c00edb80d2a",
+      "name": "RFP",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "733e987f-95d1-4256-85fb-198d59cc0da8",
+          "name": "List RFPs",
+          "request": {
+            "name": "List RFPs",
+            "description": {
+              "content": "Returns a list of RFP events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "rfp",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of records to return. Defaults to 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Zero-based offset of the first record to return. Defaults to 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by status."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_min",
+                  "value": "<dateTime>",
+                  "description": "Start of the created-at time range. Use ISO 8601 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_max",
+                  "value": "<dateTime>",
+                  "description": "End of the created-at time range. Use ISO 8601 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at_min",
+                  "value": "<dateTime>",
+                  "description": "Start of the updated-at time range. Use ISO 8601 format."
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at_max",
+                  "value": "<dateTime>",
+                  "description": "End of the updated-at time range. Use ISO 8601 format."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9da2a030-0fa8-4622-bb07-168bd2fd3a46",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "rfp",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "string"
+                    },
+                    {
+                      "key": "created_at_min",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at_max",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updated_at_min",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updated_at_max",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"count\": 8878,\n  \"results\": [\n    {\n      \"id\": \"string\",\n      \"uuid\": \"string\",\n      \"title\": \"string\",\n      \"status\": \"string\",\n      \"created_at\": \"1959-05-06T00:52:57.528Z\",\n      \"is_rfi\": false,\n      \"is_outlier\": false,\n      \"external_id\": \"\",\n      \"closes_at\": \"1989-05-10T01:37:53.265Z\",\n      \"scheduled_publish_at\": \"1972-04-06T05:56:09.414Z\",\n      \"questions_due_at\": \"1974-01-19T12:27:50.942Z\",\n      \"request_id\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"uuid\": \"string\",\n      \"title\": \"string\",\n      \"status\": \"string\",\n      \"created_at\": \"2026-02-21T10:16:11.890Z\",\n      \"is_rfi\": false,\n      \"is_outlier\": true,\n      \"external_id\": \"\",\n      \"closes_at\": \"2012-05-26T14:03:57.398Z\",\n      \"scheduled_publish_at\": \"1955-07-20T14:57:53.063Z\",\n      \"questions_due_at\": \"1947-09-26T14:35:53.413Z\",\n      \"request_id\": \"string\"\n    }\n  ],\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65e27a88-2b5f-42c4-9b5f-e9e6ffba0def",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "rfp",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "status",
+                      "value": "string"
+                    },
+                    {
+                      "key": "created_at_min",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at_max",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updated_at_min",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "updated_at_max",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61d48f9e-bae5-4fa6-8abd-0771b188d395",
+          "name": "Create RFP From Template",
+          "request": {
+            "name": "Create RFP From Template",
+            "description": {
+              "content": "Creates a new request for proposal (RFP) event from a RFP template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "templates",
+                "rfp",
+                ":template_uuid",
+                "create-rfp",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "template_uuid",
+                  "description": "(Required) Fairmarkit UUID of the RFP template."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"event_description\": \"<string>\",\n  \"justification\": \"<string>\",\n  \"external_rfp_id\": \"<string>\",\n  \"value\": \"<number>\",\n  \"savings\": \"<number>\",\n  \"currency\": \"USD\",\n  \"is_nda_required\": \"<boolean>\",\n  \"department\": \"<string>\",\n  \"scheduled_publish_at\": \"<dateTime>\",\n  \"questions_due_at\": \"<dateTime>\",\n  \"closes_at\": \"<dateTime>\",\n  \"planned_start_at\": \"<dateTime>\",\n  \"request_id\": \"<string>\",\n  \"buyer\": \"<email>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cd167ce4-9b83-4d66-a565-af6108c1a86c",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "templates",
+                    "rfp",
+                    ":template_uuid",
+                    "create-rfp",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "template_uuid",
+                      "description": "(Required) Fairmarkit UUID of the RFP template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"event_description\": \"<string>\",\n  \"justification\": \"<string>\",\n  \"external_rfp_id\": \"<string>\",\n  \"value\": \"<number>\",\n  \"savings\": \"<number>\",\n  \"currency\": \"USD\",\n  \"is_nda_required\": \"<boolean>\",\n  \"department\": \"<string>\",\n  \"scheduled_publish_at\": \"<dateTime>\",\n  \"questions_due_at\": \"<dateTime>\",\n  \"closes_at\": \"<dateTime>\",\n  \"planned_start_at\": \"<dateTime>\",\n  \"request_id\": \"<string>\",\n  \"buyer\": \"<email>\",\n  \"status\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"07505203-0b2c-ee7e-4a7c-f7ff7bcad389\",\n  \"fm_app_rfp_url\": \"https://LONiPBFU.tvkjmoYRp9zvB1mQ11vkwmQ,NnbfFLxA0nUxMsDZKSdz\",\n  \"status\": \"string\",\n  \"request_id\": \"string\",\n  \"external_rfp_id\": \"string\",\n  \"title\": \"string\",\n  \"event_description\": \"string\",\n  \"justification\": \"string\",\n  \"value\": 8500.369827540402,\n  \"savings\": 2153.005278612177,\n  \"currency\": \"GMD\",\n  \"is_nda_required\": true,\n  \"department\": \"string\",\n  \"scheduled_publish_at\": \"2004-10-05T06:50:25.421Z\",\n  \"questions_due_at\": \"1965-07-04T03:02:11.567Z\",\n  \"closes_at\": \"1980-03-11T10:10:02.744Z\",\n  \"planned_start_at\": \"1997-02-11T09:39:32.734Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "675f8837-57b1-44e8-904e-5586b0be1e0b",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "templates",
+                    "rfp",
+                    ":template_uuid",
+                    "create-rfp",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "template_uuid",
+                      "description": "(Required) Fairmarkit UUID of the RFP template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"event_description\": \"<string>\",\n  \"justification\": \"<string>\",\n  \"external_rfp_id\": \"<string>\",\n  \"value\": \"<number>\",\n  \"savings\": \"<number>\",\n  \"currency\": \"USD\",\n  \"is_nda_required\": \"<boolean>\",\n  \"department\": \"<string>\",\n  \"scheduled_publish_at\": \"<dateTime>\",\n  \"questions_due_at\": \"<dateTime>\",\n  \"closes_at\": \"<dateTime>\",\n  \"planned_start_at\": \"<dateTime>\",\n  \"request_id\": \"<string>\",\n  \"buyer\": \"<email>\",\n  \"status\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f16c619d-e7e3-44c9-8a2e-503b9e999eb7",
+          "name": "Get Proposals List",
+          "request": {
+            "name": "Get Proposals List",
+            "description": {
+              "content": "Returns data about a specific proposal (response) on a request for proposals (RFP) event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "rfp",
+                ":uuid",
+                "proposals",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of records to return. Defaults to 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Zero-based offset of the first record to return. Defaults to 0."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d3d6965-63ec-4975-8aa3-197788247968",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "rfp",
+                    ":uuid",
+                    "proposals",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"count\": 5384,\n  \"results\": [\n    {\n      \"uuid\": \"string\",\n      \"status\": \"string\",\n      \"amount_total\": 2325.017175897062,\n      \"awarded_total\": 1264.971699377574,\n      \"kind\": \"string\",\n      \"notes\": \"string\",\n      \"currency\": \"HKD\",\n      \"created_at\": \"1984-02-28T10:44:07.507Z\",\n      \"updated_at\": \"2020-01-11T09:02:59.003Z\",\n      \"supplier\": {\n        \"uuid\": \"string\",\n        \"email\": \"string\",\n        \"title\": \"string\"\n      },\n      \"is_outlier\": false,\n      \"valid_for\": 9136,\n      \"amount_items\": 9303.837115784609,\n      \"sent_at\": \"1981-05-05T20:59:21.660Z\",\n      \"opened_at\": \"1995-01-19T05:03:28.880Z\",\n      \"submitted_at\": \"1987-01-10T21:57:31.647Z\",\n      \"awarded_at\": \"1957-06-15T20:44:29.473Z\",\n      \"supplier_external_id\": \"string\"\n    },\n    {\n      \"uuid\": \"string\",\n      \"status\": \"string\",\n      \"amount_total\": 2106.019545276815,\n      \"awarded_total\": 392.91249985669793,\n      \"kind\": \"string\",\n      \"notes\": \"string\",\n      \"currency\": \"TOP\",\n      \"created_at\": \"2021-09-11T18:08:52.227Z\",\n      \"updated_at\": \"2000-02-29T06:09:37.059Z\",\n      \"supplier\": {\n        \"uuid\": \"string\",\n        \"email\": \"string\",\n        \"title\": \"string\"\n      },\n      \"is_outlier\": true,\n      \"valid_for\": 5822,\n      \"amount_items\": 953.5412050205127,\n      \"sent_at\": \"2014-07-24T02:10:07.470Z\",\n      \"opened_at\": \"1953-04-27T06:13:35.093Z\",\n      \"submitted_at\": \"1964-10-20T17:22:56.115Z\",\n      \"awarded_at\": \"1993-12-10T09:13:27.021Z\",\n      \"supplier_external_id\": \"string\"\n    }\n  ],\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0e2139c-1a89-45c8-93c3-5edae4db77a2",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "rfp",
+                    ":uuid",
+                    "proposals",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fe9b8b3-8be2-4755-8471-0a4c8743ee1e",
+          "name": "Get RFP Details",
+          "request": {
+            "name": "Get RFP Details",
+            "description": {
+              "content": "Returns details for an RFP event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "rfp",
+                ":uuid",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "X-FM-API-KEY",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0cfea892-5d8e-4c1b-9068-f47a5697c109",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "rfp",
+                    ":uuid",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"is_rfi\": true,\n  \"is_outlier\": true,\n  \"title\": \"string\",\n  \"status\": \"string\",\n  \"external_rfp_id\": \"string\",\n  \"event_description\": \"string\",\n  \"justification\": \"string\",\n  \"value\": 6562.346091610717,\n  \"savings\": 9011.661906911526,\n  \"currency\": \"LSL\",\n  \"is_nda_required\": true,\n  \"department\": \"string\",\n  \"scheduled_publish_at\": \"2006-08-15T03:22:01.951Z\",\n  \"questions_due_at\": \"1951-03-08T04:32:38.077Z\",\n  \"closes_at\": \"1998-01-09T03:17:11.934Z\",\n  \"request_id\": \"string\",\n  \"category\": {\n    \"uuid\": \"string\",\n    \"title\": \"string\",\n    \"visual_title\": \"string\",\n    \"external_id\": \"string\"\n  },\n  \"awarded_amount_manual\": \"string\",\n  \"awarded_amount_manual_usd\": \"string\",\n  \"awarded_savings_manual\": \"string\",\n  \"awarded_savings_manual_usd\": \"string\",\n  \"awarding_amount_manual\": \"string\",\n  \"highest_proposal_manual\": \"string\",\n  \"highest_proposal_manual_usd\": \"string\",\n  \"identified_savings_manual\": \"string\",\n  \"identified_savings_manual_usd\": \"string\",\n  \"lowest_proposal_manual\": \"string\",\n  \"lowest_proposal_manual_usd\": \"string\",\n  \"projected_savings_manual\": \"string\",\n  \"projected_savings_manual_usd\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68f05814-8a88-48f7-9776-5d025a7acb74",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "rfp",
+                    ":uuid",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5874c49-cf41-46d3-b9b4-2898a61cceb2",
+          "name": "List RFP Templates",
+          "request": {
+            "name": "List RFP Templates",
+            "description": {
+              "content": "Returns a list of all created RFP Templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "self-service",
+                "api",
+                "v3",
+                "templates",
+                "rfp",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of records to return. Defaults to 20."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Zero-based offset of the first record to return. Defaults to 0."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Fairmarkit API Key",
+                "key": "X-FM-API-KEY",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json; charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "08f3df4b-d0fc-4201-b486-d6c5366fef25",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "templates",
+                    "rfp",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json; charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"count\": 114,\n  \"results\": [\n    {\n      \"uuid\": \"0510bdf9-fda2-db5e-cc6e-59997dd96fe5\",\n      \"title\": \"string\"\n    },\n    {\n      \"uuid\": \"46c0f171-4589-d443-23ed-e27f8f94526d\",\n      \"title\": \"string\"\n    }\n  ],\n  \"next\": \"string\",\n  \"previous\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d90782e-5fde-4908-a3e8-1873cb6a9f25",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "self-service",
+                    "api",
+                    "v3",
+                    "templates",
+                    "rfp",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "Fairmarkit API Key",
+                    "key": "X-FM-API-KEY",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://staging.fairmarkit.com/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d24ebb04-2600-4918-83cc-1a0cb70c4710",
+    "name": "BUYER PUBLIC Business Units RFP API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.\n\nContact Support:\n Name: Fairmarkit Support\n Email: support@fairmarkit.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BUYER PUBLIC Business Units Responses API",
+    "version": "3"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Responses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Awarded Response Items By Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v4/responses/request/:request_id/awarded-items/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 20."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return. Defaults to 0."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns awarded response items for a Request."
+        },
+        {
+          "info": {
+            "name": "🧪 List Response Items By Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/responses/request/:request_id/response-items/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 10."
+              },
+              {
+                "name": "response_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by response IDs."
+              }
+            ]
+          },
+          "docs": "Returns a list of response items for a Request. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "🧪 List Awarded Response Items By Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/responses/request/:request_id/awarded-items/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 10."
+              },
+              {
+                "name": "response_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by response IDs."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter awarded items by status. When omitted or empty, returns AWARDED and SELECTED items."
+              }
+            ]
+          },
+          "docs": "Returns a list of awarded response items for a Request. This endpoint is in **BETA** and may change without notice."
+        },
+        {
+          "info": {
+            "name": "🧪 List Responses By Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://staging.fairmarkit.com/services/self-service/api/v3/responses/request/:request_id/",
+            "headers": [
+              {
+                "name": "X-FM-API-KEY",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based offset of the first record to return."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return. Defaults to 10."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status."
+              },
+              {
+                "name": "is_offline_bid",
+                "value": "",
+                "type": "query",
+                "description": "Filter responses by offline bid"
+              }
+            ]
+          },
+          "docs": "Returns a list of responses for a Request. This endpoint is in **BETA** and may change without notice."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
