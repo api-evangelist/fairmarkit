@@ -44,6 +44,17 @@ tags:
 - RFQ
 - RFP
 - Spend Management
+- Webhook
+tags_raw:
+- Company
+- Procurement
+- Sourcing
+- Supply Chain
+- Purchasing
+- Suppliers
+- RFQ
+- RFP
+- Spend Management
 - Webhooks
 apis:
 - aid: fairmarkit:fairmarkit-business-units-api
@@ -124,6 +135,8 @@ apis:
   humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
   baseURL: https://staging.fairmarkit.com
   tags:
+  - FileAttachments
+  tags_raw:
   - File attachments
   properties:
   - type: OpenAPI
