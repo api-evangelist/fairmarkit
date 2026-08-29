@@ -293,6 +293,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/fairmarkit-capability-edges.yml
+  name: Fairmarkit Business Capability Map
 - type: Overlay
   url: overlays/fairmarkit-buyer-overlay.yaml
 - type: DomainSecurity

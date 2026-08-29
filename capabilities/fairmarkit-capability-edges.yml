@@ -1,0 +1,86 @@
+slug: fairmarkit
+provider: Fairmarkit
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 7
+edges:
+- tag: Purchase Orders
+  spec_file: fairmarkit-purchase-orders-api-openapi.yml
+  capability_id: BC-500.30
+  capability_id_l1: BC-500
+  capability_name: Purchase Order Management
+  confidence: 0.9
+  evidence: POST /v3/purchase-orders/ "Create Purchase Order"; "List Purchase Orders"; schemas PurchaseOrder,
+    POStatus
+  reason: Creation, listing and bulk upload of purchase orders with PO status is squarely purchase order
+    management within procurement.
+- tag: RFQ
+  spec_file: fairmarkit-rfq-api-openapi.yml
+  capability_id: BC-500.10
+  capability_id_l1: BC-500
+  capability_name: Sourcing Management
+  confidence: 0.9
+  evidence: '"Create RFQ Event", "List Quotations", "Award RFQ", "List RFQ Approvals"; schemas Quotation,
+    AwardedQuotationSubItem'
+  reason: Running RFQ sourcing events, collecting quotations and awarding them is RFx-based strategic
+    sourcing and supplier selection.
+- tag: RFP
+  spec_file: fairmarkit-rfp-api-openapi.yml
+  capability_id: BC-500.10
+  capability_id_l1: BC-500
+  capability_name: Sourcing Management
+  confidence: 0.89
+  evidence: '"Create RFP From Template", "Get Proposals List", "List RFP Templates"; schemas RFPRetrieve,
+    Proposal, ProposalItem'
+  reason: RFP issuance from templates and receipt of supplier proposals is strategic sourcing / RFx execution
+    and supplier selection.
+- tag: Event
+  spec_file: fairmarkit-event-api-openapi.yml
+  capability_id: BC-500.10
+  capability_id_l1: BC-500
+  capability_name: Sourcing Management
+  confidence: 0.8
+  evidence: 'EventApi_get_event_pricing_items ... Get Event Pricing Items; schemas EventType, EventStateName,
+    EventStatus, Urgency; vendor: ''through RFQ/RFP/RFI events, supplier bidding, award'''
+  reason: '''Event'' is a sourcing event (RFQ/RFP/RFI) with pricing items and lifecycle state — read access
+    to strategic sourcing events. Maps to Sourcing Management; read-only surface leaves some ambiguity
+    on sub-capability.'
+- tag: Responses
+  spec_file: fairmarkit-responses-api-openapi.yml
+  capability_id: BC-500.10
+  capability_id_l1: BC-500
+  capability_name: Sourcing Management
+  confidence: 0.78
+  evidence: '"List Awarded Response Items By Request", "List Responses By Request"; schemas SupplierInfo,
+    AwardSelectionStatus, AwardedItemStatus'
+  reason: Supplier responses/bids against a sourcing request and their award selection status are part
+    of RFx supplier bidding and selection.
+- tag: Identity
+  spec_file: fairmarkit-identity-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: POST /identity/identities "Create Identity"; GET /identity/permission-sets "List Permission
+    Sets"; schemas PermissionSetRetrieve, IdentityCreateRequest
+  reason: Operations create platform identities and enumerate permission sets — user account provisioning
+    and access-rights administration, i.e. Identity & Access Management, not a procurement business function.
+- tag: Supplier
+  spec_file: fairmarkit-supplier-api-openapi.yml
+  capability_id: BC-510.10
+  capability_id_l1: BC-510
+  capability_name: Supplier Onboarding Management
+  confidence: 0.7
+  evidence: '"Create Supplier", "Bulk Create Suppliers", "Activate Supplier", "Update Business Classifications";
+    schemas SupplierBusinessClassification, SupplierErpSystem'
+  reason: Registration, activation/deactivation and classification of supplier records is supplier onboarding/registration;
+    could alternatively be read as supplier master data, hence moderate confidence.
