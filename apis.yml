@@ -147,7 +147,7 @@ apis:
   humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
   baseURL: https://staging.fairmarkit.com
   tags:
-  - File attachments
+  - FileAttachments
   tags_raw:
   - File attachments
   properties:
