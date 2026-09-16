@@ -1,19 +1,1039 @@
-generated: '2026-07-19'
+generated: '2026-09-16'
 method: generated
-source: openapi/fairmarkit-supplier-openapi.json
+source: openapi/fairmarkit-business-units-api-openapi.yml, openapi/fairmarkit-categories-api-openapi.yml,
+  openapi/fairmarkit-data-exports-api-openapi.yml, openapi/fairmarkit-data-fields-api-openapi.yml,
+  openapi/fairmarkit-erp-systems-api-openapi.yml, openapi/fairmarkit-event-api-openapi.yml,
+  openapi/fairmarkit-file-attachments-api-openapi.yml, openapi/fairmarkit-identity-api-openapi.yml,
+  openapi/fairmarkit-price-books-api-openapi.yml, openapi/fairmarkit-purchase-orders-api-openapi.yml,
+  openapi/fairmarkit-requests-api-openapi.yml, openapi/fairmarkit-responses-api-openapi.yml,
+  openapi/fairmarkit-rfp-api-openapi.yml, openapi/fairmarkit-rfq-api-openapi.yml, openapi/fairmarkit-schema-api-openapi.yml,
+  openapi/fairmarkit-supplier-api-openapi.yml, openapi/fairmarkit-uom-api-openapi.yml, openapi/fairmarkit-user-profiles-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 5
+  operations: 118
   by_action_class:
-    acting: 2
-    connected: 3
+    acting: 64
+    connected: 54
   by_consequence:
-    write: 2
-    read: 3
+    write: 61
+    read: 54
+    physical: 3
   human_in_the_loop_required: 0
 operations:
+- path: /services/self-service/api/v3/business-units/{uuid}/
+  method: put
+  operationId: update_services_self_service_api_v3_business_units__uuid___put
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/business-units/{uuid}/
+  method: delete
+  operationId: delete_services_self_service_api_v3_business_units__uuid___delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/business-units/{uuid}/
+  method: get
+  operationId: retrieve_services_self_service_api_v3_business_units__uuid___get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/business-units/
+  method: post
+  operationId: create_services_self_service_api_v3_business_units__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/business-units/
+  method: get
+  operationId: list_services_self_service_api_v3_business_units__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/categories/
+  method: get
+  operationId: list_services_self_service_api_v3_categories__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/data-exports/available
+  method: get
+  operationId: DataExportApi_list_available_data_exports_services_self_service_api_v4_data_exports_available_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/data-exports/{job_id}
+  method: get
+  operationId: DataExportApi_get_data_export_services_self_service_api_v4_data_exports__job_id__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/data-exports/
+  method: post
+  operationId: DataExportApi_create_data_export_services_self_service_api_v4_data_exports__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/data-fields/dataset/{slug}/items
+  method: post
+  operationId: DataFieldApi_create_dataset_items_services_self_service_api_v3_data_fields_dataset__slug__items_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/data-fields/dataset/{slug}/items
+  method: get
+  operationId: DataFieldApi_get_dataset_items_services_self_service_api_v3_data_fields_dataset__slug__items_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/data-fields/dataset
+  method: get
+  operationId: DataFieldApi_get_datasets_services_self_service_api_v3_data_fields_dataset_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/data-fields/dataset
+  method: post
+  operationId: DataFieldApi_create_dataset_services_self_service_api_v3_data_fields_dataset_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/data-fields/dataset-items/upload
+  method: post
+  operationId: DataFieldApi_upload_dataset_items_services_self_service_api_v3_data_fields_dataset_items_upload_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/data-fields/dataset/{slug}/items/{item_id}
+  method: get
+  operationId: DataFieldApi_get_dataset_item_by_id_services_self_service_api_v3_data_fields_dataset__slug__items__item_id__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/data-fields/dataset/{slug}/items/{item_id}
+  method: delete
+  operationId: DataFieldApi_delete_dataset_item_services_self_service_api_v3_data_fields_dataset__slug__items__item_id__delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/data-fields/dataset/{slug}/items/{item_id}
+  method: patch
+  operationId: DataFieldApi_update_dataset_item_services_self_service_api_v3_data_fields_dataset__slug__items__item_id__patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/data-fields/dataset/{slug}
+  method: patch
+  operationId: DataFieldApi_update_dataset_services_self_service_api_v3_data_fields_dataset__slug__patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/data-fields/dataset/{slug}
+  method: get
+  operationId: DataFieldApi_get_dataset_by_slug_services_self_service_api_v3_data_fields_dataset__slug__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/data-fields/dataset/{slug}
+  method: delete
+  operationId: DataFieldApi_delete_dataset_services_self_service_api_v3_data_fields_dataset__slug__delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/data-fields/dataset-items
+  method: get
+  operationId: DataFieldApi_get_dataset_items_by_ids_services_self_service_api_v3_data_fields_dataset_items_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/erp-systems/
+  method: get
+  operationId: list_services_self_service_api_v3_erp_systems__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/event/{event_id}
+  method: get
+  operationId: EventApi_get_event_details_services_self_service_api_v4_event__event_id__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/event/{request_id}/events
+  method: get
+  operationId: EventApi_get_events_list_by_request_id_services_self_service_api_v4_event__request_id__events_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/event/{event_id}/pricing/items
+  method: get
+  operationId: EventApi_get_event_pricing_items_services_self_service_api_v4_event__event_id__pricing_items_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/attachments/rfq/{rfq_uuid}/
+  method: post
+  operationId: create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/attachments/rfq/{rfq_uuid}/
+  method: get
+  operationId: get_rfq_attachments_services_self_service_api_v3_attachments_rfq__rfq_uuid___get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/attachments/requests/{request_uuid}/
+  method: post
+  operationId: create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/attachments/rfq/{rfq_uuid}/items/{item_uuid}/
+  method: post
+  operationId: create_rfq_item_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid__items__item_uuid___post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/attachments/requests/{request_uuid}/items/{request_item_uuid}
+  method: post
+  operationId: create_request_item_attachment_services_self_service_api_v3_attachments_requests__request_uuid__items__request_item_uuid___post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/identity/identities
+  method: post
+  operationId: IdentityApi_create_identity_services_self_service_api_v4_identity_identities_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/identity/permission-sets
+  method: get
+  operationId: RequestApi_get_available_permission_set_list_services_self_service_api_v4_identity_permission_sets_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/price-books/
+  method: get
+  operationId: get_price_books_list_services_self_service_api_v4_price_books__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/price-books/
+  method: post
+  operationId: create_price_book_services_self_service_api_v4_price_books__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/price-books/{price_book_id}/items
+  method: get
+  operationId: get_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/price-books/{price_book_id}/items
+  method: post
+  operationId: create_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/price-books/{price_book_id}/items
+  method: delete
+  operationId: delete_price_book_items_services_self_service_api_v4_price_books__price_book_id__items_delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/price-books/{price_book_id}
+  method: delete
+  operationId: PriceBookApi_delete_price_book_services_self_service_api_v3_price_books__price_book_id__delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/price-books/{price_book_id}
+  method: get
+  operationId: PriceBookApi_get_price_book_by_id_services_self_service_api_v3_price_books__price_book_id__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/price-books/{price_book_id}
+  method: patch
+  operationId: update_price_book_services_self_service_api_v4_price_books__price_book_id__patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/price-books/{price_book_id}
+  method: delete
+  operationId: delete_price_book_services_self_service_api_v4_price_books__price_book_id__delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/price-books/{price_book_id}
+  method: get
+  operationId: get_price_book_services_self_service_api_v4_price_books__price_book_id__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/price-books/{price_book_id}/items/{item_id}
+  method: delete
+  operationId: delete_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/price-books/{price_book_id}/items/{item_id}
+  method: patch
+  operationId: update_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/price-books/{price_book_id}/items/{item_id}
+  method: get
+  operationId: get_price_book_item_services_self_service_api_v4_price_books__price_book_id__items__item_id__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/price-books/{price_book_id}/items
+  method: get
+  operationId: PriceBookApi_get_price_book_items_services_self_service_api_v3_price_books__price_book_id__items_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/price-books/{price_book_id}/items
+  method: post
+  operationId: PriceBookApi_create_price_book_item_services_self_service_api_v3_price_books__price_book_id__items_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/price-books/
+  method: post
+  operationId: PriceBookApi_create_price_book_services_self_service_api_v3_price_books__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/price-books/
+  method: get
+  operationId: PriceBookApi_get_price_books_services_self_service_api_v3_price_books__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/price-books/price-book-items/{item_id}
+  method: get
+  operationId: PriceBookApi_get_price_book_item_services_self_service_api_v3_price_books_price_book_items__item_id__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/purchase-orders/upload/{upload_id}/status/
+  method: get
+  operationId: PurchaseOrderAPI_get_upload_status_services_self_service_api_v4_purchase_orders_upload__upload_id__status__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/purchase-orders/
+  method: post
+  operationId: create_services_self_service_api_v3_purchase_orders__post
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/purchase-orders/
+  method: get
+  operationId: list_services_self_service_api_v3_purchase_orders__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/purchase-orders/upload/
+  method: post
+  operationId: PurchaseOrderAPI_upload_services_self_service_api_v4_purchase_orders_upload__post
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/{request_id}/items/
+  method: post
+  operationId: RequestApi_create_item_services_self_service_api_v4_requests__request_id__items__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/{request_id}/items/
+  method: get
+  operationId: RequestApi_get_request_items_list_services_self_service_api_v4_requests__request_id__items__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/requests/
+  method: post
+  operationId: RequestApi_create_request_services_self_service_api_v4_requests__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/
+  method: get
+  operationId: RequestApi_list_requests_services_self_service_api_v4_requests__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/requests/{request_id}/pr/link/
+  method: post
+  operationId: RequestApi_link_pr_services_self_service_api_v3_requests__request_id__pr_link__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/{request_id}/items/batch
+  method: post
+  operationId: RequestApi_create_request_item_batch_services_self_service_api_v4_requests__request_id__items_batch_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/{request_id}/cancel
+  method: post
+  operationId: RequestApi_cancel_request_services_self_service_api_v4_requests__request_id__cancel_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/requests/
+  method: post
+  operationId: RequestApi_create_request_services_self_service_api_v3_requests__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/requests/{request_id}/
+  method: get
+  operationId: RequestApi_get_request_services_self_service_api_v3_requests__request_id___get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/requests/{request_id}/pr/mark-as-failed/
+  method: post
+  operationId: RequestApi_mark_pr_as_failed_services_self_service_api_v3_requests__request_id__pr_mark_as_failed__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/{request_id}/items/{request_item_id}
+  method: put
+  operationId: RequestApi_update_request_item_services_self_service_api_v4_requests__request_id__items__request_item_id__put
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/{request_id}/
+  method: get
+  operationId: RequestApi_get_request_services_self_service_api_v4_requests__request_id___get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/requests/{request_id}/
+  method: put
+  operationId: RequestApi_update_request_services_self_service_api_v4_requests__request_id___put
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/requests/{request_id}/pr/status/
+  method: post
+  operationId: RequestApi_update_pr_status_services_self_service_api_v3_requests__request_id__pr_status__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/{request_id}/event-approvals/{approval_id}/approve-step
+  method: post
+  operationId: RequestApi_approve_request_event_step_services_self_service_api_v4_requests__request_id__event_approvals__approval_id__approve_step_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/{request_id}/event-approvals/{approval_id}/reject-step
+  method: post
+  operationId: RequestApi_reject_request_event_step_services_self_service_api_v4_requests__request_id__event_approvals__approval_id__reject_step_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/{request_id}/submit
+  method: post
+  operationId: RequestApi_submit_request_services_self_service_api_v4_requests__request_id__submit_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/{request_id}/approvals/{approval_id}/reject-step
+  method: post
+  operationId: RequestApi_reject_request_step_services_self_service_api_v3_requests__request_id__approvals__approval_id__reject_step_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/{request_id}/approvals/{approval_id}/approve-step
+  method: post
+  operationId: RequestApi_approve_request_step_services_self_service_api_v3_requests__request_id__approvals__approval_id__approve_step_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/requests/{request_id}/event-approvals
+  method: get
+  operationId: RequestApi_get_request_event_approvals_services_self_service_api_v4_requests__request_id__event_approvals_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v4/requests/{request_id}/approvals
+  method: get
+  operationId: RequestApi_get_request_approvals_services_self_service_api_v3_requests__request_id__approvals_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /services/supplier-public-api/api/v1/requests/{request_id}/reject/
   method: post
   operationId: reject_request-Requests_Requests_Requests
@@ -76,3 +1096,499 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /services/self-service/api/v4/responses/request/{request_id}/awarded-items/
+  method: get
+  operationId: ResponseApi_get_response_items_by_request_search_as_buyer_services_self_service_api_v4_responses_request__request_id___get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/responses/request/{request_id}/response-items/
+  method: get
+  operationId: ResponseApi_get_response_items_by_request_services_self_service_api_v3_responses_request__request_id__response_items__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/responses/request/{request_id}/awarded-items/
+  method: get
+  operationId: ResponseApi_get_awarded_response_items_by_request_services_self_service_api_v3_responses_request__request_id__awarded_items__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/responses/request/{request_id}/
+  method: get
+  operationId: ResponseApi_get_responses_by_request_services_self_service_api_v3_responses_request__request_id___get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/rfp/
+  method: get
+  operationId: get_rfp_list_services_self_service_api_v3_rfp__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/templates/rfp/{template_uuid}/create-rfp/
+  method: post
+  operationId: create_rfp_from_template_services_self_service_api_v3_templates_rfp__template_uuid__create_rfp_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/rfp/{uuid}/proposals/
+  method: get
+  operationId: get_proposals_list_services_self_service_api_v3_rfp__uuid__proposals__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/rfp/{uuid}/
+  method: get
+  operationId: retrieve_services_self_service_api_v3_rfp__uuid___get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/templates/rfp/
+  method: get
+  operationId: get_rfp_templates_services_self_service_api_v3_templates_rfp__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/rfq/{uuid}/internal-notes/
+  method: post
+  operationId: add_internal_note_services_self_service_api_v3_rfq__uuid__internal_notes__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/rfq/{uuid}/internal-notes/
+  method: get
+  operationId: get_internal_notes_services_self_service_api_v3_rfq__uuid__internal_notes__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/rfq/{uuid}/
+  method: delete
+  operationId: soft_delete_services_self_service_api_v3_rfq__uuid___delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/rfq/{uuid}/
+  method: put
+  operationId: update_services_self_service_api_v3_rfq__uuid___put
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/rfq/{uuid}/
+  method: get
+  operationId: retrieve_services_self_service_api_v3_rfq__uuid___get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/rfq/
+  method: get
+  operationId: get_rfq_list_services_self_service_api_v3_rfq__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/rfq/
+  method: post
+  operationId: create_services_self_service_api_v3_rfq__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/rfq/{uuid}/cancel
+  method: post
+  operationId: cancel_services_self_service_api_v3_rfq__uuid__cancel_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/rfq/{uuid}/award
+  method: post
+  operationId: award_rfq_services_self_service_api_v3_rfq__uuid__award_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/rfq/{uuid}/quotations/
+  method: get
+  operationId: get_quotations_list_services_self_service_api_v3_rfq__uuid__quotations__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/rfq/{uuid}/archive
+  method: post
+  operationId: archive_services_self_service_api_v3_rfq__uuid__archive_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/rfq/{uuid}/approvals
+  method: get
+  operationId: get_rfq_approvals_services_self_service_api_v3_rfq__uuid__approvals_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/rfq/{uuid}/approvals/{approval_id}/reject-step
+  method: post
+  operationId: reject_rfq_step_services_self_service_api_v3_rfq__uuid__approvals__approval_id__reject_step_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/rfq/{uuid}/approvals/{approval_id}/approve-step
+  method: post
+  operationId: approve_rfq_step_services_self_service_api_v3_rfq__uuid__approvals__approval_id__approve_step_post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/rfq/{uuid}/purchase-order/
+  method: put
+  operationId: update_purchase_order_services_self_service_api_v3_rfq__uuid__purchase_order__put
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/schemas/current
+  method: get
+  operationId: SchemaApi_get_current_schema_services_self_service_api_v3_schemas_current_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/schemas/{schema_id}/
+  method: get
+  operationId: SchemaApi_get_schema_services_self_service_api_v3_schemas__schema_id___get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/supplier/{uuid}/
+  method: delete
+  operationId: soft_delete_services_self_service_api_v3_supplier__uuid___delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/supplier/{uuid}/
+  method: put
+  operationId: update_services_self_service_api_v3_supplier__uuid___put
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/supplier/{uuid}/
+  method: get
+  operationId: retrieve_services_self_service_api_v3_supplier__uuid___get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/supplier/{uuid}/deactivate/
+  method: post
+  operationId: SupplierApi_de_activate_services_self_service_api_v3_supplier__uuid__deactivate__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/supplier/
+  method: get
+  operationId: list_services_self_service_api_v3_supplier__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/supplier/
+  method: post
+  operationId: create_services_self_service_api_v3_supplier__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/supplier/{uuid}/business-classifications/
+  method: post
+  operationId: update_services_self_service_api_v3_supplier__uuid__business_classifications__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/supplier/{uuid}/activate/
+  method: post
+  operationId: SupplierApi_re_activate_services_self_service_api_v3_supplier__uuid__activate__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v3/supplier/bulk-create/
+  method: post
+  operationId: bulk_create_services_self_service_api_v3_supplier_bulk_create__post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /services/self-service/api/v4/uom/uoms
+  method: get
+  operationId: UomApi_get_available_permission_set_list_services_self_service_api_v4_uom_uoms_get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/user-profiles/{identity_id}
+  method: get
+  operationId: get_user_profile_services_self_service_api_v3_user_profiles__identity_id__get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /services/self-service/api/v3/user-profiles/{identity_id}
+  method: put
+  operationId: update_user_profile_services_self_service_api_v3_user_profiles__identity_id__put
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
