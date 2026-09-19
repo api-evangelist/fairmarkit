@@ -100,6 +100,8 @@ apis:
   humanURL: https://developers.fairmarkit.com/reference/getting-started-with-fairmarkit-api
   baseURL: https://staging.fairmarkit.com
   tags:
+  - Data Export
+  tags_raw:
   - Data Exports
   properties:
   - type: OpenAPI
