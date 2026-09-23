@@ -1,6 +1,6 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: BUYER PUBLIC Business Units Purchase Orders API
+  title: BUYER PUBLIC Purchase Orders API
   version: '3'
   description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
   termsOfService: https://www.fairmarkit.com/terms-of-service
@@ -165,6 +165,145 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    UploadType:
+      type: string
+      enum:
+      - purchase_order
+      title: UploadType
+      description: An enumeration.
+    ItemUOM:
+      title: ItemUOM
+      enum:
+      - each
+      - acre
+      - activity_unit
+      - assembly
+      - bag
+      - bale
+      - bar
+      - barrel
+      - block
+      - board foot
+      - bottle
+      - box
+      - bucket
+      - bulk
+      - bundle
+      - cake
+      - can
+      - canister
+      - card
+      - carton
+      - cartridge
+      - case
+      - centimeter
+      - coil
+      - container
+      - crate
+      - cube
+      - cubic foot
+      - cubic meter
+      - cubic_millimeter
+      - cubic yard
+      - cup
+      - cylinder
+      - dozen
+      - drum
+      - enzyme_units
+      - foot
+      - gallon
+      - gigajoule
+      - gram
+      - gross
+      - group_proportion
+      - 1/2 cubic yard
+      - hank
+      - hectare
+      - hour
+      - hundred
+      - imperial gallon
+      - inch
+      - jar
+      - keg
+      - kilogram
+      - kiloliter
+      - kilometer
+      - kilowatt
+      - kit
+      - length
+      - light
+      - liter
+      - lot
+      - lug
+      - lump sum
+      - megawatt_hour
+      - meter
+      - meter_minute
+      - metric ton
+      - microsiemens_per_cm
+      - mile
+      - milliliter
+      - millimeter
+      - milliwatt
+      - multiple_choice
+      - net ton
+      - night
+      - ounce
+      - pack
+      - package
+      - packet
+      - pad
+      - pail
+      - pair
+      - pallet
+      - pancake
+      - part
+      - pg
+      - piece
+      - pikofarad
+      - pint
+      - points
+      - pot
+      - pound
+      - punnet
+      - quart
+      - rack
+      - ream
+      - reel
+      - roll
+      - sachet
+      - set
+      - sheet
+      - spool
+      - square foot
+      - square inch
+      - square meter
+      - square yard
+      - suit
+      - tank
+      - thousand
+      - tin
+      - ton
+      - tonne
+      - ton_cubic_meter
+      - tray
+      - tub
+      - tube
+      - unit
+      - unit_f
+      - volt-amper
+      - yard
+      - year
+      description: Supported units of measurement for items.
+    UploadStatus:
+      type: string
+      enum:
+      - canceled
+      - completed
+      - failed
+      - in_progress
+      title: UploadStatus
+      description: An enumeration.
     ValidationError:
       title: ValidationError
       required:
@@ -254,441 +393,203 @@ components:
       - group_proportion
       - microsiemens_per_cm
       description: Supported units of measurement for services.
-    PurchaseOrderRetrieve:
-      title: PurchaseOrderRetrieve
-      required:
-      - item_description
-      - fm_line_item_id
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
+      description: Validation error response.
       properties:
-        po_id:
-          title: Po Id
-          type: string
-          description: Purchase order ID.
-        line_item_id:
-          title: Line Item Id
-          type: string
-          description: Line item ID.
-        external_rfq_id:
-          title: External Rfq Id
-          type: string
-          description: RFQ ID from the buyer's company system.
-        supplier_id:
-          title: Supplier Id
-          type: string
-          description: Supplier ID.
-        supplier_name:
-          title: Supplier Name
-          type: string
-          description: Supplier name.
-        supplier_uri:
-          title: Supplier Uri
-          type: string
-          description: Supplier URI.
-        status:
-          allOf:
-          - $ref: '#/components/schemas/POStatus'
-          default: PURCHASED
-        ordered_at:
-          title: Ordered At
-          type: string
-          format: date-time
-          description: Date and time when the purchase order was ordered. String is formatted using ISO 8601 format.
-        purchased_at:
-          title: Purchased At
-          type: string
-          format: date-time
-          description: Date and time when the purchase order was created. String is formatted using ISO 8601 format.
-        global_ledger_id:
-          title: Global Ledger Id
-          type: string
-          description: Global ledger ID.
-        global_ledger:
-          title: Global Ledger
-          type: string
-          description: Global ledger name.
-        plant_id:
-          title: Plant Id
-          type: string
-          description: Plant ID.
-        plant:
-          title: Plant
-          type: string
-          description: Plant name.
-        cost_center_id:
-          title: Cost Center Id
-          type: string
-          description: Cost center ID.
-        cost_center:
-          title: Cost Center
-          type: string
-          description: Cost center name.
-        funds_center_id:
-          title: Funds Center Id
-          type: string
-          description: Funds center ID.
-        funds_center:
-          title: Funds Center
-          type: string
-          description: Funds center name.
-        department_id:
-          title: Department Id
-          type: string
-          description: Department ID.
-        department:
-          title: Department
-          type: string
-          description: Department name.
-        buyer_id:
-          title: Buyer Id
-          type: string
-          description: Buyer's Fairmarkit user's email address.
-        buyer:
-          title: Buyer
-          type: string
-          description: Buyer's Fairmarkit user name.
-        erp:
-          title: Erp
-          type: string
-          description: ERP purchasing system (External to Fairmarkit).
-        erp_system_id:
-          title: Erp System Id
-          type: string
-          description: ERP Purchasing System ID (External to Fairmarkit).
-        po_description:
-          title: Po Description
-          type: string
-          description: Purchase order description.
-        item_description:
-          title: Item Description
-          type: string
-          description: Item description.
-        unit_price:
-          title: Unit Price
-          type: number
-          description: In the purchase order currency, the price per unit (based on UOM).
-        quantity:
-          title: Quantity
-          type: integer
-          description: Quantity of the item in the selected UOM.
-        unit_price_usd:
-          title: Unit Price Usd
-          type: number
-          description: The USD price per unit (based on UOM).
-        extended_price:
-          title: Extended Price
-          type: number
-          description: Extended price.
-        currency:
-          allOf:
-          - $ref: '#/components/schemas/Currency'
-          default: USD
-        uom:
-          title: Uom
-          anyOf:
-          - $ref: '#/components/schemas/ItemUOM'
-          - $ref: '#/components/schemas/ServiceUOM'
-        manufacturer:
-          title: Manufacturer
-          type: string
-          description: Manufacturer of the item.
-        sku:
-          title: Sku
-          type: string
-          description: Item SKU.
-        manufacturer_pn:
-          title: Manufacturer Pn
-          type: string
-          description: Manufacturer part number for the item.
-        internal_part_number:
-          title: Internal Part Number
-          type: string
-          description: Internal part number.
-        unspsc:
-          title: Unspsc
-          type: string
-          description: Standard UNSPSC code for the item.
-        category_id:
-          title: Category Id
-          type: string
-          description: Item category ID.
-        category:
-          title: Category
-          type: string
-          description: Item category name.
-        subcategory_1_id:
-          title: Subcategory 1 Id
-          type: string
-          description: Item category 1 ID.
-        subcategory_1:
-          title: Subcategory 1
-          type: string
-          description: Item category 1 name.
-        subcategory_2_id:
-          title: Subcategory 2 Id
-          type: string
-          description: Item category 2 ID.
-        subcategory_2:
-          title: Subcategory 2
-          type: string
-          description: Item category 2 name.
-        subcategory_3_id:
-          title: Subcategory 3 Id
-          type: string
-          description: Item category 3 ID.
-        subcategory_3:
-          title: Subcategory 3
-          type: string
-          description: Item category 3 name.
-        notes:
-          title: Notes
-          type: string
-          description: Notes about the purchase order.
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-          default: en
-        shipping_city:
-          title: Shipping City
-          type: string
-          description: Shipping address city.
-        shipping_state:
-          title: Shipping State
-          type: string
-          description: Shipping address state.
-        shipping_zip:
-          title: Shipping Zip
-          type: string
-          description: Shipping address zip code.
-        shipping_country:
-          $ref: '#/components/schemas/Country'
-        shipping_address:
-          title: Shipping Address
-          type: string
-          description: Shipping address line.
-        shipping_notes:
-          title: Shipping Notes
-          type: string
-          description: Shipping notes.
-        rfqs:
-          title: Rfqs
+        detail:
+          title: Detail
           type: array
+          description: Details about a specific error to display in error response.
           items:
-            $ref: '#/components/schemas/PurchaseOrderRFQ'
-          default: []
-          description: List of related RFQs.
-        fm_line_item_id:
-          title: Fm Line Item Id
-          type: string
-          description: Line item ID (Fairmarkit).
+            $ref: '#/components/schemas/ValidationError'
     PurchaseOrders:
       title: PurchaseOrders
       type: array
       items:
         $ref: '#/components/schemas/PurchaseOrder'
-    Language:
-      title: Language
+    Currency:
+      title: Currency
       enum:
-      - aa
-      - ab
-      - ae
-      - af
-      - ak
-      - am
-      - an
-      - ar
-      - as
-      - av
-      - ay
-      - az
-      - ba
-      - be
-      - bg
-      - bi
-      - bm
-      - bn
-      - bo
-      - br
-      - bs
-      - ca
-      - ce
-      - ch
-      - co
-      - cr
-      - cs
-      - cu
-      - cv
-      - cy
-      - da
-      - de
-      - dv
-      - dz
-      - ee
-      - el
-      - en
-      - eo
-      - es
-      - et
-      - eu
-      - fa
-      - ff
-      - fi
-      - fj
-      - fo
-      - fr
-      - fy
-      - ga
-      - gd
-      - gl
-      - gn
-      - gu
-      - gv
-      - ha
-      - he
-      - hi
-      - ho
-      - hr
-      - ht
-      - hu
-      - hy
-      - hz
-      - ia
-      - id
-      - ie
-      - ig
-      - ii
-      - ik
-      - io
-      - is
-      - it
-      - iu
-      - ja
-      - jv
-      - ka
-      - kg
-      - ki
-      - kj
-      - kk
-      - kl
-      - km
-      - kn
-      - ko
-      - kr
-      - ks
-      - ku
-      - kv
-      - kw
-      - ky
-      - la
-      - lb
-      - lg
-      - li
-      - ln
-      - lo
-      - lt
-      - lu
-      - lv
-      - mg
-      - mh
-      - mi
-      - mk
-      - ml
-      - mn
-      - mr
-      - ms
-      - mt
-      - my
-      - na
-      - nb
-      - nd
-      - ne
-      - ng
-      - nl
-      - nn
-      - 'no'
-      - nr
-      - nv
-      - ny
-      - oc
-      - oj
-      - om
-      - or
-      - os
-      - pa
-      - pi
-      - pl
-      - ps
-      - pt
-      - qu
-      - rm
-      - rn
-      - ro
-      - ru
-      - rw
-      - sa
-      - sc
-      - sd
-      - se
-      - sg
-      - si
-      - sk
-      - sl
-      - sm
-      - sn
-      - so
-      - sq
-      - sr
-      - ss
-      - st
-      - su
-      - sv
-      - sw
-      - ta
-      - te
-      - tg
-      - th
-      - ti
-      - tk
-      - tl
-      - tn
-      - to
-      - tr
-      - ts
-      - tt
-      - tw
-      - ty
-      - ug
-      - uk
-      - ur
-      - uz
-      - ve
-      - vi
-      - vo
-      - wa
-      - wo
-      - xh
-      - yi
-      - yo
-      - za
-      - zh
-      - zu
+      - AED
+      - AFN
+      - ALL
+      - AMD
+      - ANG
+      - AOA
+      - ARS
+      - AUD
+      - AWG
+      - AZN
+      - BAM
+      - BBD
+      - BDT
+      - BGN
+      - BHD
+      - BIF
+      - BMD
+      - BND
+      - BOB
+      - BRL
+      - BSD
+      - BTC
+      - BTN
+      - BWP
+      - BYN
+      - BZD
+      - CAD
+      - CDF
+      - CHF
+      - CLF
+      - CLP
+      - CNH
+      - CNY
+      - COP
+      - CRC
+      - CUC
+      - CUP
+      - CVE
+      - CZK
+      - DJF
+      - DKK
+      - DOP
+      - DZD
+      - EGP
+      - ERN
+      - ETB
+      - EUR
+      - FJD
+      - FKP
+      - GBP
+      - GEL
+      - GGP
+      - GHS
+      - GIP
+      - GMD
+      - GNF
+      - GTQ
+      - GYD
+      - HKD
+      - HNL
+      - HRK
+      - HTG
+      - HUF
+      - IDR
+      - ILS
+      - IMP
+      - INR
+      - IQD
+      - IRR
+      - ISK
+      - JEP
+      - JMD
+      - JOD
+      - JPY
+      - KES
+      - KGS
+      - KHR
+      - KMF
+      - KPW
+      - KRW
+      - KWD
+      - KYD
+      - KZT
+      - LAK
+      - LBP
+      - LKR
+      - LRD
+      - LSL
+      - LYD
+      - MAD
+      - MDL
+      - MGA
+      - MKD
+      - MMK
+      - MNT
+      - MOP
+      - MRU
+      - MUR
+      - MVR
+      - MWK
+      - MXN
+      - MYR
+      - MZN
+      - NAD
+      - NGN
+      - NIO
+      - NOK
+      - NPR
+      - NZD
+      - OMR
+      - PAB
+      - PEN
+      - PGK
+      - PHP
+      - PKR
+      - PLN
+      - PYG
+      - QAR
+      - RON
+      - RSD
+      - RUB
+      - RWF
+      - SAR
+      - SBD
+      - SCR
+      - SDG
+      - SEK
+      - SGD
+      - SHP
+      - SLL
+      - SOS
+      - SRD
+      - SSP
+      - STN
+      - SVC
+      - SYP
+      - SZL
+      - THB
+      - TJS
+      - TMT
+      - TND
+      - TOP
+      - TRY
+      - TTD
+      - TWD
+      - TZS
+      - UAH
+      - UGX
+      - USD
+      - UYU
+      - UZS
+      - VES
+      - VND
+      - VUV
+      - WST
+      - XAF
+      - XAG
+      - XAU
+      - XCD
+      - XDR
+      - XOF
+      - XPD
+      - XPF
+      - XPT
+      - YER
+      - ZAR
+      - ZMW
       type: string
-      description: Two-character alphabetic code that represents a language. Fairmarkit uses the ISO 639-1 international standard.
-    UploadStatus:
-      type: string
+      description: Supported currency codes.
+    POStatus:
+      title: POStatus
       enum:
-      - canceled
-      - completed
-      - failed
-      - in_progress
-      title: UploadStatus
-      description: An enumeration.
-    UploadType:
+      - PURCHASED
+      - CANCELED
+      - REFUNDED
+      - IN_PROGRESS
       type: string
-      enum:
-      - purchase_order
-      title: UploadType
-      description: An enumeration.
+      description: Purchase order status values.
     PurchaseOrder:
       title: PurchaseOrder
       required:
@@ -1169,22 +1070,440 @@ components:
       - ZW
       type: string
       description: Supported country codes.
-    PurchaseOrderRFQ:
-      title: PurchaseOrderRFQ
+    PurchaseOrderRetrieve:
+      title: PurchaseOrderRetrieve
       required:
-      - uuid
-      - title
+      - item_description
+      - fm_line_item_id
       type: object
-      description: RFQ associated with the purchase order.
       properties:
-        uuid:
-          title: Uuid
+        po_id:
+          title: Po Id
           type: string
-          description: RFQ ID (Fairmarkit).
-        title:
-          title: Title
+          description: Purchase order ID.
+        line_item_id:
+          title: Line Item Id
           type: string
-          description: RFQ Title.
+          description: Line item ID.
+        external_rfq_id:
+          title: External Rfq Id
+          type: string
+          description: RFQ ID from the buyer's company system.
+        supplier_id:
+          title: Supplier Id
+          type: string
+          description: Supplier ID.
+        supplier_name:
+          title: Supplier Name
+          type: string
+          description: Supplier name.
+        supplier_uri:
+          title: Supplier Uri
+          type: string
+          description: Supplier URI.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/POStatus'
+          default: PURCHASED
+        ordered_at:
+          title: Ordered At
+          type: string
+          format: date-time
+          description: Date and time when the purchase order was ordered. String is formatted using ISO 8601 format.
+        purchased_at:
+          title: Purchased At
+          type: string
+          format: date-time
+          description: Date and time when the purchase order was created. String is formatted using ISO 8601 format.
+        global_ledger_id:
+          title: Global Ledger Id
+          type: string
+          description: Global ledger ID.
+        global_ledger:
+          title: Global Ledger
+          type: string
+          description: Global ledger name.
+        plant_id:
+          title: Plant Id
+          type: string
+          description: Plant ID.
+        plant:
+          title: Plant
+          type: string
+          description: Plant name.
+        cost_center_id:
+          title: Cost Center Id
+          type: string
+          description: Cost center ID.
+        cost_center:
+          title: Cost Center
+          type: string
+          description: Cost center name.
+        funds_center_id:
+          title: Funds Center Id
+          type: string
+          description: Funds center ID.
+        funds_center:
+          title: Funds Center
+          type: string
+          description: Funds center name.
+        department_id:
+          title: Department Id
+          type: string
+          description: Department ID.
+        department:
+          title: Department
+          type: string
+          description: Department name.
+        buyer_id:
+          title: Buyer Id
+          type: string
+          description: Buyer's Fairmarkit user's email address.
+        buyer:
+          title: Buyer
+          type: string
+          description: Buyer's Fairmarkit user name.
+        erp:
+          title: Erp
+          type: string
+          description: ERP purchasing system (External to Fairmarkit).
+        erp_system_id:
+          title: Erp System Id
+          type: string
+          description: ERP Purchasing System ID (External to Fairmarkit).
+        po_description:
+          title: Po Description
+          type: string
+          description: Purchase order description.
+        item_description:
+          title: Item Description
+          type: string
+          description: Item description.
+        unit_price:
+          title: Unit Price
+          type: number
+          description: In the purchase order currency, the price per unit (based on UOM).
+        quantity:
+          title: Quantity
+          type: integer
+          description: Quantity of the item in the selected UOM.
+        unit_price_usd:
+          title: Unit Price Usd
+          type: number
+          description: The USD price per unit (based on UOM).
+        extended_price:
+          title: Extended Price
+          type: number
+          description: Extended price.
+        currency:
+          allOf:
+          - $ref: '#/components/schemas/Currency'
+          default: USD
+        uom:
+          title: Uom
+          anyOf:
+          - $ref: '#/components/schemas/ItemUOM'
+          - $ref: '#/components/schemas/ServiceUOM'
+        manufacturer:
+          title: Manufacturer
+          type: string
+          description: Manufacturer of the item.
+        sku:
+          title: Sku
+          type: string
+          description: Item SKU.
+        manufacturer_pn:
+          title: Manufacturer Pn
+          type: string
+          description: Manufacturer part number for the item.
+        internal_part_number:
+          title: Internal Part Number
+          type: string
+          description: Internal part number.
+        unspsc:
+          title: Unspsc
+          type: string
+          description: Standard UNSPSC code for the item.
+        category_id:
+          title: Category Id
+          type: string
+          description: Item category ID.
+        category:
+          title: Category
+          type: string
+          description: Item category name.
+        subcategory_1_id:
+          title: Subcategory 1 Id
+          type: string
+          description: Item category 1 ID.
+        subcategory_1:
+          title: Subcategory 1
+          type: string
+          description: Item category 1 name.
+        subcategory_2_id:
+          title: Subcategory 2 Id
+          type: string
+          description: Item category 2 ID.
+        subcategory_2:
+          title: Subcategory 2
+          type: string
+          description: Item category 2 name.
+        subcategory_3_id:
+          title: Subcategory 3 Id
+          type: string
+          description: Item category 3 ID.
+        subcategory_3:
+          title: Subcategory 3
+          type: string
+          description: Item category 3 name.
+        notes:
+          title: Notes
+          type: string
+          description: Notes about the purchase order.
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+          default: en
+        shipping_city:
+          title: Shipping City
+          type: string
+          description: Shipping address city.
+        shipping_state:
+          title: Shipping State
+          type: string
+          description: Shipping address state.
+        shipping_zip:
+          title: Shipping Zip
+          type: string
+          description: Shipping address zip code.
+        shipping_country:
+          $ref: '#/components/schemas/Country'
+        shipping_address:
+          title: Shipping Address
+          type: string
+          description: Shipping address line.
+        shipping_notes:
+          title: Shipping Notes
+          type: string
+          description: Shipping notes.
+        rfqs:
+          title: Rfqs
+          type: array
+          items:
+            $ref: '#/components/schemas/PurchaseOrderRFQ'
+          default: []
+          description: List of related RFQs.
+        fm_line_item_id:
+          title: Fm Line Item Id
+          type: string
+          description: Line item ID (Fairmarkit).
+    Language:
+      title: Language
+      enum:
+      - aa
+      - ab
+      - ae
+      - af
+      - ak
+      - am
+      - an
+      - ar
+      - as
+      - av
+      - ay
+      - az
+      - ba
+      - be
+      - bg
+      - bi
+      - bm
+      - bn
+      - bo
+      - br
+      - bs
+      - ca
+      - ce
+      - ch
+      - co
+      - cr
+      - cs
+      - cu
+      - cv
+      - cy
+      - da
+      - de
+      - dv
+      - dz
+      - ee
+      - el
+      - en
+      - eo
+      - es
+      - et
+      - eu
+      - fa
+      - ff
+      - fi
+      - fj
+      - fo
+      - fr
+      - fy
+      - ga
+      - gd
+      - gl
+      - gn
+      - gu
+      - gv
+      - ha
+      - he
+      - hi
+      - ho
+      - hr
+      - ht
+      - hu
+      - hy
+      - hz
+      - ia
+      - id
+      - ie
+      - ig
+      - ii
+      - ik
+      - io
+      - is
+      - it
+      - iu
+      - ja
+      - jv
+      - ka
+      - kg
+      - ki
+      - kj
+      - kk
+      - kl
+      - km
+      - kn
+      - ko
+      - kr
+      - ks
+      - ku
+      - kv
+      - kw
+      - ky
+      - la
+      - lb
+      - lg
+      - li
+      - ln
+      - lo
+      - lt
+      - lu
+      - lv
+      - mg
+      - mh
+      - mi
+      - mk
+      - ml
+      - mn
+      - mr
+      - ms
+      - mt
+      - my
+      - na
+      - nb
+      - nd
+      - ne
+      - ng
+      - nl
+      - nn
+      - 'no'
+      - nr
+      - nv
+      - ny
+      - oc
+      - oj
+      - om
+      - or
+      - os
+      - pa
+      - pi
+      - pl
+      - ps
+      - pt
+      - qu
+      - rm
+      - rn
+      - ro
+      - ru
+      - rw
+      - sa
+      - sc
+      - sd
+      - se
+      - sg
+      - si
+      - sk
+      - sl
+      - sm
+      - sn
+      - so
+      - sq
+      - sr
+      - ss
+      - st
+      - su
+      - sv
+      - sw
+      - ta
+      - te
+      - tg
+      - th
+      - ti
+      - tk
+      - tl
+      - tn
+      - to
+      - tr
+      - ts
+      - tt
+      - tw
+      - ty
+      - ug
+      - uk
+      - ur
+      - uz
+      - ve
+      - vi
+      - vo
+      - wa
+      - wo
+      - xh
+      - yi
+      - yo
+      - za
+      - zh
+      - zu
+      type: string
+      description: Two-character alphabetic code that represents a language. Fairmarkit uses the ISO 639-1 international standard.
+    CoreFileWithID:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        download_url:
+          type: string
+          maxLength: 65536
+          minLength: 1
+          format: uri
+          title: Download Url
+      type: object
+      required:
+      - id
+      title: CoreFileWithID
     UploadMetadataResponse:
       properties:
         error:
@@ -1212,377 +1531,22 @@ components:
           $ref: '#/components/schemas/UploadType'
       type: object
       title: UploadMetadataResponse
-    UploadIdResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-      type: object
+    PurchaseOrderRFQ:
+      title: PurchaseOrderRFQ
       required:
-      - id
-      title: UploadIdResponse
-    POStatus:
-      title: POStatus
-      enum:
-      - PURCHASED
-      - CANCELED
-      - REFUNDED
-      - IN_PROGRESS
-      type: string
-      description: Purchase order status values.
-    ListRetrieve_PurchaseOrderRetrieve_:
-      title: ListRetrieve[PurchaseOrderRetrieve]
-      required:
-      - count
-      - results
-      description: Paginated list response for purchase orders.
+      - uuid
+      - title
       type: object
+      description: RFQ associated with the purchase order.
       properties:
-        count:
-          title: Count
-          type: integer
-          description: A count of the number of records in the full results set.
-        next:
-          title: Next
+        uuid:
+          title: Uuid
           type: string
-          description: A URL to fetch the next page of results, if more results exist in the set.
-        previous:
-          title: Previous
+          description: RFQ ID (Fairmarkit).
+        title:
+          title: Title
           type: string
-          description: A URL to fetch the previous page of results, if previous results exist in the set.
-        results:
-          title: Results
-          type: array
-          description: A list representing one page of the result set.
-          items:
-            $ref: '#/components/schemas/PurchaseOrderRetrieve'
-    ItemUOM:
-      title: ItemUOM
-      enum:
-      - each
-      - acre
-      - activity_unit
-      - assembly
-      - bag
-      - bale
-      - bar
-      - barrel
-      - block
-      - board foot
-      - bottle
-      - box
-      - bucket
-      - bulk
-      - bundle
-      - cake
-      - can
-      - canister
-      - card
-      - carton
-      - cartridge
-      - case
-      - centimeter
-      - coil
-      - container
-      - crate
-      - cube
-      - cubic foot
-      - cubic meter
-      - cubic_millimeter
-      - cubic yard
-      - cup
-      - cylinder
-      - dozen
-      - drum
-      - enzyme_units
-      - foot
-      - gallon
-      - gigajoule
-      - gram
-      - gross
-      - group_proportion
-      - 1/2 cubic yard
-      - hank
-      - hectare
-      - hour
-      - hundred
-      - imperial gallon
-      - inch
-      - jar
-      - keg
-      - kilogram
-      - kiloliter
-      - kilometer
-      - kilowatt
-      - kit
-      - length
-      - light
-      - liter
-      - lot
-      - lug
-      - lump sum
-      - megawatt_hour
-      - meter
-      - meter_minute
-      - metric ton
-      - microsiemens_per_cm
-      - mile
-      - milliliter
-      - millimeter
-      - milliwatt
-      - multiple_choice
-      - net ton
-      - night
-      - ounce
-      - pack
-      - package
-      - packet
-      - pad
-      - pail
-      - pair
-      - pallet
-      - pancake
-      - part
-      - pg
-      - piece
-      - pikofarad
-      - pint
-      - points
-      - pot
-      - pound
-      - punnet
-      - quart
-      - rack
-      - ream
-      - reel
-      - roll
-      - sachet
-      - set
-      - sheet
-      - spool
-      - square foot
-      - square inch
-      - square meter
-      - square yard
-      - suit
-      - tank
-      - thousand
-      - tin
-      - ton
-      - tonne
-      - ton_cubic_meter
-      - tray
-      - tub
-      - tube
-      - unit
-      - unit_f
-      - volt-amper
-      - yard
-      - year
-      description: Supported units of measurement for items.
-    Currency:
-      title: Currency
-      enum:
-      - AED
-      - AFN
-      - ALL
-      - AMD
-      - ANG
-      - AOA
-      - ARS
-      - AUD
-      - AWG
-      - AZN
-      - BAM
-      - BBD
-      - BDT
-      - BGN
-      - BHD
-      - BIF
-      - BMD
-      - BND
-      - BOB
-      - BRL
-      - BSD
-      - BTC
-      - BTN
-      - BWP
-      - BYN
-      - BZD
-      - CAD
-      - CDF
-      - CHF
-      - CLF
-      - CLP
-      - CNH
-      - CNY
-      - COP
-      - CRC
-      - CUC
-      - CUP
-      - CVE
-      - CZK
-      - DJF
-      - DKK
-      - DOP
-      - DZD
-      - EGP
-      - ERN
-      - ETB
-      - EUR
-      - FJD
-      - FKP
-      - GBP
-      - GEL
-      - GGP
-      - GHS
-      - GIP
-      - GMD
-      - GNF
-      - GTQ
-      - GYD
-      - HKD
-      - HNL
-      - HRK
-      - HTG
-      - HUF
-      - IDR
-      - ILS
-      - IMP
-      - INR
-      - IQD
-      - IRR
-      - ISK
-      - JEP
-      - JMD
-      - JOD
-      - JPY
-      - KES
-      - KGS
-      - KHR
-      - KMF
-      - KPW
-      - KRW
-      - KWD
-      - KYD
-      - KZT
-      - LAK
-      - LBP
-      - LKR
-      - LRD
-      - LSL
-      - LYD
-      - MAD
-      - MDL
-      - MGA
-      - MKD
-      - MMK
-      - MNT
-      - MOP
-      - MRU
-      - MUR
-      - MVR
-      - MWK
-      - MXN
-      - MYR
-      - MZN
-      - NAD
-      - NGN
-      - NIO
-      - NOK
-      - NPR
-      - NZD
-      - OMR
-      - PAB
-      - PEN
-      - PGK
-      - PHP
-      - PKR
-      - PLN
-      - PYG
-      - QAR
-      - RON
-      - RSD
-      - RUB
-      - RWF
-      - SAR
-      - SBD
-      - SCR
-      - SDG
-      - SEK
-      - SGD
-      - SHP
-      - SLL
-      - SOS
-      - SRD
-      - SSP
-      - STN
-      - SVC
-      - SYP
-      - SZL
-      - THB
-      - TJS
-      - TMT
-      - TND
-      - TOP
-      - TRY
-      - TTD
-      - TWD
-      - TZS
-      - UAH
-      - UGX
-      - USD
-      - UYU
-      - UZS
-      - VES
-      - VND
-      - VUV
-      - WST
-      - XAF
-      - XAG
-      - XAU
-      - XCD
-      - XDR
-      - XOF
-      - XPD
-      - XPF
-      - XPT
-      - YER
-      - ZAR
-      - ZMW
-      type: string
-      description: Supported currency codes.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    CoreFileWithID:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        name:
-          type: string
-          title: Name
-        download_url:
-          type: string
-          maxLength: 65536
-          minLength: 1
-          format: uri
-          title: Download Url
-      type: object
-      required:
-      - id
-      title: CoreFileWithID
+          description: RFQ Title.
     UploadRunResponse:
       properties:
         id:
@@ -1624,3 +1588,39 @@ components:
       - metadata
       - file_type_name
       title: UploadRunResponse
+    ListRetrieve_PurchaseOrderRetrieve_:
+      title: ListRetrieve[PurchaseOrderRetrieve]
+      required:
+      - count
+      - results
+      description: Paginated list response for purchase orders.
+      type: object
+      properties:
+        count:
+          title: Count
+          type: integer
+          description: A count of the number of records in the full results set.
+        next:
+          title: Next
+          type: string
+          description: A URL to fetch the next page of results, if more results exist in the set.
+        previous:
+          title: Previous
+          type: string
+          description: A URL to fetch the previous page of results, if previous results exist in the set.
+        results:
+          title: Results
+          type: array
+          description: A list representing one page of the result set.
+          items:
+            $ref: '#/components/schemas/PurchaseOrderRetrieve'
+    UploadIdResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: UploadIdResponse

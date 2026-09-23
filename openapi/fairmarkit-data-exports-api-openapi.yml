@@ -1,6 +1,6 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: BUYER PUBLIC Business Units Data Exports API
+  title: BUYER PUBLIC Data Exports API
   version: '3'
   description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
   termsOfService: https://www.fairmarkit.com/terms-of-service
@@ -106,17 +106,54 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    DataExportAvailableResponse:
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
       properties:
-        models:
-          items:
-            $ref: '#/components/schemas/DataExportAvailableModel'
+        detail:
+          title: Detail
           type: array
-          title: Models
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    DataExportAvailableField:
+      properties:
+        name:
+          type: string
+          title: Name
+        label:
+          type: string
+          title: Label
+        type:
+          type: string
+          title: Type
       type: object
       required:
-      - models
-      title: DataExportAvailableResponse
+      - name
+      - label
+      - type
+      title: DataExportAvailableField
+    DataExportCreateRequest:
+      properties:
+        external_reporting_id:
+          type: string
+          maxLength: 64
+          minLength: 1
+          title: External Reporting Id
+        selections:
+          items:
+            $ref: '#/components/schemas/DataExportSelection'
+          type: array
+          title: Selections
+        date_range:
+          $ref: '#/components/schemas/DataExportDateRange'
+      type: object
+      required:
+      - external_reporting_id
+      - selections
+      - date_range
+      title: DataExportCreateRequest
     DataExportRetrieve:
       properties:
         id:
@@ -189,17 +226,32 @@ components:
       - name
       - fields
       title: DataExportAvailableModel
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
+    DataExportAvailableResponse:
       properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
+        models:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            $ref: '#/components/schemas/DataExportAvailableModel'
+          type: array
+          title: Models
+      type: object
+      required:
+      - models
+      title: DataExportAvailableResponse
+    DataExportDateRange:
+      properties:
+        start:
+          type: string
+          format: date
+          title: Start
+        end:
+          type: string
+          format: date
+          title: End
+      type: object
+      required:
+      - start
+      - end
+      title: DataExportDateRange
     ValidationError:
       title: ValidationError
       required:
@@ -225,6 +277,16 @@ components:
           title: Error Type
           type: string
           description: Computer-readable identifier of the error type.
+    DataExportCreateResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: DataExportCreateResponse
     DataExportSelection:
       properties:
         model:
@@ -240,65 +302,3 @@ components:
       - model
       - fields
       title: DataExportSelection
-    DataExportAvailableField:
-      properties:
-        name:
-          type: string
-          title: Name
-        label:
-          type: string
-          title: Label
-        type:
-          type: string
-          title: Type
-      type: object
-      required:
-      - name
-      - label
-      - type
-      title: DataExportAvailableField
-    DataExportCreateRequest:
-      properties:
-        external_reporting_id:
-          type: string
-          maxLength: 64
-          minLength: 1
-          title: External Reporting Id
-        selections:
-          items:
-            $ref: '#/components/schemas/DataExportSelection'
-          type: array
-          title: Selections
-        date_range:
-          $ref: '#/components/schemas/DataExportDateRange'
-      type: object
-      required:
-      - external_reporting_id
-      - selections
-      - date_range
-      title: DataExportCreateRequest
-    DataExportCreateResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-      type: object
-      required:
-      - id
-      title: DataExportCreateResponse
-    DataExportDateRange:
-      properties:
-        start:
-          type: string
-          format: date
-          title: Start
-        end:
-          type: string
-          format: date
-          title: End
-      type: object
-      required:
-      - start
-      - end
-      title: DataExportDateRange

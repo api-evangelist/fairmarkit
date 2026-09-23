@@ -1,6 +1,6 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: BUYER PUBLIC Business Units Data Fields API
+  title: BUYER PUBLIC Data Fields API
   version: '3'
   description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
   termsOfService: https://www.fairmarkit.com/terms-of-service
@@ -612,25 +612,17 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    UpdateDatasetItemRequest:
-      properties:
-        value:
-          type: object
-          title: Value
-          default: {}
-        dataset_id:
-          type: string
-          format: uuid
-          title: Dataset Id
-        custom_tags:
-          type: object
-          title: Custom Tags
-          default: {}
-        external_id:
-          type: string
-          title: External Id
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
-      title: UpdateDatasetItemRequest
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
     CreateDatasetRequest:
       properties:
         slug:
@@ -649,77 +641,6 @@ components:
       - title
       - schema_id
       title: CreateDatasetRequest
-    CreateDatasetItemRequest:
-      properties:
-        value:
-          type: object
-          title: Value
-        custom_tags:
-          type: object
-          title: Custom Tags
-          default: {}
-        external_id:
-          type: string
-          title: External Id
-      type: object
-      required:
-      - value
-      title: CreateDatasetItemRequest
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      description: Details for a validation error.
-      properties:
-        loc:
-          title: Location
-          type: array
-          description: Error location
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-          description: Human readable explanation of the error.
-        type:
-          title: Error Type
-          type: string
-          description: Computer-readable identifier of the error type.
-    DataFieldDatasetSlugResponse:
-      properties:
-        slug:
-          type: string
-          title: Slug
-      type: object
-      required:
-      - slug
-      title: DataFieldDatasetSlugResponse
-    DataFieldDatasetItemIDResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-      type: object
-      required:
-      - id
-      title: DataFieldDatasetItemIDResponse
     DataFieldDatasetItemResponse:
       properties:
         id:
@@ -763,6 +684,60 @@ components:
       - dataset_id
       - value
       title: DataFieldDatasetItemResponse
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    DataFieldDatasetItemIDResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: DataFieldDatasetItemIDResponse
+    UpdateDatasetItemRequest:
+      properties:
+        value:
+          type: object
+          title: Value
+          default: {}
+        dataset_id:
+          type: string
+          format: uuid
+          title: Dataset Id
+        custom_tags:
+          type: object
+          title: Custom Tags
+          default: {}
+        external_id:
+          type: string
+          title: External Id
+      type: object
+      title: UpdateDatasetItemRequest
     DataFieldDatasetResponse:
       properties:
         id:
@@ -813,20 +788,15 @@ components:
       - schema_id
       - active
       title: DataFieldDatasetResponse
-    UploadDatasetItemsRequest:
+    DataFieldDatasetSlugResponse:
       properties:
-        dataset_slug:
+        slug:
           type: string
-          title: Dataset Slug
-        file_id:
-          type: string
-          format: uuid
-          title: File Id
+          title: Slug
       type: object
       required:
-      - dataset_slug
-      - file_id
-      title: UploadDatasetItemsRequest
+      - slug
+      title: DataFieldDatasetSlugResponse
     UpdateDatasetRequest:
       properties:
         title:
@@ -842,3 +812,33 @@ components:
           title: Slug
       type: object
       title: UpdateDatasetRequest
+    UploadDatasetItemsRequest:
+      properties:
+        dataset_slug:
+          type: string
+          title: Dataset Slug
+        file_id:
+          type: string
+          format: uuid
+          title: File Id
+      type: object
+      required:
+      - dataset_slug
+      - file_id
+      title: UploadDatasetItemsRequest
+    CreateDatasetItemRequest:
+      properties:
+        value:
+          type: object
+          title: Value
+        custom_tags:
+          type: object
+          title: Custom Tags
+          default: {}
+        external_id:
+          type: string
+          title: External Id
+      type: object
+      required:
+      - value
+      title: CreateDatasetItemRequest

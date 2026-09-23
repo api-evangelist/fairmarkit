@@ -1,6 +1,6 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: BUYER PUBLIC Business Units Event API
+  title: BUYER PUBLIC Event API
   version: '3'
   description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
   termsOfService: https://www.fairmarkit.com/terms-of-service
@@ -187,80 +187,6 @@ paths:
       description: Returns pricing items for an event.
 components:
   schemas:
-    ItemStatus:
-      type: string
-      enum:
-      - AWARDED
-      - CANCELED
-      - DRAFT
-      - SOURCING
-      title: ItemStatus
-      description: Item status values.
-    Assignee:
-      properties:
-        id:
-          type: string
-          title: Id
-        email:
-          type: string
-          title: Email
-      type: object
-      required:
-      - id
-      title: Assignee
-    EventStatus:
-      type: string
-      enum:
-      - CANCELED
-      - CLOSED
-      - COMPLETED
-      - DRAFT
-      - OPENED
-      title: EventStatus
-      description: Event status values.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      description: Details for a validation error.
-      properties:
-        loc:
-          title: Location
-          type: array
-          description: Error location
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-          description: Human readable explanation of the error.
-        type:
-          title: Error Type
-          type: string
-          description: Computer-readable identifier of the error type.
-    EventType:
-      type: string
-      enum:
-      - DIRECT_NEGOTIATION
-      - SOURCING
-      title: EventType
-      description: Event type values.
     EventRetrieve:
       properties:
         id:
@@ -348,6 +274,60 @@ components:
       - schema_data
       - urgency
       title: EventRetrieve
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    EventStatus:
+      type: string
+      enum:
+      - CANCELED
+      - CLOSED
+      - COMPLETED
+      - DRAFT
+      - OPENED
+      title: EventStatus
+      description: Event status values.
+    EventsV4ListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/EventV4Retrieve'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: EventsV4ListRetrieve
+    ItemStatus:
+      type: string
+      enum:
+      - AWARDED
+      - CANCELED
+      - DRAFT
+      - SOURCING
+      title: ItemStatus
+      description: Item status values.
+    Urgency:
+      type: string
+      enum:
+      - NORMAL
+      - URGENT
+      title: Urgency
+      description: Urgency values.
     EventStateName:
       type: string
       enum:
@@ -390,6 +370,50 @@ components:
       - status
       - is_moved_from_previous_round
       title: EventPricingItemRetrieve
+    EventType:
+      type: string
+      enum:
+      - DIRECT_NEGOTIATION
+      - SOURCING
+      title: EventType
+      description: Event type values.
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    Assignee:
+      properties:
+        id:
+          type: string
+          title: Id
+        email:
+          type: string
+          title: Email
+      type: object
+      required:
+      - id
+      title: Assignee
     EventV4Retrieve:
       properties:
         created_at:
@@ -419,30 +443,6 @@ components:
       - status
       - created_at
       title: EventV4Retrieve
-    Urgency:
-      type: string
-      enum:
-      - NORMAL
-      - URGENT
-      title: Urgency
-      description: Urgency values.
-    EventsV4ListRetrieve:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/EventV4Retrieve'
-          type: array
-          title: Results
-        next:
-          type: string
-          title: Next
-        previous:
-          type: string
-          title: Previous
-      type: object
-      required:
-      - results
-      title: EventsV4ListRetrieve
     EventPricingItemListRetrieve:
       properties:
         results:

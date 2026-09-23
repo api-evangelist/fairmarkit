@@ -1,6 +1,6 @@
-openapi: 3.1.1
+openapi: 3.2.0
 info:
-  title: BUYER PUBLIC Business Units Supplier API
+  title: BUYER PUBLIC Supplier API
   version: '3'
   description: The Fairmarkit Buyer API is a RESTful API that uses HTTP requests to allow you to access and use your Fairmarkit data. It has predictable resource-oriented URLs that use standard HTTP response codes, authentication, and verbs. See the Fairmarkit API developer portal for more information.
   termsOfService: https://www.fairmarkit.com/terms-of-service
@@ -441,6 +441,14 @@ components:
       - external_vendor_id
       - erp_system_uuid
       title: SupplierErpSystem
+    VendorOrigin:
+      title: VendorOrigin
+      enum:
+      - internal
+      - external
+      - public
+      type: string
+      description: Supplier record origin values.
     HTTPValidationError:
       title: HTTPValidationError
       type: object
@@ -452,176 +460,27 @@ components:
           description: Details about a specific error to display in error response.
           items:
             $ref: '#/components/schemas/ValidationError'
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      description: Details for a validation error.
-      properties:
-        loc:
-          title: Location
-          type: array
-          description: Error location
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-          description: Human readable explanation of the error.
-        type:
-          title: Error Type
-          type: string
-          description: Computer-readable identifier of the error type.
-    SupplierBusinessClassification:
-      title: SupplierBusinessClassification
+    EmptyString:
+      title: EmptyString
       enum:
-      - 8a
-      - alaskan
-      - bcorp
-      - cab
-      - dbe
-      - dobe
-      - edwosb
-      - fairtrade
-      - fsc
-      - generic
-      - gsa
-      - hbcu
-      - international_soc_automation
-      - iso_9001
-      - lbe
-      - lgbt
-      - minority_business_enterprise
-      - msc
-      - sdb
-      - sdvbe
-      - sdvet
-      - small_business_certification
-      - small_business_enterprise
-      - veteran_business_enterprise
-      - woman_owned_business_enterprise
-      - wosb
+      - ''
       type: string
-      description: Supported supplier business classifications.
-    SupplierRetrieve:
-      title: SupplierRetrieve
-      required:
-      - uuid
-      - external_id
-      - title
-      - first_name
-      - last_name
-      - email
-      - phone_number
-      - address1
-      - address2
-      - country
-      - city
-      - state
-      - zip
-      - origin
-      - erp_systems
-      - is_active
-      - meta_tags
-      type: object
-      description: Data returned for a specific supplier.
+      description: Marker used to represent an empty string.
+    schemas__base__meta_tag__MetaTagRetrieve:
       properties:
-        uuid:
-          title: Uuid
+        key:
           type: string
-          description: Supplier ID (Fairmarkit)
-        external_id:
-          title: External Id
-          type: string
-          description: External Supplier reference ID. It can be used to track Suppliers across systems.
-        title:
-          title: Title
-          type: string
-          description: Supplier company name.
-        first_name:
-          title: First Name
-          type: string
-          description: Supplier contact's first name.
-        last_name:
-          title: Last Name
-          type: string
-          description: Supplier contact's last name.
-        email:
-          title: Email
-          type: string
-          description: Supplier contact's email address.
-        phone_number:
-          title: Phone Number
-          type: string
-          description: Supplier's phone number.
-        address1:
-          title: Address1
-          type: string
-          description: Supplier's first address line.
-        address2:
-          title: Address2
-          type: string
-          description: Supplier's second address line.
-        country:
-          title: Country
-          anyOf:
-          - $ref: '#/components/schemas/Country'
-          - $ref: '#/components/schemas/EmptyString'
-        city:
-          title: City
-          type: string
-          description: Supplier's city.
-        state:
-          title: State
-          type: string
-          description: Supplier's state.
-        zip:
-          title: Zip
-          type: string
-          description: Supplier's zip code
-        origin:
-          $ref: '#/components/schemas/VendorOrigin'
-        is_active:
-          type: boolean
-          title: Is Active
-          description: Active/Inactive status of the Supplier.
-        external_data:
-          title: External Data
-          type: object
-          description: Additional open field to store internal information.
-        meta_tags:
-          title: Meta Tags
-          description: Meta tags to store additional information. Send a list of meta tags, and they will be processed. To remove all meta tags, send an empty list.
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas__base__meta_tag__MetaTagRetrieve'
-        erp_systems:
-          title: Erp Systems
-          description: Store supplier integration information.
-          type: array
-          items:
-            $ref: '#/components/schemas/SupplierErpSystemRetrieve'
-        business_classification:
+          title: Key
+        value:
           items:
             type: string
           type: array
-          title: Business Classification
-          default: []
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Date and time when the Supplier was created.
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-          description: Date and time when the Supplier was last updated.
+          title: Value
+      type: object
+      required:
+      - key
+      - value
+      title: MetaTagRetrieve
     Country:
       title: Country
       enum:
@@ -876,12 +735,6 @@ components:
       - ZW
       type: string
       description: Supported country codes.
-    EmptyString:
-      title: EmptyString
-      enum:
-      - ''
-      type: string
-      description: Marker used to represent an empty string.
     ListRetrieve_SupplierRetrieve_:
       title: ListRetrieve[SupplierRetrieve]
       required:
@@ -908,35 +761,176 @@ components:
           description: A list representing one page of the result set.
           items:
             $ref: '#/components/schemas/SupplierRetrieve'
-    SupplierErpSystemRetrieve:
-      title: SupplierErpSystemRetrieve
-      required:
-      - external_supplier_id
-      - erp_system_uuid
-      - is_active
-      type: object
-      properties:
-        external_supplier_id:
-          title: External Supplier Id
-          type: string
-          description: External Supplier reference ID in the system.
-        erp_system_uuid:
-          title: Erp System Uuid
-          type: string
-          format: uuid
-          description: ERP system ID (External to Fairmarkit).
-        is_active:
-          title: External Supplier ID Active Flag
-          type: boolean
-          description: Active/Inactive status of the External Supplier reference ID.
-    VendorOrigin:
-      title: VendorOrigin
+    SupplierBusinessClassification:
+      title: SupplierBusinessClassification
       enum:
-      - internal
-      - external
-      - public
+      - 8a
+      - alaskan
+      - bcorp
+      - cab
+      - dbe
+      - dobe
+      - edwosb
+      - fairtrade
+      - fsc
+      - generic
+      - gsa
+      - hbcu
+      - international_soc_automation
+      - iso_9001
+      - lbe
+      - lgbt
+      - minority_business_enterprise
+      - msc
+      - sdb
+      - sdvbe
+      - sdvet
+      - small_business_certification
+      - small_business_enterprise
+      - veteran_business_enterprise
+      - woman_owned_business_enterprise
+      - wosb
       type: string
-      description: Supplier record origin values.
+      description: Supported supplier business classifications.
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    SupplierRetrieve:
+      title: SupplierRetrieve
+      required:
+      - uuid
+      - external_id
+      - title
+      - first_name
+      - last_name
+      - email
+      - phone_number
+      - address1
+      - address2
+      - country
+      - city
+      - state
+      - zip
+      - origin
+      - erp_systems
+      - is_active
+      - meta_tags
+      type: object
+      description: Data returned for a specific supplier.
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          description: Supplier ID (Fairmarkit)
+        external_id:
+          title: External Id
+          type: string
+          description: External Supplier reference ID. It can be used to track Suppliers across systems.
+        title:
+          title: Title
+          type: string
+          description: Supplier company name.
+        first_name:
+          title: First Name
+          type: string
+          description: Supplier contact's first name.
+        last_name:
+          title: Last Name
+          type: string
+          description: Supplier contact's last name.
+        email:
+          title: Email
+          type: string
+          description: Supplier contact's email address.
+        phone_number:
+          title: Phone Number
+          type: string
+          description: Supplier's phone number.
+        address1:
+          title: Address1
+          type: string
+          description: Supplier's first address line.
+        address2:
+          title: Address2
+          type: string
+          description: Supplier's second address line.
+        country:
+          title: Country
+          anyOf:
+          - $ref: '#/components/schemas/Country'
+          - $ref: '#/components/schemas/EmptyString'
+        city:
+          title: City
+          type: string
+          description: Supplier's city.
+        state:
+          title: State
+          type: string
+          description: Supplier's state.
+        zip:
+          title: Zip
+          type: string
+          description: Supplier's zip code
+        origin:
+          $ref: '#/components/schemas/VendorOrigin'
+        is_active:
+          type: boolean
+          title: Is Active
+          description: Active/Inactive status of the Supplier.
+        external_data:
+          title: External Data
+          type: object
+          description: Additional open field to store internal information.
+        meta_tags:
+          title: Meta Tags
+          description: Meta tags to store additional information. Send a list of meta tags, and they will be processed. To remove all meta tags, send an empty list.
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas__base__meta_tag__MetaTagRetrieve'
+        erp_systems:
+          title: Erp Systems
+          description: Store supplier integration information.
+          type: array
+          items:
+            $ref: '#/components/schemas/SupplierErpSystemRetrieve'
+        business_classification:
+          items:
+            type: string
+          type: array
+          title: Business Classification
+          default: []
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Date and time when the Supplier was created.
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+          description: Date and time when the Supplier was last updated.
     Supplier:
       title: Supplier
       required:
@@ -1024,18 +1018,24 @@ components:
           format: date-time
           title: Updated At
           description: Date and time when the Supplier was last updated.
-    schemas__base__meta_tag__MetaTagRetrieve:
-      properties:
-        key:
-          type: string
-          title: Key
-        value:
-          items:
-            type: string
-          type: array
-          title: Value
-      type: object
+    SupplierErpSystemRetrieve:
+      title: SupplierErpSystemRetrieve
       required:
-      - key
-      - value
-      title: MetaTagRetrieve
+      - external_supplier_id
+      - erp_system_uuid
+      - is_active
+      type: object
+      properties:
+        external_supplier_id:
+          title: External Supplier Id
+          type: string
+          description: External Supplier reference ID in the system.
+        erp_system_uuid:
+          title: Erp System Uuid
+          type: string
+          format: uuid
+          description: ERP system ID (External to Fairmarkit).
+        is_active:
+          title: External Supplier ID Active Flag
+          type: boolean
+          description: Active/Inactive status of the External Supplier reference ID.
