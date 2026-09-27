@@ -612,35 +612,44 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    CreateDatasetRequest:
+    DataFieldDatasetSlugResponse:
       properties:
         slug:
           type: string
           title: Slug
-        title:
-          type: string
-          title: Title
-        schema_id:
-          type: string
-          format: uuid
-          title: Schema Id
       type: object
       required:
       - slug
-      - title
-      - schema_id
-      title: CreateDatasetRequest
+      title: DataFieldDatasetSlugResponse
+    UploadDatasetItemsRequest:
+      properties:
+        dataset_slug:
+          type: string
+          title: Dataset Slug
+        file_id:
+          type: string
+          format: uuid
+          title: File Id
+      type: object
+      required:
+      - dataset_slug
+      - file_id
+      title: UploadDatasetItemsRequest
+    UpdateDatasetRequest:
+      properties:
+        title:
+          type: string
+          maxLength: 255
+          title: Title
+        active:
+          type: boolean
+          title: Active
+        slug:
+          type: string
+          maxLength: 50
+          title: Slug
+      type: object
+      title: UpdateDatasetRequest
     DataFieldDatasetItemResponse:
       properties:
         id:
@@ -684,41 +693,6 @@ components:
       - dataset_id
       - value
       title: DataFieldDatasetItemResponse
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      description: Details for a validation error.
-      properties:
-        loc:
-          title: Location
-          type: array
-          description: Error location
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-          description: Human readable explanation of the error.
-        type:
-          title: Error Type
-          type: string
-          description: Computer-readable identifier of the error type.
-    DataFieldDatasetItemIDResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-      type: object
-      required:
-      - id
-      title: DataFieldDatasetItemIDResponse
     UpdateDatasetItemRequest:
       properties:
         value:
@@ -738,6 +712,27 @@ components:
           title: External Id
       type: object
       title: UpdateDatasetItemRequest
+    DataFieldDatasetItemIDResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: DataFieldDatasetItemIDResponse
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
     DataFieldDatasetResponse:
       properties:
         id:
@@ -788,44 +783,49 @@ components:
       - schema_id
       - active
       title: DataFieldDatasetResponse
-    DataFieldDatasetSlugResponse:
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    CreateDatasetRequest:
       properties:
         slug:
           type: string
           title: Slug
+        title:
+          type: string
+          title: Title
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
       type: object
       required:
       - slug
-      title: DataFieldDatasetSlugResponse
-    UpdateDatasetRequest:
-      properties:
-        title:
-          type: string
-          maxLength: 255
-          title: Title
-        active:
-          type: boolean
-          title: Active
-        slug:
-          type: string
-          maxLength: 50
-          title: Slug
-      type: object
-      title: UpdateDatasetRequest
-    UploadDatasetItemsRequest:
-      properties:
-        dataset_slug:
-          type: string
-          title: Dataset Slug
-        file_id:
-          type: string
-          format: uuid
-          title: File Id
-      type: object
-      required:
-      - dataset_slug
-      - file_id
-      title: UploadDatasetItemsRequest
+      - title
+      - schema_id
+      title: CreateDatasetRequest
     CreateDatasetItemRequest:
       properties:
         value:

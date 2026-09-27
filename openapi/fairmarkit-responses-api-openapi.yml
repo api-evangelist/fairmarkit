@@ -282,7 +282,7 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ResponseItemResponse:
+    AwardedItemResponse:
       properties:
         id:
           type: string
@@ -296,9 +296,14 @@ components:
           type: string
           format: uuid
           title: Request Item Id
-        schema_data:
+        response_item_schema_data:
           type: object
-          title: Schema Data
+          title: Response Item Schema Data
+        status:
+          $ref: '#/components/schemas/AwardedItemStatus'
+        quantity:
+          type: number
+          title: Quantity
         is_no_bid:
           type: boolean
           title: Is No Bid
@@ -308,21 +313,21 @@ components:
         unit_price_usd:
           type: string
           title: Unit Price Usd
-        unit_price:
-          type: string
-          title: Unit Price
-        original_currency:
-          type: string
-          title: Original Currency
-        original_unit_price:
-          type: string
-          title: Original Unit Price
         total_price_usd:
           type: string
           title: Total Price Usd
         uom_conversion_rate:
           type: string
           title: Uom Conversion Rate
+        award_reason:
+          type: string
+          title: Award Reason
+        custom_award_reason:
+          type: string
+          title: Custom Award Reason
+        representation_status:
+          type: string
+          title: Representation Status
         created_at:
           type: string
           format: date-time
@@ -336,49 +341,14 @@ components:
       - id
       - response_id
       - request_item_id
-      - schema_data
+      - response_item_schema_data
+      - status
+      - quantity
       - is_no_bid
       - requested_quantity
+      - representation_status
       - created_at
-      title: ResponseItemResponse
-    ReasonInfo:
-      properties:
-        reason:
-          type: string
-          title: Reason
-        custom_reason:
-          type: string
-          title: Custom Reason
-      type: object
-      required:
-      - reason
-      title: ReasonInfo
-    AwardedItemStatus:
-      type: string
-      enum:
-      - SELECTED
-      - AWARDED
-      - CANCELED
-      title: AwardedItemStatus
-      description: Awarded item status values.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    AwardSelectionStatus:
-      type: string
-      enum:
-      - AWARDED
-      - SELECTED
-      title: AwardSelectionStatus
-      description: Award selection status values.
+      title: AwardedItemResponse
     ResponseByRequest:
       properties:
         id:
@@ -467,17 +437,65 @@ components:
       - is_no_bid
       - created_at
       title: ResponseByRequest
-    ResponseStatus:
-      type: string
-      enum:
-      - CREATED
-      - DRAFT
-      - SUBMITTED
-      - DECLINED
-      - SELECTED
-      - LOST
-      title: ResponseStatus
-      description: Response status values.
+    ResponseItemResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        response_id:
+          type: string
+          format: uuid
+          title: Response Id
+        request_item_id:
+          type: string
+          format: uuid
+          title: Request Item Id
+        schema_data:
+          type: object
+          title: Schema Data
+        is_no_bid:
+          type: boolean
+          title: Is No Bid
+        requested_quantity:
+          type: number
+          title: Requested Quantity
+        unit_price_usd:
+          type: string
+          title: Unit Price Usd
+        unit_price:
+          type: string
+          title: Unit Price
+        original_currency:
+          type: string
+          title: Original Currency
+        original_unit_price:
+          type: string
+          title: Original Unit Price
+        total_price_usd:
+          type: string
+          title: Total Price Usd
+        uom_conversion_rate:
+          type: string
+          title: Uom Conversion Rate
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - response_id
+      - request_item_id
+      - schema_data
+      - is_no_bid
+      - requested_quantity
+      - created_at
+      title: ResponseItemResponse
     AwardedItemListRetrieve:
       properties:
         results:
@@ -495,115 +513,14 @@ components:
       required:
       - results
       title: AwardedItemListRetrieve
-    AwardedItemResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        response_id:
-          type: string
-          format: uuid
-          title: Response Id
-        request_item_id:
-          type: string
-          format: uuid
-          title: Request Item Id
-        response_item_schema_data:
-          type: object
-          title: Response Item Schema Data
-        status:
-          $ref: '#/components/schemas/AwardedItemStatus'
-        quantity:
-          type: number
-          title: Quantity
-        is_no_bid:
-          type: boolean
-          title: Is No Bid
-        requested_quantity:
-          type: number
-          title: Requested Quantity
-        unit_price_usd:
-          type: string
-          title: Unit Price Usd
-        total_price_usd:
-          type: string
-          title: Total Price Usd
-        uom_conversion_rate:
-          type: string
-          title: Uom Conversion Rate
-        award_reason:
-          type: string
-          title: Award Reason
-        custom_award_reason:
-          type: string
-          title: Custom Award Reason
-        representation_status:
-          type: string
-          title: Representation Status
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-      type: object
-      required:
-      - id
-      - response_id
-      - request_item_id
-      - response_item_schema_data
-      - status
-      - quantity
-      - is_no_bid
-      - requested_quantity
-      - representation_status
-      - created_at
-      title: AwardedItemResponse
-    ResponseListRetrieve:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/ResponseByRequest'
-          type: array
-          title: Results
-        next:
-          type: string
-          title: Next
-        previous:
-          type: string
-          title: Previous
-      type: object
-      required:
-      - results
-      title: ResponseListRetrieve
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      description: Details for a validation error.
-      properties:
-        loc:
-          title: Location
-          type: array
-          description: Error location
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-          description: Human readable explanation of the error.
-        type:
-          title: Error Type
-          type: string
-          description: Computer-readable identifier of the error type.
+    AwardedItemStatus:
+      type: string
+      enum:
+      - SELECTED
+      - AWARDED
+      - CANCELED
+      title: AwardedItemStatus
+      description: Awarded item status values.
     ResponseMultiRoundItemsListRetrieve:
       properties:
         results:
@@ -622,6 +539,78 @@ components:
       - results
       title: ResponseMultiRoundItemsListRetrieve
       description: Paginated list response for awarded response items.
+    AwardSelectionStatus:
+      type: string
+      enum:
+      - AWARDED
+      - SELECTED
+      title: AwardSelectionStatus
+      description: Award selection status values.
+    SupplierErpSystemInfo:
+      properties:
+        external_supplier_id:
+          type: string
+          title: External Supplier Id
+        erp_system_uuid:
+          type: string
+          format: uuid
+          title: Erp System Uuid
+        is_active:
+          type: boolean
+          title: Is Active
+          default: true
+      type: object
+      required:
+      - external_supplier_id
+      - erp_system_uuid
+      title: SupplierErpSystemInfo
+    ResponseItemListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ResponseItemResponse'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: ResponseItemListRetrieve
+    AwardedItemQueryStatus:
+      type: string
+      enum:
+      - AWARDED
+      - SELECTED
+      title: AwardedItemQueryStatus
+      description: An enumeration.
+    ReasonInfo:
+      properties:
+        reason:
+          type: string
+          title: Reason
+        custom_reason:
+          type: string
+          title: Custom Reason
+      type: object
+      required:
+      - reason
+      title: ReasonInfo
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
     ResponseMultiroundItemResponse:
       properties:
         id:
@@ -705,48 +694,6 @@ components:
       - response_id
       - event_id
       title: ResponseMultiroundItemResponse
-    AwardedItemQueryStatus:
-      type: string
-      enum:
-      - AWARDED
-      - SELECTED
-      title: AwardedItemQueryStatus
-      description: An enumeration.
-    ResponseItemListRetrieve:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/ResponseItemResponse'
-          type: array
-          title: Results
-        next:
-          type: string
-          title: Next
-        previous:
-          type: string
-          title: Previous
-      type: object
-      required:
-      - results
-      title: ResponseItemListRetrieve
-    SupplierErpSystemInfo:
-      properties:
-        external_supplier_id:
-          type: string
-          title: External Supplier Id
-        erp_system_uuid:
-          type: string
-          format: uuid
-          title: Erp System Uuid
-        is_active:
-          type: boolean
-          title: Is Active
-          default: true
-      type: object
-      required:
-      - external_supplier_id
-      - erp_system_uuid
-      title: SupplierErpSystemInfo
     SupplierInfo:
       properties:
         uuid:
@@ -770,3 +717,56 @@ components:
       - title
       - email
       title: SupplierInfo
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    ResponseStatus:
+      type: string
+      enum:
+      - CREATED
+      - DRAFT
+      - SUBMITTED
+      - DECLINED
+      - SELECTED
+      - LOST
+      title: ResponseStatus
+      description: Response status values.
+    ResponseListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ResponseByRequest'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: ResponseListRetrieve

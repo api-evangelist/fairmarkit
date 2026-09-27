@@ -300,6 +300,26 @@ paths:
       description: Creates a new attachment on a request item.
 components:
   schemas:
+    Body_create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post:
+      title: Body_create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post
+      required:
+      - attachment
+      type: object
+      properties:
+        attachment:
+          title: Attachment
+          maxItems: 1
+          minItems: 1
+          type: array
+          items:
+            type: string
+            format: binary
+          description: File attachment to upload. Only one file is allowed per request.
+        attachment_field_name:
+          title: Attachment Field Name
+          type: string
+          description: Optional field name in the request schema where the attachment should be stored. If provided, the attachment will be stored in the schema data field instead of as a general file attachment.
+      description: Data to retrieve about a specific attachment.
     RfqItemAttachmentRetrieve:
       title: RfqItemAttachmentRetrieve
       required:
@@ -316,24 +336,13 @@ components:
           title: Orig File Name
           type: string
           description: File name when uploaded.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    RfqAttachmentRetrieve:
-      title: RfqAttachmentRetrieve
+    RequestAttachmentRetrieve:
+      title: RequestAttachmentRetrieve
       required:
       - file
       - orig_file_name
       type: object
-      description: Data to retrieve for an RFQ attachment.
+      description: Attachment details for a Request attachment.
       properties:
         file:
           title: File
@@ -359,6 +368,21 @@ components:
             format: binary
           description: Attachment name.
       description: Data to retrieve about a specific line item level attachment.
+    RfqAttachmentsDownloadInfo:
+      title: RfqAttachmentsDownloadInfo
+      required:
+      - status
+      type: object
+      description: Information when downloading an RFQ attachment.
+      properties:
+        status:
+          title: Status
+          type: string
+          description: Status.
+        archive:
+          title: Archive
+          type: string
+          description: Archive.
     RequestItemFileRetrieve:
       title: RequestItemFileRetrieve
       required:
@@ -395,22 +419,17 @@ components:
           type: string
           description: Field name in the request item schema where the attachment should be stored.
       description: Data to retrieve about a specific request item attachment.
-    Body_create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post:
-      title: Body_create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post
-      required:
-      - attachment
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
+      description: Validation error response.
       properties:
-        attachment:
-          title: Attachment
-          maxItems: 1
-          minItems: 1
+        detail:
+          title: Detail
           type: array
+          description: Details about a specific error to display in error response.
           items:
-            type: string
-            format: binary
-          description: Attachment name.
-      description: Data to retrieve about a specific event level attachment.
+            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -436,8 +455,8 @@ components:
           title: Error Type
           type: string
           description: Computer-readable identifier of the error type.
-    Body_create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post:
-      title: Body_create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post
+    Body_create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post:
+      title: Body_create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post
       required:
       - attachment
       type: object
@@ -450,34 +469,15 @@ components:
           items:
             type: string
             format: binary
-          description: File attachment to upload. Only one file is allowed per request.
-        attachment_field_name:
-          title: Attachment Field Name
-          type: string
-          description: Optional field name in the request schema where the attachment should be stored. If provided, the attachment will be stored in the schema data field instead of as a general file attachment.
-      description: Data to retrieve about a specific attachment.
-    RfqAttachmentsDownloadInfo:
-      title: RfqAttachmentsDownloadInfo
-      required:
-      - status
-      type: object
-      description: Information when downloading an RFQ attachment.
-      properties:
-        status:
-          title: Status
-          type: string
-          description: Status.
-        archive:
-          title: Archive
-          type: string
-          description: Archive.
-    RequestAttachmentRetrieve:
-      title: RequestAttachmentRetrieve
+          description: Attachment name.
+      description: Data to retrieve about a specific event level attachment.
+    RfqAttachmentRetrieve:
+      title: RfqAttachmentRetrieve
       required:
       - file
       - orig_file_name
       type: object
-      description: Attachment details for a Request attachment.
+      description: Data to retrieve for an RFQ attachment.
       properties:
         file:
           title: File

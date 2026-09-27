@@ -202,38 +202,6 @@ paths:
       description: Returns a list of business units.
 components:
   schemas:
-    BusinessUnitBuyerCompany:
-      title: BusinessUnitBuyerCompany
-      description: Defines the buyer company for a business unit.
-      required:
-      - id
-      - uuid
-      - title
-      type: object
-      properties:
-        id:
-          title: Id
-          type: integer
-          description: Company ID.
-        uuid:
-          title: Uuid
-          type: string
-          description: Company UUID.
-        title:
-          title: Title
-          type: string
-          description: Company name.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
     ListRetrieve_BusinessUnitRetrieve_:
       title: ListRetrieve[BusinessUnitRetrieve]
       description: Paginated list response for business units.
@@ -320,22 +288,38 @@ components:
           description: Select if an internal part number is required.
         buyer_company:
           $ref: '#/components/schemas/BusinessUnitBuyerCompany'
-    BusinessUnit:
-      title: BusinessUnit
-      description: Business unit data.
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    BusinessUnitBuyerCompany:
+      title: BusinessUnitBuyerCompany
+      description: Defines the buyer company for a business unit.
       required:
+      - id
+      - uuid
       - title
       type: object
       properties:
+        id:
+          title: Id
+          type: integer
+          description: Company ID.
+        uuid:
+          title: Uuid
+          type: string
+          description: Company UUID.
         title:
           title: Title
           type: string
-          description: Business unit title.
-        is_internal_part_number_required:
-          title: Is Internal Part Number Required
-          type: boolean
-          default: false
-          description: Select if an internal part number is required.
+          description: Company name.
     ValidationError:
       title: ValidationError
       required:
@@ -361,3 +345,19 @@ components:
           title: Error Type
           type: string
           description: Computer-readable identifier of the error type.
+    BusinessUnit:
+      title: BusinessUnit
+      description: Business unit data.
+      required:
+      - title
+      type: object
+      properties:
+        title:
+          title: Title
+          type: string
+          description: Business unit title.
+        is_internal_part_number_required:
+          title: Is Internal Part Number Required
+          type: boolean
+          default: false
+          description: Select if an internal part number is required.

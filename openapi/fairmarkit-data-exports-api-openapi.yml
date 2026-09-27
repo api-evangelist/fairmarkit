@@ -106,34 +106,24 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    DataExportAvailableField:
+    DataExportAvailableModel:
       properties:
         name:
           type: string
           title: Name
-        label:
+        title:
           type: string
-          title: Label
-        type:
-          type: string
-          title: Type
+          title: Title
+        fields:
+          items:
+            $ref: '#/components/schemas/DataExportAvailableField'
+          type: array
+          title: Fields
       type: object
       required:
       - name
-      - label
-      - type
-      title: DataExportAvailableField
+      - fields
+      title: DataExportAvailableModel
     DataExportCreateRequest:
       properties:
         external_reporting_id:
@@ -154,6 +144,23 @@ components:
       - selections
       - date_range
       title: DataExportCreateRequest
+    DataExportAvailableField:
+      properties:
+        name:
+          type: string
+          title: Name
+        label:
+          type: string
+          title: Label
+        type:
+          type: string
+          title: Type
+      type: object
+      required:
+      - name
+      - label
+      - type
+      title: DataExportAvailableField
     DataExportRetrieve:
       properties:
         id:
@@ -208,35 +215,16 @@ components:
       - selections
       - date_range
       title: DataExportRetrieve
-    DataExportAvailableModel:
+    DataExportCreateResponse:
       properties:
-        name:
+        id:
           type: string
-          title: Name
-        title:
-          type: string
-          title: Title
-        fields:
-          items:
-            $ref: '#/components/schemas/DataExportAvailableField'
-          type: array
-          title: Fields
+          format: uuid
+          title: Id
       type: object
       required:
-      - name
-      - fields
-      title: DataExportAvailableModel
-    DataExportAvailableResponse:
-      properties:
-        models:
-          items:
-            $ref: '#/components/schemas/DataExportAvailableModel'
-          type: array
-          title: Models
-      type: object
-      required:
-      - models
-      title: DataExportAvailableResponse
+      - id
+      title: DataExportCreateResponse
     DataExportDateRange:
       properties:
         start:
@@ -252,6 +240,17 @@ components:
       - start
       - end
       title: DataExportDateRange
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -277,16 +276,6 @@ components:
           title: Error Type
           type: string
           description: Computer-readable identifier of the error type.
-    DataExportCreateResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-      type: object
-      required:
-      - id
-      title: DataExportCreateResponse
     DataExportSelection:
       properties:
         model:
@@ -302,3 +291,14 @@ components:
       - model
       - fields
       title: DataExportSelection
+    DataExportAvailableResponse:
+      properties:
+        models:
+          items:
+            $ref: '#/components/schemas/DataExportAvailableModel'
+          type: array
+          title: Models
+      type: object
+      required:
+      - models
+      title: DataExportAvailableResponse

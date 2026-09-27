@@ -96,101 +96,6 @@ paths:
       description: Returns a list of permission sets.
 components:
   schemas:
-    LanguageCode:
-      type: string
-      enum:
-      - ar-tn
-      - bg
-      - de
-      - en
-      - en-gb
-      - es
-      - es-us
-      - et
-      - fi-fi
-      - fr
-      - hi
-      - hu
-      - id-id
-      - it
-      - ja-jp
-      - nl
-      - pl
-      - pt-br
-      - ru
-      - sv-se
-      - th
-      - tr
-      - uk-ua
-      - zh-hans
-      - zh-tw
-      - ko-kr
-      title: LanguageCode
-      description: Supported language codes.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    PermissionSetListRetrieve:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/PermissionSetRetrieve'
-          type: array
-          title: Results
-        next:
-          type: string
-          title: Next
-        previous:
-          type: string
-          title: Previous
-      type: object
-      required:
-      - results
-      title: PermissionSetListRetrieve
-      description: Paginated list response for permission sets.
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      description: Details for a validation error.
-      properties:
-        loc:
-          title: Location
-          type: array
-          description: Error location
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-          description: Human readable explanation of the error.
-        type:
-          title: Error Type
-          type: string
-          description: Computer-readable identifier of the error type.
-    IdentityCreateResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-      type: object
-      required:
-      - id
-      title: IdentityCreateResponse
     IdentityCreateRequest:
       properties:
         email:
@@ -255,3 +160,98 @@ components:
       - id
       - created_at
       title: PermissionSetRetrieve
+    PermissionSetListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/PermissionSetRetrieve'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: PermissionSetListRetrieve
+      description: Paginated list response for permission sets.
+    LanguageCode:
+      type: string
+      enum:
+      - ar-tn
+      - bg
+      - de
+      - en
+      - en-gb
+      - es
+      - es-us
+      - et
+      - fi-fi
+      - fr
+      - hi
+      - hu
+      - id-id
+      - it
+      - ja-jp
+      - nl
+      - pl
+      - pt-br
+      - ru
+      - sv-se
+      - th
+      - tr
+      - uk-ua
+      - zh-hans
+      - zh-tw
+      - ko-kr
+      title: LanguageCode
+      description: Supported language codes.
+    IdentityCreateResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: IdentityCreateResponse
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.

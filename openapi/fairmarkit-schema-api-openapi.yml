@@ -83,58 +83,6 @@ paths:
       description: Returns details for a specific schema.
 components:
   schemas:
-    SchemaType:
-      type: string
-      enum:
-      - data_field_dataset
-      - direct_negotiation_details
-      - direct_negotiation_item
-      - event_details
-      - event_item
-      - price_book
-      - purchase_requisition
-      - request
-      - request_award_export
-      - request_export
-      - request_integration
-      - request_item
-      - request_item_integration
-      - request_item_manual
-      - request_manual
-      - response
-      - response_item
-      - sow
-      - worksheet
-      title: SchemaType
-      description: Supported schema types.
-    SchemaRetrieve:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-          description: Schema Id.
-        content:
-          type: object
-          title: Content
-          description: JSON schema definition. Specifies the structure, types, and validation rules for the data that will be validated against the schema.
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Date and time when the Schema was created.
-        type:
-          $ref: '#/components/schemas/SchemaType'
-          title: Type
-          description: Schema type.
-      type: object
-      required:
-      - id
-      - content
-      - created_at
-      - type
-      title: SchemaRetrieve
-      description: Schema definition returned by the API.
     ValidationError:
       title: ValidationError
       required:
@@ -171,3 +119,55 @@ components:
           description: Details about a specific error to display in error response.
           items:
             $ref: '#/components/schemas/ValidationError'
+    SchemaRetrieve:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: Schema Id.
+        content:
+          type: object
+          title: Content
+          description: JSON schema definition. Specifies the structure, types, and validation rules for the data that will be validated against the schema.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Date and time when the Schema was created.
+        type:
+          $ref: '#/components/schemas/SchemaType'
+          title: Type
+          description: Schema type.
+      type: object
+      required:
+      - id
+      - content
+      - created_at
+      - type
+      title: SchemaRetrieve
+      description: Schema definition returned by the API.
+    SchemaType:
+      type: string
+      enum:
+      - data_field_dataset
+      - direct_negotiation_details
+      - direct_negotiation_item
+      - event_details
+      - event_item
+      - price_book
+      - purchase_requisition
+      - request
+      - request_award_export
+      - request_export
+      - request_integration
+      - request_item
+      - request_item_integration
+      - request_item_manual
+      - request_manual
+      - response
+      - response_item
+      - sow
+      - worksheet
+      title: SchemaType
+      description: Supported schema types.
