@@ -300,58 +300,21 @@ paths:
       description: Creates a new attachment on a request item.
 components:
   schemas:
-    Body_create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post:
-      title: Body_create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post
+    RfqAttachmentsDownloadInfo:
+      title: RfqAttachmentsDownloadInfo
       required:
-      - attachment
+      - status
       type: object
+      description: Information when downloading an RFQ attachment.
       properties:
-        attachment:
-          title: Attachment
-          maxItems: 1
-          minItems: 1
-          type: array
-          items:
-            type: string
-            format: binary
-          description: File attachment to upload. Only one file is allowed per request.
-        attachment_field_name:
-          title: Attachment Field Name
+        status:
+          title: Status
           type: string
-          description: Optional field name in the request schema where the attachment should be stored. If provided, the attachment will be stored in the schema data field instead of as a general file attachment.
-      description: Data to retrieve about a specific attachment.
-    RfqItemAttachmentRetrieve:
-      title: RfqItemAttachmentRetrieve
-      required:
-      - file
-      - orig_file_name
-      type: object
-      description: Data to retrieve for an RFQ line item attachment.
-      properties:
-        file:
-          title: File
+          description: Status.
+        archive:
+          title: Archive
           type: string
-          description: Stored file name. If two files with the same name are added, a unique hash is added to the file. The file name when uploaded is available in orig_file_name.
-        orig_file_name:
-          title: Orig File Name
-          type: string
-          description: File name when uploaded.
-    RequestAttachmentRetrieve:
-      title: RequestAttachmentRetrieve
-      required:
-      - file
-      - orig_file_name
-      type: object
-      description: Attachment details for a Request attachment.
-      properties:
-        file:
-          title: File
-          type: string
-          description: Stored file name. If two files with the same name are added, a unique hash is added to the file. The file name when uploaded is available in orig_file_name.
-        orig_file_name:
-          title: Orig File Name
-          type: string
-          description: File name when uploaded.
+          description: Archive.
     Body_create_rfq_item_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid__items__item_uuid___post:
       title: Body_create_rfq_item_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid__items__item_uuid___post
       required:
@@ -368,21 +331,31 @@ components:
             format: binary
           description: Attachment name.
       description: Data to retrieve about a specific line item level attachment.
-    RfqAttachmentsDownloadInfo:
-      title: RfqAttachmentsDownloadInfo
+    ValidationError:
+      title: ValidationError
       required:
-      - status
+      - loc
+      - msg
+      - type
       type: object
-      description: Information when downloading an RFQ attachment.
+      description: Details for a validation error.
       properties:
-        status:
-          title: Status
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
           type: string
-          description: Status.
-        archive:
-          title: Archive
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
           type: string
-          description: Archive.
+          description: Computer-readable identifier of the error type.
     RequestItemFileRetrieve:
       title: RequestItemFileRetrieve
       required:
@@ -419,42 +392,38 @@ components:
           type: string
           description: Field name in the request item schema where the attachment should be stored.
       description: Data to retrieve about a specific request item attachment.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    ValidationError:
-      title: ValidationError
+    RfqAttachmentRetrieve:
+      title: RfqAttachmentRetrieve
       required:
-      - loc
-      - msg
-      - type
+      - file
+      - orig_file_name
       type: object
-      description: Details for a validation error.
+      description: Data to retrieve for an RFQ attachment.
       properties:
-        loc:
-          title: Location
-          type: array
-          description: Error location
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
+        file:
+          title: File
           type: string
-          description: Human readable explanation of the error.
-        type:
-          title: Error Type
+          description: Stored file name. If two files with the same name are added, a unique hash is added to the file. The file name when uploaded is available in orig_file_name.
+        orig_file_name:
+          title: Orig File Name
           type: string
-          description: Computer-readable identifier of the error type.
+          description: File name when uploaded.
+    RfqItemAttachmentRetrieve:
+      title: RfqItemAttachmentRetrieve
+      required:
+      - file
+      - orig_file_name
+      type: object
+      description: Data to retrieve for an RFQ line item attachment.
+      properties:
+        file:
+          title: File
+          type: string
+          description: Stored file name. If two files with the same name are added, a unique hash is added to the file. The file name when uploaded is available in orig_file_name.
+        orig_file_name:
+          title: Orig File Name
+          type: string
+          description: File name when uploaded.
     Body_create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post:
       title: Body_create_rfq_attachment_services_self_service_api_v3_attachments_rfq__rfq_uuid___post
       required:
@@ -471,13 +440,44 @@ components:
             format: binary
           description: Attachment name.
       description: Data to retrieve about a specific event level attachment.
-    RfqAttachmentRetrieve:
-      title: RfqAttachmentRetrieve
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    Body_create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post:
+      title: Body_create_request_attachment_services_self_service_api_v3_attachments_requests__request_uuid___post
+      required:
+      - attachment
+      type: object
+      properties:
+        attachment:
+          title: Attachment
+          maxItems: 1
+          minItems: 1
+          type: array
+          items:
+            type: string
+            format: binary
+          description: File attachment to upload. Only one file is allowed per request.
+        attachment_field_name:
+          title: Attachment Field Name
+          type: string
+          description: Optional field name in the request schema where the attachment should be stored. If provided, the attachment will be stored in the schema data field instead of as a general file attachment.
+      description: Data to retrieve about a specific attachment.
+    RequestAttachmentRetrieve:
+      title: RequestAttachmentRetrieve
       required:
       - file
       - orig_file_name
       type: object
-      description: Data to retrieve for an RFQ attachment.
+      description: Attachment details for a Request attachment.
       properties:
         file:
           title: File

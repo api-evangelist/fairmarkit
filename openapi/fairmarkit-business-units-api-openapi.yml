@@ -202,32 +202,6 @@ paths:
       description: Returns a list of business units.
 components:
   schemas:
-    ListRetrieve_BusinessUnitRetrieve_:
-      title: ListRetrieve[BusinessUnitRetrieve]
-      description: Paginated list response for business units.
-      required:
-      - count
-      - results
-      type: object
-      properties:
-        count:
-          title: Count
-          type: integer
-          description: A count of the number of records in the full results set.
-        next:
-          title: Next
-          type: string
-          description: A URL to fetch the next page of results, if more results exist in the set.
-        previous:
-          title: Previous
-          type: string
-          description: A URL to fetch the previous page of results, if previous results exist in the set.
-        results:
-          title: Results
-          type: array
-          items:
-            $ref: '#/components/schemas/BusinessUnitRetrieve'
-          description: A list representing one page of the result set.
     BusinessUnitCreate:
       title: BusinessUnitCreate
       description: Business unit data returned after create and update operations.
@@ -259,67 +233,6 @@ components:
           title: Buyer Company
           type: integer
           description: Buyer company.
-    BusinessUnitRetrieve:
-      title: BusinessUnitRetrieve
-      description: Paginated list response for business units.
-      required:
-      - id
-      - uuid
-      - title
-      - buyer_company
-      type: object
-      properties:
-        id:
-          title: Id
-          type: integer
-          description: Business unit ID.
-        uuid:
-          title: Uuid
-          type: string
-          description: Business unit UUID.
-        title:
-          title: Title
-          type: string
-          description: Business unit name.
-        is_internal_part_number_required:
-          title: Is Internal Part Number Required
-          type: boolean
-          default: false
-          description: Select if an internal part number is required.
-        buyer_company:
-          $ref: '#/components/schemas/BusinessUnitBuyerCompany'
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    BusinessUnitBuyerCompany:
-      title: BusinessUnitBuyerCompany
-      description: Defines the buyer company for a business unit.
-      required:
-      - id
-      - uuid
-      - title
-      type: object
-      properties:
-        id:
-          title: Id
-          type: integer
-          description: Company ID.
-        uuid:
-          title: Uuid
-          type: string
-          description: Company UUID.
-        title:
-          title: Title
-          type: string
-          description: Company name.
     ValidationError:
       title: ValidationError
       required:
@@ -361,3 +274,90 @@ components:
           type: boolean
           default: false
           description: Select if an internal part number is required.
+    BusinessUnitBuyerCompany:
+      title: BusinessUnitBuyerCompany
+      description: Defines the buyer company for a business unit.
+      required:
+      - id
+      - uuid
+      - title
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          description: Company ID.
+        uuid:
+          title: Uuid
+          type: string
+          description: Company UUID.
+        title:
+          title: Title
+          type: string
+          description: Company name.
+    BusinessUnitRetrieve:
+      title: BusinessUnitRetrieve
+      description: Paginated list response for business units.
+      required:
+      - id
+      - uuid
+      - title
+      - buyer_company
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          description: Business unit ID.
+        uuid:
+          title: Uuid
+          type: string
+          description: Business unit UUID.
+        title:
+          title: Title
+          type: string
+          description: Business unit name.
+        is_internal_part_number_required:
+          title: Is Internal Part Number Required
+          type: boolean
+          default: false
+          description: Select if an internal part number is required.
+        buyer_company:
+          $ref: '#/components/schemas/BusinessUnitBuyerCompany'
+    ListRetrieve_BusinessUnitRetrieve_:
+      title: ListRetrieve[BusinessUnitRetrieve]
+      description: Paginated list response for business units.
+      required:
+      - count
+      - results
+      type: object
+      properties:
+        count:
+          title: Count
+          type: integer
+          description: A count of the number of records in the full results set.
+        next:
+          title: Next
+          type: string
+          description: A URL to fetch the next page of results, if more results exist in the set.
+        previous:
+          title: Previous
+          type: string
+          description: A URL to fetch the previous page of results, if previous results exist in the set.
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/BusinessUnitRetrieve'
+          description: A list representing one page of the result set.
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
