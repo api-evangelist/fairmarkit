@@ -112,29 +112,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    UserProfileResponse:
-      title: UserProfileResponse
-      type: object
-      description: User profile response data.
-      properties:
-        id:
-          title: Id
-          type: string
-          format: uuid
-          description: The unique identifier of the user profile.
-        identity_id:
-          type: string
-          format: uuid
-          title: Identity Id
-          description: The unique identifier of the user identity.
-        custom_attributes:
-          title: Custom Attributes
-          type: object
-          description: Custom attributes associated with the user profile.
-          additionalProperties: true
-      required:
-      - identity_id
-      - custom_attributes
     UserProfile:
       title: UserProfile
       type: object
@@ -183,3 +160,26 @@ components:
           title: Error Type
           type: string
           description: Computer-readable identifier of the error type.
+    UserProfileResponse:
+      title: UserProfileResponse
+      type: object
+      description: User profile response data.
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          description: The unique identifier of the user profile.
+        identity_id:
+          type: string
+          format: uuid
+          title: Identity Id
+          description: The unique identifier of the user identity.
+        custom_attributes:
+          title: Custom Attributes
+          type: object
+          description: Custom attributes associated with the user profile.
+          additionalProperties: true
+      required:
+      - identity_id
+      - custom_attributes

@@ -233,6 +233,35 @@ components:
           title: Buyer Company
           type: integer
           description: Buyer company.
+    BusinessUnitRetrieve:
+      title: BusinessUnitRetrieve
+      description: Paginated list response for business units.
+      required:
+      - id
+      - uuid
+      - title
+      - buyer_company
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          description: Business unit ID.
+        uuid:
+          title: Uuid
+          type: string
+          description: Business unit UUID.
+        title:
+          title: Title
+          type: string
+          description: Business unit name.
+        is_internal_part_number_required:
+          title: Is Internal Part Number Required
+          type: boolean
+          default: false
+          description: Select if an internal part number is required.
+        buyer_company:
+          $ref: '#/components/schemas/BusinessUnitBuyerCompany'
     ValidationError:
       title: ValidationError
       required:
@@ -274,6 +303,17 @@ components:
           type: boolean
           default: false
           description: Select if an internal part number is required.
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
     BusinessUnitBuyerCompany:
       title: BusinessUnitBuyerCompany
       description: Defines the buyer company for a business unit.
@@ -295,35 +335,6 @@ components:
           title: Title
           type: string
           description: Company name.
-    BusinessUnitRetrieve:
-      title: BusinessUnitRetrieve
-      description: Paginated list response for business units.
-      required:
-      - id
-      - uuid
-      - title
-      - buyer_company
-      type: object
-      properties:
-        id:
-          title: Id
-          type: integer
-          description: Business unit ID.
-        uuid:
-          title: Uuid
-          type: string
-          description: Business unit UUID.
-        title:
-          title: Title
-          type: string
-          description: Business unit name.
-        is_internal_part_number_required:
-          title: Is Internal Part Number Required
-          type: boolean
-          default: false
-          description: Select if an internal part number is required.
-        buyer_company:
-          $ref: '#/components/schemas/BusinessUnitBuyerCompany'
     ListRetrieve_BusinessUnitRetrieve_:
       title: ListRetrieve[BusinessUnitRetrieve]
       description: Paginated list response for business units.
@@ -350,14 +361,3 @@ components:
           items:
             $ref: '#/components/schemas/BusinessUnitRetrieve'
           description: A list representing one page of the result set.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'

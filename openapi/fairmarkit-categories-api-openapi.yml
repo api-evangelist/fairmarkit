@@ -71,32 +71,17 @@ paths:
       description: Returns a list of categories.
 components:
   schemas:
-    CategoryRetrieve:
-      title: CategoryRetrieve
-      description: Data to retrieve about a specific category.
-      required:
-      - uuid
-      - title
-      - visual_title
-      - external_id
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
+      description: Validation error response.
       properties:
-        uuid:
-          title: Uuid
-          type: string
-          description: Category UUID.
-        title:
-          title: Title
-          type: string
-          description: Category name.
-        visual_title:
-          title: Visual Title
-          type: string
-          description: Category display name.
-        external_id:
-          title: External Id
-          type: string
-          description: Category external ID.
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
     ListRetrieve_CategoryRetrieve_:
       title: ListRetrieve[CategoryRetrieve]
       description: Paginated list response for categories.
@@ -123,17 +108,6 @@ components:
           description: A list representing one page of the result set.
           items:
             $ref: '#/components/schemas/CategoryRetrieve'
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
     ValidationError:
       title: ValidationError
       required:
@@ -159,3 +133,29 @@ components:
           title: Error Type
           type: string
           description: Computer-readable identifier of the error type.
+    CategoryRetrieve:
+      title: CategoryRetrieve
+      description: Data to retrieve about a specific category.
+      required:
+      - uuid
+      - title
+      - visual_title
+      - external_id
+      type: object
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          description: Category UUID.
+        title:
+          title: Title
+          type: string
+          description: Category name.
+        visual_title:
+          title: Visual Title
+          type: string
+          description: Category display name.
+        external_id:
+          title: External Id
+          type: string
+          description: Category external ID.

@@ -106,21 +106,87 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    DataExportDateRange:
+    DataExportAvailableField:
       properties:
-        start:
+        name:
           type: string
-          format: date
-          title: Start
-        end:
+          title: Name
+        label:
           type: string
-          format: date
-          title: End
+          title: Label
+        type:
+          type: string
+          title: Type
       type: object
       required:
-      - start
-      - end
-      title: DataExportDateRange
+      - name
+      - label
+      - type
+      title: DataExportAvailableField
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    DataExportCreateResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: DataExportCreateResponse
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    DataExportAvailableModel:
+      properties:
+        name:
+          type: string
+          title: Name
+        title:
+          type: string
+          title: Title
+        fields:
+          items:
+            $ref: '#/components/schemas/DataExportAvailableField'
+          type: array
+          title: Fields
+      type: object
+      required:
+      - name
+      - fields
+      title: DataExportAvailableModel
     DataExportRetrieve:
       properties:
         id:
@@ -175,73 +241,6 @@ components:
       - selections
       - date_range
       title: DataExportRetrieve
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      description: Details for a validation error.
-      properties:
-        loc:
-          title: Location
-          type: array
-          description: Error location
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-          description: Human readable explanation of the error.
-        type:
-          title: Error Type
-          type: string
-          description: Computer-readable identifier of the error type.
-    DataExportCreateResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-      type: object
-      required:
-      - id
-      title: DataExportCreateResponse
-    DataExportSelection:
-      properties:
-        model:
-          type: string
-          title: Model
-        fields:
-          items:
-            type: string
-          type: array
-          title: Fields
-      type: object
-      required:
-      - model
-      - fields
-      title: DataExportSelection
-    DataExportAvailableField:
-      properties:
-        name:
-          type: string
-          title: Name
-        label:
-          type: string
-          title: Label
-        type:
-          type: string
-          title: Type
-      type: object
-      required:
-      - name
-      - label
-      - type
-      title: DataExportAvailableField
     DataExportCreateRequest:
       properties:
         external_reporting_id:
@@ -262,35 +261,21 @@ components:
       - selections
       - date_range
       title: DataExportCreateRequest
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
+    DataExportDateRange:
       properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    DataExportAvailableModel:
-      properties:
-        name:
+        start:
           type: string
-          title: Name
-        title:
+          format: date
+          title: Start
+        end:
           type: string
-          title: Title
-        fields:
-          items:
-            $ref: '#/components/schemas/DataExportAvailableField'
-          type: array
-          title: Fields
+          format: date
+          title: End
       type: object
       required:
-      - name
-      - fields
-      title: DataExportAvailableModel
+      - start
+      - end
+      title: DataExportDateRange
     DataExportAvailableResponse:
       properties:
         models:
@@ -302,3 +287,18 @@ components:
       required:
       - models
       title: DataExportAvailableResponse
+    DataExportSelection:
+      properties:
+        model:
+          type: string
+          title: Model
+        fields:
+          items:
+            type: string
+          type: array
+          title: Fields
+      type: object
+      required:
+      - model
+      - fields
+      title: DataExportSelection

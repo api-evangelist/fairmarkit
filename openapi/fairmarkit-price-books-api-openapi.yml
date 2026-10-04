@@ -902,326 +902,6 @@ paths:
       deprecated: true
 components:
   schemas:
-    PriceBookItem:
-      properties:
-        manufacturer:
-          type: string
-          title: Manufacturer
-        manufacturer_pn:
-          type: string
-          title: Manufacturer Pn
-        supplier_pn:
-          type: string
-          title: Supplier Pn
-        description:
-          type: string
-          title: Description
-        country_of_origin:
-          type: string
-          title: Country Of Origin
-        hts_code:
-          type: string
-          title: Hts Code
-        category:
-          type: string
-          title: Category
-        sub_category:
-          type: string
-          title: Sub Category
-        internal_pn:
-          type: string
-          title: Internal Pn
-        vendor_sku:
-          type: string
-          title: Vendor Sku
-        vendor_item_description:
-          type: string
-          title: Vendor Item Description
-        image_url:
-          type: string
-          title: Image Url
-        min_order_quantity:
-          type: number
-          title: Min Order Quantity
-        delivery_days:
-          type: integer
-          title: Delivery Days
-        uom:
-          type: string
-          title: Uom
-        currency:
-          type: string
-          title: Currency
-        unit_price:
-          type: number
-          exclusiveMinimum: 0
-          title: Unit Price
-        vendor_agent:
-          type: string
-          title: Vendor Agent
-      type: object
-      required:
-      - manufacturer
-      - manufacturer_pn
-      - supplier_pn
-      - description
-      - country_of_origin
-      - hts_code
-      - category
-      - sub_category
-      - internal_pn
-      - vendor_sku
-      - vendor_item_description
-      - uom
-      - currency
-      - unit_price
-      - vendor_agent
-      title: PriceBookItem
-    CreatePriceBookItemResponseV4:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-          description: The unique identifier of the created price book item.
-      type: object
-      required:
-      - id
-      title: CreatePriceBookItemResponse
-    PriceBookItemResponseV4:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-          description: The unique identifier of the price book item.
-        price_book_id:
-          type: string
-          format: uuid
-          title: Price Book Id
-          description: The unique identifier of the price book.
-        value:
-          type: object
-          title: Value
-          description: The value data of the price book item.
-        custom_tags:
-          additionalProperties:
-            type: array
-            items: {}
-          type: object
-          title: Custom Tags
-          description: Custom tags associated with the price book item.
-        external_id:
-          type: string
-          title: External Id
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: The date and time when the item was created.
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-          description: The date and time when the item was last updated.
-      type: object
-      required:
-      - id
-      - price_book_id
-      - value
-      - created_at
-      title: PriceBookItemResponse
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      description: Details for a validation error.
-      properties:
-        loc:
-          title: Location
-          type: array
-          description: Error location
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-          description: Human readable explanation of the error.
-        type:
-          title: Error Type
-          type: string
-          description: Computer-readable identifier of the error type.
-    PriceBook:
-      properties:
-        title:
-          type: string
-          maxLength: 255
-          title: Title
-        effective_date_from:
-          type: string
-          format: date-time
-          title: Effective Date From
-        effective_date_to:
-          type: string
-          format: date-time
-          title: Effective Date To
-        supplier_id:
-          type: string
-          format: uuid
-          title: Supplier Id
-        supplier_tenant_id:
-          type: string
-          format: uuid
-          title: Supplier Tenant Id
-        business_unit_ids:
-          items:
-            type: string
-            format: uuid
-          type: array
-          title: Business Unit Ids
-        items:
-          items:
-            $ref: '#/components/schemas/PriceBookItem'
-          type: array
-          maxItems: 5000
-          title: Items
-          default: []
-      type: object
-      required:
-      - title
-      - effective_date_from
-      - effective_date_to
-      title: PriceBook
-    PriceBookV4:
-      properties:
-        supplier_id:
-          type: string
-          format: uuid
-          title: Supplier Id
-          description: The unique identifier of the supplier.
-        title:
-          type: string
-          title: Title
-          description: The title of the price book.
-        schema_id:
-          type: string
-          format: uuid
-          title: Schema Id
-          description: The unique identifier of the schema.
-        effective_date_from:
-          type: string
-          format: date-time
-          title: Effective Date From
-          description: The start date when the price book becomes effective.
-        effective_date_to:
-          type: string
-          format: date-time
-          title: Effective Date To
-          description: The end date when the price book expires.
-        active:
-          type: boolean
-          title: Active
-          default: true
-          description: Whether the price book is active.
-        custom_tags:
-          additionalProperties:
-            type: array
-            items: {}
-          type: object
-          title: Custom Tags
-          description: Custom tags associated with the price book.
-        external_id:
-          type: string
-          title: External Id
-      type: object
-      required:
-      - supplier_id
-      - title
-      - schema_id
-      - effective_date_from
-      - effective_date_to
-      title: PriceBook
-    CreatePriceBookResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-      type: object
-      required:
-      - id
-      title: CreatePriceBookResponse
-    PriceBookResponseV4:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-          description: The unique identifier of the price book.
-        supplier_id:
-          type: string
-          format: uuid
-          title: Supplier Id
-          description: The unique identifier of the supplier.
-        title:
-          type: string
-          title: Title
-          description: The title of the price book.
-        schema_id:
-          type: string
-          format: uuid
-          title: Schema Id
-          description: The unique identifier of the schema.
-        effective_date_from:
-          type: string
-          format: date-time
-          title: Effective Date From
-          description: The start date when the price book becomes effective.
-        effective_date_to:
-          type: string
-          format: date-time
-          title: Effective Date To
-          description: The end date when the price book expires.
-        active:
-          type: boolean
-          title: Active
-          description: Whether the price book is active.
-        custom_tags:
-          additionalProperties:
-            type: array
-            items: {}
-          type: object
-          title: Custom Tags
-          description: Custom tags associated with the price book.
-        external_id:
-          type: string
-          title: External Id
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: The date and time when the price book was created.
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-          description: The date and time when the price book was last updated.
-      type: object
-      required:
-      - id
-      - supplier_id
-      - title
-      - schema_id
-      - effective_date_from
-      - effective_date_to
-      - active
-      - created_at
-      title: PriceBookResponse
     PriceBookItemResponse:
       properties:
         manufacturer:
@@ -1302,6 +982,79 @@ components:
       - vendor_agent
       - id
       title: PriceBookItemResponse
+    CreatePriceBookResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: CreatePriceBookResponse
+    CreatePriceBookResponseV4:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: The unique identifier of the created price book.
+      type: object
+      required:
+      - id
+      title: CreatePriceBookResponse
+    UpdatedPriceBookV4:
+      properties:
+        title:
+          type: string
+          title: Title
+          description: The title of the price book.
+        effective_date_from:
+          type: string
+          format: date-time
+          title: Effective Date From
+          description: The start date when the price book becomes effective.
+        effective_date_to:
+          type: string
+          format: date-time
+          title: Effective Date To
+          description: The end date when the price book expires.
+        supplier_id:
+          type: string
+          format: uuid
+          title: Supplier Id
+          description: The unique identifier of the supplier.
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+          description: The unique identifier of the schema.
+        active:
+          type: boolean
+          title: Active
+          description: Whether the price book is active.
+        custom_tags:
+          additionalProperties:
+            type: array
+            items: {}
+          type: object
+          title: Custom Tags
+          description: Custom tags associated with the price book.
+        external_id:
+          type: string
+          title: External Id
+      type: object
+      title: UpdatedPriceBook
+    CreatePriceBookItemResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: CreatePriceBookItemResponse
     UpdatedPriceBookItemV4:
       properties:
         value:
@@ -1322,17 +1075,97 @@ components:
       required:
       - value
       title: UpdatedPriceBookItem
-    CreatePriceBookResponseV4:
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    PriceBookResponseV4:
       properties:
         id:
           type: string
           format: uuid
           title: Id
-          description: The unique identifier of the created price book.
+          description: The unique identifier of the price book.
+        supplier_id:
+          type: string
+          format: uuid
+          title: Supplier Id
+          description: The unique identifier of the supplier.
+        title:
+          type: string
+          title: Title
+          description: The title of the price book.
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+          description: The unique identifier of the schema.
+        effective_date_from:
+          type: string
+          format: date-time
+          title: Effective Date From
+          description: The start date when the price book becomes effective.
+        effective_date_to:
+          type: string
+          format: date-time
+          title: Effective Date To
+          description: The end date when the price book expires.
+        active:
+          type: boolean
+          title: Active
+          description: Whether the price book is active.
+        custom_tags:
+          additionalProperties:
+            type: array
+            items: {}
+          type: object
+          title: Custom Tags
+          description: Custom tags associated with the price book.
+        external_id:
+          type: string
+          title: External Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: The date and time when the price book was created.
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+          description: The date and time when the price book was last updated.
       type: object
       required:
       - id
-      title: CreatePriceBookResponse
+      - supplier_id
+      - title
+      - schema_id
+      - effective_date_from
+      - effective_date_to
+      - active
+      - created_at
+      title: PriceBookResponse
     PriceBookItemV4:
       properties:
         value:
@@ -1353,6 +1186,17 @@ components:
       required:
       - value
       title: PriceBookItem
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
     PriceBookResponse:
       properties:
         title:
@@ -1412,23 +1256,33 @@ components:
       - tenant_id
       - created_at
       title: PriceBookResponse
-    HTTPValidationError:
-      title: HTTPValidationError
+    CreatePriceBookItemResponseV4:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: The unique identifier of the created price book item.
       type: object
-      description: Validation error response.
+      required:
+      - id
+      title: CreatePriceBookItemResponse
+    PriceBookV4:
       properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    UpdatedPriceBookV4:
-      properties:
+        supplier_id:
+          type: string
+          format: uuid
+          title: Supplier Id
+          description: The unique identifier of the supplier.
         title:
           type: string
           title: Title
           description: The title of the price book.
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+          description: The unique identifier of the schema.
         effective_date_from:
           type: string
           format: date-time
@@ -1439,19 +1293,10 @@ components:
           format: date-time
           title: Effective Date To
           description: The end date when the price book expires.
-        supplier_id:
-          type: string
-          format: uuid
-          title: Supplier Id
-          description: The unique identifier of the supplier.
-        schema_id:
-          type: string
-          format: uuid
-          title: Schema Id
-          description: The unique identifier of the schema.
         active:
           type: boolean
           title: Active
+          default: true
           description: Whether the price book is active.
         custom_tags:
           additionalProperties:
@@ -1464,14 +1309,169 @@ components:
           type: string
           title: External Id
       type: object
-      title: UpdatedPriceBook
-    CreatePriceBookItemResponse:
+      required:
+      - supplier_id
+      - title
+      - schema_id
+      - effective_date_from
+      - effective_date_to
+      title: PriceBook
+    PriceBook:
+      properties:
+        title:
+          type: string
+          maxLength: 255
+          title: Title
+        effective_date_from:
+          type: string
+          format: date-time
+          title: Effective Date From
+        effective_date_to:
+          type: string
+          format: date-time
+          title: Effective Date To
+        supplier_id:
+          type: string
+          format: uuid
+          title: Supplier Id
+        supplier_tenant_id:
+          type: string
+          format: uuid
+          title: Supplier Tenant Id
+        business_unit_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: Business Unit Ids
+        items:
+          items:
+            $ref: '#/components/schemas/PriceBookItem'
+          type: array
+          maxItems: 5000
+          title: Items
+          default: []
+      type: object
+      required:
+      - title
+      - effective_date_from
+      - effective_date_to
+      title: PriceBook
+    PriceBookItem:
+      properties:
+        manufacturer:
+          type: string
+          title: Manufacturer
+        manufacturer_pn:
+          type: string
+          title: Manufacturer Pn
+        supplier_pn:
+          type: string
+          title: Supplier Pn
+        description:
+          type: string
+          title: Description
+        country_of_origin:
+          type: string
+          title: Country Of Origin
+        hts_code:
+          type: string
+          title: Hts Code
+        category:
+          type: string
+          title: Category
+        sub_category:
+          type: string
+          title: Sub Category
+        internal_pn:
+          type: string
+          title: Internal Pn
+        vendor_sku:
+          type: string
+          title: Vendor Sku
+        vendor_item_description:
+          type: string
+          title: Vendor Item Description
+        image_url:
+          type: string
+          title: Image Url
+        min_order_quantity:
+          type: number
+          title: Min Order Quantity
+        delivery_days:
+          type: integer
+          title: Delivery Days
+        uom:
+          type: string
+          title: Uom
+        currency:
+          type: string
+          title: Currency
+        unit_price:
+          type: number
+          exclusiveMinimum: 0
+          title: Unit Price
+        vendor_agent:
+          type: string
+          title: Vendor Agent
+      type: object
+      required:
+      - manufacturer
+      - manufacturer_pn
+      - supplier_pn
+      - description
+      - country_of_origin
+      - hts_code
+      - category
+      - sub_category
+      - internal_pn
+      - vendor_sku
+      - vendor_item_description
+      - uom
+      - currency
+      - unit_price
+      - vendor_agent
+      title: PriceBookItem
+    PriceBookItemResponseV4:
       properties:
         id:
           type: string
           format: uuid
           title: Id
+          description: The unique identifier of the price book item.
+        price_book_id:
+          type: string
+          format: uuid
+          title: Price Book Id
+          description: The unique identifier of the price book.
+        value:
+          type: object
+          title: Value
+          description: The value data of the price book item.
+        custom_tags:
+          additionalProperties:
+            type: array
+            items: {}
+          type: object
+          title: Custom Tags
+          description: Custom tags associated with the price book item.
+        external_id:
+          type: string
+          title: External Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: The date and time when the item was created.
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+          description: The date and time when the item was last updated.
       type: object
       required:
       - id
-      title: CreatePriceBookItemResponse
+      - price_book_id
+      - value
+      - created_at
+      title: PriceBookItemResponse

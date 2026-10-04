@@ -612,6 +612,73 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    DataFieldDatasetSlugResponse:
+      properties:
+        slug:
+          type: string
+          title: Slug
+      type: object
+      required:
+      - slug
+      title: DataFieldDatasetSlugResponse
+    DataFieldDatasetItemIDResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: DataFieldDatasetItemIDResponse
+    UpdateDatasetRequest:
+      properties:
+        title:
+          type: string
+          maxLength: 255
+          title: Title
+        active:
+          type: boolean
+          title: Active
+        slug:
+          type: string
+          maxLength: 50
+          title: Slug
+      type: object
+      title: UpdateDatasetRequest
+    UpdateDatasetItemRequest:
+      properties:
+        value:
+          type: object
+          title: Value
+          default: {}
+        dataset_id:
+          type: string
+          format: uuid
+          title: Dataset Id
+        custom_tags:
+          type: object
+          title: Custom Tags
+          default: {}
+        external_id:
+          type: string
+          title: External Id
+      type: object
+      title: UpdateDatasetItemRequest
+    UploadDatasetItemsRequest:
+      properties:
+        dataset_slug:
+          type: string
+          title: Dataset Slug
+        file_id:
+          type: string
+          format: uuid
+          title: File Id
+      type: object
+      required:
+      - dataset_slug
+      - file_id
+      title: UploadDatasetItemsRequest
     ValidationError:
       title: ValidationError
       required:
@@ -637,48 +704,49 @@ components:
           title: Error Type
           type: string
           description: Computer-readable identifier of the error type.
-    UpdateDatasetItemRequest:
+    DataFieldDatasetItemResponse:
       properties:
-        value:
-          type: object
-          title: Value
-          default: {}
+        id:
+          type: string
+          format: uuid
+          title: Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        created_by:
+          type: string
+          format: uuid
+          title: Created By
         dataset_id:
           type: string
           format: uuid
           title: Dataset Id
+        value:
+          type: object
+          title: Value
         custom_tags:
           type: object
           title: Custom Tags
-          default: {}
         external_id:
           type: string
           title: External Id
-      type: object
-      title: UpdateDatasetItemRequest
-    DataFieldDatasetSlugResponse:
-      properties:
-        slug:
+        updated_at:
           type: string
-          title: Slug
-      type: object
-      required:
-      - slug
-      title: DataFieldDatasetSlugResponse
-    UploadDatasetItemsRequest:
-      properties:
-        dataset_slug:
-          type: string
-          title: Dataset Slug
-        file_id:
+          format: date-time
+          title: Updated At
+        updated_by:
           type: string
           format: uuid
-          title: File Id
+          title: Updated By
       type: object
       required:
-      - dataset_slug
-      - file_id
-      title: UploadDatasetItemsRequest
+      - id
+      - created_at
+      - created_by
+      - dataset_id
+      - value
+      title: DataFieldDatasetItemResponse
     CreateDatasetRequest:
       properties:
         slug:
@@ -697,31 +765,33 @@ components:
       - title
       - schema_id
       title: CreateDatasetRequest
-    UpdateDatasetRequest:
-      properties:
-        title:
-          type: string
-          maxLength: 255
-          title: Title
-        active:
-          type: boolean
-          title: Active
-        slug:
-          type: string
-          maxLength: 50
-          title: Slug
+    HTTPValidationError:
+      title: HTTPValidationError
       type: object
-      title: UpdateDatasetRequest
-    DataFieldDatasetItemIDResponse:
+      description: Validation error response.
       properties:
-        id:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    CreateDatasetItemRequest:
+      properties:
+        value:
+          type: object
+          title: Value
+        custom_tags:
+          type: object
+          title: Custom Tags
+          default: {}
+        external_id:
           type: string
-          format: uuid
-          title: Id
+          title: External Id
       type: object
       required:
-      - id
-      title: DataFieldDatasetItemIDResponse
+      - value
+      title: CreateDatasetItemRequest
     DataFieldDatasetResponse:
       properties:
         id:
@@ -772,73 +842,3 @@ components:
       - schema_id
       - active
       title: DataFieldDatasetResponse
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    CreateDatasetItemRequest:
-      properties:
-        value:
-          type: object
-          title: Value
-        custom_tags:
-          type: object
-          title: Custom Tags
-          default: {}
-        external_id:
-          type: string
-          title: External Id
-      type: object
-      required:
-      - value
-      title: CreateDatasetItemRequest
-    DataFieldDatasetItemResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        created_by:
-          type: string
-          format: uuid
-          title: Created By
-        dataset_id:
-          type: string
-          format: uuid
-          title: Dataset Id
-        value:
-          type: object
-          title: Value
-        custom_tags:
-          type: object
-          title: Custom Tags
-        external_id:
-          type: string
-          title: External Id
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-        updated_by:
-          type: string
-          format: uuid
-          title: Updated By
-      type: object
-      required:
-      - id
-      - created_at
-      - created_by
-      - dataset_id
-      - value
-      title: DataFieldDatasetItemResponse

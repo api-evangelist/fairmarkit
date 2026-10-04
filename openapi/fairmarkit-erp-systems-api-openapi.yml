@@ -79,32 +79,6 @@ components:
           title: Title
           type: string
           description: ERP system name.
-    ListRetrieve_ERPSystemRetrieve_:
-      title: ListRetrieve[ERPSystemRetrieve]
-      description: Paginated list response for ERP systems.
-      required:
-      - count
-      - results
-      type: object
-      properties:
-        count:
-          title: Count
-          type: integer
-          description: A count of the number of records in the full results set.
-        next:
-          title: Next
-          type: string
-          description: A URL to fetch the next page of results, if more results exist in the set.
-        previous:
-          title: Previous
-          type: string
-          description: A URL to fetch the previous page of results, if previous results exist in the set.
-        results:
-          title: Results
-          type: array
-          description: A list representing one page of the result set.
-          items:
-            $ref: '#/components/schemas/ERPSystemRetrieve'
     HTTPValidationError:
       title: HTTPValidationError
       type: object
@@ -141,3 +115,29 @@ components:
           title: Error Type
           type: string
           description: Computer-readable identifier of the error type.
+    ListRetrieve_ERPSystemRetrieve_:
+      title: ListRetrieve[ERPSystemRetrieve]
+      description: Paginated list response for ERP systems.
+      required:
+      - count
+      - results
+      type: object
+      properties:
+        count:
+          title: Count
+          type: integer
+          description: A count of the number of records in the full results set.
+        next:
+          title: Next
+          type: string
+          description: A URL to fetch the next page of results, if more results exist in the set.
+        previous:
+          title: Previous
+          type: string
+          description: A URL to fetch the previous page of results, if previous results exist in the set.
+        results:
+          title: Results
+          type: array
+          description: A list representing one page of the result set.
+          items:
+            $ref: '#/components/schemas/ERPSystemRetrieve'

@@ -96,24 +96,49 @@ paths:
       description: Returns a list of permission sets.
 components:
   schemas:
-    PermissionSetListRetrieve:
+    PermissionSetRetrieve:
       properties:
-        results:
+        title:
+          type: string
+          title: Title
+        permissions:
           items:
-            $ref: '#/components/schemas/PermissionSetRetrieve'
+            type: string
           type: array
-          title: Results
-        next:
+          title: Permissions
+        id:
           type: string
-          title: Next
-        previous:
+          format: uuid
+          title: Id
+        tenant_id:
           type: string
-          title: Previous
+          format: uuid
+          title: Tenant Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
       type: object
       required:
-      - results
-      title: PermissionSetListRetrieve
-      description: Paginated list response for permission sets.
+      - title
+      - permissions
+      - id
+      - created_at
+      title: PermissionSetRetrieve
+    IdentityCreateResponse:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: IdentityCreateResponse
     ValidationError:
       title: ValidationError
       required:
@@ -170,49 +195,6 @@ components:
       - first_name
       - last_name
       title: IdentityCreateRequest
-    IdentityCreateResponse:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-      type: object
-      required:
-      - id
-      title: IdentityCreateResponse
-    PermissionSetRetrieve:
-      properties:
-        title:
-          type: string
-          title: Title
-        permissions:
-          items:
-            type: string
-          type: array
-          title: Permissions
-        id:
-          type: string
-          format: uuid
-          title: Id
-        tenant_id:
-          type: string
-          format: uuid
-          title: Tenant Id
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-      type: object
-      required:
-      - title
-      - permissions
-      - id
-      - created_at
-      title: PermissionSetRetrieve
     HTTPValidationError:
       title: HTTPValidationError
       type: object
@@ -255,3 +237,21 @@ components:
       - ko-kr
       title: LanguageCode
       description: Supported language codes.
+    PermissionSetListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/PermissionSetRetrieve'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: PermissionSetListRetrieve
+      description: Paginated list response for permission sets.
