@@ -288,79 +288,39 @@ paths:
       description: Returns a list of all created RFP Templates.
 components:
   schemas:
-    BaseRFPItem:
-      title: BaseRFPItem
+    File:
+      title: File
       required:
-      - uuid
-      - is_optional
-      - description
+      - name
+      - download_url
       type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        download_url:
+          title: Download Url
+          maxLength: 65536
+          minLength: 1
+          type: string
+          format: uri
+    RFPTemplateRetrieve:
+      title: RFPTemplateRetrieve
+      type: object
+      description: Data for a specific RFP template
       properties:
         uuid:
           title: Uuid
           type: string
           format: uuid
-          description: UUID of the RFP Item
-        is_optional:
-          title: Is Optional
-          type: boolean
-          description: Whether or not the item is optional
-        description:
-          title: Description
+          description: RFP Template ID (Fairmarkit).
+        title:
+          title: Title
           type: string
-          description: Description of the RFP item
-        is_awarded:
-          title: Is Awarded
-          type: boolean
-          description: Whether or not the item is awarded
-        benchmark_price:
-          title: Benchmark Price
-          type: number
-          description: Benchmark price of the RFP item
-        comments:
-          title: Comments
-          type: string
-          default: ''
-          description: Comments about the item.
-        unspsc:
-          title: Unspsc
-          type: string
-          description: Standard UNSPSC code for the item.
-        unspsc_manual:
-          title: Unspsc Manual
-          type: string
-          description: Manually entered UNSPSC code for the item.
-        meta_tags:
-          title: Meta Tags
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas__base__meta_tag__MetaTagRetrieve'
-          default: []
-          description: Meta tags to store additional information. Send a list of meta tags, and they will be processed. To remove all meta tags, send an empty list.
-        manufacturer:
-          title: Manufacturer
-          type: string
-          description: Manufacturer of the item.
-        manufacturer_pn:
-          title: Manufacturer Pn
-          type: string
-          description: Manufacturer part number of the item.
-        quantity:
-          title: Quantity
-          type: number
-          description: Quantity of the item in the selected UOM.
-        uom:
-          title: Uom
-          anyOf:
-          - $ref: '#/components/schemas/ItemUOM'
-          - $ref: '#/components/schemas/ServiceUOM'
-          description: Unit of measurement for items. See Fairmarkit documentation for supported UOM values.
-        attachments:
-          items:
-            $ref: '#/components/schemas/File'
-          type: array
-          title: Attachments
-          default: []
+          description: RFP Template title.
+      required:
+      - uuid
+      - title
     ProposalItem:
       title: ProposalItem
       required:
@@ -502,6 +462,137 @@ components:
           items:
             $ref: '#/components/schemas/ProposalSubitem'
           default: []
+    ProposalSubitem:
+      title: ProposalSubitem
+      required:
+      - uuid
+      - title
+      - is_awarded
+      - is_cancelled
+      - rfp_subitem_uuid
+      type: object
+      description: Data for a specific line item added to a proposal.
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          format: uuid
+          description: Proposal Item ID (Fairmarkit).
+        title:
+          title: Title
+          type: string
+          description: A brief, descriptive title for the request.
+        is_awarded:
+          title: Is Awarded
+          type: boolean
+          description: Is the line item awarded?
+        is_cancelled:
+          title: Is Cancelled
+          type: boolean
+          description: Is the line item canceled?
+        quantity:
+          title: Quantity
+          type: number
+          description: Quantity of the item in the selected UOM.
+        manufacturer:
+          title: Manufacturer
+          type: string
+          description: Manufacturer of the item
+        manufacturer_pn:
+          title: Manufacturer Pn
+          type: string
+          description: Manufacturer part number of the item.
+        uom_text_value:
+          title: Uom Text Value
+          type: string
+          description: If the selected UOM is a text value, the amount of the item in a text value.
+        uom_yesno_value:
+          title: Uom Yesno Value
+          type: string
+          description: If the selected UOM is a yes/no value, the value for the item.
+        uom_date_value:
+          title: Uom Date Value
+          type: string
+          format: date
+          description: If the selected UOM is a date value, the date value for the item.
+        uom_date_range_start_value:
+          title: Uom Date Range Start Value
+          type: string
+          format: date
+          description: The start date in a date range.
+        uom_date_range_end_value:
+          title: Uom Date Range End Value
+          type: string
+          format: date
+          description: The end date in a date range.
+        uom_compliance_value:
+          title: Uom Compliance Value
+          anyOf:
+          - $ref: '#/components/schemas/CompliantUOM'
+          - $ref: '#/components/schemas/EmptyString'
+          description: Enter if the UOM is compliant. Available selections are *fully_compliant*, *partially_compliant*, or *non-compliant*.
+        uom_conversion_rate:
+          title: Uom Conversion Rate
+          type: string
+          description: UOM conversion rate.
+        awarded_quantity:
+          title: Awarded Quantity
+          type: number
+          description: Awarded quantity of the item in the selected UOM.
+        quantity_change_reason_note:
+          title: Quantity Change Reason Note
+          type: string
+        unit_price:
+          title: Unit Price
+          type: number
+          description: The USD price per unit (based on UOM).
+        uom_percent:
+          title: Uom Percent
+          type: number
+          description: If the selected UOM is a percent value, the quantity of the item in percent.
+        uom_number_value:
+          title: Uom Number Value
+          type: number
+          description: If the selected UOM is a number value, the quantity of the item in a number value.
+        comments:
+          title: Comments
+          type: string
+          description: Comments about the item.
+        country_of_origin:
+          title: Country Of Origin
+          anyOf:
+          - $ref: '#/components/schemas/Country'
+          - $ref: '#/components/schemas/EmptyString'
+          description: Two-character alphabetic code that represents a country name. Fairmarkit uses the Alpha-2 country codes defined in the ISO 3166 international standard.
+        sku:
+          title: Sku
+          type: string
+          description: Item SKU.
+        uom:
+          title: Uom
+          anyOf:
+          - $ref: '#/components/schemas/ItemUOM'
+          - $ref: '#/components/schemas/ServiceUOM'
+          description: Unit of measurement for the item/quantity.
+        awarded_at:
+          title: Awarded At
+          type: string
+          format: date-time
+          description: Date and time when the proposal item was awarded by the buyer. String must be formatted using ISO 8601 format.
+        rfp_subitem_uuid:
+          title: Rfp Subitem Uuid
+          type: string
+          format: uuid
+          description: RFP item ID (Fairmarkit).
+        attachments:
+          title: Attachments
+          type: array
+          description: Attachments added to the line item on the supplier's response.
+          items:
+            $ref: '#/components/schemas/File'
+          default: []
+        uom_attachment:
+          $ref: '#/components/schemas/File'
     RFPListDetail:
       title: RFPListDetail
       required:
@@ -559,53 +650,279 @@ components:
           type: string
           title: Request Id
       description: Data returned for a list of request for proposal (RFP) events.
-    ListRetrieve_RFPTemplateRetrieve_:
-      title: ListRetrieve[RFPTemplateRetrieve]
-      description: Paginated list response for RFP templates.
+    RFPItem:
+      title: RFPItem
       required:
-      - count
-      - results
+      - uuid
+      - is_optional
+      - description
+      - is_awarded
+      - kind
       type: object
       properties:
-        count:
-          title: Count
-          type: integer
-          description: A count of the number of records in the full results set.
-        next:
-          title: Next
+        uuid:
+          title: Uuid
           type: string
-          description: A URL to fetch the next page of results, if more results exist in the set.
-        previous:
-          title: Previous
+          format: uuid
+          description: RFP item ID (Fairmarkit).
+        is_optional:
+          title: Is Optional
+          type: boolean
+          description: Whether or not the item is optional.
+        description:
+          title: Description
           type: string
-          description: A URL to fetch the previous page of results, if previous results exist in the set.
-        results:
-          title: Results
+          description: RFP item description.
+        is_awarded:
+          title: Is Awarded
+          type: boolean
+          description: Whether or not the RFP item is awarded.
+        benchmark_price:
+          title: Benchmark Price
+          type: number
+          description: Benchmark price of the RFP item.
+        comments:
+          title: Comments
+          type: string
+          default: ''
+          description: Comments about the item
+        unspsc:
+          title: Unspsc
+          type: string
+          description: Standard UNSPSC code for the item.
+        unspsc_manual:
+          title: Unspsc Manual
+          type: string
+          description: Manually entered UNSPSC code for the item.
+        meta_tags:
+          title: Meta Tags
+          description: Meta tags to store additional information. Send a list of meta tags, and they will be processed. To remove all meta tags, send an empty list.
           type: array
-          description: A list representing one page of the result set.
           items:
-            $ref: '#/components/schemas/RFPTemplateRetrieve'
-    ListRetrieve_Proposal_:
-      title: ListRetrieve[Proposal]
-      required:
-      - count
-      - results
-      type: object
-      properties:
-        count:
-          title: Count
-          type: integer
-        next:
-          title: Next
+            $ref: '#/components/schemas/schemas__base__meta_tag__MetaTagRetrieve'
+          default: []
+        manufacturer:
+          title: Manufacturer
           type: string
-        previous:
-          title: Previous
+          description: Manufacturer of the item.
+        manufacturer_pn:
+          title: Manufacturer Pn
           type: string
-        results:
-          title: Results
+          description: Manufacturer part number of the item.
+        quantity:
+          title: Quantity
+          type: number
+          description: Quantity of the item in the selected UOM.
+        kind:
+          $ref: '#/components/schemas/Kind'
+        uom:
+          title: Uom
+          anyOf:
+          - $ref: '#/components/schemas/ItemUOM'
+          - $ref: '#/components/schemas/ServiceUOM'
+          description: Unit of measurement for items. See Fairmarkit documentation for supported UOM values.
+        attachments:
+          description: RFP item attachments.
+          title: Attachments
           type: array
           items:
-            $ref: '#/components/schemas/Proposal'
+            $ref: '#/components/schemas/File'
+          default: []
+        items:
+          title: Items
+          type: array
+          description: A list of requested items and services.
+          items:
+            $ref: '#/components/schemas/BaseRFPItem'
+          default: []
+    ServiceUOM:
+      title: ServiceUOM
+      enum:
+      - each
+      - fte
+      - yes_no
+      - hour
+      - day
+      - analysis
+      - multiple_choice
+      - audit
+      - campaign
+      - contract
+      - event
+      - integration
+      - production
+      - program
+      - project
+      - site
+      - sme
+      - training
+      - webinar
+      - year
+      - quarter
+      - month
+      - week
+      - minute
+      - second
+      - date
+      - date_range
+      - text
+      - attachment
+      - percent
+      - no_response
+      - number
+      - compliance
+      - lump sum
+      - set
+      - metric ton
+      - words
+      - asin
+      - segments
+      - annotations_lines
+      - labels
+      - videos
+      - pages
+      - per_thousand_words
+      - meter_minute
+      - pikofarad
+      - acre
+      - ton_cubic_meter
+      - enzyme_units
+      - gigajoule
+      - canister
+      - crate
+      - activity_unit
+      - mile
+      - cubic_millimeter
+      - milliwatt
+      - megawatt_hour
+      - points
+      - group_proportion
+      - microsiemens_per_cm
+      description: Supported units of measurement for services.
+    ItemUOM:
+      title: ItemUOM
+      enum:
+      - each
+      - acre
+      - activity_unit
+      - assembly
+      - bag
+      - bale
+      - bar
+      - barrel
+      - block
+      - board foot
+      - bottle
+      - box
+      - bucket
+      - bulk
+      - bundle
+      - cake
+      - can
+      - canister
+      - card
+      - carton
+      - cartridge
+      - case
+      - centimeter
+      - coil
+      - container
+      - crate
+      - cube
+      - cubic foot
+      - cubic meter
+      - cubic_millimeter
+      - cubic yard
+      - cup
+      - cylinder
+      - dozen
+      - drum
+      - enzyme_units
+      - foot
+      - gallon
+      - gigajoule
+      - gram
+      - gross
+      - group_proportion
+      - 1/2 cubic yard
+      - hank
+      - hectare
+      - hour
+      - hundred
+      - imperial gallon
+      - inch
+      - jar
+      - keg
+      - kilogram
+      - kiloliter
+      - kilometer
+      - kilowatt
+      - kit
+      - length
+      - light
+      - liter
+      - lot
+      - lug
+      - lump sum
+      - megawatt_hour
+      - meter
+      - meter_minute
+      - metric ton
+      - microsiemens_per_cm
+      - mile
+      - milliliter
+      - millimeter
+      - milliwatt
+      - multiple_choice
+      - net ton
+      - night
+      - ounce
+      - pack
+      - package
+      - packet
+      - pad
+      - pail
+      - pair
+      - pallet
+      - pancake
+      - part
+      - pg
+      - piece
+      - pikofarad
+      - pint
+      - points
+      - pot
+      - pound
+      - punnet
+      - quart
+      - rack
+      - ream
+      - reel
+      - roll
+      - sachet
+      - set
+      - sheet
+      - spool
+      - square foot
+      - square inch
+      - square meter
+      - square yard
+      - suit
+      - tank
+      - thousand
+      - tin
+      - ton
+      - tonne
+      - ton_cubic_meter
+      - tray
+      - tub
+      - tube
+      - unit
+      - unit_f
+      - volt-amper
+      - yard
+      - year
+      description: Supported units of measurement for items.
     RFPRetrieve:
       title: RFPRetrieve
       type: object
@@ -721,37 +1038,146 @@ components:
         is_outlier:
           type: boolean
           title: Is Outlier
+    ListRetrieve_RFPTemplateRetrieve_:
+      title: ListRetrieve[RFPTemplateRetrieve]
+      description: Paginated list response for RFP templates.
+      required:
+      - count
+      - results
+      type: object
+      properties:
+        count:
+          title: Count
+          type: integer
+          description: A count of the number of records in the full results set.
+        next:
+          title: Next
+          type: string
+          description: A URL to fetch the next page of results, if more results exist in the set.
+        previous:
+          title: Previous
+          type: string
+          description: A URL to fetch the previous page of results, if previous results exist in the set.
+        results:
+          title: Results
+          type: array
+          description: A list representing one page of the result set.
+          items:
+            $ref: '#/components/schemas/RFPTemplateRetrieve'
+    BaseRFPItem:
+      title: BaseRFPItem
+      required:
+      - uuid
+      - is_optional
+      - description
+      type: object
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          format: uuid
+          description: UUID of the RFP Item
+        is_optional:
+          title: Is Optional
+          type: boolean
+          description: Whether or not the item is optional
+        description:
+          title: Description
+          type: string
+          description: Description of the RFP item
+        is_awarded:
+          title: Is Awarded
+          type: boolean
+          description: Whether or not the item is awarded
+        benchmark_price:
+          title: Benchmark Price
+          type: number
+          description: Benchmark price of the RFP item
+        comments:
+          title: Comments
+          type: string
+          default: ''
+          description: Comments about the item.
+        unspsc:
+          title: Unspsc
+          type: string
+          description: Standard UNSPSC code for the item.
+        unspsc_manual:
+          title: Unspsc Manual
+          type: string
+          description: Manually entered UNSPSC code for the item.
+        meta_tags:
+          title: Meta Tags
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas__base__meta_tag__MetaTagRetrieve'
+          default: []
+          description: Meta tags to store additional information. Send a list of meta tags, and they will be processed. To remove all meta tags, send an empty list.
+        manufacturer:
+          title: Manufacturer
+          type: string
+          description: Manufacturer of the item.
+        manufacturer_pn:
+          title: Manufacturer Pn
+          type: string
+          description: Manufacturer part number of the item.
+        quantity:
+          title: Quantity
+          type: number
+          description: Quantity of the item in the selected UOM.
+        uom:
+          title: Uom
+          anyOf:
+          - $ref: '#/components/schemas/ItemUOM'
+          - $ref: '#/components/schemas/ServiceUOM'
+          description: Unit of measurement for items. See Fairmarkit documentation for supported UOM values.
+        attachments:
+          items:
+            $ref: '#/components/schemas/File'
+          type: array
+          title: Attachments
+          default: []
     Kind:
       title: Kind
       enum:
       - item
       - service
       description: RFQ item type. Supports item and service.
-    NestedProposalSupplier:
-      title: NestedProposalSupplier
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    ListRetrieve_RFPListDetail_:
+      title: ListRetrieve[RFPListDetail]
       required:
-      - uuid
-      - email
-      - title
+      - count
+      - results
       type: object
       properties:
-        uuid:
-          title: Uuid
+        count:
+          title: Count
+          type: integer
+          description: A count of the number of records in the full results set.
+        next:
+          title: Next
           type: string
-        erp_systems:
-          title: Erp Systems
+          description: A URL to fetch the next page of results, if more results exist in the set.
+        previous:
+          title: Previous
+          type: string
+          description: A URL to fetch the previous page of results, if previous results exist in the set.
+        results:
+          title: Results
           type: array
           items:
-            $ref: '#/components/schemas/NestedProposalSupplierErpSystem'
-          default: []
-        email:
-          title: Email
-          type: string
-          description: Supplier contact's email address.
-        title:
-          title: Title
-          type: string
-          description: Supplier Title
+            $ref: '#/components/schemas/RFPListDetail'
     RFPCreateFromTemplateRetrieve:
       title: RFPCreateFromTemplateRetrieve
       type: object
@@ -832,12 +1258,134 @@ components:
       - uuid
       - fm_app_rfp_url
       - status
-    EmptyString:
-      title: EmptyString
-      enum:
-      - ''
-      type: string
-      description: Marker used to represent an empty string.
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    Proposal:
+      title: Proposal
+      required:
+      - uuid
+      - status
+      - amount_total
+      - awarded_total
+      - kind
+      - notes
+      - currency
+      - created_at
+      - updated_at
+      - supplier
+      - is_outlier
+      type: object
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          description: Proposal ID (Fairmarkit).
+        status:
+          title: Status
+          type: string
+          description: Status of the quote.
+        amount_total:
+          title: Amount Total
+          type: number
+          description: Total amount.
+        awarded_total:
+          title: Awarded Total
+          type: number
+          description: Total amount awarded.
+        valid_for:
+          title: Valid For
+          type: integer
+          description: Number of days the quote is valid.
+        kind:
+          title: Kind
+          type: string
+          description: RFP item type. Fairmarkit supports *item* and *service* types.
+        notes:
+          title: Notes
+          type: string
+          description: Notes about the proposal.
+        currency:
+          $ref: '#/components/schemas/Currency'
+        created_at:
+          title: Created At
+          type: string
+          format: date-time
+          description: Date and time when the proposal was created. String must be formatted using ISO 8601 format.
+        updated_at:
+          title: Updated At
+          type: string
+          format: date-time
+          description: Date and time when the proposal was last updated. String must be formatted using ISO 8601 format.
+        amount_items:
+          title: Amount Items
+          type: number
+          description: Total cost of all items.
+        sent_at:
+          title: Sent At
+          type: string
+          format: date-time
+          description: Date and time when the RFP was sent. String must be formatted using ISO 8601 format.
+        opened_at:
+          title: Opened At
+          type: string
+          format: date-time
+          description: Date and time when the supplier opened the RFP. String must be formatted using ISO 8601 format.
+        submitted_at:
+          title: Submitted At
+          type: string
+          format: date-time
+          description: Date and time when the proposal was submitted to the buyer. String must be formatted using ISO 8601 format.
+        awarded_at:
+          title: Awarded At
+          type: string
+          format: date-time
+          description: Date and time when the proposal was awarded by the buyer. String must be formatted using ISO 8601 format.
+        supplier_external_id:
+          title: Supplier External Id
+          type: string
+          description: Supplier External ID.
+        items:
+          title: Items
+          type: array
+          description: A list of requested items and services.
+          items:
+            $ref: '#/components/schemas/ProposalItem'
+          default: []
+        attachments:
+          title: Attachments
+          type: array
+          description: Attachments added to the supplier response.
+          items:
+            $ref: '#/components/schemas/File'
+          default: []
+        supplier:
+          $ref: '#/components/schemas/NestedProposalSupplier'
+        is_outlier:
+          type: boolean
+          title: Is Outlier
     CompliantUOM:
       title: CompliantUOM
       enum:
@@ -845,49 +1393,67 @@ components:
       - partially_compliant
       - non_compliant
       description: UOM compliance values.
-    RFPSection:
-      title: RFPSection
+    CoreRFPStatus:
+      title: CoreRFPStatus
+      enum:
+      - draft
+      - opened
+      - closed
+      - awarded
+      - canceled
+      - archived
+      description: Request for proposal (RFP) event status values.
+    NestedProposalSupplier:
+      title: NestedProposalSupplier
       required:
       - uuid
-      - items
+      - email
+      - title
       type: object
       properties:
         uuid:
           title: Uuid
           type: string
-          format: uuid
-          description: RFP section ID (Fairmarkit).
-        title:
-          title: Title
-          type: string
-          description: The title of the RFP section.
-        description:
-          title: Description
-          type: string
-          description: A detailed description of the RFP section.
-        items:
-          title: Items
+        erp_systems:
+          title: Erp Systems
           type: array
-          description: A list of items on the section.
           items:
-            $ref: '#/components/schemas/RFPItem'
-    RFPTemplateRetrieve:
-      title: RFPTemplateRetrieve
-      type: object
-      description: Data for a specific RFP template
-      properties:
-        uuid:
-          title: Uuid
+            $ref: '#/components/schemas/NestedProposalSupplierErpSystem'
+          default: []
+        email:
+          title: Email
           type: string
-          format: uuid
-          description: RFP Template ID (Fairmarkit).
+          description: Supplier contact's email address.
         title:
           title: Title
           type: string
-          description: RFP Template title.
+          description: Supplier Title
+    CategoryRetrieve:
+      title: CategoryRetrieve
+      description: Data to retrieve about a specific category.
       required:
       - uuid
       - title
+      - visual_title
+      - external_id
+      type: object
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          description: Category UUID.
+        title:
+          title: Title
+          type: string
+          description: Category name.
+        visual_title:
+          title: Visual Title
+          type: string
+          description: Category display name.
+        external_id:
+          title: External Id
+          type: string
+          description: Category external ID.
     Currency:
       title: Currency
       enum:
@@ -1060,516 +1626,6 @@ components:
       - ZMW
       type: string
       description: Supported currency codes.
-    File:
-      title: File
-      required:
-      - name
-      - download_url
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-        download_url:
-          title: Download Url
-          maxLength: 65536
-          minLength: 1
-          type: string
-          format: uri
-    RFPItem:
-      title: RFPItem
-      required:
-      - uuid
-      - is_optional
-      - description
-      - is_awarded
-      - kind
-      type: object
-      properties:
-        uuid:
-          title: Uuid
-          type: string
-          format: uuid
-          description: RFP item ID (Fairmarkit).
-        is_optional:
-          title: Is Optional
-          type: boolean
-          description: Whether or not the item is optional.
-        description:
-          title: Description
-          type: string
-          description: RFP item description.
-        is_awarded:
-          title: Is Awarded
-          type: boolean
-          description: Whether or not the RFP item is awarded.
-        benchmark_price:
-          title: Benchmark Price
-          type: number
-          description: Benchmark price of the RFP item.
-        comments:
-          title: Comments
-          type: string
-          default: ''
-          description: Comments about the item
-        unspsc:
-          title: Unspsc
-          type: string
-          description: Standard UNSPSC code for the item.
-        unspsc_manual:
-          title: Unspsc Manual
-          type: string
-          description: Manually entered UNSPSC code for the item.
-        meta_tags:
-          title: Meta Tags
-          description: Meta tags to store additional information. Send a list of meta tags, and they will be processed. To remove all meta tags, send an empty list.
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas__base__meta_tag__MetaTagRetrieve'
-          default: []
-        manufacturer:
-          title: Manufacturer
-          type: string
-          description: Manufacturer of the item.
-        manufacturer_pn:
-          title: Manufacturer Pn
-          type: string
-          description: Manufacturer part number of the item.
-        quantity:
-          title: Quantity
-          type: number
-          description: Quantity of the item in the selected UOM.
-        kind:
-          $ref: '#/components/schemas/Kind'
-        uom:
-          title: Uom
-          anyOf:
-          - $ref: '#/components/schemas/ItemUOM'
-          - $ref: '#/components/schemas/ServiceUOM'
-          description: Unit of measurement for items. See Fairmarkit documentation for supported UOM values.
-        attachments:
-          description: RFP item attachments.
-          title: Attachments
-          type: array
-          items:
-            $ref: '#/components/schemas/File'
-          default: []
-        items:
-          title: Items
-          type: array
-          description: A list of requested items and services.
-          items:
-            $ref: '#/components/schemas/BaseRFPItem'
-          default: []
-    ProposalSubitem:
-      title: ProposalSubitem
-      required:
-      - uuid
-      - title
-      - is_awarded
-      - is_cancelled
-      - rfp_subitem_uuid
-      type: object
-      description: Data for a specific line item added to a proposal.
-      properties:
-        uuid:
-          title: Uuid
-          type: string
-          format: uuid
-          description: Proposal Item ID (Fairmarkit).
-        title:
-          title: Title
-          type: string
-          description: A brief, descriptive title for the request.
-        is_awarded:
-          title: Is Awarded
-          type: boolean
-          description: Is the line item awarded?
-        is_cancelled:
-          title: Is Cancelled
-          type: boolean
-          description: Is the line item canceled?
-        quantity:
-          title: Quantity
-          type: number
-          description: Quantity of the item in the selected UOM.
-        manufacturer:
-          title: Manufacturer
-          type: string
-          description: Manufacturer of the item
-        manufacturer_pn:
-          title: Manufacturer Pn
-          type: string
-          description: Manufacturer part number of the item.
-        uom_text_value:
-          title: Uom Text Value
-          type: string
-          description: If the selected UOM is a text value, the amount of the item in a text value.
-        uom_yesno_value:
-          title: Uom Yesno Value
-          type: string
-          description: If the selected UOM is a yes/no value, the value for the item.
-        uom_date_value:
-          title: Uom Date Value
-          type: string
-          format: date
-          description: If the selected UOM is a date value, the date value for the item.
-        uom_date_range_start_value:
-          title: Uom Date Range Start Value
-          type: string
-          format: date
-          description: The start date in a date range.
-        uom_date_range_end_value:
-          title: Uom Date Range End Value
-          type: string
-          format: date
-          description: The end date in a date range.
-        uom_compliance_value:
-          title: Uom Compliance Value
-          anyOf:
-          - $ref: '#/components/schemas/CompliantUOM'
-          - $ref: '#/components/schemas/EmptyString'
-          description: Enter if the UOM is compliant. Available selections are *fully_compliant*, *partially_compliant*, or *non-compliant*.
-        uom_conversion_rate:
-          title: Uom Conversion Rate
-          type: string
-          description: UOM conversion rate.
-        awarded_quantity:
-          title: Awarded Quantity
-          type: number
-          description: Awarded quantity of the item in the selected UOM.
-        quantity_change_reason_note:
-          title: Quantity Change Reason Note
-          type: string
-        unit_price:
-          title: Unit Price
-          type: number
-          description: The USD price per unit (based on UOM).
-        uom_percent:
-          title: Uom Percent
-          type: number
-          description: If the selected UOM is a percent value, the quantity of the item in percent.
-        uom_number_value:
-          title: Uom Number Value
-          type: number
-          description: If the selected UOM is a number value, the quantity of the item in a number value.
-        comments:
-          title: Comments
-          type: string
-          description: Comments about the item.
-        country_of_origin:
-          title: Country Of Origin
-          anyOf:
-          - $ref: '#/components/schemas/Country'
-          - $ref: '#/components/schemas/EmptyString'
-          description: Two-character alphabetic code that represents a country name. Fairmarkit uses the Alpha-2 country codes defined in the ISO 3166 international standard.
-        sku:
-          title: Sku
-          type: string
-          description: Item SKU.
-        uom:
-          title: Uom
-          anyOf:
-          - $ref: '#/components/schemas/ItemUOM'
-          - $ref: '#/components/schemas/ServiceUOM'
-          description: Unit of measurement for the item/quantity.
-        awarded_at:
-          title: Awarded At
-          type: string
-          format: date-time
-          description: Date and time when the proposal item was awarded by the buyer. String must be formatted using ISO 8601 format.
-        rfp_subitem_uuid:
-          title: Rfp Subitem Uuid
-          type: string
-          format: uuid
-          description: RFP item ID (Fairmarkit).
-        attachments:
-          title: Attachments
-          type: array
-          description: Attachments added to the line item on the supplier's response.
-          items:
-            $ref: '#/components/schemas/File'
-          default: []
-        uom_attachment:
-          $ref: '#/components/schemas/File'
-    ItemUOM:
-      title: ItemUOM
-      enum:
-      - each
-      - acre
-      - activity_unit
-      - assembly
-      - bag
-      - bale
-      - bar
-      - barrel
-      - block
-      - board foot
-      - bottle
-      - box
-      - bucket
-      - bulk
-      - bundle
-      - cake
-      - can
-      - canister
-      - card
-      - carton
-      - cartridge
-      - case
-      - centimeter
-      - coil
-      - container
-      - crate
-      - cube
-      - cubic foot
-      - cubic meter
-      - cubic_millimeter
-      - cubic yard
-      - cup
-      - cylinder
-      - dozen
-      - drum
-      - enzyme_units
-      - foot
-      - gallon
-      - gigajoule
-      - gram
-      - gross
-      - group_proportion
-      - 1/2 cubic yard
-      - hank
-      - hectare
-      - hour
-      - hundred
-      - imperial gallon
-      - inch
-      - jar
-      - keg
-      - kilogram
-      - kiloliter
-      - kilometer
-      - kilowatt
-      - kit
-      - length
-      - light
-      - liter
-      - lot
-      - lug
-      - lump sum
-      - megawatt_hour
-      - meter
-      - meter_minute
-      - metric ton
-      - microsiemens_per_cm
-      - mile
-      - milliliter
-      - millimeter
-      - milliwatt
-      - multiple_choice
-      - net ton
-      - night
-      - ounce
-      - pack
-      - package
-      - packet
-      - pad
-      - pail
-      - pair
-      - pallet
-      - pancake
-      - part
-      - pg
-      - piece
-      - pikofarad
-      - pint
-      - points
-      - pot
-      - pound
-      - punnet
-      - quart
-      - rack
-      - ream
-      - reel
-      - roll
-      - sachet
-      - set
-      - sheet
-      - spool
-      - square foot
-      - square inch
-      - square meter
-      - square yard
-      - suit
-      - tank
-      - thousand
-      - tin
-      - ton
-      - tonne
-      - ton_cubic_meter
-      - tray
-      - tub
-      - tube
-      - unit
-      - unit_f
-      - volt-amper
-      - yard
-      - year
-      description: Supported units of measurement for items.
-    CoreRFPStatus:
-      title: CoreRFPStatus
-      enum:
-      - draft
-      - opened
-      - closed
-      - awarded
-      - canceled
-      - archived
-      description: Request for proposal (RFP) event status values.
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      description: Details for a validation error.
-      properties:
-        loc:
-          title: Location
-          type: array
-          description: Error location
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-          description: Human readable explanation of the error.
-        type:
-          title: Error Type
-          type: string
-          description: Computer-readable identifier of the error type.
-    schemas__base__meta_tag__MetaTagRetrieve:
-      properties:
-        key:
-          type: string
-          title: Key
-        value:
-          items:
-            type: string
-          type: array
-          title: Value
-      type: object
-      required:
-      - key
-      - value
-      title: MetaTagRetrieve
-    CategoryRetrieve:
-      title: CategoryRetrieve
-      description: Data to retrieve about a specific category.
-      required:
-      - uuid
-      - title
-      - visual_title
-      - external_id
-      type: object
-      properties:
-        uuid:
-          title: Uuid
-          type: string
-          description: Category UUID.
-        title:
-          title: Title
-          type: string
-          description: Category name.
-        visual_title:
-          title: Visual Title
-          type: string
-          description: Category display name.
-        external_id:
-          title: External Id
-          type: string
-          description: Category external ID.
-    ServiceUOM:
-      title: ServiceUOM
-      enum:
-      - each
-      - fte
-      - yes_no
-      - hour
-      - day
-      - analysis
-      - multiple_choice
-      - audit
-      - campaign
-      - contract
-      - event
-      - integration
-      - production
-      - program
-      - project
-      - site
-      - sme
-      - training
-      - webinar
-      - year
-      - quarter
-      - month
-      - week
-      - minute
-      - second
-      - date
-      - date_range
-      - text
-      - attachment
-      - percent
-      - no_response
-      - number
-      - compliance
-      - lump sum
-      - set
-      - metric ton
-      - words
-      - asin
-      - segments
-      - annotations_lines
-      - labels
-      - videos
-      - pages
-      - per_thousand_words
-      - meter_minute
-      - pikofarad
-      - acre
-      - ton_cubic_meter
-      - enzyme_units
-      - gigajoule
-      - canister
-      - crate
-      - activity_unit
-      - mile
-      - cubic_millimeter
-      - milliwatt
-      - megawatt_hour
-      - points
-      - group_proportion
-      - microsiemens_per_cm
-      description: Supported units of measurement for services.
-    NestedProposalSupplierErpSystem:
-      title: NestedProposalSupplierErpSystem
-      required:
-      - external_supplier_id
-      - erp_system_uuid
-      type: object
-      properties:
-        external_supplier_id:
-          title: External Supplier Id
-          type: string
-        erp_system_uuid:
-          title: Erp System Uuid
-          type: string
-          format: uuid
     Country:
       title: Country
       enum:
@@ -1824,17 +1880,6 @@ components:
       - ZW
       type: string
       description: Supported country codes.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
     RFP:
       title: RFP
       type: object
@@ -1906,8 +1951,69 @@ components:
           description: Fairmarkit buyer's email address. If left blank RFP will be created for Admins Only.
         status:
           $ref: '#/components/schemas/CoreRFPStatus'
-    ListRetrieve_RFPListDetail_:
-      title: ListRetrieve[RFPListDetail]
+    RFPSection:
+      title: RFPSection
+      required:
+      - uuid
+      - items
+      type: object
+      properties:
+        uuid:
+          title: Uuid
+          type: string
+          format: uuid
+          description: RFP section ID (Fairmarkit).
+        title:
+          title: Title
+          type: string
+          description: The title of the RFP section.
+        description:
+          title: Description
+          type: string
+          description: A detailed description of the RFP section.
+        items:
+          title: Items
+          type: array
+          description: A list of items on the section.
+          items:
+            $ref: '#/components/schemas/RFPItem'
+    schemas__base__meta_tag__MetaTagRetrieve:
+      properties:
+        key:
+          type: string
+          title: Key
+        value:
+          items:
+            type: string
+          type: array
+          title: Value
+      type: object
+      required:
+      - key
+      - value
+      title: MetaTagRetrieve
+    EmptyString:
+      title: EmptyString
+      enum:
+      - ''
+      type: string
+      description: Marker used to represent an empty string.
+    NestedProposalSupplierErpSystem:
+      title: NestedProposalSupplierErpSystem
+      required:
+      - external_supplier_id
+      - erp_system_uuid
+      type: object
+      properties:
+        external_supplier_id:
+          title: External Supplier Id
+          type: string
+        erp_system_uuid:
+          title: Erp System Uuid
+          type: string
+          format: uuid
+    ListRetrieve_Proposal_:
+      title: ListRetrieve[Proposal]
       required:
       - count
       - results
@@ -1916,120 +2022,14 @@ components:
         count:
           title: Count
           type: integer
-          description: A count of the number of records in the full results set.
         next:
           title: Next
           type: string
-          description: A URL to fetch the next page of results, if more results exist in the set.
         previous:
           title: Previous
           type: string
-          description: A URL to fetch the previous page of results, if previous results exist in the set.
         results:
           title: Results
           type: array
           items:
-            $ref: '#/components/schemas/RFPListDetail'
-    Proposal:
-      title: Proposal
-      required:
-      - uuid
-      - status
-      - amount_total
-      - awarded_total
-      - kind
-      - notes
-      - currency
-      - created_at
-      - updated_at
-      - supplier
-      - is_outlier
-      type: object
-      properties:
-        uuid:
-          title: Uuid
-          type: string
-          description: Proposal ID (Fairmarkit).
-        status:
-          title: Status
-          type: string
-          description: Status of the quote.
-        amount_total:
-          title: Amount Total
-          type: number
-          description: Total amount.
-        awarded_total:
-          title: Awarded Total
-          type: number
-          description: Total amount awarded.
-        valid_for:
-          title: Valid For
-          type: integer
-          description: Number of days the quote is valid.
-        kind:
-          title: Kind
-          type: string
-          description: RFP item type. Fairmarkit supports *item* and *service* types.
-        notes:
-          title: Notes
-          type: string
-          description: Notes about the proposal.
-        currency:
-          $ref: '#/components/schemas/Currency'
-        created_at:
-          title: Created At
-          type: string
-          format: date-time
-          description: Date and time when the proposal was created. String must be formatted using ISO 8601 format.
-        updated_at:
-          title: Updated At
-          type: string
-          format: date-time
-          description: Date and time when the proposal was last updated. String must be formatted using ISO 8601 format.
-        amount_items:
-          title: Amount Items
-          type: number
-          description: Total cost of all items.
-        sent_at:
-          title: Sent At
-          type: string
-          format: date-time
-          description: Date and time when the RFP was sent. String must be formatted using ISO 8601 format.
-        opened_at:
-          title: Opened At
-          type: string
-          format: date-time
-          description: Date and time when the supplier opened the RFP. String must be formatted using ISO 8601 format.
-        submitted_at:
-          title: Submitted At
-          type: string
-          format: date-time
-          description: Date and time when the proposal was submitted to the buyer. String must be formatted using ISO 8601 format.
-        awarded_at:
-          title: Awarded At
-          type: string
-          format: date-time
-          description: Date and time when the proposal was awarded by the buyer. String must be formatted using ISO 8601 format.
-        supplier_external_id:
-          title: Supplier External Id
-          type: string
-          description: Supplier External ID.
-        items:
-          title: Items
-          type: array
-          description: A list of requested items and services.
-          items:
-            $ref: '#/components/schemas/ProposalItem'
-          default: []
-        attachments:
-          title: Attachments
-          type: array
-          description: Attachments added to the supplier response.
-          items:
-            $ref: '#/components/schemas/File'
-          default: []
-        supplier:
-          $ref: '#/components/schemas/NestedProposalSupplier'
-        is_outlier:
-          type: boolean
-          title: Is Outlier
+            $ref: '#/components/schemas/Proposal'

@@ -1254,6 +1254,118 @@ paths:
       description: UAT
 components:
   schemas:
+    RequestItemV4Update:
+      properties:
+        schema_data:
+          type: object
+          title: Schema Data
+      type: object
+      required:
+      - schema_data
+      title: RequestItemV4Update
+    GetListV5OrderingType0Item:
+      type: string
+      enum:
+      - created_at
+      - short_id
+      - status
+      - title
+      - -created_at
+      - -title
+      - -status
+      - -short_id
+      title: GetListV5OrderingType0Item
+      description: Allowed ordering values for list endpoints.
+    SupplierErpSystemInfo:
+      properties:
+        external_supplier_id:
+          type: string
+          title: External Supplier Id
+        erp_system_uuid:
+          type: string
+          format: uuid
+          title: Erp System Uuid
+        is_active:
+          type: boolean
+          title: Is Active
+          default: true
+      type: object
+      required:
+      - external_supplier_id
+      - erp_system_uuid
+      title: SupplierErpSystemInfo
+    ApprovalIdResponse:
+      title: ApprovalIdResponse
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unique identifier of the approval.
+      description: Response containing the approval ID.
+    CancelRequest:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+      type: object
+      required:
+      - id
+      title: CancelRequest
+    PR:
+      properties:
+        id:
+          type: string
+          title: Id
+        url:
+          type: string
+          title: Url
+        status:
+          type: string
+          title: Status
+        errors:
+          items:
+            $ref: '#/components/schemas/PRError'
+          type: array
+          title: Errors
+      type: object
+      required:
+      - errors
+      title: PR
+    RequestV4ListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/RequestV4ListRetrieveItem'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: RequestV4ListRetrieve
+    ApprovalStepResponse:
+      title: ApprovalStepResponse
+      type: object
+      properties:
+        note:
+          title: Note
+          type: string
+          description: Optional note for the approval step response.
+        reacted_at:
+          title: Reacted At
+          type: string
+          format: date-time
+          description: Timestamp when the step was responded to.
+      description: Response data for an approval step.
     PriceBookItemRetrieve:
       properties:
         schema_id:
@@ -1268,6 +1380,156 @@ components:
       - schema_id
       - schema_data
       title: PriceBookItemRetrieve
+    RequestRetrieve:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: Request Id.
+        title:
+          type: string
+          title: Title
+          description: A brief, descriptive title for the Request.
+        status:
+          type: string
+          title: Status
+          description: Request status.
+        requester:
+          type: string
+          title: Requester
+          description: Fairmarkit buyer's email address.
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+          description: Id for the JSON schema.
+        schema_data:
+          type: object
+          title: Schema Data
+          description: Custom data according to the provided or current JSON Schema.
+        items:
+          items:
+            $ref: '#/components/schemas/RequestItemResponse'
+          type: array
+          title: Items
+          description: A list of items.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Date and time when the Request was created.
+        file_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: File Ids
+      type: object
+      required:
+      - id
+      - title
+      - status
+      - requester
+      - schema_id
+      - schema_data
+      - items
+      - created_at
+      title: RequestRetrieve
+    RequestItemResponse:
+      properties:
+        title:
+          type: string
+          title: Title
+          description: A brief, descriptive title for the item.
+        kind:
+          $ref: '#/components/schemas/RequestItemKind'
+        uom:
+          $ref: '#/components/schemas/RequestItemUOM'
+        quantity:
+          type: number
+          title: Quantity
+          description: Quantity of the item in the selected UOM.
+        unit_price:
+          type: number
+          title: Unit Price
+          description: Unit price of the item in the selected UOM.
+        manufacturer_part_number:
+          type: string
+          title: Manufacturer Part Number
+          description: Manufacturer part number of the item.
+        supplier:
+          type: object
+          title: External Supplier Info
+          description: External supplier information.
+          $ref: '#/components/schemas/SupplierInfo'
+        price_book_item_id:
+          type: string
+          title: Price Book Item Id
+          description: Price book item ID.
+        start_date:
+          type: string
+          format: date
+          title: Start Date
+          description: Start date for item with kind Service.
+        end_date:
+          type: string
+          format: date
+          title: End Date
+          description: End date for item with kind Service.
+      type: object
+      required:
+      - title
+      - kind
+      - uom
+      - quantity
+      title: RequestItem
+    RequestV4Update:
+      properties:
+        schema_data:
+          type: object
+          title: Schema Data
+      type: object
+      required:
+      - schema_data
+      title: RequestV4Update
+    RequestItemKind:
+      type: string
+      enum:
+      - goods
+      - service
+      title: RequestItemKind
+      description: Request item type values.
+    LinkPRRequest:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: External PR reference ID.
+        url:
+          type: string
+          format: uri
+          title: Url
+          description: Full URL link to the external PR.
+      type: object
+      title: LinkPRRequest
+    RequestItemV4ListRetrieve:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/RequestItemV4Retrieve'
+          type: array
+          title: Results
+        next:
+          type: string
+          title: Next
+        previous:
+          type: string
+          title: Previous
+      type: object
+      required:
+      - results
+      title: RequestItemV4ListRetrieve
     ApprovalStep:
       title: ApprovalStep
       required:
@@ -1300,24 +1562,67 @@ components:
           format: date-time
           description: Timestamp when the step was reassigned.
       description: Data for an individual approval step.
-    SupplierErpSystemInfo:
+    RequestV4ListRetrieveItem:
       properties:
-        external_supplier_id:
-          type: string
-          title: External Supplier Id
-        erp_system_uuid:
+        id:
           type: string
           format: uuid
-          title: Erp System Uuid
-        is_active:
-          type: boolean
-          title: Is Active
-          default: true
+          title: Id
+        short_id:
+          type: integer
+          title: Short Id
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+        status:
+          type: string
+          title: Status
+        title:
+          type: string
+          maxLength: 250
+          title: Title
+        rfx_event:
+          $ref: '#/components/schemas/RFxEvent'
+        pr:
+          $ref: '#/components/schemas/PR'
       type: object
       required:
-      - external_supplier_id
-      - erp_system_uuid
-      title: SupplierErpSystemInfo
+      - id
+      - created_at
+      - status
+      - title
+      - pr
+      title: RequestV4ListRetrieveItem
+    RFxEvent:
+      properties:
+        short_id:
+          type: integer
+          title: Short Id
+        id:
+          type: string
+          format: uuid
+          title: Id
+        type:
+          type: string
+          title: Type
+      type: object
+      title: RFxEvent
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
     UpdateRequestItem:
       properties:
         id:
@@ -1332,33 +1637,157 @@ components:
       - id
       - schema_data
       title: UpdateRequestItem
-    RequestItemV4ListRetrieve:
+    RequestItem:
       properties:
-        results:
-          items:
-            $ref: '#/components/schemas/RequestItemV4Retrieve'
-          type: array
-          title: Results
-        next:
+        title:
           type: string
-          title: Next
-        previous:
+          title: Title
+          description: A brief, descriptive title for the item.
+        kind:
+          $ref: '#/components/schemas/RequestItemKind'
+        uom:
+          $ref: '#/components/schemas/RequestItemUOM'
+        quantity:
+          type: number
+          title: Quantity
+          description: Quantity of the item in the selected UOM.
+        unit_price:
+          type: number
+          title: Unit Price
+          description: Unit price of the item in the selected UOM.
+        manufacturer_part_number:
           type: string
-          title: Previous
+          title: Manufacturer Part Number
+          description: Manufacturer part number of the item.
+        price_book_item_id:
+          type: string
+          title: Price Book Item Id
+          description: Price book item ID.
+        start_date:
+          type: string
+          format: date
+          title: Start Date
+          description: Start date for item with kind Service.
+        end_date:
+          type: string
+          format: date
+          title: End Date
+          description: End date for item with kind Service.
       type: object
       required:
-      - results
-      title: RequestItemV4ListRetrieve
-    RequestStatus:
-      type: string
-      enum:
-      - canceled
-      - completed
-      - draft
-      - in_progress
-      - in_review
-      title: RequestStatus
-      description: Request status values.
+      - title
+      - kind
+      - uom
+      - quantity
+      title: RequestItem
+    UpdateRequest:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        schema_data:
+          type: object
+          title: Schema Data
+      type: object
+      required:
+      - id
+      - schema_data
+      title: UpdateRequest
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
+    Request:
+      properties:
+        title:
+          type: string
+          title: Title
+          description: A brief, descriptive title for the Request.
+        requester:
+          type: string
+          format: email
+          title: Requester
+          description: Fairmarkit buyer's email address.
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+          description: Id for the JSON schema.
+        schema_data:
+          type: object
+          title: Schema Data
+          description: Custom data according to the provided or current JSON Schema.
+        items:
+          items:
+            $ref: '#/components/schemas/RequestItem'
+          type: array
+          title: Items
+          description: A list of items.
+      type: object
+      required:
+      - title
+      - requester
+      - schema_data
+      - items
+      title: Request
+    RequestItemV4Retrieve:
+      properties:
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+        schema_data:
+          type: object
+          title: Schema Data
+        id:
+          type: string
+          format: uuid
+          title: Id
+        price_book_item:
+          $ref: '#/components/schemas/PriceBookItemRetrieve'
+      type: object
+      required:
+      - schema_id
+      - schema_data
+      - id
+      title: RequestItemV4Retrieve
+    ApprovalStepRejectRequest:
+      title: ApprovalStepRejectRequest
+      required:
+      - note
+      - approver_email
+      type: object
+      properties:
+        note:
+          title: Note
+          type: string
+          description: Required note explaining the rejection.
+        approver_email:
+          title: Approver email
+          type: string
+      description: Request data for rejecting an approval step.
     RequestItemUOM:
       enum:
       - each
@@ -1483,90 +1912,16 @@ components:
       - year
       title: RequestItemUOM
       description: Supported units of measurement for request items.
-    RequestItem:
+    RequestV4Create:
       properties:
         title:
           type: string
+          maxLength: 250
           title: Title
-          description: A brief, descriptive title for the item.
-        kind:
-          $ref: '#/components/schemas/RequestItemKind'
-        uom:
-          $ref: '#/components/schemas/RequestItemUOM'
-        quantity:
-          type: number
-          title: Quantity
-          description: Quantity of the item in the selected UOM.
-        unit_price:
-          type: number
-          title: Unit Price
-          description: Unit price of the item in the selected UOM.
-        manufacturer_part_number:
+        requester:
           type: string
-          title: Manufacturer Part Number
-          description: Manufacturer part number of the item.
-        price_book_item_id:
-          type: string
-          title: Price Book Item Id
-          description: Price book item ID.
-        start_date:
-          type: string
-          format: date
-          title: Start Date
-          description: Start date for item with kind Service.
-        end_date:
-          type: string
-          format: date
-          title: End Date
-          description: End date for item with kind Service.
-      type: object
-      required:
-      - title
-      - kind
-      - uom
-      - quantity
-      title: RequestItem
-    RequestV4Update:
-      properties:
-        schema_data:
-          type: object
-          title: Schema Data
-      type: object
-      required:
-      - schema_data
-      title: RequestV4Update
-    RequestV4ListRetrieve:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/RequestV4ListRetrieveItem'
-          type: array
-          title: Results
-        next:
-          type: string
-          title: Next
-        previous:
-          type: string
-          title: Previous
-      type: object
-      required:
-      - results
-      title: RequestV4ListRetrieve
-    LinkPRRequest:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: External PR reference ID.
-        url:
-          type: string
-          format: uri
-          title: Url
-          description: Full URL link to the external PR.
-      type: object
-      title: LinkPRRequest
-    RequestItemV4Retrieve:
-      properties:
+          format: email
+          title: Requester
         schema_id:
           type: string
           format: uuid
@@ -1574,18 +1929,20 @@ components:
         schema_data:
           type: object
           title: Schema Data
-        id:
+        assignee:
           type: string
-          format: uuid
-          title: Id
-        price_book_item:
-          $ref: '#/components/schemas/PriceBookItemRetrieve'
+          format: email
+          title: Assignee
       type: object
       required:
-      - schema_id
+      - title
       - schema_data
-      - id
-      title: RequestItemV4Retrieve
+      anyOf:
+      - required:
+        - requester
+      - required:
+        - assignee
+      title: RequestV4Create
     ApprovalStage:
       title: ApprovalStage
       required:
@@ -1624,207 +1981,36 @@ components:
           format: date-time
           description: Due date for this approval stage.
       description: Data for an approval stage containing multiple steps.
-    RequestItemV4Create:
-      properties:
-        schema_id:
-          type: string
-          format: uuid
-          title: Schema Id
-        schema_data:
-          type: object
-          title: Schema Data
-      type: object
-      required:
-      - schema_id
-      - schema_data
-      title: RequestItemV4Create
-    SupplierInfo:
-      properties:
-        uuid:
-          type: string
-          format: uuid
-          title: Uuid
-        title:
-          type: string
-          title: Title
-        email:
-          type: string
-          title: Email
-        erp_systems:
-          items:
-            $ref: '#/components/schemas/SupplierErpSystemInfo'
-          type: array
-          title: Erp Systems
-      type: object
-      required:
-      - uuid
-      - title
-      - email
-      title: SupplierInfo
-    RequestCreate:
+    SubmitRequest:
       properties:
         id:
           type: string
           format: uuid
           title: Id
-          description: Request Id.
-        title:
-          type: string
-          title: Title
-          description: A brief, descriptive title for the Request.
-        status:
-          type: string
-          title: Status
-          description: Request status.
-        requester:
-          type: string
-          title: Requester
-          description: Fairmarkit buyer's email address.
-        schema_id:
-          type: string
-          format: uuid
-          title: Schema Id
-          description: Id for the JSON schema.
-        schema_data:
-          type: object
-          title: Schema Data
-          description: Custom data according to the provided or current JSON Schema.
-        items:
-          items:
-            $ref: '#/components/schemas/RequestItemResponse'
-          type: array
-          title: Items
-          description: A list of items.
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Date and time when the Request was created.
-        file_ids:
-          items:
-            type: string
-            format: uuid
-          type: array
-          title: File Ids
       type: object
       required:
       - id
-      - title
-      - status
-      - requester
-      - schema_id
-      - schema_data
-      - items
-      - created_at
-      title: RequestCreate
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      description: Details for a validation error.
+      title: SubmitRequest
+    UpdatePRStatusRequest:
       properties:
-        loc:
-          title: Location
-          type: array
-          description: Error location
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-          description: Human readable explanation of the error.
-        type:
-          title: Error Type
-          type: string
-          description: Computer-readable identifier of the error type.
-    RequestRetrieve:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-          description: Request Id.
-        title:
-          type: string
-          title: Title
-          description: A brief, descriptive title for the Request.
         status:
           type: string
           title: Status
-          description: Request status.
-        requester:
-          type: string
-          title: Requester
-          description: Fairmarkit buyer's email address.
-        schema_id:
-          type: string
-          format: uuid
-          title: Schema Id
-          description: Id for the JSON schema.
-        schema_data:
-          type: object
-          title: Schema Data
-          description: Custom data according to the provided or current JSON Schema.
-        items:
-          items:
-            $ref: '#/components/schemas/RequestItemResponse'
-          type: array
-          title: Items
-          description: A list of items.
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-          description: Date and time when the Request was created.
-        file_ids:
-          items:
-            type: string
-            format: uuid
-          type: array
-          title: File Ids
+          description: Text status field.
       type: object
       required:
-      - id
-      - title
       - status
-      - requester
-      - schema_id
-      - schema_data
-      - items
-      - created_at
-      title: RequestRetrieve
-    RequestItemKind:
+      title: UpdatePRStatusRequest
+    RequestStatus:
       type: string
       enum:
-      - goods
-      - service
-      title: RequestItemKind
-      description: Request item type values.
-    PR:
-      properties:
-        id:
-          type: string
-          title: Id
-        url:
-          type: string
-          title: Url
-        status:
-          type: string
-          title: Status
-        errors:
-          items:
-            $ref: '#/components/schemas/PRError'
-          type: array
-          title: Errors
-      type: object
-      required:
-      - errors
-      title: PR
+      - canceled
+      - completed
+      - draft
+      - in_progress
+      - in_review
+      title: RequestStatus
+      description: Request status values.
     RequestV4Retrieve:
       properties:
         id:
@@ -1891,172 +2077,6 @@ components:
       - schema_id
       - schema_data
       title: RequestV4Retrieve
-    RejectPRRequest:
-      properties:
-        errors:
-          items:
-            $ref: '#/components/schemas/PRError'
-          type: array
-          title: Errors
-          description: List of errors that happened during the external PR Creation Process.
-      type: object
-      required:
-      - errors
-      title: RejectPRRequest
-    ApprovalStepResponse:
-      title: ApprovalStepResponse
-      type: object
-      properties:
-        note:
-          title: Note
-          type: string
-          description: Optional note for the approval step response.
-        reacted_at:
-          title: Reacted At
-          type: string
-          format: date-time
-          description: Timestamp when the step was responded to.
-      description: Response data for an approval step.
-    Request:
-      properties:
-        title:
-          type: string
-          title: Title
-          description: A brief, descriptive title for the Request.
-        requester:
-          type: string
-          format: email
-          title: Requester
-          description: Fairmarkit buyer's email address.
-        schema_id:
-          type: string
-          format: uuid
-          title: Schema Id
-          description: Id for the JSON schema.
-        schema_data:
-          type: object
-          title: Schema Data
-          description: Custom data according to the provided or current JSON Schema.
-        items:
-          items:
-            $ref: '#/components/schemas/RequestItem'
-          type: array
-          title: Items
-          description: A list of items.
-      type: object
-      required:
-      - title
-      - requester
-      - schema_data
-      - items
-      title: Request
-    SubmitRequest:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-      type: object
-      required:
-      - id
-      title: SubmitRequest
-    ApprovalIdResponse:
-      title: ApprovalIdResponse
-      required:
-      - id
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          description: Unique identifier of the approval.
-      description: Response containing the approval ID.
-    RequestItemV4Update:
-      properties:
-        schema_data:
-          type: object
-          title: Schema Data
-      type: object
-      required:
-      - schema_data
-      title: RequestItemV4Update
-    GetListV5OrderingType0Item:
-      type: string
-      enum:
-      - created_at
-      - short_id
-      - status
-      - title
-      - -created_at
-      - -title
-      - -status
-      - -short_id
-      title: GetListV5OrderingType0Item
-      description: Allowed ordering values for list endpoints.
-    Approver:
-      title: Approver
-      required:
-      - id
-      - email
-      type: object
-      properties:
-        id:
-          title: Id
-          type: string
-          description: Unique identifier for the approver.
-        email:
-          title: Email
-          type: string
-          description: Email address of the approver.
-      description: Information about an approver.
-    RequestItemResponse:
-      properties:
-        title:
-          type: string
-          title: Title
-          description: A brief, descriptive title for the item.
-        kind:
-          $ref: '#/components/schemas/RequestItemKind'
-        uom:
-          $ref: '#/components/schemas/RequestItemUOM'
-        quantity:
-          type: number
-          title: Quantity
-          description: Quantity of the item in the selected UOM.
-        unit_price:
-          type: number
-          title: Unit Price
-          description: Unit price of the item in the selected UOM.
-        manufacturer_part_number:
-          type: string
-          title: Manufacturer Part Number
-          description: Manufacturer part number of the item.
-        supplier:
-          type: object
-          title: External Supplier Info
-          description: External supplier information.
-          $ref: '#/components/schemas/SupplierInfo'
-        price_book_item_id:
-          type: string
-          title: Price Book Item Id
-          description: Price book item ID.
-        start_date:
-          type: string
-          format: date
-          title: Start Date
-          description: Start date for item with kind Service.
-        end_date:
-          type: string
-          format: date
-          title: End Date
-          description: End date for item with kind Service.
-      type: object
-      required:
-      - title
-      - kind
-      - uom
-      - quantity
-      title: RequestItem
     ApprovalStepRequest:
       title: ApprovalStepRequest
       required:
@@ -2072,55 +2092,20 @@ components:
           title: Approver email
           type: string
       description: Request data for approving an approval step.
-    ApprovalStepRejectRequest:
-      title: ApprovalStepRejectRequest
-      required:
-      - note
-      - approver_email
-      type: object
+    RequestItemV4Create:
       properties:
-        note:
-          title: Note
-          type: string
-          description: Required note explaining the rejection.
-        approver_email:
-          title: Approver email
-          type: string
-      description: Request data for rejecting an approval step.
-    UpdatePRStatusRequest:
-      properties:
-        status:
-          type: string
-          title: Status
-          description: Text status field.
-      type: object
-      required:
-      - status
-      title: UpdatePRStatusRequest
-    CancelRequest:
-      properties:
-        id:
+        schema_id:
           type: string
           format: uuid
-          title: Id
+          title: Schema Id
+        schema_data:
+          type: object
+          title: Schema Data
       type: object
       required:
-      - id
-      title: CancelRequest
-    RFxEvent:
-      properties:
-        short_id:
-          type: integer
-          title: Short Id
-        id:
-          type: string
-          format: uuid
-          title: Id
-        type:
-          type: string
-          title: Type
-      type: object
-      title: RFxEvent
+      - schema_id
+      - schema_data
+      title: RequestItemV4Create
     BaseFileRetrieve:
       title: BaseFileRetrieve
       required:
@@ -2135,113 +2120,6 @@ components:
         orig_file_name:
           title: Orig File Name
           type: string
-    RequestV4ListRetrieveItem:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        short_id:
-          type: integer
-          title: Short Id
-        created_at:
-          type: string
-          format: date-time
-          title: Created At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-        status:
-          type: string
-          title: Status
-        title:
-          type: string
-          maxLength: 250
-          title: Title
-        rfx_event:
-          $ref: '#/components/schemas/RFxEvent'
-        pr:
-          $ref: '#/components/schemas/PR'
-      type: object
-      required:
-      - id
-      - created_at
-      - status
-      - title
-      - pr
-      title: RequestV4ListRetrieveItem
-    PRError:
-      properties:
-        text:
-          type: string
-          title: Text
-          description: Error Short Summary.
-        detail:
-          type: string
-          title: Detail
-          description: Error Details.
-      type: object
-      required:
-      - text
-      - detail
-      title: PRError
-    UpdateRequest:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        schema_data:
-          type: object
-          title: Schema Data
-      type: object
-      required:
-      - id
-      - schema_data
-      title: UpdateRequest
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
-    RequestV4Create:
-      properties:
-        title:
-          type: string
-          maxLength: 250
-          title: Title
-        requester:
-          type: string
-          format: email
-          title: Requester
-        schema_id:
-          type: string
-          format: uuid
-          title: Schema Id
-        schema_data:
-          type: object
-          title: Schema Data
-        assignee:
-          type: string
-          format: email
-          title: Assignee
-      type: object
-      required:
-      - title
-      - schema_data
-      anyOf:
-      - required:
-        - requester
-      - required:
-        - assignee
-      title: RequestV4Create
     ApprovalDetail:
       title: ApprovalDetail
       required:
@@ -2287,33 +2165,128 @@ components:
           format: date-time
           description: Timestamp when the approval was last updated.
       description: Data for an RFQ approval workflow.
-    ShippingType:
-      type: string
-      enum:
-      - ocean_freight
-      - freight
-      - same_day
-      - next_day
-      - next_day_am
-      - two_day
-      - two_day_am
-      - three_day
-      - saturday
-      - courier
-      - ground
-      - priority_mail_express
-      - priority_mail
-      - ground_with_freight_pricing
-      - critical
-      - ''
-      title: ShippingType
-    RequestUrgency:
-      type: string
-      enum:
-      - normal
-      - rush
-      - emergency
-      title: RequestUrgency
+    PRError:
+      properties:
+        text:
+          type: string
+          title: Text
+          description: Error Short Summary.
+        detail:
+          type: string
+          title: Detail
+          description: Error Details.
+      type: object
+      required:
+      - text
+      - detail
+      title: PRError
+    RejectPRRequest:
+      properties:
+        errors:
+          items:
+            $ref: '#/components/schemas/PRError'
+          type: array
+          title: Errors
+          description: List of errors that happened during the external PR Creation Process.
+      type: object
+      required:
+      - errors
+      title: RejectPRRequest
+    Approver:
+      title: Approver
+      required:
+      - id
+      - email
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          description: Unique identifier for the approver.
+        email:
+          title: Email
+          type: string
+          description: Email address of the approver.
+      description: Information about an approver.
+    RequestCreate:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+          description: Request Id.
+        title:
+          type: string
+          title: Title
+          description: A brief, descriptive title for the Request.
+        status:
+          type: string
+          title: Status
+          description: Request status.
+        requester:
+          type: string
+          title: Requester
+          description: Fairmarkit buyer's email address.
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+          description: Id for the JSON schema.
+        schema_data:
+          type: object
+          title: Schema Data
+          description: Custom data according to the provided or current JSON Schema.
+        items:
+          items:
+            $ref: '#/components/schemas/RequestItemResponse'
+          type: array
+          title: Items
+          description: A list of items.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Date and time when the Request was created.
+        file_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+          title: File Ids
+      type: object
+      required:
+      - id
+      - title
+      - status
+      - requester
+      - schema_id
+      - schema_data
+      - items
+      - created_at
+      title: RequestCreate
+    SupplierInfo:
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          title: Uuid
+        title:
+          type: string
+          title: Title
+        email:
+          type: string
+          title: Email
+        erp_systems:
+          items:
+            $ref: '#/components/schemas/SupplierErpSystemInfo'
+          type: array
+          title: Erp Systems
+      type: object
+      required:
+      - uuid
+      - title
+      - email
+      title: SupplierInfo
     RejectionKind:
       type: string
       enum:
@@ -2324,29 +2297,75 @@ components:
       - ship_address_outside_our_coverage_area
       - other
       title: RejectionKind
-    CarrierKind:
-      type: string
-      enum:
-      - ups
-      - fedex
-      - dhl
-      - usps
-      - ''
-      title: CarrierKind
-    RequestStatus_2:
-      type: string
-      enum:
-      - new
-      - missed
-      - canceled
-      - viewed
-      - ignored
-      - submitted
-      - waiting_for_award
-      - lost
-      - won
-      - declined
-      title: RequestStatus
+    ResponseSubmitRequest:
+      properties:
+        vendor_quote_number:
+          type: string
+          title: Vendor Quote Number
+          description: Vendor quote number.
+          examples:
+          - DFR440-DB
+        valid_for:
+          $ref: '#/components/schemas/ResponseValidFor'
+          description: The number of days during which the offer will be valid.
+          examples:
+          - 1
+          - 5
+          - 7
+          - 10
+          - 15
+          - 30
+          - 45
+          - 60
+          - 90
+          - 180
+          - 365
+        is_shipping_included:
+          type: boolean
+          title: Is Shipping Included
+          description: Is shipping included in the total price?
+          examples:
+          - true
+          - false
+        shipping:
+          anyOf:
+          - type: number
+          - type: string
+          title: Shipping
+          description: Cost of shipping in case it not included in the total price
+          default: '0'
+          examples:
+          - '49.99'
+          - '0'
+        notes:
+          type: string
+          title: Notes
+          description: Additional notes from Supplier for Buyer related to the response, if needed.
+          default: ''
+          examples:
+          - Please contact us ASAP.
+          - ''
+        currency:
+          type: string
+          title: Currency
+          description: Currency code of response in ISO 4217 format
+          examples:
+          - USD
+          - CAD
+          - EUR
+        items:
+          items:
+            $ref: '#/components/schemas/ResponseItemSubmitRequest'
+          type: array
+          title: Items
+      type: object
+      required:
+      - vendor_quote_number
+      - valid_for
+      - is_shipping_included
+      - currency
+      - items
+      title: ResponseSubmitRequest
     ResponseStatus:
       type: string
       enum:
@@ -2356,6 +2375,15 @@ components:
       - awarded
       - no_bid
       title: ResponseStatus
+    CarrierKind:
+      type: string
+      enum:
+      - ups
+      - fedex
+      - dhl
+      - usps
+      - ''
+      title: CarrierKind
     ResponseValidFor:
       type: integer
       enum:
@@ -2371,6 +2399,54 @@ components:
       - 180
       - 365
       title: ResponseValidFor
+    HTTPValidationError_2:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError_2'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    RejectionKindWithEmpty:
+      type: string
+      enum:
+      - out_of_stock
+      - items_not_carried
+      - more_information_needed_to_quote
+      - price_not_competitive
+      - ship_address_outside_our_coverage_area
+      - other
+      - ''
+      title: RejectionKindWithEmpty
+    RequestUrgency:
+      type: string
+      enum:
+      - normal
+      - rush
+      - emergency
+      title: RequestUrgency
+    ValidationError_2:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     DetailRequestResponse:
       properties:
         id:
@@ -2508,6 +2584,244 @@ components:
       - notes
       - items
       title: DetailRequestResponse
+    ListRequestResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique request ID.
+          examples:
+          - e3f18428-6e27-4b34-855f-e635a8c56b8b
+        ref_id:
+          type: integer
+          title: Ref Id
+          description: Reference ID from platform.
+          examples:
+          - 1
+          - 100500
+        title:
+          type: string
+          title: Title
+          description: Request title.
+          examples:
+          - Apple Iphone 16 PRO MAX 1TB
+        customer_title:
+          type: string
+          title: Customer Title
+          description: Customer title.
+          examples:
+          - Apple Inc.
+        closes_at:
+          type: string
+          title: Closes At
+          description: Date and time of when request was planed to close.
+          examples:
+          - '2025-09-05 08:39:24.199757+00:00'
+        preferred_delivery_date:
+          type: string
+          title: Preferred Delivery Date
+          description: Preferred delivery date and time expected by buyer. Will be empty string if wasn't provided.
+          examples:
+          - '2025-09-01 08:39:24.199791+00:00'
+          - ''
+        urgency:
+          $ref: '#/components/schemas/RequestUrgency'
+          description: Request urgency.
+          examples:
+          - normal
+          - rush
+          - emergency
+        status:
+          $ref: '#/components/schemas/RequestStatus_2'
+          description: Actual Request status.
+          examples:
+          - new
+          - missed
+          - canceled
+          - viewed
+          - ignored
+          - submitted
+          - waiting_for_award
+          - lost
+          - won
+          - declined
+        payment_process:
+          $ref: '#/components/schemas/PaymentProcess'
+          description: Payment process expected by buyer.
+          default: po
+          examples:
+          - po
+          - invoice_only
+          - credit_card
+        shipping_address:
+          $ref: '#/components/schemas/ShippingAddress'
+        shipping_type:
+          $ref: '#/components/schemas/ShippingType'
+          description: Shipping type expected by buyer.
+          default: ''
+          examples:
+          - ocean_freight
+          - freight
+          - same_day
+          - next_day
+          - next_day_am
+          - two_day
+          - two_day_am
+          - three_day
+          - saturday
+          - courier
+          - ground
+          - priority_mail_express
+          - priority_mail
+          - ground_with_freight_pricing
+          - critical
+          - ''
+        carrier:
+          $ref: '#/components/schemas/CarrierKind'
+          description: Carrier type expected by buyer.
+          default: ''
+          examples:
+          - ups
+          - fedex
+          - dhl
+          - usps
+          - ''
+        currency:
+          type: string
+          title: Currency
+          description: Currency of request.
+          examples:
+          - USD
+          - CAD
+          - EUR
+          - AUD
+        notes:
+          type: string
+          title: Notes
+          description: Additional notes from Buyer for suppliers related to the request, if exists.
+          examples:
+          - We are working only on Mon and Tue.
+      type: object
+      required:
+      - id
+      - ref_id
+      - title
+      - customer_title
+      - closes_at
+      - preferred_delivery_date
+      - urgency
+      - status
+      - shipping_address
+      - currency
+      - notes
+      title: ListRequestResponse
+    RequestOrdering:
+      type: string
+      enum:
+      - created_at
+      - -created_at
+      - updated_at
+      - -updated_at
+      - closes_at
+      - -closes_at
+      title: RequestOrdering
+    DetailRequestItemResponse:
+      properties:
+        id:
+          type: string
+          title: Id
+          description: Unique request item ID.
+          examples:
+          - ba309b6f-6161-4ca2-a43d-724dacc21e0c
+        kind:
+          type: string
+          title: Kind
+          description: Request item kind.
+          examples:
+          - item
+          - service
+        title:
+          type: string
+          title: Title
+          description: Request item title.
+          examples:
+          - Apple Iphone 16 PRO MAX 1TB
+        manufacturer:
+          type: string
+          title: Manufacturer
+          description: Request item manufacturer.
+          examples:
+          - Amazing Dreams Inc.
+        manufacturer_pn:
+          type: string
+          title: Manufacturer Pn
+          description: Request item manufacturer part number.
+          examples:
+          - YFD220125-i
+          - 70-107
+        comments:
+          type: string
+          title: Comments
+          description: Buyer's comments for the request item
+          examples:
+          - 'color: red'
+        uom:
+          type: string
+          title: Uom
+          description: Unit of measurement.
+          examples:
+          - each
+          - bar
+          - kilogram
+        is_awarded:
+          type: boolean
+          title: Is Awarded
+          description: Has request item already awarded
+          examples:
+          - true
+          - false
+        awarded_at:
+          type: string
+          title: Awarded At
+          description: Date and time of when request item was awarded. Will be None in case if request item still not awarded.
+          examples:
+          - '2025-09-01 08:39:24.201724+00:00'
+          - ''
+        quantity:
+          type: string
+          title: Quantity
+          description: Requested quantity of request item. Could be empty in case request item in uncountable.
+          examples:
+          - '10'
+          - '1.5'
+          - ''
+      type: object
+      required:
+      - id
+      - kind
+      - title
+      - manufacturer
+      - manufacturer_pn
+      - comments
+      - uom
+      - is_awarded
+      - awarded_at
+      - quantity
+      title: DetailRequestItemResponse
+    RequestStatus_2:
+      type: string
+      enum:
+      - new
+      - missed
+      - canceled
+      - viewed
+      - ignored
+      - submitted
+      - waiting_for_award
+      - lost
+      - won
+      - declined
+      title: RequestStatus
     PaymentProcess:
       type: string
       enum:
@@ -2515,65 +2829,50 @@ components:
       - invoice_only
       - credit_card
       title: PaymentProcess
-    ShippingAddress:
+    ShippingType:
+      type: string
+      enum:
+      - ocean_freight
+      - freight
+      - same_day
+      - next_day
+      - next_day_am
+      - two_day
+      - two_day_am
+      - three_day
+      - saturday
+      - courier
+      - ground
+      - priority_mail_express
+      - priority_mail
+      - ground_with_freight_pricing
+      - critical
+      - ''
+      title: ShippingType
+    RequestRejectRequest:
       properties:
-        country:
-          type: string
-          title: Country
-          description: 2-symbols request's delivery address country ISO 3166-1 alpha-2 code. Will be empty string if not provided.
+        reject_kind:
+          $ref: '#/components/schemas/RejectionKind'
+          description: Available kinds of rejection. In case chosen "other", please should describe the reason.
           examples:
-          - US
-          - CA
-          - GB
-          - AU
-          - NZ
-          - ''
-        state:
+          - out_of_stock
+          - items_not_carried
+          - more_information_needed_to_quote
+          - price_not_competitive
+          - ship_address_outside_our_coverage_area
+          - other
+        reject_reason:
           type: string
-          title: State
-          description: Request's delivery address state name. Will be empty string if not provided.
+          title: Reject Reason
+          description: Reason of rejection. Should be described in case rejection kind "other"
+          default: ''
           examples:
-          - Texas
-          - Illinois
-          - Massachusetts
+          - We are not working at next week
           - ''
-        city:
-          type: string
-          title: City
-          description: Request's delivery address city name. Will be empty string if not provided.
-          examples:
-          - Boston
-          - Newton
-          - New Bedford
-          - ''
-        zip:
-          type: string
-          title: Zip
-          description: Request's delivery address zip code. Will be empty string if not provided.
-          examples:
-          - 90210-0001
-          - '90210'
-          - ''
-        address1:
-          type: string
-          title: Address1
-          description: Request's delivery first address. Will be empty string if not provided.
-          examples:
-          - 123 Main Street, Apt 4B
-          - ''
-        address2:
-          type: string
-          title: Address2
-          description: Request's delivery second address. Will be empty string if not provided.
       type: object
       required:
-      - country
-      - state
-      - city
-      - zip
-      - address1
-      - address2
-      title: ShippingAddress
+      - reject_kind
+      title: RequestRejectRequest
     DetailResponse:
       properties:
         status:
@@ -2733,89 +3032,65 @@ components:
       - awarded_at
       - items
       title: DetailResponse
-    DetailRequestItemResponse:
+    ShippingAddress:
       properties:
-        id:
+        country:
           type: string
-          title: Id
-          description: Unique request item ID.
+          title: Country
+          description: 2-symbols request's delivery address country ISO 3166-1 alpha-2 code. Will be empty string if not provided.
           examples:
-          - ba309b6f-6161-4ca2-a43d-724dacc21e0c
-        kind:
-          type: string
-          title: Kind
-          description: Request item kind.
-          examples:
-          - item
-          - service
-        title:
-          type: string
-          title: Title
-          description: Request item title.
-          examples:
-          - Apple Iphone 16 PRO MAX 1TB
-        manufacturer:
-          type: string
-          title: Manufacturer
-          description: Request item manufacturer.
-          examples:
-          - Amazing Dreams Inc.
-        manufacturer_pn:
-          type: string
-          title: Manufacturer Pn
-          description: Request item manufacturer part number.
-          examples:
-          - YFD220125-i
-          - 70-107
-        comments:
-          type: string
-          title: Comments
-          description: Buyer's comments for the request item
-          examples:
-          - 'color: red'
-        uom:
-          type: string
-          title: Uom
-          description: Unit of measurement.
-          examples:
-          - each
-          - bar
-          - kilogram
-        is_awarded:
-          type: boolean
-          title: Is Awarded
-          description: Has request item already awarded
-          examples:
-          - true
-          - false
-        awarded_at:
-          type: string
-          title: Awarded At
-          description: Date and time of when request item was awarded. Will be None in case if request item still not awarded.
-          examples:
-          - '2025-09-01 08:39:24.201724+00:00'
+          - US
+          - CA
+          - GB
+          - AU
+          - NZ
           - ''
-        quantity:
+        state:
           type: string
-          title: Quantity
-          description: Requested quantity of request item. Could be empty in case request item in uncountable.
+          title: State
+          description: Request's delivery address state name. Will be empty string if not provided.
           examples:
-          - '10'
-          - '1.5'
+          - Texas
+          - Illinois
+          - Massachusetts
           - ''
+        city:
+          type: string
+          title: City
+          description: Request's delivery address city name. Will be empty string if not provided.
+          examples:
+          - Boston
+          - Newton
+          - New Bedford
+          - ''
+        zip:
+          type: string
+          title: Zip
+          description: Request's delivery address zip code. Will be empty string if not provided.
+          examples:
+          - 90210-0001
+          - '90210'
+          - ''
+        address1:
+          type: string
+          title: Address1
+          description: Request's delivery first address. Will be empty string if not provided.
+          examples:
+          - 123 Main Street, Apt 4B
+          - ''
+        address2:
+          type: string
+          title: Address2
+          description: Request's delivery second address. Will be empty string if not provided.
       type: object
       required:
-      - id
-      - kind
-      - title
-      - manufacturer
-      - manufacturer_pn
-      - comments
-      - uom
-      - is_awarded
-      - awarded_at
-      - quantity
-      title: DetailRequestItemResponse
+      - country
+      - state
+      - city
+      - zip
+      - address1
+      - address2
+      title: ShippingAddress
     ResponseItemSubmitRequest:
       properties:
         event_item:
@@ -2930,271 +3205,6 @@ components:
       required:
       - event_item
       title: ResponseItemSubmitRequest
-    RequestRejectRequest:
-      properties:
-        reject_kind:
-          $ref: '#/components/schemas/RejectionKind'
-          description: Available kinds of rejection. In case chosen "other", please should describe the reason.
-          examples:
-          - out_of_stock
-          - items_not_carried
-          - more_information_needed_to_quote
-          - price_not_competitive
-          - ship_address_outside_our_coverage_area
-          - other
-        reject_reason:
-          type: string
-          title: Reject Reason
-          description: Reason of rejection. Should be described in case rejection kind "other"
-          default: ''
-          examples:
-          - We are not working at next week
-          - ''
-      type: object
-      required:
-      - reject_kind
-      title: RequestRejectRequest
-    ValidationError_2:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    ListRequestResponse:
-      properties:
-        id:
-          type: string
-          title: Id
-          description: Unique request ID.
-          examples:
-          - e3f18428-6e27-4b34-855f-e635a8c56b8b
-        ref_id:
-          type: integer
-          title: Ref Id
-          description: Reference ID from platform.
-          examples:
-          - 1
-          - 100500
-        title:
-          type: string
-          title: Title
-          description: Request title.
-          examples:
-          - Apple Iphone 16 PRO MAX 1TB
-        customer_title:
-          type: string
-          title: Customer Title
-          description: Customer title.
-          examples:
-          - Apple Inc.
-        closes_at:
-          type: string
-          title: Closes At
-          description: Date and time of when request was planed to close.
-          examples:
-          - '2025-09-05 08:39:24.199757+00:00'
-        preferred_delivery_date:
-          type: string
-          title: Preferred Delivery Date
-          description: Preferred delivery date and time expected by buyer. Will be empty string if wasn't provided.
-          examples:
-          - '2025-09-01 08:39:24.199791+00:00'
-          - ''
-        urgency:
-          $ref: '#/components/schemas/RequestUrgency'
-          description: Request urgency.
-          examples:
-          - normal
-          - rush
-          - emergency
-        status:
-          $ref: '#/components/schemas/RequestStatus_2'
-          description: Actual Request status.
-          examples:
-          - new
-          - missed
-          - canceled
-          - viewed
-          - ignored
-          - submitted
-          - waiting_for_award
-          - lost
-          - won
-          - declined
-        payment_process:
-          $ref: '#/components/schemas/PaymentProcess'
-          description: Payment process expected by buyer.
-          default: po
-          examples:
-          - po
-          - invoice_only
-          - credit_card
-        shipping_address:
-          $ref: '#/components/schemas/ShippingAddress'
-        shipping_type:
-          $ref: '#/components/schemas/ShippingType'
-          description: Shipping type expected by buyer.
-          default: ''
-          examples:
-          - ocean_freight
-          - freight
-          - same_day
-          - next_day
-          - next_day_am
-          - two_day
-          - two_day_am
-          - three_day
-          - saturday
-          - courier
-          - ground
-          - priority_mail_express
-          - priority_mail
-          - ground_with_freight_pricing
-          - critical
-          - ''
-        carrier:
-          $ref: '#/components/schemas/CarrierKind'
-          description: Carrier type expected by buyer.
-          default: ''
-          examples:
-          - ups
-          - fedex
-          - dhl
-          - usps
-          - ''
-        currency:
-          type: string
-          title: Currency
-          description: Currency of request.
-          examples:
-          - USD
-          - CAD
-          - EUR
-          - AUD
-        notes:
-          type: string
-          title: Notes
-          description: Additional notes from Buyer for suppliers related to the request, if exists.
-          examples:
-          - We are working only on Mon and Tue.
-      type: object
-      required:
-      - id
-      - ref_id
-      - title
-      - customer_title
-      - closes_at
-      - preferred_delivery_date
-      - urgency
-      - status
-      - shipping_address
-      - currency
-      - notes
-      title: ListRequestResponse
-    RejectionKindWithEmpty:
-      type: string
-      enum:
-      - out_of_stock
-      - items_not_carried
-      - more_information_needed_to_quote
-      - price_not_competitive
-      - ship_address_outside_our_coverage_area
-      - other
-      - ''
-      title: RejectionKindWithEmpty
-    ResponseSubmitRequest:
-      properties:
-        vendor_quote_number:
-          type: string
-          title: Vendor Quote Number
-          description: Vendor quote number.
-          examples:
-          - DFR440-DB
-        valid_for:
-          $ref: '#/components/schemas/ResponseValidFor'
-          description: The number of days during which the offer will be valid.
-          examples:
-          - 1
-          - 5
-          - 7
-          - 10
-          - 15
-          - 30
-          - 45
-          - 60
-          - 90
-          - 180
-          - 365
-        is_shipping_included:
-          type: boolean
-          title: Is Shipping Included
-          description: Is shipping included in the total price?
-          examples:
-          - true
-          - false
-        shipping:
-          anyOf:
-          - type: number
-          - type: string
-          title: Shipping
-          description: Cost of shipping in case it not included in the total price
-          default: '0'
-          examples:
-          - '49.99'
-          - '0'
-        notes:
-          type: string
-          title: Notes
-          description: Additional notes from Supplier for Buyer related to the response, if needed.
-          default: ''
-          examples:
-          - Please contact us ASAP.
-          - ''
-        currency:
-          type: string
-          title: Currency
-          description: Currency code of response in ISO 4217 format
-          examples:
-          - USD
-          - CAD
-          - EUR
-        items:
-          items:
-            $ref: '#/components/schemas/ResponseItemSubmitRequest'
-          type: array
-          title: Items
-      type: object
-      required:
-      - vendor_quote_number
-      - valid_for
-      - is_shipping_included
-      - currency
-      - items
-      title: ResponseSubmitRequest
-    HTTPValidationError_2:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError_2'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
     DetailResponseItem:
       properties:
         id:
@@ -3334,16 +3344,6 @@ components:
       - country_of_origin
       - comments
       title: DetailResponseItem
-    RequestOrdering:
-      type: string
-      enum:
-      - created_at
-      - -created_at
-      - updated_at
-      - -updated_at
-      - closes_at
-      - -closes_at
-      title: RequestOrdering
 x-refined-from:
 - fairmarkit-buyer-openapi.json
 - fairmarkit-supplier-openapi.json

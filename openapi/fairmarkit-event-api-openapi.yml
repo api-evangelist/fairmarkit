@@ -187,48 +187,18 @@ paths:
       description: Returns pricing items for an event.
 components:
   schemas:
-    EventPricingItemRetrieve:
-      properties:
-        item_id:
-          type: string
-          format: uuid
-          title: Item Id
-        schema_id:
-          type: string
-          format: uuid
-          title: Schema Id
-        schema_data:
-          type: object
-          title: Schema Data
-        status:
-          $ref: '#/components/schemas/ItemStatus'
-        request_item_id:
-          type: string
-          format: uuid
-          title: Request Item Id
-        is_moved_from_previous_round:
-          type: boolean
-          title: Is Moved From Previous Round
-      type: object
-      required:
-      - item_id
-      - schema_id
-      - schema_data
-      - status
-      - is_moved_from_previous_round
-      title: EventPricingItemRetrieve
-    EventType:
+    Urgency:
       type: string
       enum:
-      - DIRECT_NEGOTIATION
-      - SOURCING
-      title: EventType
-      description: Event type values.
-    EventPricingItemListRetrieve:
+      - NORMAL
+      - URGENT
+      title: Urgency
+      description: Urgency values.
+    EventsV4ListRetrieve:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EventPricingItemRetrieve'
+            $ref: '#/components/schemas/EventV4Retrieve'
           type: array
           title: Results
         next:
@@ -240,16 +210,7 @@ components:
       type: object
       required:
       - results
-      title: EventPricingItemListRetrieve
-    ItemStatus:
-      type: string
-      enum:
-      - AWARDED
-      - CANCELED
-      - DRAFT
-      - SOURCING
-      title: ItemStatus
-      description: Item status values.
+      title: EventsV4ListRetrieve
     Assignee:
       properties:
         id:
@@ -262,42 +223,6 @@ components:
       required:
       - id
       title: Assignee
-    ValidationError:
-      title: ValidationError
-      required:
-      - loc
-      - msg
-      - type
-      type: object
-      description: Details for a validation error.
-      properties:
-        loc:
-          title: Location
-          type: array
-          description: Error location
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-        msg:
-          title: Message
-          type: string
-          description: Human readable explanation of the error.
-        type:
-          title: Error Type
-          type: string
-          description: Computer-readable identifier of the error type.
-    HTTPValidationError:
-      title: HTTPValidationError
-      type: object
-      description: Validation error response.
-      properties:
-        detail:
-          title: Detail
-          type: array
-          description: Details about a specific error to display in error response.
-          items:
-            $ref: '#/components/schemas/ValidationError'
     EventStateName:
       type: string
       enum:
@@ -339,11 +264,11 @@ components:
       - status
       - created_at
       title: EventV4Retrieve
-    EventsV4ListRetrieve:
+    EventPricingItemListRetrieve:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EventV4Retrieve'
+            $ref: '#/components/schemas/EventPricingItemRetrieve'
           type: array
           title: Results
         next:
@@ -355,24 +280,7 @@ components:
       type: object
       required:
       - results
-      title: EventsV4ListRetrieve
-    Urgency:
-      type: string
-      enum:
-      - NORMAL
-      - URGENT
-      title: Urgency
-      description: Urgency values.
-    EventStatus:
-      type: string
-      enum:
-      - CANCELED
-      - CLOSED
-      - COMPLETED
-      - DRAFT
-      - OPENED
-      title: EventStatus
-      description: Event status values.
+      title: EventPricingItemListRetrieve
     EventRetrieve:
       properties:
         id:
@@ -460,3 +368,95 @@ components:
       - schema_data
       - urgency
       title: EventRetrieve
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      description: Validation error response.
+      properties:
+        detail:
+          title: Detail
+          type: array
+          description: Details about a specific error to display in error response.
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    EventType:
+      type: string
+      enum:
+      - DIRECT_NEGOTIATION
+      - SOURCING
+      title: EventType
+      description: Event type values.
+    EventStatus:
+      type: string
+      enum:
+      - CANCELED
+      - CLOSED
+      - COMPLETED
+      - DRAFT
+      - OPENED
+      title: EventStatus
+      description: Event status values.
+    ItemStatus:
+      type: string
+      enum:
+      - AWARDED
+      - CANCELED
+      - DRAFT
+      - SOURCING
+      title: ItemStatus
+      description: Item status values.
+    EventPricingItemRetrieve:
+      properties:
+        item_id:
+          type: string
+          format: uuid
+          title: Item Id
+        schema_id:
+          type: string
+          format: uuid
+          title: Schema Id
+        schema_data:
+          type: object
+          title: Schema Data
+        status:
+          $ref: '#/components/schemas/ItemStatus'
+        request_item_id:
+          type: string
+          format: uuid
+          title: Request Item Id
+        is_moved_from_previous_round:
+          type: boolean
+          title: Is Moved From Previous Round
+      type: object
+      required:
+      - item_id
+      - schema_id
+      - schema_data
+      - status
+      - is_moved_from_previous_round
+      title: EventPricingItemRetrieve
+    ValidationError:
+      title: ValidationError
+      required:
+      - loc
+      - msg
+      - type
+      type: object
+      description: Details for a validation error.
+      properties:
+        loc:
+          title: Location
+          type: array
+          description: Error location
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+        msg:
+          title: Message
+          type: string
+          description: Human readable explanation of the error.
+        type:
+          title: Error Type
+          type: string
+          description: Computer-readable identifier of the error type.
